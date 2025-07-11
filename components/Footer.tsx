@@ -35,11 +35,12 @@ export function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-4">Snelle Links</h3>
             <ul className="space-y-2 text-green-200">
-              <li><a href="/hoe-het-werkt" className="hover:text-white transition-colors">Hoe Het Werkt</a></li>
-              <li><a href="/pakketten" className="hover:text-white transition-colors">Pakketten</a></li>
-              <li><a href="/verhalen" className="hover:text-white transition-colors">Verhalen</a></li>
-              <li><a href="/veelgestelde-vragen" className="hover:text-white transition-colors">Veelgestelde Vragen</a></li>
-              <li><a href="/contact" className="hover:text-white transition-colors">Contact</a></li>
+              <li><a href="/nl/hoe-het-werkt" className="hover:text-white transition-colors">Hoe Het Werkt</a></li>
+              <li><a href="/nl/pakketten" className="hover:text-white transition-colors">Pakketten</a></li>
+              <li><a href="/nl/verhalen" className="hover:text-white transition-colors">Verhalen</a></li>
+              <li><a href="/nl/veelgestelde-vragen" className="hover:text-white transition-colors">Veelgestelde Vragen</a></li>
+              <li><a href="/nl/contact" className="hover:text-white transition-colors">Contact</a></li>
+              <li><a href="/nl/dashboard" className="hover:text-white transition-colors">Dashboard</a></li>
             </ul>
           </div>
 
@@ -84,8 +85,8 @@ export function Footer() {
             © 2024 YourNextStadium. Alle rechten voorbehouden.
           </div>
           <div className="flex space-x-6 text-green-200 text-sm mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Algemene Voorwaarden</a>
+            <a href="/nl/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="/nl/algemene-voorwaarden" className="hover:text-white transition-colors">Algemene Voorwaarden</a>
             <a href="#" className="hover:text-white transition-colors">SGR Erkend</a>
           </div>
         </div>

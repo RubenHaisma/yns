@@ -2,24 +2,41 @@
 
 import { useState } from 'react';
 import { X, Calendar, Users, MapPin, CreditCard, Check } from 'lucide-react';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
+  selectedPackage?: string | null;
 }
 
-export function BookingModal({ isOpen, onClose }: BookingModalProps) {
+export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalProps) {
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [bookingId, setBookingId] = useState('');
   const [formData, setFormData] = useState({
-    package: '',
+    package: selectedPackage || '',
     date: '',
     travelers: 1,
+    name: '',
+    email: '',
+    phone: '',
     preferences: {
       hatedTeams: [] as string[],
       visitedCities: [] as string[],
       travelStyle: ''
     }
   });
+
+  // Update package when selectedPackage prop changes
+  React.useEffect(() => {
+    if (selectedPackage) {
+      setFormData(prev => ({ ...prev, package: selectedPackage }));
+    }
+  }, [selectedPackage]);
 
   const packages = [
     { id: 'basic', name: 'Alleen de Match', price: '€149-299', popular: false },
@@ -37,7 +54,120 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     'Paris', 'Brussels', 'Liverpool', 'Manchester'
   ];
 
+  const calculateTotalPrice = () => {
+    const pkg = packages.find(p => p.id === formData.package);
+    if (!pkg) return '€0';
+    
+    // Extract base price (take the lower end for calculation)
+    const basePrice = parseInt(pkg.price.split('-')[0].replace('€', ''));
+    const total = basePrice * formData.travelers;
+    return `€${total}`;
+  };
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    
+    try {
+      // Create payment intent
+      const paymentResponse = await fetch('/api/create-payment-intent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: parseInt(calculateTotalPrice().replace('€', '')),
+          bookingData: formData,
+        }),
+      });
+
+      const { clientSecret } = await paymentResponse.json();
+
+      if (!clientSecret) {
+        throw new Error('Failed to create payment intent');
+      }
+
+      // Redirect to Stripe Checkout or use Elements
+      const stripe = await stripePromise;
+      if (!stripe) {
+        throw new Error('Stripe failed to load');
+      }
+
+      const { error } = await stripe.confirmPayment({
+        clientSecret,
+        confirmParams: {
+          return_url: `${window.location.origin}/payment-success`,
+        },
+      });
+
+      if (error) {
+        throw new Error(error.message);
+      } else {
+        // Payment succeeded, webhook will handle booking creation
+        setIsSuccess(true);
+        setBookingId('Payment processing...');
+      }
+    } catch (error) {
+      console.error('Booking error:', error);
+      alert('Payment failed. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   if (!isOpen) return null;
+
+  if (isSuccess) {
+    return (
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="p-8 text-center">
+            <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Check className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="text-3xl font-bold text-green-800 mb-4">Boeking Bevestigd! 🎉</h2>
+            <p className="text-xl text-green-600 mb-6">
+              Je mystery trip is succesvol geboekt!
+            </p>
+            <div className="bg-green-50 rounded-lg p-6 mb-6">
+              <h3 className="text-lg font-bold text-green-800 mb-2">Je Boekingnummer</h3>
+              <div className="text-2xl font-mono font-bold text-green-700">
+                {bookingId === 'Payment processing...' ? 'Processing...' : bookingId}
+              </div>
+            </div>
+            <p className="text-green-700 mb-8">
+              {bookingId === 'Payment processing...' 
+                ? 'Je betaling wordt verwerkt. Je ontvangt binnenkort een bevestigingsmail.'
+                : 'Je ontvangt binnen enkele minuten een bevestigingsmail met alle details. Je bestemming wordt 1-2 weken voor vertrek onthuld!'
+              }
+            </p>
+            <button
+              onClick={() => {
+                setIsSuccess(false);
+                setStep(1);
+                setFormData({
+                  package: '',
+                  date: '',
+                  travelers: 1,
+                  name: '',
+                  email: '',
+                  phone: '',
+                  preferences: {
+                    hatedTeams: [],
+                    visitedCities: [],
+                    travelStyle: ''
+                  }
+                });
+                onClose();
+              }}
+              className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-3 rounded-full font-bold hover:from-green-600 hover:to-green-700 transition-all"
+            >
+              Sluiten
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const handleNext = () => {
     if (step < 4) setStep(step + 1);
@@ -284,7 +414,7 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 <div className="flex justify-between text-lg">
                   <span className="text-green-700">Totaal:</span>
                   <span className="font-bold text-green-800">
-                    {packages.find(p => p.id === formData.package)?.price}
+                    {calculateTotalPrice()}
                   </span>
                 </div>
               </div>
@@ -292,12 +422,29 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
+                    Volledige naam
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                    placeholder="Je volledige naam"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-green-700 mb-2">
                     Email adres
                   </label>
                   <input
                     type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     placeholder="je@email.com"
                     className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    required
                   />
                 </div>
                 
@@ -307,6 +454,8 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   </label>
                   <input
                     type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                     placeholder="+31 6 1234 5678"
                     className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                   />
@@ -316,10 +465,10 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
               <div className="bg-gradient-to-r from-green-100 to-orange-100 rounded-lg p-4">
                 <div className="flex items-center space-x-2 mb-2">
                   <Check className="w-5 h-5 text-green-600" />
-                  <span className="font-semibold text-green-800">Mystery Trip Gegarandeerd</span>
+                  <span className="font-semibold text-green-800">Veilige Betaling via Stripe</span>
                 </div>
                 <p className="text-sm text-green-700">
-                  Je bestemming wordt 1-2 weken voor vertrek onthuld. Geld terug garantie als je niet tevreden bent.
+                  Je betaling wordt veilig verwerkt door Stripe. Je bestemming wordt 1-2 weken voor vertrek onthuld.
                 </p>
               </div>
             </div>
@@ -355,8 +504,19 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
               Volgende
             </button>
           ) : (
-            <button className="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all">
-              Boek Nu
+            <button 
+              onClick={handleSubmit}
+              disabled={isSubmitting || !formData.name || !formData.email}
+              className="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+            >
+              {isSubmitting ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <span>Processing Payment...</span>
+                </>
+              ) : (
+                <span>Pay & Book Now</span>
+              )}
             </button>
           )}
         </div>

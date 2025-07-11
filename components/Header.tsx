@@ -28,14 +28,20 @@ export function Header({ onBookingClick }: HeaderProps) {
             <a href="/" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
               Home
             </a>
-            <a href="/hoe-het-werkt" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
+            <a href="/nl/hoe-het-werkt" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
               Hoe Het Werkt
             </a>
-            <a href="/pakketten" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
+            <a href="/nl/pakketten" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
               Pakketten
             </a>
-            <a href="/verhalen" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
+            <a href="/nl/verhalen" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
               Verhalen
+            </a>
+            <a href="/nl/contact" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
+              Contact
+            </a>
+            <a href="/nl/dashboard" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
+              Dashboard
             </a>
           </nav>
 
@@ -81,14 +87,20 @@ export function Header({ onBookingClick }: HeaderProps) {
               <a href="/" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
                 Home
               </a>
-              <a href="/hoe-het-werkt" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
+              <a href="/nl/hoe-het-werkt" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
                 Hoe Het Werkt
               </a>
-              <a href="/pakketten" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
+              <a href="/nl/pakketten" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
                 Pakketten
               </a>
-              <a href="/verhalen" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
+              <a href="/nl/verhalen" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
                 Verhalen
+              </a>
+              <a href="/nl/contact" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
+                Contact
+              </a>
+              <a href="/nl/dashboard" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
+                Dashboard
               </a>
               <div className="pt-3 border-t border-green-100">
                 <div className="flex items-center space-x-2 text-green-800">

@@ -1,0 +1,115 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
+import { sendBookingConfirmation } from '@/lib/email';
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { 
+      email, 
+      name, 
+      phone, 
+      package: packageType, 
+      date, 
+      travelers, 
+      preferences,
+      totalPrice 
+    } = body;
+
+    // Validate required fields
+    if (!email || !name || !packageType || !date || !travelers) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    // Generate booking ID
+    const bookingId = `YNS-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+
+    // Create booking
+    const booking = await prisma.booking.create({
+      data: {
+        bookingId,
+        email,
+        name,
+        phone,
+        package: packageType,
+        date: new Date(date),
+        travelers: parseInt(travelers),
+        preferences: preferences ? JSON.stringify(preferences) : null,
+        totalPrice,
+        status: 'confirmed',
+        paymentStatus: 'paid'
+      }
+    });
+
+    // Send confirmation email
+    try {
+      await sendBookingConfirmation(email, {
+        bookingId,
+        name,
+        package: packageType,
+        date: new Date(date).toLocaleDateString('nl-NL'),
+        travelers,
+        totalPrice
+      });
+    } catch (error) {
+      console.error('Failed to send booking confirmation email:', error);
+    }
+
+    return NextResponse.json({
+      success: true,
+      bookingId,
+      message: 'Booking confirmed successfully!'
+    });
+
+  } catch (error) {
+    console.error('Booking error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const bookingId = searchParams.get('bookingId');
+    const email = searchParams.get('email');
+
+    if (!bookingId && !email) {
+      return NextResponse.json(
+        { error: 'BookingId or email required' },
+        { status: 400 }
+      );
+    }
+
+    const booking = await prisma.booking.findFirst({
+      where: bookingId ? { bookingId } : { email },
+      orderBy: { createdAt: 'desc' }
+    });
+
+    if (!booking) {
+      return NextResponse.json(
+        { error: 'Booking not found' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      booking: {
+        ...booking,
+        preferences: booking.preferences ? JSON.parse(booking.preferences) : null
+      }
+    });
+
+  } catch (error) {
+    console.error('Error fetching booking:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}

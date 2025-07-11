@@ -53,3 +53,43 @@ model ContactSubmission {
   
   @@map("contact_submissions")
 }
+
+model Booking {
+  id            String   @id @default(cuid())
+  bookingId     String   @unique
+  email         String
+  name          String
+  phone         String?
+  package       String   // basic, comfort, premium
+  date          DateTime
+  travelers     Int
+  preferences   String?  // JSON string
+  totalPrice    String
+  status        String   @default("pending") // pending, confirmed, cancelled
+  paymentStatus String   @default("pending") // pending, paid, failed, refunded
+  destination   String?  // Will be revealed later
+  revealedAt    DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@map("bookings")
+}
+
+model Destination {
+  id          String   @id @default(cuid())
+  name        String
+  city        String
+  country     String
+  league      String
+  stadium     String
+  capacity    Int?
+  description String?
+  imageUrl    String?
+  isActive    Boolean  @default(true)
+  difficulty  String   @default("medium") // easy, medium, hard (for mystery level)
+  season      String?  // 2024-25
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("destinations")
+}
