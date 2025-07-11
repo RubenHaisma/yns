@@ -25,10 +25,8 @@ export function Header({ onBookingClick }: HeaderProps) {
   const pathname = usePathname();
 
   const changeLanguage = (newLocale: string) => {
-    // This regex replaces the current locale in the path with the new one.
-    // It handles cases where the locale is at the beginning of the path.
-    const newPath = pathname.replace(/^\/[a-z]{2}/, `/${newLocale}`);
-    router.push(newPath);
+    const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, '') || '/';
+    router.push(`/${newLocale}${pathWithoutLocale}`);
   };
 
   const navItems = [
@@ -67,17 +65,25 @@ export function Header({ onBookingClick }: HeaderProps) {
             {/* Language Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="hidden sm:flex items-center space-x-1">
-                  <Globe className="w-4 h-4 text-gray-600" />
-                  <span className="text-gray-700 font-medium">{locale.toUpperCase()}</span>
+                <Button variant="outline" size="sm" className="hidden sm:flex items-center space-x-2 h-9 px-3">
+                  <Globe className="w-4 h-4" />
+                  <span className="font-medium">{locale === 'nl' ? 'NL' : 'EN'}</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => changeLanguage('nl')}>
-                  NL
+              <DropdownMenuContent align="end" className="min-w-[120px]">
+                <DropdownMenuItem 
+                  onClick={() => changeLanguage('nl')}
+                  className={`cursor-pointer ${locale === 'nl' ? 'bg-green-50 text-green-700' : ''}`}
+                >
+                  <span className="mr-2">🇳🇱</span>
+                  Nederlands
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => changeLanguage('en')}>
-                  EN
+                <DropdownMenuItem 
+                  onClick={() => changeLanguage('en')}
+                  className={`cursor-pointer ${locale === 'en' ? 'bg-green-50 text-green-700' : ''}`}
+                >
+                  <span className="mr-2">🇬🇧</span>
+                  English
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -119,16 +125,24 @@ export function Header({ onBookingClick }: HeaderProps) {
               <div className="pt-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="flex items-center space-x-2 w-full justify-start">
+                    <Button variant="ghost" className="flex items-center space-x-2 w-full justify-start h-10">
                       <Globe className="w-4 h-4" />
                       <span>{locale === 'nl' ? 'Nederlands' : 'English'}</span>
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start">
-                    <DropdownMenuItem onClick={() => { changeLanguage('nl'); setIsMenuOpen(false); }}>
+                  <DropdownMenuContent align="start" className="min-w-[140px]">
+                    <DropdownMenuItem 
+                      onClick={() => { changeLanguage('nl'); setIsMenuOpen(false); }}
+                      className={`cursor-pointer ${locale === 'nl' ? 'bg-green-50 text-green-700' : ''}`}
+                    >
+                      <span className="mr-2">🇳🇱</span>
                       Nederlands
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => { changeLanguage('en'); setIsMenuOpen(false); }}>
+                    <DropdownMenuItem 
+                      onClick={() => { changeLanguage('en'); setIsMenuOpen(false); }}
+                      className={`cursor-pointer ${locale === 'en' ? 'bg-green-50 text-green-700' : ''}`}
+                    >
+                      <span className="mr-2">🇬🇧</span>
                       English
                     </DropdownMenuItem>
                   </DropdownMenuContent>

@@ -9,7 +9,7 @@
     "faq": "FAQ",
     "dashboard": "Dashboard",
     "bookNow": "Book Now",
-    "emergency": "24/7: +31 30 123 4567"
+    "emergency": "24/7: info@yournextstadium.nl"
   },
   "hero": {
     "title": "Where are you going?",
@@ -17,9 +17,9 @@
     "mystery": "It remains a surprise.",
     "findStadium": "Find Your Stadium",
     "moreInfo": "More Information",
-    "happyTravelers": "New Service",
-    "moneyBack": "Money Back Guarantee",
-    "support": "24/7 Support"
+    "guarantee1": "Mystery Guarantee",
+    "guarantee2": "SGR Protected",
+    "guarantee3": "Premium Stadiums"
   },
   "booking": {
     "title": "Book Your Mystery Stadium Trip",
@@ -97,6 +97,13 @@
       "description": "1-2 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!"
     }
   },
+  "timeline": {
+    "title": "Your Journey Timeline",
+    "booking": "Booking",
+    "daysLater": "Days Later",
+    "reveal": "Reveal",
+    "departure": "Departure"
+  },
   "trust": {
     "moneyBack": "100% Money Back",
     "moneyBackDesc": "Not satisfied? Full refund",
@@ -115,7 +122,7 @@
     "quickLinks": "Quick Links",
     "destinations": "Destinations",
     "contact": "Contact",
-    "emergencyLine": "24/7 Emergency Line",
+    "emergencyLine": "24/7 Email",
     "copyright": "© 2024 YourNextStadium. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",

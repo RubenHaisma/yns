@@ -5,15 +5,7 @@ import { Mail, Users, Trophy, Sparkles, Check, Loader2, Gift } from 'lucide-reac
 import { useTranslations } from 'next-intl';
 
 export function WaitlistSection() {
-  const [formData, setFormData] = useState({
-    email: '',
-    name: '',
-    city: '',
-    phone: '',
-    favoriteTeam: '',
-    preferredDestinations: [] as string[],
-    source: 'homepage'
-  });
+  const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -21,22 +13,6 @@ export function WaitlistSection() {
   const [totalWaitlist, setTotalWaitlist] = useState(0);
 
   const t = useTranslations('waitlist');
-
-  const destinations = [
-    'Premier League (England)',
-    'La Liga (Spain)', 
-    'Bundesliga (Germany)',
-    'Serie A (Italy)',
-    'Ligue 1 (France)',
-    'Eredivisie (Netherlands)',
-    'Jupiler Pro League (Belgium)'
-  ];
-
-  const teams = [
-    'Ajax', 'Feyenoord', 'PSV', 'Real Madrid', 'Barcelona', 'Bayern München',
-    'Manchester United', 'Liverpool', 'Chelsea', 'Arsenal', 'Manchester City',
-    'Juventus', 'AC Milan', 'Inter Milan', 'PSG', 'Borussia Dortmund'
-  ];
 
   useEffect(() => {
     // Fetch current waitlist count
@@ -50,22 +26,6 @@ export function WaitlistSection() {
       .catch(console.error);
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const handleDestinationToggle = (destination: string) => {
-    setFormData(prev => ({
-      ...prev,
-      preferredDestinations: prev.preferredDestinations.includes(destination)
-        ? prev.preferredDestinations.filter(d => d !== destination)
-        : [...prev.preferredDestinations, destination]
-    }));
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -77,7 +37,10 @@ export function WaitlistSection() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ 
+          email,
+          source: 'homepage'
+        }),
       });
 
       const data = await response.json();
@@ -181,77 +144,17 @@ export function WaitlistSection() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* Benefits */}
-          <div className="space-y-6">
-            <h3 className="text-xl lg:text-2xl font-bold mb-6">Why Sign Up Early?</h3>
-            
-            <div className="space-y-4">
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">1</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-base lg:text-lg mb-1">{t('benefits.earlyAccess')}</h4>
-                  <p className="text-green-200 text-sm lg:text-base">{t('benefits.earlyAccessDesc')}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">2</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-base lg:text-lg mb-1">Waitlist Discount</h4>
-                  <p className="text-green-200 text-sm lg:text-base">Up to 25% off your first mystery trip</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">3</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-base lg:text-lg mb-1">{t('benefits.updates')}</h4>
-                  <p className="text-green-200 text-sm lg:text-base">{t('benefits.updatesDesc')}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-sm">4</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-base lg:text-lg mb-1">Best Choice Guarantee</h4>
-                  <p className="text-green-200 text-sm lg:text-base">Priority when choosing your ideal travel date</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 lg:p-6 mt-8">
-              <div className="flex items-center space-x-3 mb-3">
-                <Users className="w-5 h-5 lg:w-6 lg:h-6 text-orange-400" />
-                <span className="font-bold text-sm lg:text-base">Live Waitlist Counter</span>
-              </div>
-              <div className="text-xl lg:text-2xl font-bold text-orange-400 mb-1">
-                {totalWaitlist} people waiting
-              </div>
-              <p className="text-green-200 text-xs lg:text-sm">
-                Join now and get position #{totalWaitlist + 1}
-              </p>
-            </div>
-          </div>
-
-          {/* Signup Form */}
+        <div className="max-w-md mx-auto">
+          {/* Simple Email Form */}
           <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-2xl">
-            <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="text-center mb-6">
                 <Mail className="w-10 h-10 lg:w-12 lg:h-12 text-green-600 mx-auto mb-3" />
                 <h3 className="text-xl lg:text-2xl font-bold text-green-800 mb-2">
-                  Sign Up Now
+                  {t('joinWaitlist')}
                 </h3>
                 <p className="text-green-600 text-sm lg:text-base">
-                  Fill in your details and get exclusive early access
+                  Get exclusive early access to mystery football trips
                 </p>
               </div>
 
@@ -261,103 +164,18 @@ export function WaitlistSection() {
                 </div>
               )}
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('email')} *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 text-sm lg:text-base"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('name')} *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 text-sm lg:text-base"
-                    placeholder="Your name"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('city')}
-                  </label>
-                  <input
-                    type="text"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleInputChange}
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 text-sm lg:text-base"
-                    placeholder="Amsterdam"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('phone')}
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 text-sm lg:text-base"
-                    placeholder="+31 6 1234 5678"
-                  />
-                </div>
-              </div>
-
               <div>
                 <label className="block text-sm font-medium text-green-700 mb-2">
-                  {t('favoriteTeam')}
+                  {t('email')} *
                 </label>
-                <select
-                  name="favoriteTeam"
-                  value={formData.favoriteTeam}
-                  onChange={handleInputChange}
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 text-sm lg:text-base"
-                >
-                  <option value="">Select your favorite team</option>
-                  {teams.map(team => (
-                    <option key={team} value={team}>{team}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-green-700 mb-3">
-                  {t('interests')} (multiple possible)
-                </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {destinations.map(destination => (
-                    <button
-                      key={destination}
-                      type="button"
-                      onClick={() => handleDestinationToggle(destination)}
-                      className={`p-2 rounded-lg border text-xs lg:text-sm transition-colors ${
-                        formData.preferredDestinations.includes(destination)
-                          ? 'bg-green-100 border-green-300 text-green-800'
-                          : 'bg-gray-50 border-gray-200 hover:bg-gray-100 text-gray-700'
-                      }`}
-                    >
-                      {destination}
-                    </button>
-                  ))}
-                </div>
+                  placeholder="your@email.com"
+                />
               </div>
 
               <button

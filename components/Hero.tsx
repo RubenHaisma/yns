@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { ChevronDown, Sparkles, MapPin, Users, Shield, Clock } from 'lucide-react';
+import { ChevronDown, Shield, Clock, Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 interface HeroProps {
@@ -53,13 +53,11 @@ export function Hero({ onBookingClick }: HeroProps) {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Mystery Icon */}
+        {/* Football Icon */}
         <div className="mb-8">
           <div className="inline-block relative">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl transform rotate-45 animate-pulse shadow-2xl">
-              <div className="absolute inset-2 bg-white rounded-lg transform -rotate-45 flex items-center justify-center">
-                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500" />
-              </div>
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full transform animate-pulse shadow-2xl flex items-center justify-center">
+              <div className="text-white text-2xl sm:text-3xl">⚽</div>
             </div>
             <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-green-400 rounded-full animate-bounce"></div>
           </div>
@@ -97,21 +95,21 @@ export function Hero({ onBookingClick }: HeroProps) {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 text-green-100">
             <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <Users className="w-4 h-4 text-white" />
+              <Star className="w-4 h-4 text-white" />
             </div>
-            <span className="text-sm text-center sm:text-left">{t('happyTravelers')}</span>
+            <span className="text-sm text-center sm:text-left">{t('guarantee1')}</span>
           </div>
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 text-green-100">
             <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
               <Shield className="w-4 h-4 text-white" />
             </div>
-            <span className="text-sm text-center sm:text-left">{t('moneyBack')}</span>
+            <span className="text-sm text-center sm:text-left">{t('guarantee2')}</span>
           </div>
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 text-green-100">
             <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
               <Clock className="w-4 h-4 text-white" />
             </div>
-            <span className="text-sm text-center sm:text-left">{t('support')}</span>
+            <span className="text-sm text-center sm:text-left">{t('guarantee3')}</span>
           </div>
         </div>
       </div>

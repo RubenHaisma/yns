@@ -1,6 +1,6 @@
 "use client";
 
-import { Instagram, Facebook, Twitter, Mail, Phone, MapPin, Shield } from 'lucide-react';
+import { Instagram, Facebook, Twitter, Mail, Shield } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 
 export function Footer() {
@@ -10,6 +10,7 @@ export function Footer() {
   const quickLinks = [
     { key: 'howItWorks', href: `/${locale}/hoe-het-werkt` },
     { key: 'packages', href: `/${locale}/pakketten` },
+    { key: 'stories', href: `/${locale}/verhalen` },
     { key: 'contact', href: `/${locale}/contact` },
     { key: 'faq', href: `/${locale}/veelgestelde-vragen` },
     { key: 'dashboard', href: `/${locale}/dashboard` },
@@ -84,22 +85,14 @@ export function Footer() {
             <h3 className="font-bold text-lg mb-4">{t('contact')}</h3>
             <div className="space-y-3 text-green-200 text-sm">
               <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 flex-shrink-0" />
-                <span>+31 30 123 4567</span>
-              </div>
-              <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 flex-shrink-0" />
                 <span>info@yournextstadium.nl</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 flex-shrink-0" />
-                <span>Utrecht, Nederland</span>
               </div>
             </div>
             
             <div className="mt-4 p-3 bg-white/10 rounded-lg">
               <div className="text-sm font-medium mb-1">{t('emergencyLine')}</div>
-              <div className="text-orange-300 font-bold">+31 30 987 6543</div>
+              <div className="text-orange-300 font-bold">info@yournextstadium.nl</div>
             </div>
           </div>
         </div>

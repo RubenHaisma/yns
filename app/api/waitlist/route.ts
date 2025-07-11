@@ -5,7 +5,7 @@ import { sendWelcomeEmail } from '@/lib/email';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, name, city, phone, favoriteTeam, preferredDestinations, source } = body;
+    const { email, name, source } = body;
 
     // Validate required fields
     if (!email) {
@@ -31,11 +31,7 @@ export async function POST(request: NextRequest) {
     const waitlistUser = await prisma.waitlistUser.create({
       data: {
         email,
-        name,
-        city,
-        phone,
-        favoriteTeam,
-        preferredDestinations: preferredDestinations ? JSON.stringify(preferredDestinations) : null,
+        name: name || null,
         source: source || 'website'
       }
     });
@@ -45,7 +41,7 @@ export async function POST(request: NextRequest) {
       await prisma.newsletterSubscriber.create({
         data: {
           email,
-          name,
+          name: name || null,
           source: 'waitlist'
         }
       });
@@ -54,7 +50,7 @@ export async function POST(request: NextRequest) {
       console.log('Newsletter subscription failed:', error);
     }
 
-    // Send welcome email
+    // Send welcome email if name is provided
     if (name) {
       try {
         await sendWelcomeEmail(email, name, waitlistUser.position);

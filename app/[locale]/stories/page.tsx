@@ -5,10 +5,12 @@ import { Footer } from '@/components/Footer';
 import { Star, Quote, MapPin, Calendar, Heart, Camera, Instagram } from 'lucide-react';
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
+import { useTranslations } from 'next-intl';
 
 export default function Stories() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedStory, setSelectedStory] = useState(0);
+  const t = useTranslations();
 
   const stories = [
     {

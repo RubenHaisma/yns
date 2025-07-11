@@ -79,35 +79,35 @@ export function ProcessSection() {
         <div className="mt-12 lg:mt-16 max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg border border-green-100">
             <h3 className="text-xl lg:text-2xl font-bold text-green-800 mb-6 text-center">
-              Your Journey Timeline
+              {t('timeline.title')}
             </h3>
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
               <div className="text-center">
                 <div className="w-10 h-10 lg:w-12 lg:h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2">
                   <span className="text-white font-bold text-sm lg:text-base">0</span>
                 </div>
-                <p className="text-xs lg:text-sm text-green-600">Booking</p>
+                <p className="text-xs lg:text-sm text-green-600">{t('timeline.booking')}</p>
               </div>
               <div className="w-full md:w-24 h-0.5 md:h-auto md:w-0.5 bg-green-200"></div>
               <div className="text-center">
                 <div className="w-10 h-10 lg:w-12 lg:h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-2">
                   <span className="text-white font-bold text-sm lg:text-base">7</span>
                 </div>
-                <p className="text-xs lg:text-sm text-green-600">Days Later</p>
+                <p className="text-xs lg:text-sm text-green-600">{t('timeline.daysLater')}</p>
               </div>
               <div className="w-full md:w-24 h-0.5 md:h-auto md:w-0.5 bg-green-200"></div>
               <div className="text-center">
                 <div className="w-10 h-10 lg:w-12 lg:h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-2">
                   <Sparkles className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
                 </div>
-                <p className="text-xs lg:text-sm text-green-600">Reveal</p>
+                <p className="text-xs lg:text-sm text-green-600">{t('timeline.reveal')}</p>
               </div>
               <div className="w-full md:w-24 h-0.5 md:h-auto md:w-0.5 bg-green-200"></div>
               <div className="text-center">
                 <div className="w-10 h-10 lg:w-12 lg:h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-2">
                   <span className="text-white font-bold text-sm lg:text-base">✈</span>
                 </div>
-                <p className="text-xs lg:text-sm text-green-600">Departure</p>
+                <p className="text-xs lg:text-sm text-green-600">{t('timeline.departure')}</p>
               </div>
             </div>
           </div>

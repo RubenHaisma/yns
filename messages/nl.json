@@ -9,7 +9,7 @@
     "faq": "Veelgestelde Vragen",
     "dashboard": "Dashboard",
     "bookNow": "Boek Nu",
-    "emergency": "24/7: +31 30 123 4567"
+    "emergency": "24/7: info@yournextstadium.nl"
   },
   "hero": {
     "title": "Waar ga jij naartoe?",
@@ -17,9 +17,9 @@
     "mystery": "Het blijft een verrassing.",
     "findStadium": "Ontdek Je Stadium",
     "moreInfo": "Meer Informatie",
-    "happyTravelers": "Nieuwe Service",
-    "moneyBack": "Geld Terug Garantie",
-    "support": "24/7 Support"
+    "guarantee1": "Mystery Garantie",
+    "guarantee2": "SGR Beschermd",
+    "guarantee3": "Premium Stadions"
   },
   "booking": {
     "title": "Boek Je Mystery Stadium Trip",
@@ -97,6 +97,13 @@
       "description": "1-2 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!"
     }
   },
+  "timeline": {
+    "title": "Je Reis Tijdlijn",
+    "booking": "Boeking",
+    "daysLater": "Dagen Later",
+    "reveal": "Onthulling",
+    "departure": "Vertrek"
+  },
   "trust": {
     "moneyBack": "100% Geld Terug",
     "moneyBackDesc": "Niet tevreden? Volledige terugbetaling",
@@ -115,7 +122,7 @@
     "quickLinks": "Snelle Links",
     "destinations": "Bestemmingen",
     "contact": "Contact",
-    "emergencyLine": "24/7 Noodlijn",
+    "emergencyLine": "24/7 Email",
     "copyright": "© 2024 YourNextStadium. Alle rechten voorbehouden.",
     "privacy": "Privacy Policy",
     "terms": "Algemene Voorwaarden",
