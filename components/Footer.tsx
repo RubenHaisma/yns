@@ -1,22 +1,42 @@
 "use client";
 
-import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Facebook, Twitter, Mail, Phone, MapPin, Shield } from 'lucide-react';
+import { useTranslations, useLocale } from 'next-intl';
 
 export function Footer() {
+  const t = useTranslations('footer');
+  const locale = useLocale();
+
+  const quickLinks = [
+    { key: 'howItWorks', href: `/${locale}/hoe-het-werkt` },
+    { key: 'packages', href: `/${locale}/pakketten` },
+    { key: 'contact', href: `/${locale}/contact` },
+    { key: 'faq', href: `/${locale}/veelgestelde-vragen` },
+    { key: 'dashboard', href: `/${locale}/dashboard` },
+  ];
+
+  const destinations = [
+    'Premier League',
+    'La Liga', 
+    'Bundesliga',
+    'Serie A',
+    'Ligue 1'
+  ];
+
   return (
     <footer className="bg-gradient-to-r from-green-800 to-green-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
-          <div className="col-span-1">
+          <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">YNS</span>
               </div>
-              <span className="font-bold text-xl">YourNextStadium</span>
+              <span className="font-bold text-lg">YourNextStadium</span>
             </div>
-            <p className="text-green-200 mb-4">
-              Ontdek je volgende stadium met onze mystery voetbalreizen door heel Europa.
+            <p className="text-green-200 mb-6 text-sm leading-relaxed">
+              {t('description')}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
@@ -33,61 +53,73 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Snelle Links</h3>
+            <h3 className="font-bold text-lg mb-4">{t('quickLinks')}</h3>
             <ul className="space-y-2 text-green-200">
-              <li><a href="/nl/hoe-het-werkt" className="hover:text-white transition-colors">Hoe Het Werkt</a></li>
-              <li><a href="/nl/pakketten" className="hover:text-white transition-colors">Pakketten</a></li>
-              <li><a href="/nl/verhalen" className="hover:text-white transition-colors">Verhalen</a></li>
-              <li><a href="/nl/veelgestelde-vragen" className="hover:text-white transition-colors">Veelgestelde Vragen</a></li>
-              <li><a href="/nl/contact" className="hover:text-white transition-colors">Contact</a></li>
-              <li><a href="/nl/dashboard" className="hover:text-white transition-colors">Dashboard</a></li>
+              {quickLinks.map((link) => (
+                <li key={link.key}>
+                  <a href={link.href} className="hover:text-white transition-colors text-sm">
+                    {t(link.key)}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Bestemmingen */}
+          {/* Destinations */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Bestemmingen</h3>
+            <h3 className="font-bold text-lg mb-4">{t('destinations')}</h3>
             <ul className="space-y-2 text-green-200">
-              <li><a href="#" className="hover:text-white transition-colors">Premier League</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">La Liga</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Bundesliga</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Serie A</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Ligue 1</a></li>
+              {destinations.map((destination) => (
+                <li key={destination}>
+                  <a href="#" className="hover:text-white transition-colors text-sm">
+                    {destination}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Contact</h3>
-            <div className="space-y-3 text-green-200">
+            <h3 className="font-bold text-lg mb-4">{t('contact')}</h3>
+            <div className="space-y-3 text-green-200 text-sm">
               <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5" />
-                <span>+31 20 123 4567</span>
+                <Phone className="w-4 h-4 flex-shrink-0" />
+                <span>+31 30 123 4567</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5" />
+                <Mail className="w-4 h-4 flex-shrink-0" />
                 <span>info@yournextstadium.nl</span>
               </div>
               <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5" />
-                <span>Amsterdam, Nederland</span>
+                <MapPin className="w-4 h-4 flex-shrink-0" />
+                <span>Utrecht, Nederland</span>
               </div>
             </div>
+            
             <div className="mt-4 p-3 bg-white/10 rounded-lg">
-              <div className="text-sm font-medium mb-1">24/7 Noodlijn</div>
-              <div className="text-orange-300 font-bold">+31 20 987 6543</div>
+              <div className="text-sm font-medium mb-1">{t('emergencyLine')}</div>
+              <div className="text-orange-300 font-bold">+31 30 987 6543</div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-green-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-green-200 text-sm">
-            © 2024 YourNextStadium. Alle rechten voorbehouden.
+        {/* Bottom Bar */}
+        <div className="border-t border-green-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="text-green-200 text-sm text-center md:text-left">
+            {t('copyright')}
           </div>
-          <div className="flex space-x-6 text-green-200 text-sm mt-4 md:mt-0">
-            <a href="/nl/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="/nl/algemene-voorwaarden" className="hover:text-white transition-colors">Algemene Voorwaarden</a>
-            <a href="#" className="hover:text-white transition-colors">SGR Erkend</a>
+          <div className="flex flex-wrap justify-center md:justify-end space-x-6 text-green-200 text-sm">
+            <a href={`/${locale}/privacy`} className="hover:text-white transition-colors">
+              {t('privacy')}
+            </a>
+            <a href={`/${locale}/algemene-voorwaarden`} className="hover:text-white transition-colors">
+              {t('terms')}
+            </a>
+            <div className="flex items-center space-x-1">
+              <Shield className="w-4 h-4" />
+              <span>{t('sgr')}</span>
+            </div>
           </div>
         </div>
       </div>

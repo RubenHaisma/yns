@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { X, Calendar, Users, MapPin, CreditCard, Check } from 'lucide-react';
+import { X, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 interface BookingModalProps {
@@ -29,7 +29,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     }
   });
 
-  const t = useTranslations();
+  const t = useTranslations('modal');
 
   // Update package when selectedPackage prop changes
   React.useEffect(() => {
@@ -41,20 +41,20 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
   const packages = [
     { 
       id: 'basic', 
-      name: t('packages.basic.name'), 
-      price: t('packages.basic.price'), 
+      name: 'Alleen Match', 
+      price: '€149-299', 
       popular: false 
     },
     { 
       id: 'comfort', 
-      name: t('packages.comfort.name'), 
-      price: t('packages.comfort.price'), 
+      name: 'Match + Vliegtuig', 
+      price: '€299-599', 
       popular: true 
     },
     { 
       id: 'premium', 
-      name: t('packages.premium.name'), 
-      price: t('packages.premium.price'), 
+      name: 'Alles Inclusief', 
+      price: '€599-999', 
       popular: false 
     }
   ];
@@ -104,21 +104,21 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     return (
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-          <div className="p-8 text-center">
-            <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Check className="w-10 h-10 text-white" />
+          <div className="p-6 lg:p-8 text-center">
+            <div className="w-16 h-16 lg:w-20 lg:h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Check className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
             </div>
-            <h2 className="text-3xl font-bold text-green-800 mb-4">{t('modal.bookingConfirmed')}</h2>
-            <p className="text-xl text-green-600 mb-6">
-              {t('modal.adventureBegins')}
+            <h2 className="text-2xl lg:text-3xl font-bold text-green-800 mb-4">{t('bookingConfirmed')}</h2>
+            <p className="text-lg lg:text-xl text-green-600 mb-6">
+              {t('adventureBegins')}
             </p>
-            <div className="bg-green-50 rounded-lg p-6 mb-6">
-              <h3 className="text-lg font-bold text-green-800 mb-2">{t('modal.bookingNumber')}</h3>
-              <div className="text-2xl font-mono font-bold text-green-700">
+            <div className="bg-green-50 rounded-lg p-4 lg:p-6 mb-6">
+              <h3 className="text-base lg:text-lg font-bold text-green-800 mb-2">{t('bookingNumber')}</h3>
+              <div className="text-xl lg:text-2xl font-mono font-bold text-green-700">
                 {bookingId}
               </div>
             </div>
-            <p className="text-green-700 mb-8">
+            <p className="text-green-700 mb-6 lg:mb-8 text-sm lg:text-base">
               Je ontvangt binnen enkele minuten een bevestigingsmail met alle details. Je bestemming wordt 1-2 weken voor vertrek onthuld!
             </p>
             <button
@@ -140,9 +140,9 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                 });
                 onClose();
               }}
-              className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-3 rounded-full font-bold hover:from-green-600 hover:to-green-700 transition-all"
+              className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 lg:px-8 py-3 rounded-full font-bold hover:from-green-600 hover:to-green-700 transition-all text-sm lg:text-base"
             >
-              {t('modal.close')}
+              {t('close')}
             </button>
           </div>
         </div>
@@ -186,10 +186,10 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-green-100">
+        <div className="flex items-center justify-between p-4 lg:p-6 border-b border-green-100">
           <div>
-            <h2 className="text-2xl font-bold text-green-800">{t('modal.bookTrip')}</h2>
-            <p className="text-green-600">{t('modal.step')} {step} {t('modal.of')} 4</p>
+            <h2 className="text-xl lg:text-2xl font-bold text-green-800">{t('bookTrip')}</h2>
+            <p className="text-green-600 text-sm lg:text-base">{t('step')} {step} {t('of')} 4</p>
           </div>
           <button
             onClick={onClose}
@@ -208,12 +208,12 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
         </div>
 
         {/* Step Content */}
-        <div className="p-6">
+        <div className="p-4 lg:p-6">
           {step === 1 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-green-800 mb-2">{t('modal.choosePackage')}</h3>
-                <p className="text-green-600">{t('modal.packageQuestion')}</p>
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('choosePackage')}</h3>
+                <p className="text-green-600 text-sm lg:text-base">{t('packageQuestion')}</p>
               </div>
               
               <div className="space-y-4">
@@ -233,8 +233,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                       className="flex items-center justify-between p-4 border-2 border-green-100 rounded-lg cursor-pointer peer-checked:border-orange-500 peer-checked:bg-orange-50 hover:bg-green-50 transition-colors"
                     >
                       <div>
-                        <div className="font-semibold text-green-800">{pkg.name}</div>
-                        <div className="text-green-600">{pkg.price}</div>
+                        <div className="font-semibold text-green-800 text-sm lg:text-base">{pkg.name}</div>
+                        <div className="text-green-600 text-sm lg:text-base">{pkg.price}</div>
                       </div>
                       {pkg.popular && (
                         <span className="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">
@@ -251,35 +251,35 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           {step === 2 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-green-800 mb-2">{t('modal.whenTravel')}</h3>
-                <p className="text-green-600">{t('modal.chooseDateSubtitle')}</p>
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('whenTravel')}</h3>
+                <p className="text-green-600 text-sm lg:text-base">{t('chooseDateSubtitle')}</p>
               </div>
               
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('modal.departureDate')}
+                    {t('departureDate')}
                   </label>
                   <input
                     type="date"
                     value={formData.date}
                     onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
                   />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('modal.travelers')}
+                    {t('travelers')}
                   </label>
                   <select
                     value={formData.travelers}
                     onChange={(e) => setFormData(prev => ({ ...prev, travelers: parseInt(e.target.value) }))}
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
                   >
                     {[1, 2, 3, 4, 5, 6].map(num => (
                       <option key={num} value={num}>
-                        {num} {num === 1 ? t('modal.person') : t('modal.people')}
+                        {num} {num === 1 ? t('person') : t('people')}
                       </option>
                     ))}
                   </select>
@@ -291,14 +291,14 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           {step === 3 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-green-800 mb-2">{t('modal.tellAbout')}</h3>
-                <p className="text-green-600">{t('modal.tellSubtitle')}</p>
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('tellAbout')}</h3>
+                <p className="text-green-600 text-sm lg:text-base">{t('tellSubtitle')}</p>
               </div>
               
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-3">
-                    {t('modal.hatedTeams')}
+                    {t('hatedTeams')}
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {teams.map((team) => (
@@ -306,7 +306,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                         key={team}
                         type="button"
                         onClick={() => handleTeamToggle(team)}
-                        className={`p-2 rounded-lg border transition-colors ${
+                        className={`p-2 rounded-lg border transition-colors text-xs lg:text-sm ${
                           formData.preferences.hatedTeams.includes(team)
                             ? 'bg-red-100 border-red-300 text-red-800'
                             : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
@@ -320,7 +320,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
 
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-3">
-                    {t('modal.visitedCities')}
+                    {t('visitedCities')}
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {cities.map((city) => (
@@ -328,7 +328,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                         key={city}
                         type="button"
                         onClick={() => handleCityToggle(city)}
-                        className={`p-2 rounded-lg border transition-colors ${
+                        className={`p-2 rounded-lg border transition-colors text-xs lg:text-sm ${
                           formData.preferences.visitedCities.includes(city)
                             ? 'bg-green-100 border-green-300 text-green-800'
                             : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
@@ -342,13 +342,13 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
 
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-3">
-                    {t('modal.travelStyle')}
+                    {t('travelStyle')}
                   </label>
                   <div className="space-y-2">
                     {[
-                      { value: 'alone', label: t('modal.alone') },
-                      { value: 'friends', label: t('modal.friends') },
-                      { value: 'flexible', label: t('modal.flexible') }
+                      { value: 'alone', label: t('alone') },
+                      { value: 'friends', label: t('friends') },
+                      { value: 'flexible', label: t('flexible') }
                     ].map((option) => (
                       <label key={option.value} className="flex items-center space-x-3">
                         <input
@@ -362,7 +362,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                           }))}
                           className="w-4 h-4 text-green-600 focus:ring-green-500"
                         />
-                        <span className="text-green-700">{option.label}</span>
+                        <span className="text-green-700 text-sm lg:text-base">{option.label}</span>
                       </label>
                     ))}
                   </div>
@@ -374,28 +374,28 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           {step === 4 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-green-800 mb-2">{t('modal.confirmBooking')}</h3>
-                <p className="text-green-600">{t('modal.confirmSubtitle')}</p>
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('confirmBooking')}</h3>
+                <p className="text-green-600 text-sm lg:text-base">{t('confirmSubtitle')}</p>
               </div>
               
               <div className="bg-green-50 rounded-lg p-4 space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-green-700">{t('modal.package')}:</span>
+                <div className="flex justify-between text-sm lg:text-base">
+                  <span className="text-green-700">{t('package')}:</span>
                   <span className="font-semibold text-green-800">
                     {packages.find(p => p.id === formData.package)?.name}
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-green-700">{t('modal.date')}:</span>
+                <div className="flex justify-between text-sm lg:text-base">
+                  <span className="text-green-700">{t('date')}:</span>
                   <span className="font-semibold text-green-800">{formData.date}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-green-700">{t('modal.travelers')}:</span>
+                <div className="flex justify-between text-sm lg:text-base">
+                  <span className="text-green-700">{t('travelers')}:</span>
                   <span className="font-semibold text-green-800">{formData.travelers}</span>
                 </div>
                 <hr className="border-green-200" />
-                <div className="flex justify-between text-lg">
-                  <span className="text-green-700">{t('modal.total')}:</span>
+                <div className="flex justify-between text-base lg:text-lg">
+                  <span className="text-green-700">{t('total')}:</span>
                   <span className="font-bold text-green-800">
                     {calculateTotalPrice()}
                   </span>
@@ -405,42 +405,42 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('modal.fullName')}
+                    {t('fullName')}
                   </label>
                   <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                     placeholder="Je volledige naam"
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
                     required
                   />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('modal.email')}
+                    {t('email')}
                   </label>
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     placeholder="je@email.com"
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
                     required
                   />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('modal.phone')}
+                    {t('phone')}
                   </label>
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                     placeholder="+31 6 1234 5678"
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
                   />
                 </div>
               </div>
@@ -448,10 +448,10 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               <div className="bg-gradient-to-r from-green-100 to-orange-100 rounded-lg p-4">
                 <div className="flex items-center space-x-2 mb-2">
                   <Check className="w-5 h-5 text-green-600" />
-                  <span className="font-semibold text-green-800">{t('modal.securePayment')}</span>
+                  <span className="font-semibold text-green-800 text-sm lg:text-base">{t('securePayment')}</span>
                 </div>
-                <p className="text-sm text-green-700">
-                  {t('modal.paymentDesc')}
+                <p className="text-xs lg:text-sm text-green-700">
+                  {t('paymentDesc')}
                 </p>
               </div>
             </div>
@@ -459,13 +459,13 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
         </div>
 
         {/* Footer */}
-        <div className="flex justify-between items-center p-6 border-t border-green-100">
+        <div className="flex justify-between items-center p-4 lg:p-6 border-t border-green-100">
           <button
             onClick={handlePrev}
             disabled={step === 1}
-            className="px-6 py-2 text-green-600 hover:text-green-800 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-4 lg:px-6 py-2 text-green-600 hover:text-green-800 disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base"
           >
-            {t('modal.previous')}
+            {t('previous')}
           </button>
           
           <div className="flex space-x-2">
@@ -482,23 +482,23 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           {step < 4 ? (
             <button
               onClick={handleNext}
-              className="px-6 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all"
+              className="px-4 lg:px-6 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all text-sm lg:text-base"
             >
-              {t('modal.next')}
+              {t('next')}
             </button>
           ) : (
             <button 
               onClick={handleSubmit}
               disabled={isSubmitting || !formData.name || !formData.email}
-              className="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+              className="px-4 lg:px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 text-sm lg:text-base"
             >
               {isSubmitting ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>{t('modal.processing')}</span>
+                  <span>{t('processing')}</span>
                 </>
               ) : (
-                <span>{t('modal.payBook')}</span>
+                <span>{t('payBook')}</span>
               )}
             </button>
           )}

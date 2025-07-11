@@ -9,15 +9,15 @@
     "faq": "FAQ",
     "dashboard": "Dashboard",
     "bookNow": "Book Now",
-    "emergency": "24/7: +31 20 123 4567"
+    "emergency": "24/7: +31 30 123 4567"
   },
   "hero": {
     "title": "Where are you going?",
     "subtitle": "Maybe to",
     "mystery": "It remains a surprise.",
-    "findStadium": "Find Your Next Stadium",
+    "findStadium": "Find Your Stadium",
     "moreInfo": "More Information",
-    "happyTravelers": "Happy Travelers",
+    "happyTravelers": "New Service",
     "moneyBack": "Money Back Guarantee",
     "support": "24/7 Support"
   },
@@ -44,11 +44,8 @@
       "name": "Match Only",
       "subtitle": "Pure football experience",
       "price": "€149-299",
-      "originalPrice": "€199-399",
-      "category": "C",
-      "savings": "Save €50-100",
       "features": [
-        "Match ticket (Category C)",
+        "Match ticket",
         "Mystery destination reveal",
         "24/7 support during trip",
         "Digital travel guide",
@@ -56,17 +53,13 @@
       ]
     },
     "comfort": {
-      "name": "Complete Experience",
+      "name": "Match + Flight",
       "subtitle": "Match + Transport",
       "price": "€299-599",
-      "originalPrice": "€399-799",
-      "category": "A",
-      "savings": "Save €100-200",
       "features": [
-        "Match ticket (Category A)",
-        "Return transport",
+        "Match ticket",
+        "Return flight",
         "Mystery destination reveal",
-        "Stadium tour (if available)",
         "24/7 support",
         "Digital travel guide",
         "Local restaurant tips"
@@ -74,21 +67,17 @@
       "popular": true
     },
     "premium": {
-      "name": "Luxury Weekend",
-      "subtitle": "All-inclusive experience",
+      "name": "All Inclusive",
+      "subtitle": "Ticket + Flight + Hotel",
       "price": "€599-999",
-      "originalPrice": "€799-1299",
-      "category": "VIP",
-      "savings": "Save €200-300",
       "features": [
-        "VIP match ticket",
-        "Premium transport",
-        "2 nights 4-5* hotel",
-        "Breakfast & welcome dinner",
-        "Exclusive stadium tour",
-        "Local guide",
-        "Souvenirs package",
-        "24/7 premium support"
+        "Match ticket",
+        "Return flight",
+        "2 nights hotel",
+        "Breakfast included",
+        "Mystery destination reveal",
+        "24/7 premium support",
+        "Local guide"
       ]
     }
   },
@@ -117,7 +106,7 @@
     "certifiedDesc": "Your money is fully protected"
   },
   "stats": {
-    "travelers": "Happy Travelers",
+    "travelers": "Travelers",
     "stadiums": "Stadiums",
     "countries": "Countries"
   },
@@ -130,7 +119,12 @@
     "copyright": "© 2024 YourNextStadium. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
-    "sgr": "SGR Certified"
+    "sgr": "SGR Certified",
+    "howItWorks": "How It Works",
+    "packages": "Packages",
+    "stories": "Stories",
+    "faq": "FAQ",
+    "dashboard": "Dashboard"
   },
   "modal": {
     "bookTrip": "Book Your Mystery Trip",
@@ -170,6 +164,29 @@
     "adventureBegins": "Your mystery adventure can begin",
     "bookingNumber": "Your Booking Number",
     "close": "Close"
+  },
+  "waitlist": {
+    "title": "Join The Waitlist",
+    "subtitle": "Be among the first to get access to our mystery football trips",
+    "description": "Exclusive discounts and early access guaranteed!",
+    "joinWaitlist": "Join The Waitlist",
+    "email": "Email address",
+    "name": "Name",
+    "city": "City",
+    "phone": "Phone",
+    "favoriteTeam": "Favorite team",
+    "interests": "Which leagues interest you?",
+    "success": "Welcome to the Waitlist!",
+    "successMessage": "You've successfully signed up for early access!",
+    "position": "Your Position",
+    "benefits": {
+      "earlyAccess": "Early Access",
+      "earlyAccessDesc": "Book first when we go live",
+      "discounts": "Exclusive Discounts",
+      "discountsDesc": "Special prices for waitlist members",
+      "updates": "Insider Updates",
+      "updatesDesc": "First updates about new destinations"
+    }
   },
   "common": {
     "loading": "Loading...",

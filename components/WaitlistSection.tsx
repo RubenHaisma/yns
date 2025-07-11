@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Mail, Users, Trophy, Sparkles, Check, Loader2, Gift } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export function WaitlistSection() {
   const [formData, setFormData] = useState({
@@ -19,14 +20,16 @@ export function WaitlistSection() {
   const [position, setPosition] = useState<number | null>(null);
   const [totalWaitlist, setTotalWaitlist] = useState(0);
 
+  const t = useTranslations('waitlist');
+
   const destinations = [
-    'Premier League (Engeland)',
-    'La Liga (Spanje)', 
-    'Bundesliga (Duitsland)',
-    'Serie A (Italië)',
-    'Ligue 1 (Frankrijk)',
-    'Eredivisie (Nederland)',
-    'Jupiler Pro League (België)'
+    'Premier League (England)',
+    'La Liga (Spain)', 
+    'Bundesliga (Germany)',
+    'Serie A (Italy)',
+    'Ligue 1 (France)',
+    'Eredivisie (Netherlands)',
+    'Jupiler Pro League (Belgium)'
   ];
 
   const teams = [
@@ -85,14 +88,14 @@ export function WaitlistSection() {
         setTotalWaitlist(prev => prev + 1);
       } else {
         if (response.status === 409) {
-          setError('Je staat al op de waitlist!');
+          setError('You are already on the waitlist!');
           setPosition(data.position);
         } else {
-          setError(data.error || 'Er is iets misgegaan. Probeer het opnieuw.');
+          setError(data.error || 'Something went wrong. Please try again.');
         }
       }
     } catch (error) {
-      setError('Er is iets misgegaan. Probeer het opnieuw.');
+      setError('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -100,46 +103,46 @@ export function WaitlistSection() {
 
   if (isSuccess) {
     return (
-      <section className="py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
+      <section className="py-16 lg:py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-8">
-            <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Check className="w-10 h-10 text-white" />
+            <div className="w-16 h-16 lg:w-20 lg:h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Check className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
             </div>
-            <h2 className="text-4xl font-bold mb-4">Welkom bij de Waitlist! 🎉</h2>
-            <p className="text-xl text-green-100 mb-8">
-              Je bent succesvol aangemeld voor vroege toegang tot onze mystery football trips!
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t('success')} 🎉</h2>
+            <p className="text-lg lg:text-xl text-green-100 mb-8">
+              {t('successMessage')}
             </p>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8">
-            <h3 className="text-2xl font-bold mb-4">Je Positie op de Waitlist</h3>
-            <div className="text-6xl font-bold text-orange-400 mb-2">#{position}</div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 lg:p-8 mb-8">
+            <h3 className="text-xl lg:text-2xl font-bold mb-4">{t('position')}</h3>
+            <div className="text-5xl lg:text-6xl font-bold text-orange-400 mb-2">#{position}</div>
             <p className="text-green-100">
-              Je bent een van de eerste {totalWaitlist} mensen die toegang krijgen!
+              You are one of the first {totalWaitlist} people to get access!
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white/5 rounded-lg p-6">
-              <Gift className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-              <h4 className="font-bold mb-2">Vroege Toegang</h4>
-              <p className="text-sm text-green-200">Als eerste boeken wanneer we live gaan</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 mb-8">
+            <div className="bg-white/5 rounded-lg p-4 lg:p-6">
+              <Gift className="w-6 h-6 lg:w-8 lg:h-8 text-orange-400 mx-auto mb-3" />
+              <h4 className="font-bold mb-2 text-sm lg:text-base">{t('benefits.earlyAccess')}</h4>
+              <p className="text-xs lg:text-sm text-green-200">{t('benefits.earlyAccessDesc')}</p>
             </div>
-            <div className="bg-white/5 rounded-lg p-6">
-              <Trophy className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-              <h4 className="font-bold mb-2">Exclusieve Kortingen</h4>
-              <p className="text-sm text-green-200">Speciale prijzen voor waitlist leden</p>
+            <div className="bg-white/5 rounded-lg p-4 lg:p-6">
+              <Trophy className="w-6 h-6 lg:w-8 lg:h-8 text-orange-400 mx-auto mb-3" />
+              <h4 className="font-bold mb-2 text-sm lg:text-base">{t('benefits.discounts')}</h4>
+              <p className="text-xs lg:text-sm text-green-200">{t('benefits.discountsDesc')}</p>
             </div>
-            <div className="bg-white/5 rounded-lg p-6">
-              <Sparkles className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-              <h4 className="font-bold mb-2">Insider Updates</h4>
-              <p className="text-sm text-green-200">Eerste updates over nieuwe bestemmingen</p>
+            <div className="bg-white/5 rounded-lg p-4 lg:p-6">
+              <Sparkles className="w-6 h-6 lg:w-8 lg:h-8 text-orange-400 mx-auto mb-3" />
+              <h4 className="font-bold mb-2 text-sm lg:text-base">{t('benefits.updates')}</h4>
+              <p className="text-xs lg:text-sm text-green-200">{t('benefits.updatesDesc')}</p>
             </div>
           </div>
 
-          <p className="text-green-200">
-            Check je email voor een bevestiging en meer details over wat je kunt verwachten!
+          <p className="text-green-200 text-sm lg:text-base">
+            Check your email for confirmation and more details!
           </p>
         </div>
       </section>
@@ -147,42 +150,41 @@ export function WaitlistSection() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
+    <section className="py-16 lg:py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="inline-flex items-center space-x-2 bg-orange-500 text-white px-4 py-2 rounded-full font-bold text-sm mb-6">
             <Sparkles className="w-4 h-4" />
-            <span>EXCLUSIEVE VROEGE TOEGANG</span>
+            <span>EXCLUSIVE EARLY ACCESS</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Sluit Je Aan Bij De Waitlist
+          <h2 className="text-3xl lg:text-5xl font-bold mb-6">
+            {t('title')}
           </h2>
-          <p className="text-xl text-green-100 max-w-3xl mx-auto mb-8">
-            Wees een van de eersten die toegang krijgt tot onze mystery football trips door Europa. 
-            Exclusieve kortingen en vroege toegang gegarandeerd!
+          <p className="text-lg lg:text-xl text-green-100 max-w-3xl mx-auto mb-8">
+            {t('subtitle')}. {t('description')}
           </p>
 
-          <div className="flex items-center justify-center space-x-8 mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-400">{totalWaitlist}+</div>
-              <div className="text-green-200 text-sm">Mensen wachten al</div>
+              <div className="text-2xl lg:text-3xl font-bold text-orange-400">{totalWaitlist}+</div>
+              <div className="text-green-200 text-sm">People waiting</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-400">50+</div>
-              <div className="text-green-200 text-sm">Stadions klaar</div>
+              <div className="text-2xl lg:text-3xl font-bold text-orange-400">50+</div>
+              <div className="text-green-200 text-sm">Stadiums ready</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-400">15+</div>
-              <div className="text-green-200 text-sm">Landen beschikbaar</div>
+              <div className="text-2xl lg:text-3xl font-bold text-orange-400">15+</div>
+              <div className="text-green-200 text-sm">Countries available</div>
             </div>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Benefits */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold mb-6">Waarom Vroeg Aanmelden?</h3>
+            <h3 className="text-xl lg:text-2xl font-bold mb-6">Why Sign Up Early?</h3>
             
             <div className="space-y-4">
               <div className="flex items-start space-x-4">
@@ -190,8 +192,8 @@ export function WaitlistSection() {
                   <span className="text-white font-bold text-sm">1</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">Exclusieve Vroege Toegang</h4>
-                  <p className="text-green-200">Boek je mystery trip voordat we officieel lanceren</p>
+                  <h4 className="font-bold text-base lg:text-lg mb-1">{t('benefits.earlyAccess')}</h4>
+                  <p className="text-green-200 text-sm lg:text-base">{t('benefits.earlyAccessDesc')}</p>
                 </div>
               </div>
 
@@ -200,8 +202,8 @@ export function WaitlistSection() {
                   <span className="text-white font-bold text-sm">2</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">Waitlist Korting</h4>
-                  <p className="text-green-200">Tot 25% korting op je eerste mystery trip</p>
+                  <h4 className="font-bold text-base lg:text-lg mb-1">Waitlist Discount</h4>
+                  <p className="text-green-200 text-sm lg:text-base">Up to 25% off your first mystery trip</p>
                 </div>
               </div>
 
@@ -210,8 +212,8 @@ export function WaitlistSection() {
                   <span className="text-white font-bold text-sm">3</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">Insider Updates</h4>
-                  <p className="text-green-200">Eerste updates over nieuwe bestemmingen en features</p>
+                  <h4 className="font-bold text-base lg:text-lg mb-1">{t('benefits.updates')}</h4>
+                  <p className="text-green-200 text-sm lg:text-base">{t('benefits.updatesDesc')}</p>
                 </div>
               </div>
 
@@ -220,49 +222,49 @@ export function WaitlistSection() {
                   <span className="text-white font-bold text-sm">4</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg mb-1">Beste Keuze Garantie</h4>
-                  <p className="text-green-200">Voorrang bij het kiezen van je ideale reisdatum</p>
+                  <h4 className="font-bold text-base lg:text-lg mb-1">Best Choice Guarantee</h4>
+                  <p className="text-green-200 text-sm lg:text-base">Priority when choosing your ideal travel date</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mt-8">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 lg:p-6 mt-8">
               <div className="flex items-center space-x-3 mb-3">
-                <Users className="w-6 h-6 text-orange-400" />
-                <span className="font-bold">Live Waitlist Counter</span>
+                <Users className="w-5 h-5 lg:w-6 lg:h-6 text-orange-400" />
+                <span className="font-bold text-sm lg:text-base">Live Waitlist Counter</span>
               </div>
-              <div className="text-2xl font-bold text-orange-400 mb-1">
-                {totalWaitlist} mensen wachten al
+              <div className="text-xl lg:text-2xl font-bold text-orange-400 mb-1">
+                {totalWaitlist} people waiting
               </div>
-              <p className="text-green-200 text-sm">
-                Sluit je aan en krijg positie #{totalWaitlist + 1}
+              <p className="text-green-200 text-xs lg:text-sm">
+                Join now and get position #{totalWaitlist + 1}
               </p>
             </div>
           </div>
 
           {/* Signup Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-2xl">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-2xl">
+            <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
               <div className="text-center mb-6">
-                <Mail className="w-12 h-12 text-green-600 mx-auto mb-3" />
-                <h3 className="text-2xl font-bold text-green-800 mb-2">
-                  Meld Je Nu Aan
+                <Mail className="w-10 h-10 lg:w-12 lg:h-12 text-green-600 mx-auto mb-3" />
+                <h3 className="text-xl lg:text-2xl font-bold text-green-800 mb-2">
+                  Sign Up Now
                 </h3>
-                <p className="text-green-600">
-                  Vul je gegevens in en krijg exclusieve vroege toegang
+                <p className="text-green-600 text-sm lg:text-base">
+                  Fill in your details and get exclusive early access
                 </p>
               </div>
 
               {error && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm">
                   {error}
                 </div>
               )}
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    Email Adres *
+                    {t('email')} *
                   </label>
                   <input
                     type="email"
@@ -270,13 +272,13 @@ export function WaitlistSection() {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800"
-                    placeholder="je@email.com"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 text-sm lg:text-base"
+                    placeholder="your@email.com"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    Naam *
+                    {t('name')} *
                   </label>
                   <input
                     type="text"
@@ -284,36 +286,36 @@ export function WaitlistSection() {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800"
-                    placeholder="Je naam"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 text-sm lg:text-base"
+                    placeholder="Your name"
                   />
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    Stad
+                    {t('city')}
                   </label>
                   <input
                     type="text"
                     name="city"
                     value={formData.city}
                     onChange={handleInputChange}
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 text-sm lg:text-base"
                     placeholder="Amsterdam"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    Telefoon
+                    {t('phone')}
                   </label>
                   <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 text-sm lg:text-base"
                     placeholder="+31 6 1234 5678"
                   />
                 </div>
@@ -321,15 +323,15 @@ export function WaitlistSection() {
 
               <div>
                 <label className="block text-sm font-medium text-green-700 mb-2">
-                  Favoriete Team
+                  {t('favoriteTeam')}
                 </label>
                 <select
                   name="favoriteTeam"
                   value={formData.favoriteTeam}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800"
+                  className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 text-sm lg:text-base"
                 >
-                  <option value="">Selecteer je favoriete team</option>
+                  <option value="">Select your favorite team</option>
                   {teams.map(team => (
                     <option key={team} value={team}>{team}</option>
                   ))}
@@ -338,15 +340,15 @@ export function WaitlistSection() {
 
               <div>
                 <label className="block text-sm font-medium text-green-700 mb-3">
-                  Welke competities interesseren je? (meerdere mogelijk)
+                  {t('interests')} (multiple possible)
                 </label>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {destinations.map(destination => (
                     <button
                       key={destination}
                       type="button"
                       onClick={() => handleDestinationToggle(destination)}
-                      className={`p-2 rounded-lg border text-sm transition-colors ${
+                      className={`p-2 rounded-lg border text-xs lg:text-sm transition-colors ${
                         formData.preferredDestinations.includes(destination)
                           ? 'bg-green-100 border-green-300 text-green-800'
                           : 'bg-gray-50 border-gray-200 hover:bg-gray-100 text-gray-700'
@@ -361,24 +363,24 @@ export function WaitlistSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-4 px-6 rounded-lg font-bold text-lg hover:from-green-700 hover:to-green-800 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 lg:py-4 px-6 rounded-lg font-bold text-sm lg:text-lg hover:from-green-700 hover:to-green-800 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
               >
                 {isSubmitting ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" />
-                    <span>Aanmelden...</span>
+                    <span>Signing up...</span>
                   </>
                 ) : (
                   <>
                     <Mail className="w-5 h-5" />
-                    <span>Meld Me Aan Voor De Waitlist</span>
+                    <span>{t('joinWaitlist')}</span>
                   </>
                 )}
               </button>
 
               <p className="text-xs text-gray-500 text-center">
-                Door je aan te melden ga je akkoord met onze voorwaarden en privacybeleid. 
-                Je kunt je altijd uitschrijven.
+                By signing up you agree to our terms and privacy policy. 
+                You can always unsubscribe.
               </p>
             </form>
           </div>

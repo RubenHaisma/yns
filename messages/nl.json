@@ -9,15 +9,15 @@
     "faq": "Veelgestelde Vragen",
     "dashboard": "Dashboard",
     "bookNow": "Boek Nu",
-    "emergency": "24/7: +31 20 123 4567"
+    "emergency": "24/7: +31 30 123 4567"
   },
   "hero": {
     "title": "Waar ga jij naartoe?",
     "subtitle": "Misschien wel naar",
     "mystery": "Het blijft een verrassing.",
-    "findStadium": "Find Your Next Stadium",
+    "findStadium": "Ontdek Je Stadium",
     "moreInfo": "Meer Informatie",
-    "happyTravelers": "Gelukkige Reizigers",
+    "happyTravelers": "Nieuwe Service",
     "moneyBack": "Geld Terug Garantie",
     "support": "24/7 Support"
   },
@@ -41,14 +41,11 @@
   },
   "packages": {
     "basic": {
-      "name": "Match Only",
+      "name": "Alleen Match",
       "subtitle": "Pure voetbalervaring",
       "price": "€149-299",
-      "originalPrice": "€199-399",
-      "category": "C",
-      "savings": "Bespaar €50-100",
       "features": [
-        "Match ticket (Category C)",
+        "Match ticket",
         "Mystery bestemming onthulling",
         "24/7 support tijdens reis",
         "Digitale reisguide",
@@ -56,17 +53,13 @@
       ]
     },
     "comfort": {
-      "name": "Complete Experience",
+      "name": "Match + Vliegtuig",
       "subtitle": "Match + Transport",
       "price": "€299-599",
-      "originalPrice": "€399-799",
-      "category": "A",
-      "savings": "Bespaar €100-200",
       "features": [
-        "Match ticket (Category A)",
-        "Retour transport",
+        "Match ticket",
+        "Retour vliegtuig",
         "Mystery bestemming onthulling",
-        "Stadion tour (indien mogelijk)",
         "24/7 support",
         "Digitale reisguide",
         "Lokale restaurant tips"
@@ -74,21 +67,17 @@
       "popular": true
     },
     "premium": {
-      "name": "Luxury Weekend",
-      "subtitle": "All-inclusive ervaring",
+      "name": "Alles Inclusief",
+      "subtitle": "Ticket + Vliegtuig + Hotel",
       "price": "€599-999",
-      "originalPrice": "€799-1299",
-      "category": "VIP",
-      "savings": "Bespaar €200-300",
       "features": [
-        "VIP match ticket",
-        "Premium transport",
-        "2 nachten 4-5* hotel",
-        "Ontbijt & welkomstdiner",
-        "Exclusieve stadion tour",
-        "Lokale gids",
-        "Souvenirs pakket",
-        "24/7 premium support"
+        "Match ticket",
+        "Retour vliegtuig",
+        "2 nachten hotel",
+        "Ontbijt inclusief",
+        "Mystery bestemming onthulling",
+        "24/7 premium support",
+        "Lokale gids"
       ]
     }
   },
@@ -117,9 +106,9 @@
     "certifiedDesc": "Je geld is volledig beschermd"
   },
   "stats": {
-    "travelers": "Happy Travelers",
-    "stadiums": "Stadiums",
-    "countries": "Countries"
+    "travelers": "Reizigers",
+    "stadiums": "Stadions",
+    "countries": "Landen"
   },
   "footer": {
     "description": "Ontdek je volgende stadium met onze mystery voetbalreizen door heel Europa.",
@@ -130,7 +119,12 @@
     "copyright": "© 2024 YourNextStadium. Alle rechten voorbehouden.",
     "privacy": "Privacy Policy",
     "terms": "Algemene Voorwaarden",
-    "sgr": "SGR Erkend"
+    "sgr": "SGR Erkend",
+    "howItWorks": "Hoe Het Werkt",
+    "packages": "Pakketten",
+    "stories": "Verhalen",
+    "faq": "Veelgestelde Vragen",
+    "dashboard": "Dashboard"
   },
   "modal": {
     "bookTrip": "Boek Je Mystery Trip",
@@ -170,6 +164,29 @@
     "adventureBegins": "Je mystery avontuur kan beginnen",
     "bookingNumber": "Je Boekingnummer",
     "close": "Sluiten"
+  },
+  "waitlist": {
+    "title": "Sluit Je Aan Bij De Waitlist",
+    "subtitle": "Wees een van de eersten die toegang krijgt tot onze mystery football trips",
+    "description": "Exclusieve kortingen en vroege toegang gegarandeerd!",
+    "joinWaitlist": "Meld Je Aan Voor De Waitlist",
+    "email": "Email adres",
+    "name": "Naam",
+    "city": "Stad",
+    "phone": "Telefoon",
+    "favoriteTeam": "Favoriete team",
+    "interests": "Welke competities interesseren je?",
+    "success": "Welkom bij de Waitlist!",
+    "successMessage": "Je bent succesvol aangemeld voor vroege toegang!",
+    "position": "Je Positie",
+    "benefits": {
+      "earlyAccess": "Vroege Toegang",
+      "earlyAccessDesc": "Als eerste boeken wanneer we live gaan",
+      "discounts": "Exclusieve Kortingen", 
+      "discountsDesc": "Speciale prijzen voor waitlist leden",
+      "updates": "Insider Updates",
+      "updatesDesc": "Eerste updates over nieuwe bestemmingen"
+    }
   },
   "common": {
     "loading": "Laden...",
