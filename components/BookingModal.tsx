@@ -41,20 +41,20 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
   const packages = [
     { 
       id: 'basic', 
-      name: 'Alleen Match', 
-      price: '€149-299', 
+      name: t('packages.basic.name'), 
+      price: t('packages.basic.price'), 
       popular: false 
     },
     { 
       id: 'comfort', 
-      name: 'Match + Vliegtuig', 
-      price: '€299-599', 
+      name: t('packages.comfort.name'), 
+      price: t('packages.comfort.price'), 
       popular: true 
     },
     { 
       id: 'premium', 
-      name: 'Alles Inclusief', 
-      price: '€599-999', 
+      name: t('packages.premium.name'), 
+      price: t('packages.premium.price'), 
       popular: false 
     }
   ];
@@ -73,8 +73,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     const pkg = packages.find(p => p.id === formData.package);
     if (!pkg) return '€0';
     
-    // Extract base price (take the lower end for calculation)
-    const basePrice = parseInt(pkg.price.split('-')[0].replace('€', ''));
+    // Extract base price
+    const basePrice = parseInt(pkg.price.replace('€', ''));
     const total = basePrice * formData.travelers;
     return `€${total}`;
   };

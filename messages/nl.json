@@ -43,7 +43,10 @@
     "basic": {
       "name": "Alleen Match",
       "subtitle": "Pure voetbalervaring",
-      "price": "€149-299",
+      "price": "€199",
+      "originalPrice": "€299",
+      "category": "C",
+      "savings": "Bespaar €100",
       "features": [
         "Match ticket",
         "Mystery bestemming onthulling",
@@ -55,7 +58,10 @@
     "comfort": {
       "name": "Match + Vliegtuig",
       "subtitle": "Match + Transport",
-      "price": "€299-599",
+      "price": "€449",
+      "originalPrice": "€599",
+      "category": "A",
+      "savings": "Bespaar €150",
       "features": [
         "Match ticket",
         "Retour vliegtuig",
@@ -69,7 +75,10 @@
     "premium": {
       "name": "Alles Inclusief",
       "subtitle": "Ticket + Vliegtuig + Hotel",
-      "price": "€599-999",
+      "price": "€799",
+      "originalPrice": "€999",
+      "category": "VIP",
+      "savings": "Bespaar €200",
       "features": [
         "Match ticket",
         "Retour vliegtuig",
@@ -166,7 +175,7 @@
     "previous": "Vorige",
     "next": "Volgende",
     "payBook": "Betaal & Boek Nu",
-    "processing": "Processing Payment...",
+    "processing": "Betaling verwerken...",
     "bookingConfirmed": "Boeking Bevestigd! 🎉",
     "adventureBegins": "Je mystery avontuur kan beginnen",
     "bookingNumber": "Je Boekingnummer",
@@ -195,6 +204,161 @@
       "updatesDesc": "Eerste updates over nieuwe bestemmingen"
     }
   },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Heb je vragen over onze mystery trips? We helpen je graag verder!",
+    "sendMessage": "Stuur ons een Bericht",
+    "name": "Naam",
+    "email": "Email",
+    "subject": "Onderwerp",
+    "message": "Bericht",
+    "send": "Verstuur Bericht",
+    "selectSubject": "Selecteer een onderwerp",
+    "newBooking": "Nieuwe Boeking",
+    "existingBooking": "Bestaande Boeking",
+    "complaint": "Klacht",
+    "suggestion": "Suggestie",
+    "other": "Anders",
+    "messagePlaceholder": "Vertel ons hoe we je kunnen helpen...",
+    "required": "*",
+    "success": "Bericht verzonden! We nemen zo snel mogelijk contact met je op.",
+    "error": "Er is iets misgegaan. Probeer het opnieuw."
+  },
+  "dashboard": {
+    "title": "Mijn Dashboard",
+    "subtitle": "Bekijk je boekingen en volg je mystery trip avontuur",
+    "searchBooking": "Zoek Je Boeking",
+    "bookingNumber": "Boekingnummer",
+    "emailAddress": "Email Adres",
+    "search": "Zoek Boeking",
+    "searching": "Zoeken...",
+    "bookingDetails": "Boeking {bookingId}",
+    "bookedOn": "Geboekt op",
+    "totalPrice": "Totaalprijs",
+    "countdownTitle": "Aftellen naar je Avontuur!",
+    "daysToGo": "dagen te gaan",
+    "tripDetails": "Reis Details",
+    "departureDate": "Vertrekdatum",
+    "travelers": "Aantal Reizigers",
+    "person": "persoon",
+    "people": "personen",
+    "package": "Pakket",
+    "paymentStatus": "Betaalstatus",
+    "paid": "Betaald",
+    "pending": "In behandeling",
+    "mysteryStatus": "Mystery Status",
+    "destinationRevealed": "Bestemming Onthuld!",
+    "revealedOn": "Je mystery bestemming is onthuld op",
+    "mysteryOngoing": "Het Mysterie Duurt Voort...",
+    "revealTiming": "Je bestemming wordt 1-2 weken voor vertrek onthuld",
+    "hint": "Bereid je voor op een onvergetelijke ervaring in een van Europa's mooiste voetbalstadions!",
+    "needHelp": "Hulp Nodig?",
+    "emergencyLine": "24/7 Noodlijn",
+    "emailSupport": "Email Support",
+    "confirmed": "Bevestigd",
+    "cancelled": "Geannuleerd",
+    "notFound": "Boeking niet gevonden",
+    "fillBookingOrEmail": "Vul een boekingnummer of email adres in"
+  },
+  "stories": {
+    "title": "Verhalen van Avonturiers",
+    "subtitle": "Ontdek waarom meer dan 500 voetbalfans hun volgende stadium hebben gevonden",
+    "moreStories": "Meer Verhalen",
+    "shareStory": "Deel je Verhaal",
+    "tagUs": "Tag ons @yournextstadium en gebruik #MysteryStadium",
+    "followInstagram": "Volg ons op Instagram",
+    "writeYourStory": "Schrijf Jouw Eigen Verhaal",
+    "joinCommunity": "Word onderdeel van onze community en ontdek jouw volgende stadium",
+    "startAdventure": "Start Je Avontuur"
+  },
+  "howItWorks": {
+    "title": "Hoe Het Werkt",
+    "subtitle": "Van boeking tot beleving - ontdek hoe jouw mystery stadium avontuur tot leven komt",
+    "step1": {
+      "title": "1. Boek je Avontuur",
+      "description": "Kies je pakket, selecteer je datum, vul je voorkeuren in en betaal veilig online via iDEAL, creditcard of bankoverschrijving.",
+      "details": [
+        "Selecteer je gewenste vertrekdatum",
+        "Kies uit onze drie pakketten",
+        "Vul je voorkeuren in",
+        "Betaal veilig online"
+      ]
+    },
+    "step2": {
+      "title": "2. Wacht vol Spanning",
+      "description": "Ontvang hints en updates via email. De spanning stijgt terwijl je bestemming geheim blijft.",
+      "details": [
+        "Ontvang bevestiging per email",
+        "Krijg wekelijkse hints over je bestemming",
+        "Volg updates in je persoonlijke dashboard",
+        "Bereid je voor met onze reistips"
+      ]
+    },
+    "step3": {
+      "title": "3. Ontdek je Bestemming",
+      "description": "1-2 weken voor vertrek onthullen we je mysterie bestemming via een speciale onthullingsvideo.",
+      "details": [
+        "Ontvang je persoonlijke onthullingsvideo",
+        "Krijg alle reisdetails en tickets",
+        "Download je digitale reisguide",
+        "Bereid je voor op het avontuur"
+      ]
+    },
+    "faqTitle": "Veelgestelde Vragen",
+    "faqSubtitle": "Alles wat je wilt weten over onze mystery trips",
+    "readyTitle": "Klaar voor je Mystery Avontuur?",
+    "readySubtitle": "Boek nu je volgende stadium en laat je verrassen door Europa's mooiste voetbalstadions",
+    "bookTrip": "Boek Je Mystery Trip"
+  },
+  "packages": {
+    "title": "Onze Pakketten",
+    "subtitle": "Van een simpel match bezoek tot een compleet luxury weekend - kies het pakket dat bij jou past",
+    "extrasTitle": "Extra's & Upgrades",
+    "comparisonTitle": "Pakket Vergelijking",
+    "feature": "Feature",
+    "matchTicket": "Match Ticket",
+    "transport": "Transport",
+    "accommodation": "Accommodatie",
+    "meals": "Maaltijden",
+    "support": "24/7 Support",
+    "nights": "2 nachten",
+    "breakfastDinner": "Ontbijt & Diner",
+    "premium": "Premium",
+    "choosePackage": "Kies Dit Pakket",
+    "moneyBackGuarantee": "Geld Terug Garantie",
+    "moneyBackDesc": "Niet tevreden? 100% terugbetaling",
+    "freeRebooking": "Gratis Omboeken",
+    "freeRebookingDesc": "Tot 14 dagen voor vertrek",
+    "rating": "4.9/5 Rating",
+    "ratingDesc": "Van 500+ tevreden klanten"
+  },
+  "faq": {
+    "title": "Veelgestelde Vragen",
+    "subtitle": "Alles wat je wilt weten over onze mystery football trips",
+    "searchPlaceholder": "Zoek in veelgestelde vragen...",
+    "allQuestions": "Alle Vragen",
+    "booking": "Boeken",
+    "travel": "Reizen",
+    "safety": "Veiligheid",
+    "support": "Support",
+    "noResults": "Geen resultaten gevonden",
+    "noResultsDesc": "Probeer een andere zoekterm of selecteer een andere categorie",
+    "stillQuestions": "Nog Vragen?",
+    "stillQuestionsDesc": "Ons team staat klaar om je te helpen met al je vragen over mystery football trips",
+    "contactUs": "Neem Contact Op",
+    "callNow": "Bel Ons Nu",
+    "emergencyLine": "24/7 Noodlijn: +31 20 987 6543"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "Jouw privacy is belangrijk voor ons. Lees hoe we je gegevens beschermen.",
+    "lastUpdated": "Laatst bijgewerkt: 1 januari 2024"
+  },
+  "terms": {
+    "title": "Algemene Voorwaarden",
+    "subtitle": "Belangrijke informatie over je boeking en onze dienstverlening",
+    "lastUpdated": "Laatst bijgewerkt: 1 januari 2024"
+  },
   "common": {
     "loading": "Laden...",
     "error": "Er is een fout opgetreden",
@@ -208,6 +372,12 @@
     "filter": "Filteren",
     "export": "Exporteren",
     "import": "Importeren",
-    "refresh": "Vernieuwen"
+    "refresh": "Vernieuwen",
+    "close": "Sluiten",
+    "back": "Terug",
+    "next": "Volgende",
+    "previous": "Vorige",
+    "submit": "Versturen",
+    "confirm": "Bevestigen"
   }
 }

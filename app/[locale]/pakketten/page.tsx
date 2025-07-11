@@ -5,77 +5,52 @@ import { Footer } from '@/components/Footer';
 import { Check, Star, Plane, Hotel, Ticket, Crown, Shield, Clock } from 'lucide-react';
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
+import { useTranslations } from 'next-intl';
 
 export default function Packages() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
+  const t = useTranslations();
 
   const packages = [
     {
       id: 'basic',
-      name: "Alleen de Match",
-      subtitle: "Voor de pure voetballiefhebber",
-      price: "€149-299",
-      originalPrice: "€199-399",
-      category: "C",
+      name: t('packages.basic.name'),
+      subtitle: t('packages.basic.subtitle'),
+      price: t('packages.basic.price'),
+      originalPrice: t('packages.basic.originalPrice'),
+      category: t('packages.basic.category'),
       icon: Ticket,
       gradient: "from-green-500 to-green-600",
-      features: [
-        "Match ticket (Category C)",
-        "Mysterie bestemming onthulling",
-        "24/7 support tijdens reis",
-        "Digitale reisguide met tips",
-        "Geld terug garantie",
-        "Gratis omboeken tot 14 dagen"
-      ],
+      features: t('packages.basic.features'),
       popular: false,
-      savings: "Bespaar tot €100"
+      savings: t('packages.basic.savings')
     },
     {
       id: 'comfort',
-      name: "Match + Reis",
-      subtitle: "De complete ervaring",
-      price: "€299-599",
-      originalPrice: "€399-799",
-      category: "A",
+      name: t('packages.comfort.name'),
+      subtitle: t('packages.comfort.subtitle'),
+      price: t('packages.comfort.price'),
+      originalPrice: t('packages.comfort.originalPrice'),
+      category: t('packages.comfort.category'),
       icon: Plane,
       gradient: "from-orange-500 to-orange-600",
-      features: [
-        "Match ticket (Category A - betere plaatsen)",
-        "Retour transport (trein/bus/vliegtuig)",
-        "Mysterie bestemming onthulling",
-        "Stadion tour (indien beschikbaar)",
-        "24/7 support tijdens reis",
-        "Digitale reisguide met insider tips",
-        "Lokale restaurant aanbevelingen",
-        "Geld terug garantie"
-      ],
+      features: t('packages.comfort.features'),
       popular: true,
-      savings: "Bespaar tot €200"
+      savings: t('packages.comfort.savings')
     },
     {
       id: 'premium',
-      name: "Alles Inclusief",
-      subtitle: "Luxe mystery weekend",
-      price: "€599-999",
-      originalPrice: "€799-1299",
-      category: "VIP",
+      name: t('packages.premium.name'),
+      subtitle: t('packages.premium.subtitle'),
+      price: t('packages.premium.price'),
+      originalPrice: t('packages.premium.originalPrice'),
+      category: t('packages.premium.category'),
       icon: Crown,
       gradient: "from-purple-500 to-purple-600",
-      features: [
-        "VIP match ticket (beste plaatsen)",
-        "Retour transport (premium opties)",
-        "2 nachten hotel (4-5 sterren)",
-        "Ontbijt & welkomstdiner",
-        "Exclusieve stadion tour",
-        "Lokale gids voor stadstour",
-        "Souvenirs pakket",
-        "24/7 premium support",
-        "Airport transfers",
-        "Geld terug garantie"
-      ],
+      features: t('packages.premium.features'),
       popular: false,
-      savings: "Bespaar tot €300"
+      savings: t('packages.premium.savings')
     }
   ];
 
@@ -106,10 +81,10 @@ export default function Packages() {
         <section className="py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Onze Pakketten
+              {t('packages.title')}
             </h1>
             <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
-              Van een simpel match bezoek tot een compleet luxury weekend - kies het pakket dat bij jou past
+              {t('packages.subtitle')}
             </p>
           </div>
         </section>
@@ -161,14 +136,14 @@ export default function Packages() {
                             ? 'bg-orange-100 text-orange-800'
                             : 'bg-green-100 text-green-800'
                         }`}>
-                          Categorie {pkg.category}
+                          {t('packages.category')} {pkg.category}
                         </span>
                       </div>
                     </div>
 
                     {/* Features */}
                     <ul className="space-y-3 mb-8">
-                      {pkg.features.map((feature, featureIndex) => (
+                      {Array.isArray(pkg.features) && pkg.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-start space-x-3">
                           <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                           <span className="text-green-700 text-sm">{feature}</span>
@@ -188,7 +163,7 @@ export default function Packages() {
                           : 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg'
                       }`}
                     >
-                      Kies Dit Pakket
+                      {t('packages.choosePackage')}
                     </button>
                   </div>
                 </div>
@@ -198,7 +173,7 @@ export default function Packages() {
             {/* Add-ons Section */}
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-green-100 mb-16">
               <h3 className="text-2xl font-bold text-green-800 mb-6 text-center">
-                Extra's & Upgrades
+                {t('packages.extrasTitle')}
               </h3>
               <div className="grid md:grid-cols-3 gap-6">
                 {addOns.map((addon, index) => (
@@ -217,49 +192,49 @@ export default function Packages() {
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="bg-gradient-to-r from-green-800 to-green-900 p-6">
                 <h3 className="text-2xl font-bold text-white text-center">
-                  Pakket Vergelijking
+                  {t('packages.comparisonTitle')}
                 </h3>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-green-100">
-                      <th className="text-left p-4 font-semibold text-green-800">Feature</th>
-                      <th className="text-center p-4 font-semibold text-green-600">Alleen Match</th>
-                      <th className="text-center p-4 font-semibold text-orange-600">Match + Reis</th>
-                      <th className="text-center p-4 font-semibold text-purple-600">Alles Inclusief</th>
+                      <th className="text-left p-4 font-semibold text-green-800">{t('packages.feature')}</th>
+                      <th className="text-center p-4 font-semibold text-green-600">{t('packages.basic.name')}</th>
+                      <th className="text-center p-4 font-semibold text-orange-600">{t('packages.comfort.name')}</th>
+                      <th className="text-center p-4 font-semibold text-purple-600">{t('packages.premium.name')}</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-green-50">
-                      <td className="p-4 text-green-700">Match Ticket</td>
-                      <td className="p-4 text-center">Category C</td>
-                      <td className="p-4 text-center">Category A</td>
+                      <td className="p-4 text-green-700">{t('packages.matchTicket')}</td>
+                      <td className="p-4 text-center">{t('packages.basic.category')}</td>
+                      <td className="p-4 text-center">{t('packages.comfort.category')}</td>
                       <td className="p-4 text-center">VIP</td>
                     </tr>
                     <tr className="border-b border-green-50">
-                      <td className="p-4 text-green-700">Transport</td>
+                      <td className="p-4 text-green-700">{t('packages.transport')}</td>
                       <td className="p-4 text-center">-</td>
                       <td className="p-4 text-center">✓</td>
-                      <td className="p-4 text-center">✓ Premium</td>
+                      <td className="p-4 text-center">✓ {t('packages.premium')}</td>
                     </tr>
                     <tr className="border-b border-green-50">
-                      <td className="p-4 text-green-700">Accommodatie</td>
+                      <td className="p-4 text-green-700">{t('packages.accommodation')}</td>
                       <td className="p-4 text-center">-</td>
                       <td className="p-4 text-center">-</td>
-                      <td className="p-4 text-center">✓ 2 nachten</td>
+                      <td className="p-4 text-center">✓ {t('packages.nights')}</td>
                     </tr>
                     <tr className="border-b border-green-50">
-                      <td className="p-4 text-green-700">Maaltijden</td>
+                      <td className="p-4 text-green-700">{t('packages.meals')}</td>
                       <td className="p-4 text-center">-</td>
                       <td className="p-4 text-center">-</td>
-                      <td className="p-4 text-center">✓ Ontbijt & Diner</td>
+                      <td className="p-4 text-center">✓ {t('packages.breakfastDinner')}</td>
                     </tr>
                     <tr>
-                      <td className="p-4 text-green-700">24/7 Support</td>
+                      <td className="p-4 text-green-700">{t('packages.support')}</td>
                       <td className="p-4 text-center">✓</td>
                       <td className="p-4 text-center">✓</td>
-                      <td className="p-4 text-center">✓ Premium</td>
+                      <td className="p-4 text-center">✓ {t('packages.premium')}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -274,18 +249,18 @@ export default function Packages() {
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div className="flex flex-col items-center">
                 <Shield className="w-12 h-12 text-green-600 mb-4" />
-                <h3 className="text-lg font-bold text-green-800 mb-2">Geld Terug Garantie</h3>
-                <p className="text-green-600">Niet tevreden? 100% terugbetaling</p>
+                <h3 className="text-lg font-bold text-green-800 mb-2">{t('packages.moneyBackGuarantee')}</h3>
+                <p className="text-green-600">{t('packages.moneyBackDesc')}</p>
               </div>
               <div className="flex flex-col items-center">
                 <Clock className="w-12 h-12 text-green-600 mb-4" />
-                <h3 className="text-lg font-bold text-green-800 mb-2">Gratis Omboeken</h3>
-                <p className="text-green-600">Tot 14 dagen voor vertrek</p>
+                <h3 className="text-lg font-bold text-green-800 mb-2">{t('packages.freeRebooking')}</h3>
+                <p className="text-green-600">{t('packages.freeRebookingDesc')}</p>
               </div>
               <div className="flex flex-col items-center">
                 <Star className="w-12 h-12 text-green-600 mb-4" />
-                <h3 className="text-lg font-bold text-green-800 mb-2">4.9/5 Rating</h3>
-                <p className="text-green-600">Van 500+ tevreden klanten</p>
+                <h3 className="text-lg font-bold text-green-800 mb-2">{t('packages.rating')}</h3>
+                <p className="text-green-600">{t('packages.ratingDesc')}</p>
               </div>
             </div>
           </div>

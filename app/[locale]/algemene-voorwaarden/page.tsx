@@ -5,9 +5,11 @@ import { Footer } from '@/components/Footer';
 import { FileText, AlertTriangle, CreditCard, Plane, Shield, Clock } from 'lucide-react';
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
+import { useTranslations } from 'next-intl';
 
 export default function Terms() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const t = useTranslations();
 
   return (
     <div className="min-h-screen bg-white">
@@ -19,13 +21,13 @@ export default function Terms() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <FileText className="w-16 h-16 mx-auto mb-6 text-green-200" />
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Algemene Voorwaarden
+              {t('terms.title')}
             </h1>
             <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
-              Belangrijke informatie over je boeking en onze dienstverlening
+              {t('terms.subtitle')}
             </p>
             <p className="text-green-200 mt-4">
-              Laatst bijgewerkt: 1 januari 2024
+              {t('terms.lastUpdated')}
             </p>
           </div>
         </section>

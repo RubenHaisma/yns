@@ -5,9 +5,11 @@ import { Footer } from '@/components/Footer';
 import { Shield, Eye, Lock, Users, Mail, Clock } from 'lucide-react';
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
+import { useTranslations } from 'next-intl';
 
 export default function Privacy() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const t = useTranslations();
 
   return (
     <div className="min-h-screen bg-white">
@@ -19,13 +21,13 @@ export default function Privacy() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Shield className="w-16 h-16 mx-auto mb-6 text-green-200" />
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Privacy Policy
+              {t('privacy.title')}
             </h1>
             <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
-              Jouw privacy is belangrijk voor ons. Lees hoe we je gegevens beschermen.
+              {t('privacy.subtitle')}
             </p>
             <p className="text-green-200 mt-4">
-              Laatst bijgewerkt: 1 januari 2024
+              {t('privacy.lastUpdated')}
             </p>
           </div>
         </section>

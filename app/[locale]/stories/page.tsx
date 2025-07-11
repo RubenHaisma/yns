@@ -102,10 +102,10 @@ export default function Stories() {
         <section className="py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Verhalen van Avonturiers
+              {t('stories.title')}
             </h1>
             <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
-              Ontdek waarom meer dan 500 voetbalfans hun volgende stadium hebben gevonden
+              {t('stories.subtitle')}
             </p>
           </div>
         </section>
@@ -196,7 +196,7 @@ export default function Stories() {
         <section className="py-20 bg-green-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-green-800 text-center mb-12">
-              Meer Verhalen
+              {t('stories.moreStories')}
             </h2>
             
             <div className="grid md:grid-cols-3 gap-8">
@@ -231,10 +231,10 @@ export default function Stories() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-green-800 mb-4">
-                Deel je Verhaal
+                {t('stories.shareStory')}
               </h2>
               <p className="text-green-600">
-                Tag ons @yournextstadium en gebruik #MysteryStadium
+                {t('stories.tagUs')}
               </p>
             </div>
 
@@ -266,7 +266,7 @@ export default function Stories() {
             <div className="text-center mt-8">
               <button className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full font-bold hover:from-pink-600 hover:to-purple-700 transition-all">
                 <Instagram className="w-5 h-5 inline mr-2" />
-                Volg ons op Instagram
+                {t('stories.followInstagram')}
               </button>
             </div>
           </div>
@@ -276,16 +276,16 @@ export default function Stories() {
         <section className="py-20 bg-gradient-to-r from-green-800 to-green-900 text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Schrijf Jouw Eigen Verhaal
+              {t('stories.writeYourStory')}
             </h2>
             <p className="text-xl text-green-100 mb-8">
-              Word onderdeel van onze community en ontdek jouw volgende stadium
+              {t('stories.joinCommunity')}
             </p>
             <button
               onClick={() => setIsBookingModalOpen(true)}
               className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all transform hover:scale-105 shadow-2xl"
             >
-              Start Je Avontuur
+              {t('stories.startAdventure')}
             </button>
           </div>
         </section>

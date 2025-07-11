@@ -43,7 +43,10 @@
     "basic": {
       "name": "Match Only",
       "subtitle": "Pure football experience",
-      "price": "€149-299",
+      "price": "€199",
+      "originalPrice": "€299",
+      "category": "C",
+      "savings": "Save €100",
       "features": [
         "Match ticket",
         "Mystery destination reveal",
@@ -55,7 +58,10 @@
     "comfort": {
       "name": "Match + Flight",
       "subtitle": "Match + Transport",
-      "price": "€299-599",
+      "price": "€449",
+      "originalPrice": "€599",
+      "category": "A",
+      "savings": "Save €150",
       "features": [
         "Match ticket",
         "Return flight",
@@ -69,7 +75,10 @@
     "premium": {
       "name": "All Inclusive",
       "subtitle": "Ticket + Flight + Hotel",
-      "price": "€599-999",
+      "price": "€799",
+      "originalPrice": "€999",
+      "category": "VIP",
+      "savings": "Save €200",
       "features": [
         "Match ticket",
         "Return flight",
@@ -195,6 +204,161 @@
       "updatesDesc": "First updates about new destinations"
     }
   },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have questions about our mystery trips? We're here to help!",
+    "sendMessage": "Send us a Message",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message",
+    "selectSubject": "Select a subject",
+    "newBooking": "New Booking",
+    "existingBooking": "Existing Booking",
+    "complaint": "Complaint",
+    "suggestion": "Suggestion",
+    "other": "Other",
+    "messagePlaceholder": "Tell us how we can help you...",
+    "required": "*",
+    "success": "Message sent! We'll get back to you as soon as possible.",
+    "error": "Something went wrong. Please try again."
+  },
+  "dashboard": {
+    "title": "My Dashboard",
+    "subtitle": "View your bookings and track your mystery trip adventure",
+    "searchBooking": "Search Your Booking",
+    "bookingNumber": "Booking Number",
+    "emailAddress": "Email Address",
+    "search": "Search Booking",
+    "searching": "Searching...",
+    "bookingDetails": "Booking {bookingId}",
+    "bookedOn": "Booked on",
+    "totalPrice": "Total Price",
+    "countdownTitle": "Countdown to your Adventure!",
+    "daysToGo": "days to go",
+    "tripDetails": "Trip Details",
+    "departureDate": "Departure Date",
+    "travelers": "Number of Travelers",
+    "person": "person",
+    "people": "people",
+    "package": "Package",
+    "paymentStatus": "Payment Status",
+    "paid": "Paid",
+    "pending": "Pending",
+    "mysteryStatus": "Mystery Status",
+    "destinationRevealed": "Destination Revealed!",
+    "revealedOn": "Your mystery destination was revealed on",
+    "mysteryOngoing": "The Mystery Continues...",
+    "revealTiming": "Your destination will be revealed 1-2 weeks before departure",
+    "hint": "Prepare for an unforgettable experience at one of Europe's most beautiful football stadiums!",
+    "needHelp": "Need Help?",
+    "emergencyLine": "24/7 Emergency Line",
+    "emailSupport": "Email Support",
+    "confirmed": "Confirmed",
+    "cancelled": "Cancelled",
+    "notFound": "Booking not found",
+    "fillBookingOrEmail": "Please enter a booking number or email address"
+  },
+  "stories": {
+    "title": "Stories from Adventurers",
+    "subtitle": "Discover why more than 500 football fans have found their next stadium",
+    "moreStories": "More Stories",
+    "shareStory": "Share your Story",
+    "tagUs": "Tag us @yournextstadium and use #MysteryStadium",
+    "followInstagram": "Follow us on Instagram",
+    "writeYourStory": "Write Your Own Story",
+    "joinCommunity": "Become part of our community and discover your next stadium",
+    "startAdventure": "Start Your Adventure"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "From booking to experience - discover how your mystery stadium adventure comes to life",
+    "step1": {
+      "title": "1. Book your Adventure",
+      "description": "Choose your package, select your date, fill in your preferences and pay securely online via iDEAL, credit card or bank transfer.",
+      "details": [
+        "Select your desired departure date",
+        "Choose from our three packages",
+        "Fill in your preferences",
+        "Pay securely online"
+      ]
+    },
+    "step2": {
+      "title": "2. Wait in Suspense",
+      "description": "Receive hints and updates via email. The excitement builds while your destination remains secret.",
+      "details": [
+        "Receive confirmation by email",
+        "Get weekly hints about your destination",
+        "Follow updates in your personal dashboard",
+        "Prepare with our travel tips"
+      ]
+    },
+    "step3": {
+      "title": "3. Discover your Destination",
+      "description": "1-2 weeks before departure we reveal your mystery destination via a special reveal video.",
+      "details": [
+        "Receive your personal reveal video",
+        "Get all travel details and tickets",
+        "Download your digital travel guide",
+        "Prepare for the adventure"
+      ]
+    },
+    "faqTitle": "Frequently Asked Questions",
+    "faqSubtitle": "Everything you want to know about our mystery trips",
+    "readyTitle": "Ready for your Mystery Adventure?",
+    "readySubtitle": "Book your next stadium now and be surprised by Europe's most beautiful football stadiums",
+    "bookTrip": "Book Your Mystery Trip"
+  },
+  "packages": {
+    "title": "Our Packages",
+    "subtitle": "From a simple match visit to a complete luxury weekend - choose the package that suits you",
+    "extrasTitle": "Extras & Upgrades",
+    "comparisonTitle": "Package Comparison",
+    "feature": "Feature",
+    "matchTicket": "Match Ticket",
+    "transport": "Transport",
+    "accommodation": "Accommodation",
+    "meals": "Meals",
+    "support": "24/7 Support",
+    "nights": "2 nights",
+    "breakfastDinner": "Breakfast & Dinner",
+    "premium": "Premium",
+    "choosePackage": "Choose This Package",
+    "moneyBackGuarantee": "Money Back Guarantee",
+    "moneyBackDesc": "Not satisfied? 100% refund",
+    "freeRebooking": "Free Rebooking",
+    "freeRebookingDesc": "Up to 14 days before departure",
+    "rating": "4.9/5 Rating",
+    "ratingDesc": "From 500+ satisfied customers"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you want to know about our mystery football trips",
+    "searchPlaceholder": "Search in frequently asked questions...",
+    "allQuestions": "All Questions",
+    "booking": "Booking",
+    "travel": "Travel",
+    "safety": "Safety",
+    "support": "Support",
+    "noResults": "No results found",
+    "noResultsDesc": "Try a different search term or select another category",
+    "stillQuestions": "Still have Questions?",
+    "stillQuestionsDesc": "Our team is ready to help you with all your questions about mystery football trips",
+    "contactUs": "Contact Us",
+    "callNow": "Call Us Now",
+    "emergencyLine": "24/7 Emergency Line: +31 20 987 6543"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "Your privacy is important to us. Read how we protect your data.",
+    "lastUpdated": "Last updated: January 1, 2024"
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "subtitle": "Important information about your booking and our services",
+    "lastUpdated": "Last updated: January 1, 2024"
+  },
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
@@ -208,6 +372,12 @@
     "filter": "Filter",
     "export": "Export",
     "import": "Import",
-    "refresh": "Refresh"
+    "refresh": "Refresh",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "confirm": "Confirm"
   }
 }

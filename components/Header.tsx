@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,12 +21,11 @@ export function Header({ onBookingClick }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const t = useTranslations('nav');
   const locale = useLocale();
-  const router = useRouter();
   const pathname = usePathname();
 
   const changeLanguage = (newLocale: string) => {
     const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, '') || '/';
-    router.push(`/${newLocale}${pathWithoutLocale}`);
+    window.location.href = `/${newLocale}${pathWithoutLocale}`;
   };
 
   const navItems = [

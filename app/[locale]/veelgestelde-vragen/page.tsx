@@ -5,19 +5,21 @@ import { Footer } from '@/components/Footer';
 import { ChevronDown, ChevronUp, Search, HelpCircle, Shield, Clock, CreditCard, MapPin } from 'lucide-react';
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
+import { useTranslations } from 'next-intl';
 
 export default function FAQ() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const t = useTranslations();
   const [searchTerm, setSearchTerm] = useState('');
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const categories = [
-    { id: 'all', name: 'Alle Vragen', icon: HelpCircle },
-    { id: 'booking', name: 'Boeken', icon: CreditCard },
-    { id: 'travel', name: 'Reizen', icon: MapPin },
-    { id: 'safety', name: 'Veiligheid', icon: Shield },
-    { id: 'support', name: 'Support', icon: Clock }
+    { id: 'all', name: t('faq.allQuestions'), icon: HelpCircle },
+    { id: 'booking', name: t('faq.booking'), icon: CreditCard },
+    { id: 'travel', name: t('faq.travel'), icon: MapPin },
+    { id: 'safety', name: t('faq.safety'), icon: Shield },
+    { id: 'support', name: t('faq.support'), icon: Clock }
   ];
 
   const faqs = [
@@ -133,10 +135,10 @@ export default function FAQ() {
         <section className="py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Veelgestelde Vragen
+              {t('faq.title')}
             </h1>
             <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto mb-8">
-              Alles wat je wilt weten over onze mystery football trips
+              {t('faq.subtitle')}
             </p>
             
             {/* Search Bar */}
@@ -144,7 +146,7 @@ export default function FAQ() {
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-green-400" />
               <input
                 type="text"
-                placeholder="Zoek in veelgestelde vragen..."
+                placeholder={t('faq.searchPlaceholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-12 pr-4 py-4 rounded-full text-green-800 placeholder-green-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -182,10 +184,10 @@ export default function FAQ() {
               <div className="text-center py-12">
                 <HelpCircle className="w-16 h-16 text-green-300 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-green-800 mb-2">
-                  Geen resultaten gevonden
+                  {t('faq.noResults')}
                 </h3>
                 <p className="text-green-600">
-                  Probeer een andere zoekterm of selecteer een andere categorie
+                  {t('faq.noResultsDesc')}
                 </p>
               </div>
             ) : (
@@ -227,10 +229,10 @@ export default function FAQ() {
         <section className="py-20 bg-gradient-to-r from-green-800 to-green-900 text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Nog Vragen?
+              {t('faq.stillQuestions')}
             </h2>
             <p className="text-xl text-green-100 mb-8">
-              Ons team staat klaar om je te helpen met al je vragen over mystery football trips
+              {t('faq.stillQuestionsDesc')}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -238,18 +240,18 @@ export default function FAQ() {
                 href="/contact"
                 className="bg-white text-green-800 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-50 transition-all transform hover:scale-105 shadow-lg"
               >
-                Neem Contact Op
+                {t('faq.contactUs')}
               </a>
               <a
                 href="tel:+31201234567"
                 className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all transform hover:scale-105 shadow-lg"
               >
-                Bel Ons Nu
+                {t('faq.callNow')}
               </a>
             </div>
             
             <div className="mt-8 text-green-200">
-              <p>24/7 Noodlijn: +31 20 987 6543</p>
+              <p>{t('faq.emergencyLine')}</p>
             </div>
           </div>
         </section>

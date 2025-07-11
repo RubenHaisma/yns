@@ -5,45 +5,32 @@ import { Footer } from '@/components/Footer';
 import { Calendar, Gift, MapPin, Sparkles, Clock, Shield, Users } from 'lucide-react';
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
+import { useTranslations } from 'next-intl';
 
 export default function HowItWorks() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const t = useTranslations();
 
   const steps = [
     {
       icon: Calendar,
-      title: "1. Boek je Avontuur",
-      description: "Kies je datum en pakket. Betaal veilig online via iDEAL, creditcard of bankoverschrijving.",
-      details: [
-        "Selecteer je gewenste vertrekdatum",
-        "Kies uit onze drie pakketten",
-        "Vul je voorkeuren in",
-        "Betaal veilig online"
-      ],
+      title: t('howItWorks.step1.title'),
+      description: t('howItWorks.step1.description'),
+      details: t('howItWorks.step1.details'),
       color: "from-blue-500 to-blue-600"
     },
     {
       icon: Gift,
-      title: "2. Wacht vol Spanning",
-      description: "Ontvang hints en updates via email. De spanning stijgt terwijl je bestemming geheim blijft.",
-      details: [
-        "Ontvang bevestiging per email",
-        "Krijg wekelijkse hints over je bestemming",
-        "Volg updates in je persoonlijke dashboard",
-        "Bereid je voor met onze reistips"
-      ],
+      title: t('howItWorks.step2.title'),
+      description: t('howItWorks.step2.description'),
+      details: t('howItWorks.step2.details'),
       color: "from-purple-500 to-purple-600"
     },
     {
       icon: MapPin,
-      title: "3. Ontdek je Bestemming",
-      description: "1-2 weken voor vertrek onthullen we je mysterie bestemming via een speciale onthullingsvideo.",
-      details: [
-        "Ontvang je persoonlijke onthullingsvideo",
-        "Krijg alle reisdetails en tickets",
-        "Download je digitale reisguide",
-        "Bereid je voor op het avontuur"
-      ],
+      title: t('howItWorks.step3.title'),
+      description: t('howItWorks.step3.description'),
+      details: t('howItWorks.step3.details'),
       color: "from-orange-500 to-orange-600"
     }
   ];
@@ -76,10 +63,10 @@ export default function HowItWorks() {
         <section className="py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Hoe Het Werkt
+              {t('howItWorks.title')}
             </h1>
             <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
-              Van boeking tot beleving - ontdek hoe jouw mystery stadium avontuur tot leven komt
+              {t('howItWorks.subtitle')}
             </p>
           </div>
         </section>
@@ -101,7 +88,7 @@ export default function HowItWorks() {
                       {step.description}
                     </p>
                     <ul className="space-y-3">
-                      {step.details.map((detail, detailIndex) => (
+                      {Array.isArray(step.details) && step.details.map((detail, detailIndex) => (
                         <li key={detailIndex} className="flex items-center space-x-3">
                           <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                           <span className="text-green-700">{detail}</span>
@@ -132,10 +119,10 @@ export default function HowItWorks() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-green-800 mb-6">
-                Veelgestelde Vragen
+                {t('howItWorks.faqTitle')}
               </h2>
               <p className="text-xl text-green-600">
-                Alles wat je wilt weten over onze mystery trips
+                {t('howItWorks.faqSubtitle')}
               </p>
             </div>
 
@@ -158,16 +145,16 @@ export default function HowItWorks() {
         <section className="py-20 bg-gradient-to-r from-green-800 to-green-900 text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Klaar voor je Mystery Avontuur?
+              {t('howItWorks.readyTitle')}
             </h2>
             <p className="text-xl text-green-100 mb-8">
-              Boek nu je volgende stadium en laat je verrassen door Europa's mooiste voetbalstadions
+              {t('howItWorks.readySubtitle')}
             </p>
             <button
               onClick={() => setIsBookingModalOpen(true)}
               className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all transform hover:scale-105 shadow-2xl"
             >
-              Boek Je Mystery Trip
+              {t('howItWorks.bookTrip')}
             </button>
           </div>
         </section>

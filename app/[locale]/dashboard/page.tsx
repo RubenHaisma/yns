@@ -5,9 +5,11 @@ import { Footer } from '@/components/Footer';
 import { Calendar, MapPin, Users, CreditCard, Clock, Eye, Gift, Phone, Mail } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { BookingModal } from '@/components/BookingModal';
+import { useTranslations } from 'next-intl';
 
 export default function Dashboard() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const t = useTranslations();
   const [bookingId, setBookingId] = useState('');
   const [email, setEmail] = useState('');
   const [booking, setBooking] = useState<any>(null);
@@ -16,7 +18,7 @@ export default function Dashboard() {
 
   const searchBooking = async () => {
     if (!bookingId && !email) {
-      setError('Vul een boekingnummer of email adres in');
+      setError(t('dashboard.fillBookingOrEmail'));
       return;
     }
 
@@ -34,11 +36,11 @@ export default function Dashboard() {
       if (response.ok) {
         setBooking(data.booking);
       } else {
-        setError(data.error || 'Boeking niet gevonden');
+        setError(data.error || t('dashboard.notFound'));
         setBooking(null);
       }
     } catch (error) {
-      setError('Er is iets misgegaan. Probeer het opnieuw.');
+      setError(t('common.error'));
       setBooking(null);
     } finally {
       setLoading(false);
@@ -56,9 +58,9 @@ export default function Dashboard() {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'confirmed': return 'Bevestigd';
-      case 'pending': return 'In behandeling';
-      case 'cancelled': return 'Geannuleerd';
+      case 'confirmed': return t('dashboard.confirmed');
+      case 'pending': return t('dashboard.pending');
+      case 'cancelled': return t('dashboard.cancelled');
       default: return status;
     }
   };
@@ -74,10 +76,10 @@ export default function Dashboard() {
         <section className="py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Mijn Dashboard
+              {t('dashboard.title')}
             </h1>
             <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
-              Bekijk je boekingen en volg je mystery trip avontuur
+              {t('dashboard.subtitle')}
             </p>
           </div>
         </section>
@@ -87,13 +89,13 @@ export default function Dashboard() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-2xl shadow-xl p-8">
               <h2 className="text-2xl font-bold text-green-800 mb-6 text-center">
-                Zoek Je Boeking
+                {t('dashboard.searchBooking')}
               </h2>
               
               <div className="grid md:grid-cols-2 gap-4 mb-6">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    Boekingnummer
+                    {t('dashboard.bookingNumber')}
                   </label>
                   <input
                     type="text"
@@ -105,7 +107,7 @@ export default function Dashboard() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    Email Adres
+                    {t('dashboard.emailAddress')}
                   </label>
                   <input
                     type="email"
@@ -131,10 +133,10 @@ export default function Dashboard() {
                 {loading ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>Zoeken...</span>
+                    <span>{t('dashboard.searching')}</span>
                   </>
                 ) : (
-                  <span>Zoek Boeking</span>
+                  <span>{t('dashboard.search')}</span>
                 )}
               </button>
             </div>
@@ -150,29 +152,29 @@ export default function Dashboard() {
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
                   <div>
                     <h2 className="text-3xl font-bold text-green-800 mb-2">
-                      Boeking {booking.bookingId}
+                      {t('dashboard.bookingDetails', { bookingId: booking.bookingId })}
                     </h2>
                     <div className="flex items-center space-x-4">
                       <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(booking.status)}`}>
                         {getStatusText(booking.status)}
                       </span>
                       <span className="text-green-600">
-                        Geboekt op {new Date(booking.createdAt).toLocaleDateString('nl-NL')}
+                        {t('dashboard.bookedOn')} {new Date(booking.createdAt).toLocaleDateString('nl-NL')}
                       </span>
                     </div>
                   </div>
                   <div className="text-right mt-4 md:mt-0">
                     <div className="text-2xl font-bold text-green-800">{booking.totalPrice}</div>
-                    <div className="text-green-600">Totaalprijs</div>
+                    <div className="text-green-600">{t('dashboard.totalPrice')}</div>
                   </div>
                 </div>
 
                 {/* Countdown */}
                 {daysUntilTrip > 0 && (
                   <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-6 rounded-lg text-center">
-                    <h3 className="text-xl font-bold mb-2">Aftellen naar je Avontuur!</h3>
+                    <h3 className="text-xl font-bold mb-2">{t('dashboard.countdownTitle')}</h3>
                     <div className="text-4xl font-bold">{daysUntilTrip}</div>
-                    <div>dagen te gaan</div>
+                    <div>{t('dashboard.daysToGo')}</div>
                   </div>
                 )}
               </div>
@@ -180,13 +182,13 @@ export default function Dashboard() {
               <div className="grid lg:grid-cols-2 gap-8">
                 {/* Trip Details */}
                 <div className="bg-white rounded-2xl shadow-xl p-8">
-                  <h3 className="text-2xl font-bold text-green-800 mb-6">Reis Details</h3>
+                  <h3 className="text-2xl font-bold text-green-800 mb-6">{t('dashboard.tripDetails')}</h3>
                   
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
                       <Calendar className="w-5 h-5 text-green-600" />
                       <div>
-                        <div className="font-semibold text-green-800">Vertrekdatum</div>
+                        <div className="font-semibold text-green-800">{t('dashboard.departureDate')}</div>
                         <div className="text-green-600">{new Date(booking.date).toLocaleDateString('nl-NL')}</div>
                       </div>
                     </div>
@@ -194,15 +196,15 @@ export default function Dashboard() {
                     <div className="flex items-center space-x-3">
                       <Users className="w-5 h-5 text-green-600" />
                       <div>
-                        <div className="font-semibold text-green-800">Aantal Reizigers</div>
-                        <div className="text-green-600">{booking.travelers} {booking.travelers === 1 ? 'persoon' : 'personen'}</div>
+                        <div className="font-semibold text-green-800">{t('dashboard.travelers')}</div>
+                        <div className="text-green-600">{booking.travelers} {booking.travelers === 1 ? t('dashboard.person') : t('dashboard.people')}</div>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-3">
                       <Gift className="w-5 h-5 text-green-600" />
                       <div>
-                        <div className="font-semibold text-green-800">Pakket</div>
+                        <div className="font-semibold text-green-800">{t('dashboard.package')}</div>
                         <div className="text-green-600 capitalize">{booking.package}</div>
                       </div>
                     </div>
@@ -210,9 +212,9 @@ export default function Dashboard() {
                     <div className="flex items-center space-x-3">
                       <CreditCard className="w-5 h-5 text-green-600" />
                       <div>
-                        <div className="font-semibold text-green-800">Betaalstatus</div>
+                        <div className="font-semibold text-green-800">{t('dashboard.paymentStatus')}</div>
                         <div className="text-green-600">
-                          {booking.paymentStatus === 'paid' ? 'Betaald' : 'In behandeling'}
+                          {booking.paymentStatus === 'paid' ? t('dashboard.paid') : t('dashboard.pending')}
                         </div>
                       </div>
                     </div>
@@ -221,17 +223,17 @@ export default function Dashboard() {
 
                 {/* Mystery Status */}
                 <div className="bg-white rounded-2xl shadow-xl p-8">
-                  <h3 className="text-2xl font-bold text-green-800 mb-6">Mystery Status</h3>
+                  <h3 className="text-2xl font-bold text-green-800 mb-6">{t('dashboard.mysteryStatus')}</h3>
                   
                   {booking.destination ? (
                     <div className="text-center">
                       <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
                         <Eye className="w-10 h-10 text-white" />
                       </div>
-                      <h4 className="text-xl font-bold text-green-800 mb-2">Bestemming Onthuld!</h4>
+                      <h4 className="text-xl font-bold text-green-800 mb-2">{t('dashboard.destinationRevealed')}</h4>
                       <div className="text-2xl font-bold text-orange-600 mb-4">{booking.destination}</div>
                       <p className="text-green-600">
-                        Je mystery bestemming is onthuld op {new Date(booking.revealedAt).toLocaleDateString('nl-NL')}
+                        {t('dashboard.revealedOn')} {new Date(booking.revealedAt).toLocaleDateString('nl-NL')}
                       </p>
                     </div>
                   ) : (
@@ -239,13 +241,13 @@ export default function Dashboard() {
                       <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                         <span className="text-white text-3xl">?</span>
                       </div>
-                      <h4 className="text-xl font-bold text-green-800 mb-2">Het Mysterie Duurt Voort...</h4>
+                      <h4 className="text-xl font-bold text-green-800 mb-2">{t('dashboard.mysteryOngoing')}</h4>
                       <p className="text-green-600 mb-4">
-                        Je bestemming wordt 1-2 weken voor vertrek onthuld
+                        {t('dashboard.revealTiming')}
                       </p>
                       <div className="bg-purple-50 p-4 rounded-lg">
                         <p className="text-purple-700 text-sm">
-                          💡 <strong>Hint:</strong> Bereid je voor op een onvergetelijke ervaring in een van Europa's mooiste voetbalstadions!
+                          💡 <strong>Hint:</strong> {t('dashboard.hint')}
                         </p>
                       </div>
                     </div>
@@ -255,13 +257,13 @@ export default function Dashboard() {
 
               {/* Contact & Support */}
               <div className="bg-white rounded-2xl shadow-xl p-8 mt-8">
-                <h3 className="text-2xl font-bold text-green-800 mb-6">Hulp Nodig?</h3>
+                <h3 className="text-2xl font-bold text-green-800 mb-6">{t('dashboard.needHelp')}</h3>
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="flex items-center space-x-4 p-4 bg-green-50 rounded-lg">
                     <Phone className="w-8 h-8 text-green-600" />
                     <div>
-                      <div className="font-semibold text-green-800">24/7 Noodlijn</div>
+                      <div className="font-semibold text-green-800">{t('dashboard.emergencyLine')}</div>
                       <div className="text-green-600">+31 20 987 6543</div>
                     </div>
                   </div>
@@ -269,7 +271,7 @@ export default function Dashboard() {
                   <div className="flex items-center space-x-4 p-4 bg-green-50 rounded-lg">
                     <Mail className="w-8 h-8 text-green-600" />
                     <div>
-                      <div className="font-semibold text-green-800">Email Support</div>
+                      <div className="font-semibold text-green-800">{t('dashboard.emailSupport')}</div>
                       <div className="text-green-600">support@yournextstadium.nl</div>
                     </div>
                   </div>

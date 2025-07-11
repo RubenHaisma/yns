@@ -82,7 +82,7 @@ export function WaitlistSection() {
             <h3 className="text-xl lg:text-2xl font-bold mb-4">{t('position')}</h3>
             <div className="text-5xl lg:text-6xl font-bold text-orange-400 mb-2">#{position}</div>
             <p className="text-green-100">
-              You are one of the first {totalWaitlist} people to get access!
+              {totalWaitlist > 0 && `${t('waitlist.benefits.earlyAccessDesc')} - ${totalWaitlist} ${t('waitlist.benefits.updatesDesc')}`}
             </p>
           </div>
 
@@ -131,15 +131,15 @@ export function WaitlistSection() {
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
             <div className="text-center">
               <div className="text-2xl lg:text-3xl font-bold text-orange-400">{totalWaitlist}+</div>
-              <div className="text-green-200 text-sm">People waiting</div>
+              <div className="text-green-200 text-sm">{t('waitlist.benefits.earlyAccessDesc')}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl lg:text-3xl font-bold text-orange-400">50+</div>
-              <div className="text-green-200 text-sm">Stadiums ready</div>
+              <div className="text-green-200 text-sm">{t('stats.stadiums')}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl lg:text-3xl font-bold text-orange-400">15+</div>
-              <div className="text-green-200 text-sm">Countries available</div>
+              <div className="text-green-200 text-sm">{t('stats.countries')}</div>
             </div>
           </div>
         </div>
@@ -154,7 +154,7 @@ export function WaitlistSection() {
                   {t('joinWaitlist')}
                 </h3>
                 <p className="text-green-600 text-sm lg:text-base">
-                  Get exclusive early access to mystery football trips
+                  {t('waitlist.description')}
                 </p>
               </div>
 
@@ -197,8 +197,7 @@ export function WaitlistSection() {
               </button>
 
               <p className="text-xs text-gray-500 text-center">
-                By signing up you agree to our terms and privacy policy. 
-                You can always unsubscribe.
+                {t('waitlist.description')}
               </p>
             </form>
           </div>
