@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model WaitlistUser {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String?
+  city        String?
+  phone       String?
+  favoriteTeam String?
+  preferredDestinations String? // JSON string of preferred destinations
+  source      String?  // How they found us
+  referralCode String? // If they were referred
+  isVerified  Boolean  @default(false)
+  position    Int      @unique @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("waitlist_users")
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  isActive  Boolean  @default(true)
+  source    String?  // waitlist, footer, popup, etc.
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("newsletter_subscribers")
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String
+  status    String   @default("new") // new, read, replied, closed
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("contact_submissions")
+}

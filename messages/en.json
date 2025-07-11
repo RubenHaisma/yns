@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "home": "Home",
+    "howItWorks": "How It Works",
+    "packages": "Packages",
+    "stories": "Stories",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "bookNow": "Book Now",
+    "emergency": "24/7: +31 20 123 4567"
+  },
+  "hero": {
+    "title": "Where are you going?",
+    "subtitle": "Maybe to",
+    "mystery": "It remains a surprise.",
+    "findStadium": "Find Your Next Stadium",
+    "moreInfo": "More Information",
+    "happyTravelers": "Happy Travelers",
+    "moneyBack": "Money Back Guarantee",
+    "support": "24/7 Support"
+  },
+  "process": {
+    "title": "The Mystery Revealed",
+    "subtitle": "From booking to experience - how your next stadium adventure works",
+    "step1": {
+      "title": "Book Your Adventure",
+      "description": "Choose your date and package. Pay securely online and start dreaming about your next stadium."
+    },
+    "step2": {
+      "title": "Wait in Suspense",
+      "description": "Receive hints and updates. The excitement builds while your destination remains secret."
+    },
+    "step3": {
+      "title": "Discover Your Destination",
+      "description": "1-2 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!"
+    }
+  },
+  "packages": {
+    "title": "Choose Your Adventure",
+    "subtitle": "From a simple match visit to a complete luxury weekend - choose the package that suits you",
+    "basic": {
+      "name": "Match Only",
+      "subtitle": "For the pure football lover"
+    },
+    "comfort": {
+      "name": "Match + Travel",
+      "subtitle": "The complete experience"
+    },
+    "premium": {
+      "name": "All Inclusive",
+      "subtitle": "Luxury mystery weekend"
+    },
+    "bookNow": "Book Now",
+    "popular": "POPULAR"
+  },
+  "footer": {
+    "description": "Discover your next stadium with our mystery football trips across Europe.",
+    "quickLinks": "Quick Links",
+    "destinations": "Destinations",
+    "contact": "Contact",
+    "emergencyLine": "24/7 Emergency Line",
+    "copyright": "© 2024 YourNextStadium. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "sgr": "SGR Certified"
+  }
+}

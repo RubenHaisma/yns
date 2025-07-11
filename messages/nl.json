@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "home": "Home",
+    "howItWorks": "Hoe Het Werkt",
+    "packages": "Pakketten",
+    "stories": "Verhalen",
+    "contact": "Contact",
+    "faq": "Veelgestelde Vragen",
+    "bookNow": "Boek Nu",
+    "emergency": "24/7: +31 20 123 4567"
+  },
+  "hero": {
+    "title": "Waar ga jij naartoe?",
+    "subtitle": "Misschien wel naar",
+    "mystery": "Het blijft een verrassing.",
+    "findStadium": "Find Your Next Stadium",
+    "moreInfo": "Meer Informatie",
+    "happyTravelers": "Gelukkige Reizigers",
+    "moneyBack": "Geld Terug Garantie",
+    "support": "24/7 Support"
+  },
+  "process": {
+    "title": "Het Mysterie Onthuld",
+    "subtitle": "Van boeking tot beleving - zo werkt jouw volgende stadium avontuur",
+    "step1": {
+      "title": "Boek je Avontuur",
+      "description": "Kies je datum en pakket. Betaal veilig online en begin met dromen over je volgende stadium."
+    },
+    "step2": {
+      "title": "Wacht vol Spanning",
+      "description": "Ontvang hints en updates. De spanning stijgt terwijl je bestemming geheim blijft."
+    },
+    "step3": {
+      "title": "Ontdek je Bestemming",
+      "description": "1-2 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!"
+    }
+  },
+  "packages": {
+    "title": "Kies Je Avontuur",
+    "subtitle": "Van een simpel match bezoek tot een compleet luxury weekend - kies het pakket dat bij jou past",
+    "basic": {
+      "name": "Alleen de Match",
+      "subtitle": "Voor de pure voetballiefhebber"
+    },
+    "comfort": {
+      "name": "Match + Reis",
+      "subtitle": "De complete ervaring"
+    },
+    "premium": {
+      "name": "Alles Inclusief",
+      "subtitle": "Luxe mystery weekend"
+    },
+    "bookNow": "Boek Nu",
+    "popular": "POPULAIR"
+  },
+  "footer": {
+    "description": "Ontdek je volgende stadium met onze mystery voetbalreizen door heel Europa.",
+    "quickLinks": "Snelle Links",
+    "destinations": "Bestemmingen",
+    "contact": "Contact",
+    "emergencyLine": "24/7 Noodlijn",
+    "copyright": "© 2024 YourNextStadium. Alle rechten voorbehouden.",
+    "privacy": "Privacy Policy",
+    "terms": "Algemene Voorwaarden",
+    "sgr": "SGR Erkend"
+  }
+}
