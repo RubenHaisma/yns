@@ -2,11 +2,16 @@
 const withNextIntl = require('next-intl/plugin')('./i18n.ts');
 
 const nextConfig = withNextIntl({
-  trailingSlash: true,
+  trailingSlash: false,
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { unoptimized: true },
+  images: { 
+    unoptimized: true 
+  },
+  experimental: {
+    serverComponentsExternalPackages: ['@prisma/client']
+  }
 });
 
 module.exports = nextConfig;

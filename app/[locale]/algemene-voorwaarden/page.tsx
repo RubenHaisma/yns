@@ -95,14 +95,14 @@ export default function Terms() {
                       <h4 className="font-semibold text-green-800 mb-2">Betalingstermijnen</h4>
                       <ul className="text-green-700 text-sm space-y-1">
                         <li>• Volledige betaling bij boeking</li>
-                        <li>• Bij groepen >6 personen: 50% aanbetaling</li>
+                        <li>• Bij groepen &gt;6 personen: 50% aanbetaling</li>
                         <li>• Restbetaling 30 dagen voor vertrek</li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div>    
 
             {/* Mystery Concept */}
             <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">

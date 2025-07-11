@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
     ]);
 
     return NextResponse.json({
-      bookings: bookings.map(booking => ({
+      bookings: bookings.map((booking: any) => ({
         ...booking,
         preferences: booking.preferences ? JSON.parse(booking.preferences) : null,
       })),

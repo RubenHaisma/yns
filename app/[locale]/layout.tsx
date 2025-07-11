@@ -18,22 +18,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
-  params: { locale }
+  params
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const messages = await getMessages();
+  const { locale } = await params;
+  const messages = await getMessages({ locale });
 
   return (
-    <html lang={locale}>
-      <body className={`${inter.variable} ${montserrat.variable} font-sans`}>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <div className={`${inter.variable} ${montserrat.variable} font-sans`}>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.documentElement.lang = '${locale}';`
+        }}
+      />
+      <NextIntlClientProvider messages={messages}>
+        {children}
+      </NextIntlClientProvider>
+    </div>
   );
 }

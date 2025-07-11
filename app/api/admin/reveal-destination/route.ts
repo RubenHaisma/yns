@@ -96,7 +96,7 @@ async function sendDestinationRevealEmail(email: string, name: string, revealDat
               
               <div class="destination-reveal">
                 <h3>Je Mystery Bestemming is:</h3>
-                <div class="destination-name">${destination}</div>
+                <div class="destination-name">${revealData.destination}</div>
                 <p>Bereid je voor op een onvergetelijke ervaring!</p>
               </div>
               

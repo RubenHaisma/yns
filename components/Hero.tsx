@@ -69,7 +69,7 @@ export function Hero({ onBookingClick }: HeroProps) {
             Waar ga jij naartoe?
           </h1>
           <div className="text-2xl md:text-3xl lg:text-4xl font-medium text-orange-400 mb-4">
-            <span className="inline-block">Misschien wel naar </span>
+            <span className="inline-block">Misschien wel naar:  </span>
             <span className={`inline-block border-r-2 border-orange-400 transition-all duration-500 ${isTyping ? 'opacity-100' : 'opacity-50'}`}>
               {words[currentWord]}
             </span>
