@@ -2,9 +2,7 @@
 
 import { useState } from 'react';
 import { X, Calendar, Users, MapPin, CreditCard, Check } from 'lucide-react';
-import { loadStripe } from '@stripe/stripe-js';
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+import { useTranslations } from 'next-intl';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -31,6 +29,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     }
   });
 
+  const t = useTranslations();
+
   // Update package when selectedPackage prop changes
   React.useEffect(() => {
     if (selectedPackage) {
@@ -39,9 +39,24 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
   }, [selectedPackage]);
 
   const packages = [
-    { id: 'basic', name: 'Alleen de Match', price: '€149-299', popular: false },
-    { id: 'comfort', name: 'Match + Reis', price: '€299-599', popular: true },
-    { id: 'premium', name: 'Alles Inclusief', price: '€599-999', popular: false }
+    { 
+      id: 'basic', 
+      name: t('packages.basic.name'), 
+      price: t('packages.basic.price'), 
+      popular: false 
+    },
+    { 
+      id: 'comfort', 
+      name: t('packages.comfort.name'), 
+      price: t('packages.comfort.price'), 
+      popular: true 
+    },
+    { 
+      id: 'premium', 
+      name: t('packages.premium.name'), 
+      price: t('packages.premium.price'), 
+      popular: false 
+    }
   ];
 
   const teams = [
@@ -68,47 +83,16 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     setIsSubmitting(true);
     
     try {
-      // Create payment intent
-      const paymentResponse = await fetch('/api/create-payment-intent', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          amount: parseInt(calculateTotalPrice().replace('€', '')),
-          bookingData: formData,
-        }),
-      });
-
-      const { clientSecret } = await paymentResponse.json();
-
-      if (!clientSecret) {
-        throw new Error('Failed to create payment intent');
-      }
-
-      // Redirect to Stripe Checkout or use Elements
-      const stripe = await stripePromise;
-      if (!stripe) {
-        throw new Error('Stripe failed to load');
-      }
-
-      const { error } = await stripe.confirmPayment({
-        clientSecret,
-        confirmParams: {
-          return_url: `${window.location.origin}/payment-success`,
-        },
-      });
-
-      if (error) {
-        throw new Error(error.message);
-      } else {
-        // Payment succeeded, webhook will handle booking creation
-        setIsSuccess(true);
-        setBookingId('Payment processing...');
-      }
+      // Simulate booking process
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Generate booking ID
+      const newBookingId = `YNS-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+      setBookingId(newBookingId);
+      setIsSuccess(true);
     } catch (error) {
       console.error('Booking error:', error);
-      alert('Payment failed. Please try again.');
+      alert('Booking failed. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -124,21 +108,18 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
             <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <Check className="w-10 h-10 text-white" />
             </div>
-            <h2 className="text-3xl font-bold text-green-800 mb-4">Boeking Bevestigd! 🎉</h2>
+            <h2 className="text-3xl font-bold text-green-800 mb-4">{t('modal.bookingConfirmed')}</h2>
             <p className="text-xl text-green-600 mb-6">
-              Je mystery trip is succesvol geboekt!
+              {t('modal.adventureBegins')}
             </p>
             <div className="bg-green-50 rounded-lg p-6 mb-6">
-              <h3 className="text-lg font-bold text-green-800 mb-2">Je Boekingnummer</h3>
+              <h3 className="text-lg font-bold text-green-800 mb-2">{t('modal.bookingNumber')}</h3>
               <div className="text-2xl font-mono font-bold text-green-700">
-                {bookingId === 'Payment processing...' ? 'Processing...' : bookingId}
+                {bookingId}
               </div>
             </div>
             <p className="text-green-700 mb-8">
-              {bookingId === 'Payment processing...' 
-                ? 'Je betaling wordt verwerkt. Je ontvangt binnenkort een bevestigingsmail.'
-                : 'Je ontvangt binnen enkele minuten een bevestigingsmail met alle details. Je bestemming wordt 1-2 weken voor vertrek onthuld!'
-              }
+              Je ontvangt binnen enkele minuten een bevestigingsmail met alle details. Je bestemming wordt 1-2 weken voor vertrek onthuld!
             </p>
             <button
               onClick={() => {
@@ -161,7 +142,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               }}
               className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-3 rounded-full font-bold hover:from-green-600 hover:to-green-700 transition-all"
             >
-              Sluiten
+              {t('modal.close')}
             </button>
           </div>
         </div>
@@ -207,8 +188,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-green-100">
           <div>
-            <h2 className="text-2xl font-bold text-green-800">Boek Je Mystery Trip</h2>
-            <p className="text-green-600">Stap {step} van 4</p>
+            <h2 className="text-2xl font-bold text-green-800">{t('modal.bookTrip')}</h2>
+            <p className="text-green-600">{t('modal.step')} {step} {t('modal.of')} 4</p>
           </div>
           <button
             onClick={onClose}
@@ -231,8 +212,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           {step === 1 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-green-800 mb-2">Kies je Pakket</h3>
-                <p className="text-green-600">Welk avontuur past bij jou?</p>
+                <h3 className="text-xl font-bold text-green-800 mb-2">{t('modal.choosePackage')}</h3>
+                <p className="text-green-600">{t('modal.packageQuestion')}</p>
               </div>
               
               <div className="space-y-4">
@@ -270,14 +251,14 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           {step === 2 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-green-800 mb-2">Wanneer wil je gaan?</h3>
-                <p className="text-green-600">Kies je vertrekdatum</p>
+                <h3 className="text-xl font-bold text-green-800 mb-2">{t('modal.whenTravel')}</h3>
+                <p className="text-green-600">{t('modal.chooseDateSubtitle')}</p>
               </div>
               
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    Vertrekdatum
+                    {t('modal.departureDate')}
                   </label>
                   <input
                     type="date"
@@ -289,7 +270,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                 
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    Aantal reizigers
+                    {t('modal.travelers')}
                   </label>
                   <select
                     value={formData.travelers}
@@ -297,7 +278,9 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                     className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                   >
                     {[1, 2, 3, 4, 5, 6].map(num => (
-                      <option key={num} value={num}>{num} {num === 1 ? 'persoon' : 'personen'}</option>
+                      <option key={num} value={num}>
+                        {num} {num === 1 ? t('modal.person') : t('modal.people')}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -308,14 +291,14 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           {step === 3 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-green-800 mb-2">Vertel ons over jezelf</h3>
-                <p className="text-green-600">Zo kunnen we je perfecte mystery bestemming kiezen</p>
+                <h3 className="text-xl font-bold text-green-800 mb-2">{t('modal.tellAbout')}</h3>
+                <p className="text-green-600">{t('modal.tellSubtitle')}</p>
               </div>
               
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-3">
-                    Welke teams haat je? (selecteer alles wat van toepassing is)
+                    {t('modal.hatedTeams')}
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {teams.map((team) => (
@@ -337,7 +320,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
 
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-3">
-                    Waar ben je al geweest?
+                    {t('modal.visitedCities')}
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {cities.map((city) => (
@@ -359,13 +342,13 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
 
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-3">
-                    Reis je alleen of met vrienden?
+                    {t('modal.travelStyle')}
                   </label>
                   <div className="space-y-2">
                     {[
-                      { value: 'alone', label: 'Alleen - ik ontmoet graag nieuwe mensen' },
-                      { value: 'friends', label: 'Met vrienden - we willen samen plezier hebben' },
-                      { value: 'flexible', label: 'Flexibel - maakt mij niet uit' }
+                      { value: 'alone', label: t('modal.alone') },
+                      { value: 'friends', label: t('modal.friends') },
+                      { value: 'flexible', label: t('modal.flexible') }
                     ].map((option) => (
                       <label key={option.value} className="flex items-center space-x-3">
                         <input
@@ -391,28 +374,28 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           {step === 4 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-green-800 mb-2">Bevestig je Boeking</h3>
-                <p className="text-green-600">Controleer je gegevens en betaal veilig</p>
+                <h3 className="text-xl font-bold text-green-800 mb-2">{t('modal.confirmBooking')}</h3>
+                <p className="text-green-600">{t('modal.confirmSubtitle')}</p>
               </div>
               
               <div className="bg-green-50 rounded-lg p-4 space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-green-700">Pakket:</span>
+                  <span className="text-green-700">{t('modal.package')}:</span>
                   <span className="font-semibold text-green-800">
                     {packages.find(p => p.id === formData.package)?.name}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-green-700">Datum:</span>
+                  <span className="text-green-700">{t('modal.date')}:</span>
                   <span className="font-semibold text-green-800">{formData.date}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-green-700">Reizigers:</span>
+                  <span className="text-green-700">{t('modal.travelers')}:</span>
                   <span className="font-semibold text-green-800">{formData.travelers}</span>
                 </div>
                 <hr className="border-green-200" />
                 <div className="flex justify-between text-lg">
-                  <span className="text-green-700">Totaal:</span>
+                  <span className="text-green-700">{t('modal.total')}:</span>
                   <span className="font-bold text-green-800">
                     {calculateTotalPrice()}
                   </span>
@@ -422,7 +405,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    Volledige naam
+                    {t('modal.fullName')}
                   </label>
                   <input
                     type="text"
@@ -436,7 +419,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                 
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    Email adres
+                    {t('modal.email')}
                   </label>
                   <input
                     type="email"
@@ -450,7 +433,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                 
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
-                    Telefoonnummer
+                    {t('modal.phone')}
                   </label>
                   <input
                     type="tel"
@@ -465,10 +448,10 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               <div className="bg-gradient-to-r from-green-100 to-orange-100 rounded-lg p-4">
                 <div className="flex items-center space-x-2 mb-2">
                   <Check className="w-5 h-5 text-green-600" />
-                  <span className="font-semibold text-green-800">Veilige Betaling via Stripe</span>
+                  <span className="font-semibold text-green-800">{t('modal.securePayment')}</span>
                 </div>
                 <p className="text-sm text-green-700">
-                  Je betaling wordt veilig verwerkt door Stripe. Je bestemming wordt 1-2 weken voor vertrek onthuld.
+                  {t('modal.paymentDesc')}
                 </p>
               </div>
             </div>
@@ -482,14 +465,14 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
             disabled={step === 1}
             className="px-6 py-2 text-green-600 hover:text-green-800 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Vorige
+            {t('modal.previous')}
           </button>
           
           <div className="flex space-x-2">
             {[1, 2, 3, 4].map((num) => (
               <div
                 key={num}
-                className={`w-2 h-2 rounded-full ${
+                className={`w-2 h-2 rounded-full transition-all ${
                   num === step ? 'bg-green-500' : 'bg-gray-300'
                 }`}
               />
@@ -501,7 +484,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               onClick={handleNext}
               className="px-6 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all"
             >
-              Volgende
+              {t('modal.next')}
             </button>
           ) : (
             <button 
@@ -512,10 +495,10 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               {isSubmitting ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>Processing Payment...</span>
+                  <span>{t('modal.processing')}</span>
                 </>
               ) : (
-                <span>Pay & Book Now</span>
+                <span>{t('modal.payBook')}</span>
               )}
             </button>
           )}

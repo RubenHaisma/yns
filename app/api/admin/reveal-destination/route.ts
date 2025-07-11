@@ -11,7 +11,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { bookingId, destination } = await request.json();
+    const { 
+      bookingId, 
+      destination, 
+      stadium, 
+      city, 
+      country, 
+      matchDetails, 
+      hotelInfo, 
+      transportInfo, 
+      specialInstructions 
+    } = await request.json();
 
     // Update booking with destination
     const booking = await prisma.booking.update({
@@ -23,7 +33,21 @@ export async function POST(request: NextRequest) {
     });
 
     // Send destination reveal email
-    await sendDestinationRevealEmail(booking.email, booking.name, destination, bookingId);
+    await sendDestinationRevealEmail(
+      booking.email, 
+      booking.name, 
+      {
+        destination,
+        stadium,
+        city,
+        country,
+        matchDetails,
+        hotelInfo,
+        transportInfo,
+        specialInstructions
+      },
+      bookingId
+    );
 
     return NextResponse.json({
       success: true,
@@ -38,7 +62,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function sendDestinationRevealEmail(email: string, name: string, destination: string, bookingId: string) {
+async function sendDestinationRevealEmail(email: string, name: string, revealData: any, bookingId: string) {
   try {
     await resend.emails.send({
       from: 'YourNextStadium <bookings@yournextstadium.nl>',

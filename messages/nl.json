@@ -1,11 +1,13 @@
 {
   "nav": {
     "home": "Home",
+    "book": "Boeken",
     "howItWorks": "Hoe Het Werkt",
     "packages": "Pakketten",
     "stories": "Verhalen",
     "contact": "Contact",
     "faq": "Veelgestelde Vragen",
+    "dashboard": "Dashboard",
     "bookNow": "Boek Nu",
     "emergency": "24/7: +31 20 123 4567"
   },
@@ -18,6 +20,77 @@
     "happyTravelers": "Gelukkige Reizigers",
     "moneyBack": "Geld Terug Garantie",
     "support": "24/7 Support"
+  },
+  "booking": {
+    "title": "Boek Je Mystery Stadium Trip",
+    "subtitle": "Ontdek Europa's mooiste voetbalstadions. Bestemming blijft geheim tot de onthulling!",
+    "nextReveal": "Volgende Onthulling Over:",
+    "revealSchedule": "Elke vrijdag om 18:00 onthullen we nieuwe mystery bestemmingen!",
+    "chooseAdventure": "Kies Je Avontuur",
+    "chooseSubtitle": "Van een simpel match bezoek tot een compleet luxury weekend",
+    "availableDates": "Beschikbare Data",
+    "availableSubtitle": "Kies uit onze aankomende mystery trips",
+    "selectDate": "Selecteer Datum",
+    "spots": "plekken",
+    "from": "Vanaf",
+    "days": "Dagen",
+    "hours": "Uren",
+    "minutes": "Minuten",
+    "seconds": "Seconden",
+    "newDestinations": "NIEUWE BESTEMMINGEN ELKE WEEK"
+  },
+  "packages": {
+    "basic": {
+      "name": "Match Only",
+      "subtitle": "Pure voetbalervaring",
+      "price": "€149-299",
+      "originalPrice": "€199-399",
+      "category": "C",
+      "savings": "Bespaar €50-100",
+      "features": [
+        "Match ticket (Category C)",
+        "Mystery bestemming onthulling",
+        "24/7 support tijdens reis",
+        "Digitale reisguide",
+        "Geld terug garantie"
+      ]
+    },
+    "comfort": {
+      "name": "Complete Experience",
+      "subtitle": "Match + Transport",
+      "price": "€299-599",
+      "originalPrice": "€399-799",
+      "category": "A",
+      "savings": "Bespaar €100-200",
+      "features": [
+        "Match ticket (Category A)",
+        "Retour transport",
+        "Mystery bestemming onthulling",
+        "Stadion tour (indien mogelijk)",
+        "24/7 support",
+        "Digitale reisguide",
+        "Lokale restaurant tips"
+      ],
+      "popular": true
+    },
+    "premium": {
+      "name": "Luxury Weekend",
+      "subtitle": "All-inclusive ervaring",
+      "price": "€599-999",
+      "originalPrice": "€799-1299",
+      "category": "VIP",
+      "savings": "Bespaar €200-300",
+      "features": [
+        "VIP match ticket",
+        "Premium transport",
+        "2 nachten 4-5* hotel",
+        "Ontbijt & welkomstdiner",
+        "Exclusieve stadion tour",
+        "Lokale gids",
+        "Souvenirs pakket",
+        "24/7 premium support"
+      ]
+    }
   },
   "process": {
     "title": "Het Mysterie Onthuld",
@@ -35,23 +108,18 @@
       "description": "1-2 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!"
     }
   },
-  "packages": {
-    "title": "Kies Je Avontuur",
-    "subtitle": "Van een simpel match bezoek tot een compleet luxury weekend - kies het pakket dat bij jou past",
-    "basic": {
-      "name": "Alleen de Match",
-      "subtitle": "Voor de pure voetballiefhebber"
-    },
-    "comfort": {
-      "name": "Match + Reis",
-      "subtitle": "De complete ervaring"
-    },
-    "premium": {
-      "name": "Alles Inclusief",
-      "subtitle": "Luxe mystery weekend"
-    },
-    "bookNow": "Boek Nu",
-    "popular": "POPULAIR"
+  "trust": {
+    "moneyBack": "100% Geld Terug",
+    "moneyBackDesc": "Niet tevreden? Volledige terugbetaling",
+    "support": "24/7 Support",
+    "supportDesc": "Altijd bereikbaar tijdens je reis",
+    "certified": "SGR Erkend",
+    "certifiedDesc": "Je geld is volledig beschermd"
+  },
+  "stats": {
+    "travelers": "Happy Travelers",
+    "stadiums": "Stadiums",
+    "countries": "Countries"
   },
   "footer": {
     "description": "Ontdek je volgende stadium met onze mystery voetbalreizen door heel Europa.",
@@ -63,5 +131,59 @@
     "privacy": "Privacy Policy",
     "terms": "Algemene Voorwaarden",
     "sgr": "SGR Erkend"
+  },
+  "modal": {
+    "bookTrip": "Boek Je Mystery Trip",
+    "step": "Stap",
+    "of": "van",
+    "choosePackage": "Kies je Pakket",
+    "packageQuestion": "Welk avontuur past bij jou?",
+    "whenTravel": "Wanneer wil je gaan?",
+    "chooseDateSubtitle": "Kies je vertrekdatum",
+    "departureDate": "Vertrekdatum",
+    "travelers": "Aantal reizigers",
+    "person": "persoon",
+    "people": "personen",
+    "tellAbout": "Vertel ons over jezelf",
+    "tellSubtitle": "Zo kunnen we je perfecte mystery bestemming kiezen",
+    "hatedTeams": "Welke teams haat je? (selecteer alles wat van toepassing is)",
+    "visitedCities": "Waar ben je al geweest?",
+    "travelStyle": "Reis je alleen of met vrienden?",
+    "alone": "Alleen - ik ontmoet graag nieuwe mensen",
+    "friends": "Met vrienden - we willen samen plezier hebben",
+    "flexible": "Flexibel - maakt mij niet uit",
+    "confirmBooking": "Bevestig je Boeking",
+    "confirmSubtitle": "Controleer je gegevens en betaal veilig",
+    "package": "Pakket",
+    "date": "Datum",
+    "total": "Totaal",
+    "fullName": "Volledige naam",
+    "email": "Email adres",
+    "phone": "Telefoonnummer",
+    "securePayment": "Veilige Betaling via Stripe",
+    "paymentDesc": "Je betaling wordt veilig verwerkt door Stripe. Je bestemming wordt 1-2 weken voor vertrek onthuld.",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "payBook": "Betaal & Boek Nu",
+    "processing": "Processing Payment...",
+    "bookingConfirmed": "Boeking Bevestigd! 🎉",
+    "adventureBegins": "Je mystery avontuur kan beginnen",
+    "bookingNumber": "Je Boekingnummer",
+    "close": "Sluiten"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Er is een fout opgetreden",
+    "success": "Succesvol",
+    "cancel": "Annuleren",
+    "save": "Opslaan",
+    "edit": "Bewerken",
+    "delete": "Verwijderen",
+    "view": "Bekijken",
+    "search": "Zoeken",
+    "filter": "Filteren",
+    "export": "Exporteren",
+    "import": "Importeren",
+    "refresh": "Vernieuwen"
   }
 }

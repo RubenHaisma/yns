@@ -1,11 +1,13 @@
 {
   "nav": {
     "home": "Home",
+    "book": "Book",
     "howItWorks": "How It Works",
     "packages": "Packages",
     "stories": "Stories",
     "contact": "Contact",
     "faq": "FAQ",
+    "dashboard": "Dashboard",
     "bookNow": "Book Now",
     "emergency": "24/7: +31 20 123 4567"
   },
@@ -18,6 +20,77 @@
     "happyTravelers": "Happy Travelers",
     "moneyBack": "Money Back Guarantee",
     "support": "24/7 Support"
+  },
+  "booking": {
+    "title": "Book Your Mystery Stadium Trip",
+    "subtitle": "Discover Europe's most beautiful football stadiums. Destination remains secret until the reveal!",
+    "nextReveal": "Next Reveal In:",
+    "revealSchedule": "Every Friday at 6 PM we reveal new mystery destinations!",
+    "chooseAdventure": "Choose Your Adventure",
+    "chooseSubtitle": "From a simple match visit to a complete luxury weekend",
+    "availableDates": "Available Dates",
+    "availableSubtitle": "Choose from our upcoming mystery trips",
+    "selectDate": "Select Date",
+    "spots": "spots",
+    "from": "From",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "newDestinations": "NEW DESTINATIONS EVERY WEEK"
+  },
+  "packages": {
+    "basic": {
+      "name": "Match Only",
+      "subtitle": "Pure football experience",
+      "price": "€149-299",
+      "originalPrice": "€199-399",
+      "category": "C",
+      "savings": "Save €50-100",
+      "features": [
+        "Match ticket (Category C)",
+        "Mystery destination reveal",
+        "24/7 support during trip",
+        "Digital travel guide",
+        "Money back guarantee"
+      ]
+    },
+    "comfort": {
+      "name": "Complete Experience",
+      "subtitle": "Match + Transport",
+      "price": "€299-599",
+      "originalPrice": "€399-799",
+      "category": "A",
+      "savings": "Save €100-200",
+      "features": [
+        "Match ticket (Category A)",
+        "Return transport",
+        "Mystery destination reveal",
+        "Stadium tour (if available)",
+        "24/7 support",
+        "Digital travel guide",
+        "Local restaurant tips"
+      ],
+      "popular": true
+    },
+    "premium": {
+      "name": "Luxury Weekend",
+      "subtitle": "All-inclusive experience",
+      "price": "€599-999",
+      "originalPrice": "€799-1299",
+      "category": "VIP",
+      "savings": "Save €200-300",
+      "features": [
+        "VIP match ticket",
+        "Premium transport",
+        "2 nights 4-5* hotel",
+        "Breakfast & welcome dinner",
+        "Exclusive stadium tour",
+        "Local guide",
+        "Souvenirs package",
+        "24/7 premium support"
+      ]
+    }
   },
   "process": {
     "title": "The Mystery Revealed",
@@ -35,23 +108,18 @@
       "description": "1-2 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!"
     }
   },
-  "packages": {
-    "title": "Choose Your Adventure",
-    "subtitle": "From a simple match visit to a complete luxury weekend - choose the package that suits you",
-    "basic": {
-      "name": "Match Only",
-      "subtitle": "For the pure football lover"
-    },
-    "comfort": {
-      "name": "Match + Travel",
-      "subtitle": "The complete experience"
-    },
-    "premium": {
-      "name": "All Inclusive",
-      "subtitle": "Luxury mystery weekend"
-    },
-    "bookNow": "Book Now",
-    "popular": "POPULAR"
+  "trust": {
+    "moneyBack": "100% Money Back",
+    "moneyBackDesc": "Not satisfied? Full refund",
+    "support": "24/7 Support",
+    "supportDesc": "Always available during your trip",
+    "certified": "SGR Certified",
+    "certifiedDesc": "Your money is fully protected"
+  },
+  "stats": {
+    "travelers": "Happy Travelers",
+    "stadiums": "Stadiums",
+    "countries": "Countries"
   },
   "footer": {
     "description": "Discover your next stadium with our mystery football trips across Europe.",
@@ -63,5 +131,59 @@
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
     "sgr": "SGR Certified"
+  },
+  "modal": {
+    "bookTrip": "Book Your Mystery Trip",
+    "step": "Step",
+    "of": "of",
+    "choosePackage": "Choose your Package",
+    "packageQuestion": "Which adventure suits you?",
+    "whenTravel": "When do you want to travel?",
+    "chooseDateSubtitle": "Choose your departure date",
+    "departureDate": "Departure Date",
+    "travelers": "Number of travelers",
+    "person": "person",
+    "people": "people",
+    "tellAbout": "Tell us about yourself",
+    "tellSubtitle": "So we can choose your perfect mystery destination",
+    "hatedTeams": "Which teams do you hate? (select all that apply)",
+    "visitedCities": "Where have you been before?",
+    "travelStyle": "Are you traveling alone or with friends?",
+    "alone": "Alone - I like meeting new people",
+    "friends": "With friends - we want to have fun together",
+    "flexible": "Flexible - doesn't matter to me",
+    "confirmBooking": "Confirm your Booking",
+    "confirmSubtitle": "Check your details and pay securely",
+    "package": "Package",
+    "date": "Date",
+    "total": "Total",
+    "fullName": "Full name",
+    "email": "Email address",
+    "phone": "Phone number",
+    "securePayment": "Secure Payment via Stripe",
+    "paymentDesc": "Your payment is securely processed by Stripe. Your destination will be revealed 1-2 weeks before travel.",
+    "previous": "Previous",
+    "next": "Next",
+    "payBook": "Pay & Book Now",
+    "processing": "Processing Payment...",
+    "bookingConfirmed": "Booking Confirmed! 🎉",
+    "adventureBegins": "Your mystery adventure can begin",
+    "bookingNumber": "Your Booking Number",
+    "close": "Close"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Successful",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "refresh": "Refresh"
   }
 }

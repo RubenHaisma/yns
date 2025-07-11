@@ -174,13 +174,14 @@ export default function AdminDashboard() {
           <div className="border-b border-gray-200">
             <nav className="flex space-x-8 px-6">
               {[
-                { id: 'bookings', label: 'Bookings', icon: Users },
+                { id: 'bookings', label: 'Bookings', icon: Users, href: '/admin/dashboard/bookings' },
                 { id: 'destinations', label: 'Destinations', icon: MapPin },
                 { id: 'analytics', label: 'Analytics', icon: CreditCard },
               ].map((tab) => (
-                <button
+                <a
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  href={tab.href || '#'}
+                  onClick={!tab.href ? () => setActiveTab(tab.id) : undefined}
                   className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm ${
                     activeTab === tab.id
                       ? 'border-green-500 text-green-600'
@@ -189,7 +190,7 @@ export default function AdminDashboard() {
                 >
                   <tab.icon className="w-5 h-5" />
                   <span>{tab.label}</span>
-                </button>
+                </a>
               ))}
             </nav>
           </div>
@@ -197,6 +198,19 @@ export default function AdminDashboard() {
           {/* Bookings Tab */}
           {activeTab === 'bookings' && (
             <div className="p-6">
+              <div className="mb-6 text-center">
+                <p className="text-gray-600 mb-4">
+                  For detailed booking management, visit the dedicated bookings page.
+                </p>
+                <a
+                  href="/admin/dashboard/bookings"
+                  className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                >
+                  <Users className="w-4 h-4 mr-2" />
+                  Manage Bookings
+                </a>
+              </div>
+              
               {/* Filters */}
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <div className="flex-1">
@@ -231,7 +245,7 @@ export default function AdminDashboard() {
 
               {/* Bookings Table */}
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
+                <table className="min-w-full divide-y divide-gray-200 opacity-50">
                   <thead className="bg-gray-50">
                     <tr>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -255,7 +269,7 @@ export default function AdminDashboard() {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {bookings.map((booking) => (
+                    {bookings.slice(0, 5).map((booking) => (
                       <tr key={booking.id} className="hover:bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div>
@@ -320,6 +334,9 @@ export default function AdminDashboard() {
                     ))}
                   </tbody>
                 </table>
+                <div className="text-center py-4 text-gray-500">
+                  Showing preview only. <a href="/admin/dashboard/bookings" className="text-green-600 hover:text-green-800">View all bookings →</a>
+                </div>
               </div>
             </div>
           )}

@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { Menu, X, Phone, Globe } from 'lucide-react';
+import { useTranslations, useLocale } from 'next-intl';
+import { useRouter, usePathname } from 'next/navigation';
 
 interface HeaderProps {
   onBookingClick: () => void;
@@ -9,7 +11,26 @@ interface HeaderProps {
 
 export function Header({ onBookingClick }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [language, setLanguage] = useState('NL');
+  const t = useTranslations('nav');
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const toggleLanguage = () => {
+    const newLocale = locale === 'nl' ? 'en' : 'nl';
+    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+    router.push(newPath);
+  };
+
+  const navItems = [
+    { key: 'home', href: `/${locale}` },
+    { key: 'book', href: `/${locale}/boeken` },
+    { key: 'howItWorks', href: `/${locale}/hoe-het-werkt` },
+    { key: 'packages', href: `/${locale}/pakketten` },
+    { key: 'stories', href: `/${locale}/verhalen` },
+    { key: 'contact', href: `/${locale}/contact` },
+    { key: 'dashboard', href: `/${locale}/dashboard` },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-green-100">
@@ -25,24 +46,15 @@ export function Header({ onBookingClick }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-              Home
-            </a>
-            <a href="/nl/hoe-het-werkt" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-              Hoe Het Werkt
-            </a>
-            <a href="/nl/pakketten" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-              Pakketten
-            </a>
-            <a href="/nl/verhalen" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-              Verhalen
-            </a>
-            <a href="/nl/contact" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-              Contact
-            </a>
-            <a href="/nl/dashboard" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-              Dashboard
-            </a>
+            {navItems.map((item) => (
+              <a
+                key={item.key}
+                href={item.href}
+                className="text-green-800 hover:text-orange-500 transition-colors font-medium"
+              >
+                {t(item.key)}
+              </a>
+            ))}
           </nav>
 
           {/* Right Side */}
@@ -50,16 +62,16 @@ export function Header({ onBookingClick }: HeaderProps) {
             {/* Emergency Contact */}
             <div className="hidden lg:flex items-center space-x-2 text-green-800">
               <Phone className="w-4 h-4" />
-              <span className="font-medium">24/7: +31 20 123 4567</span>
+              <span className="font-medium">{t('emergency')}</span>
             </div>
 
             {/* Language Toggle */}
             <button
-              onClick={() => setLanguage(language === 'NL' ? 'EN' : 'NL')}
+              onClick={toggleLanguage}
               className="flex items-center space-x-1 px-3 py-1 rounded-full border border-green-200 hover:bg-green-50 transition-colors"
             >
               <Globe className="w-4 h-4 text-green-800" />
-              <span className="text-green-800 font-medium">{language}</span>
+              <span className="text-green-800 font-medium">{locale.toUpperCase()}</span>
             </button>
 
             {/* CTA Button */}
@@ -67,7 +79,7 @@ export function Header({ onBookingClick }: HeaderProps) {
               onClick={onBookingClick}
               className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-full font-bold hover:from-orange-600 hover:to-orange-700 transition-all transform hover:scale-105 shadow-lg"
             >
-              Boek Nu
+              {t('bookNow')}
             </button>
 
             {/* Mobile Menu Button */}
@@ -84,28 +96,20 @@ export function Header({ onBookingClick }: HeaderProps) {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-green-100">
             <nav className="flex flex-col space-y-3">
-              <a href="/" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-                Home
-              </a>
-              <a href="/nl/hoe-het-werkt" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-                Hoe Het Werkt
-              </a>
-              <a href="/nl/pakketten" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-                Pakketten
-              </a>
-              <a href="/nl/verhalen" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-                Verhalen
-              </a>
-              <a href="/nl/contact" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-                Contact
-              </a>
-              <a href="/nl/dashboard" className="text-green-800 hover:text-orange-500 transition-colors font-medium">
-                Dashboard
-              </a>
+              {navItems.map((item) => (
+                <a
+                  key={item.key}
+                  href={item.href}
+                  className="text-green-800 hover:text-orange-500 transition-colors font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {t(item.key)}
+                </a>
+              ))}
               <div className="pt-3 border-t border-green-100">
                 <div className="flex items-center space-x-2 text-green-800">
                   <Phone className="w-4 h-4" />
-                  <span className="font-medium">24/7: +31 20 123 4567</span>
+                  <span className="font-medium">{t('emergency')}</span>
                 </div>
               </div>
             </nav>
