@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,20 +8,20 @@ datasource db {
 }
 
 model WaitlistUser {
-  id          String   @id @default(cuid())
-  email       String   @unique
-  name        String?
-  city        String?
-  phone       String?
-  favoriteTeam String?
-  preferredDestinations String? // JSON string of preferred destinations
-  source      String?  // How they found us
-  referralCode String? // If they were referred
-  isVerified  Boolean  @default(false)
-  position    Int      @unique @default(autoincrement())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  
+  id                    String   @id @default(cuid())
+  email                 String   @unique
+  name                  String?
+  city                  String?
+  phone                 String?
+  favoriteTeam          String?
+  preferredDestinations String?
+  source                String?
+  referralCode          String?
+  isVerified            Boolean  @default(false)
+  position              Int      @unique @default(autoincrement())
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
   @@map("waitlist_users")
 }
 
@@ -33,10 +30,10 @@ model NewsletterSubscriber {
   email     String   @unique
   name      String?
   isActive  Boolean  @default(true)
-  source    String?  // waitlist, footer, popup, etc.
+  source    String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
+
   @@map("newsletter_subscribers")
 }
 
@@ -47,32 +44,32 @@ model ContactSubmission {
   phone     String?
   subject   String
   message   String
-  status    String   @default("new") // new, read, replied, closed
+  status    String   @default("new")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
+
   @@map("contact_submissions")
 }
 
 model Booking {
-  id                    String   @id @default(cuid())
-  bookingId             String   @unique
+  id                    String    @id @default(cuid())
+  bookingId             String    @unique
   email                 String
   name                  String
   phone                 String?
-  package               String   // basic, comfort, premium
+  package               String
   date                  DateTime
   travelers             Int
-  preferences           String?  // JSON string
+  preferences           String?
   totalPrice            String
-  status                String   @default("pending") // pending, confirmed, cancelled
-  paymentStatus         String   @default("pending") // pending, paid, failed, refunded
-  stripePaymentIntentId String?  // Store Stripe payment intent ID
-  destination           String?  // Will be revealed later
+  status                String    @default("pending")
+  paymentStatus         String    @default("pending")
+  stripePaymentIntentId String?
+  destination           String?
   revealedAt            DateTime?
-  createdAt             DateTime @default(now())
-  updatedAt             DateTime @updatedAt
-  
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
   @@map("bookings")
 }
 
@@ -87,10 +84,10 @@ model Destination {
   description String?
   imageUrl    String?
   isActive    Boolean  @default(true)
-  difficulty  String   @default("medium") // easy, medium, hard (for mystery level)
-  season      String?  // 2024-25
+  difficulty  String   @default("medium")
+  season      String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  
+
   @@map("destinations")
 }
