@@ -147,6 +147,11 @@
       "waiting": "Mensen wachten",
       "stadiums": "Stadions klaar", 
       "countries": "Landen beschikbaar"
+    },
+    "discount": {
+      "title": "10% KORTING",
+      "subtitle": "Exclusieve Waitlist Korting",
+      "description": "Sluit je aan bij de waitlist en krijg 10% korting op je eerste boeking wanneer we live gaan."
     }
   },
   "trust": {
@@ -168,7 +173,7 @@
     "destinations": "Bestemmingen",
     "contact": "Contact",
     "emergencyLine": "24/7 email",
-    "copyright": "© 2024 YourNextStadium. Alle rechten voorbehouden.",
+    "copyright": "© 2025 YourNextStadium. Alle rechten voorbehouden.",
     "privacy": "Privacy policy",
     "terms": "Algemene voorwaarden",
     "sgr": "SGR erkend",
@@ -256,6 +261,13 @@
       "discountsDesc": "Speciale prijzen voor waitlist leden",
       "updates": "Insider updates",
       "updatesDesc": "Eerste updates over nieuwe bestemmingen"
+    },
+    "discount": {
+      "title": "10% KORTING",
+      "subtitle": "Exclusieve Waitlist Korting",
+      "description": "Als waitlist lid krijg je een speciale 10% korting op je eerste boeking wanneer we live gaan.",
+      "codeLabel": "Gebruik code:",
+      "code": "WAITLIST10"
     }
   },
   "contact": {
@@ -474,18 +486,18 @@
     ]
   },
   "privacy": {
-    "title": "Privacy Policy",
+    "title": "Privacy Policy",  
     "subtitle": "YourNextStadium B.V. - Uitgebreide Gegevensbescherming & Privacy",
-    "lastUpdated": "Laatst bijgewerkt: December 2024",
+    "lastUpdated": "Laatst bijgewerkt: Juli 2025",
     "version": "Versie 2.1",
     "tableOfContents": "Inhoudsopgave",
     "introduction": {
       "title": "1. Inleiding & Reikwijdte",
       "company": "YourNextStadium B.V. (&ldquo;Bedrijf&rdquo;, &ldquo;wij&rdquo;, &ldquo;ons&rdquo;, of &ldquo;onze&rdquo;) exploiteert de website yournextstadium.nl en gerelateerde diensten (gezamenlijk de &ldquo;Dienst&rdquo;). Dit Privacy Policy beschrijft hoe wij uw persoonsgegevens verzamelen, gebruiken, verwerken en beschermen in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) en toepasselijke Nederlandse gegevensbeschermingswetten.",
       "applies": "Dit beleid is van toepassing op alle gebruikers van onze Dienst, inclusief bezoekers, klanten en zakelijke partners. Door gebruik te maken van onze Dienst erkent u dat u dit Privacy Policy heeft gelezen, begrepen en ermee instemt.",
-      "important": "Belangrijk: Dit beleid is effectief vanaf December 2024. Wij kunnen dit beleid periodiek bijwerken om wijzigingen in onze praktijken of toepasselijke wetten te weerspiegelen. Wij zullen u op de hoogte stellen van materiële wijzigingen via onze Dienst of per e-mail."
+      "important": "Belangrijk: Dit beleid is effectief vanaf Juli 2025. Wij kunnen dit beleid periodiek bijwerken om wijzigingen in onze praktijken of toepasselijke wetten te weerspiegelen. Wij zullen u op de hoogte stellen van materiële wijzigingen via onze Dienst of per e-mail."
     },
-    "definitions": {
+    "definitions": {    
       "title": "2. Definities & Juridisch Kader",
       "keyDefinitions": "Belangrijke Definities",
       "personalData": "Persoonsgegevens:",
@@ -697,7 +709,7 @@
   "terms": {
     "title": "Algemene Voorwaarden",
     "subtitle": "YourNextStadium B.V. - Uitgebreide Boekingsvoorwaarden & Dienstverleningscondities",
-    "lastUpdated": "Laatst bijgewerkt: December 2024",
+    "lastUpdated": "Laatst bijgewerkt: Juli 2025",
     "version": "Versie 2.1",
     "tableOfContents": "Inhoudsopgave",
     "introduction": {

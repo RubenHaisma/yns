@@ -138,6 +138,13 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
   }
 
   const handleNext = () => {
+    // Validate current step before proceeding
+    if (step === 1 && !formData.package) {
+      return; // Don't proceed if no package is selected
+    }
+    if (step === 2 && (!formData.date || formData.travelers < 1)) {
+      return; // Don't proceed if date is not selected or travelers is invalid
+    }
     if (step < 3) setStep(step + 1);
   };
 
@@ -364,7 +371,11 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           {step < 3 ? (
             <button
               onClick={handleNext}
-              className="px-4 lg:px-6 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all text-sm lg:text-base"
+              disabled={
+                (step === 1 && !formData.package) ||
+                (step === 2 && (!formData.date || formData.travelers < 1))
+              }
+              className="px-4 lg:px-6 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base"
             >
               {t('next')}
             </button>

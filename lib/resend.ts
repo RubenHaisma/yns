@@ -115,7 +115,7 @@ function getDutchWelcomeEmail(name: string, position: number): string {
         </div>
         
         <div class="footer">
-          <p>© 2024 YourNextStadium. Alle rechten voorbehouden.</p>
+          <p>© 2025 YourNextStadium. Alle rechten voorbehouden.</p>
           <p>Je ontvangt deze email omdat je je hebt aangemeld voor onze waitlist.</p>
         </div>
       </div>
@@ -209,7 +209,7 @@ function getEnglishWelcomeEmail(name: string, position: number): string {
         </div>
         
         <div class="footer">
-          <p>© 2024 YourNextStadium. All rights reserved.</p>
+          <p>© 2025 YourNextStadium. All rights reserved.</p>
           <p>You're receiving this email because you signed up for our waitlist.</p>
         </div>
       </div>

@@ -13,7 +13,14 @@ export function Hero({ onBookingClick }: HeroProps) {
   const [isTyping, setIsTyping] = useState(true);
   const t = useTranslations('hero');
 
-  const words = ['Amsterdam', 'Barcelona', 'München', 'Madrid', 'Milano', 'London'];
+    const words = [
+    'Amsterdam', 'Barcelona', 'München', 'Madrid', 'Milano', 'London',
+    'Sevilla', 'Valencia', 'Bilbao', 'San Sebastián', 'Málaga',
+    'Paris', 'Lyon', 'Marseille', 'Nice', 'Toulouse', 'Bordeaux',
+    'Berlin', 'Dortmund', 'Hamburg', 'Stuttgart', 'Frankfurt', 'Köln',
+    'Bruxelles', 'Anvers', 'Gand', 'Liège', 'Charleroi',
+    'Torino', 'Genova', 'Bologna', 'Firenze', 'Verona', 'Bergamo'
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,8 +28,8 @@ export function Hero({ onBookingClick }: HeroProps) {
       setTimeout(() => {
         setCurrentWord((prev) => (prev + 1) % words.length);
         setIsTyping(true);
-      }, 500);
-    }, 3000);
+      }, 250);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, []);
@@ -37,15 +44,16 @@ export function Hero({ onBookingClick }: HeroProps) {
 
       {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(6)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-orange-400 rounded-full animate-pulse"
+            className="absolute w-2 h-2 bg-orange-400 rounded-full animate-pulse opacity-0"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 3}s`
+              left: `${10 + Math.random() * 80}%`,
+              top: `${10 + Math.random() * 80}%`,
+              animationDelay: `${Math.random() * 4}s`,
+              animationDuration: `${3 + Math.random() * 2}s`,
+              animation: `pulse 3s ease-in-out infinite, fadeInOut 8s ease-in-out infinite`,
             }}
           />
         ))}
@@ -82,7 +90,7 @@ export function Hero({ onBookingClick }: HeroProps) {
         </div>
 
         {/* Trust Indicators */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 text-green-100">
             <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
               <Star className="w-4 h-4 text-white" />
@@ -101,7 +109,7 @@ export function Hero({ onBookingClick }: HeroProps) {
             </div>
             <span className="text-sm text-center sm:text-left">{t('guarantee3')}</span>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Scroll Indicator */}

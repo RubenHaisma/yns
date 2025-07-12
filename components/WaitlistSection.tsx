@@ -87,6 +87,21 @@ export function WaitlistSection() {
             </p>
           </div>
 
+          <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-6 lg:p-8 mb-8 shadow-2xl">
+            <div className="text-center">
+              <div className="text-4xl lg:text-5xl font-bold text-white mb-2">{tSuccess('discount.title')}</div>
+              <h3 className="text-xl lg:text-2xl font-bold text-white mb-3">{tSuccess('discount.subtitle')}</h3>
+              <p className="text-orange-100 text-sm lg:text-base mb-4">
+                {tSuccess('discount.description')}
+              </p>
+              <div className="bg-white/20 rounded-lg p-4">
+                <p className="text-white font-semibold text-sm lg:text-base">
+                  {tSuccess('discount.codeLabel')} <span className="bg-white text-orange-600 px-3 py-1 rounded font-mono font-bold">{tSuccess('discount.code')}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 mb-8">
             <div className="bg-white/5 rounded-lg p-4 lg:p-6">
               <Gift className="w-6 h-6 lg:w-8 lg:h-8 text-orange-400 mx-auto mb-3" />
@@ -142,6 +157,17 @@ export function WaitlistSection() {
         </div>
 
         <div className="max-w-md mx-auto">
+          {/* 10% Discount Banner */}
+          <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-6 lg:p-8 mb-6 shadow-2xl">
+            <div className="text-center">
+              <div className="text-3xl lg:text-4xl font-bold text-white mb-2">{tWaitlist('discount.title')}</div>
+              <h3 className="text-lg lg:text-xl font-bold text-white mb-3">{tWaitlist('discount.subtitle')}</h3>
+              <p className="text-orange-100 text-sm lg:text-base mb-4">
+                {tWaitlist('discount.description')}
+              </p>
+            </div>
+          </div>
+
           {/* Simple Email Form */}
           <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-2xl">
             <form onSubmit={handleSubmit} className="space-y-6">

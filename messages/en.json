@@ -146,6 +146,11 @@
       "waiting": "People waiting",
       "stadiums": "Stadiums ready",
       "countries": "Countries available"
+    },
+    "discount": {
+      "title": "10% OFF",
+      "subtitle": "Exclusive Waitlist Discount",
+      "description": "Join the waitlist and get 10% off your first booking when we launch."
     }
   },
   "trust": {
@@ -167,7 +172,7 @@
     "destinations": "Destinations",
     "contact": "Contact",
     "emergencyLine": "24/7 email",
-    "copyright": "© 2024 YourNextStadium. All rights reserved.",
+    "copyright": "© 2025 YourNextStadium. All rights reserved.",
     "privacy": "Privacy policy",
     "terms": "Terms & conditions",
     "sgr": "SGR certified",
@@ -255,6 +260,13 @@
       "discountsDesc": "Special prices for waitlist members",
       "updates": "Insider updates",
       "updatesDesc": "First updates about new destinations"
+    },
+    "discount": {
+      "title": "10% OFF",
+      "subtitle": "Exclusive Waitlist Discount",
+      "description": "As a waitlist member, you'll receive a special 10% discount on your first booking when we launch.",
+      "codeLabel": "Use code:",
+      "code": "WAITLIST10"
     }
   },
   "contact": {
@@ -475,14 +487,14 @@
   "privacy": {
     "title": "Privacy Policy",
     "subtitle": "YourNextStadium B.V. - Comprehensive Data Protection & Privacy",
-    "lastUpdated": "Last Updated: December 2024",
+    "lastUpdated": "Last Updated: July 2025", 
     "version": "Version 2.1",
     "tableOfContents": "Table of Contents",
     "introduction": {
       "title": "1. Introduction & Scope",
       "company": "YourNextStadium B.V. (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) operates the website yournextstadium.nl and related services (collectively, the &ldquo;Service&rdquo;). This Privacy Policy describes how we collect, use, process, and protect your personal data in accordance with the General Data Protection Regulation (GDPR) and applicable Dutch data protection laws.",
       "applies": "This policy applies to all users of our Service, including visitors, customers, and business partners. By using our Service, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy.",
-      "important": "Important: This policy is effective as of December 2024. We may update this policy periodically to reflect changes in our practices or applicable laws. We will notify you of any material changes through our Service or via email."
+      "important": "Important: This policy is effective as of July 2025. We may update this policy periodically to reflect changes in our practices or applicable laws. We will notify you of any material changes through our Service or via email."
     },
     "definitions": {
       "title": "2. Definitions & Legal Framework",
@@ -696,7 +708,7 @@
   "terms": {
     "title": "Terms & Conditions",
     "subtitle": "YourNextStadium B.V. - Comprehensive Booking Terms & Service Conditions",
-    "lastUpdated": "Last Updated: December 2024",
+    "lastUpdated": "Last Updated: July 2025",
     "version": "Version 2.1",
     "tableOfContents": "Table of Contents",
     "introduction": {
