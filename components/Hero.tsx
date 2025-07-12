@@ -14,7 +14,7 @@ export function Hero({ onBookingClick }: HeroProps) {
   const t = useTranslations('hero');
   const locale = useLocale();
 
-    const words = [
+  const words = [
     'Amsterdam', 'Barcelona', 'München', 'Madrid', 'Milano', 'London',
     'Sevilla', 'Valencia', 'Bilbao', 'San Sebastián', 'Málaga',
     'Paris', 'Lyon', 'Marseille', 'Nice', 'Toulouse', 'Bordeaux',
@@ -43,22 +43,7 @@ export function Hero({ onBookingClick }: HeroProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-green-900/90 via-green-800/50 to-green-900/70"></div>
       </div>
 
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-orange-400 rounded-full animate-pulse opacity-0"
-            style={{
-              left: `${10 + Math.random() * 80}%`,
-              top: `${10 + Math.random() * 80}%`,
-              animationDelay: `${Math.random() * 4}s`,
-              animationDuration: `${3 + Math.random() * 2}s`,
-              animation: `pulse 3s ease-in-out infinite, fadeInOut 8s ease-in-out infinite`,
-            }}
-          />
-        ))}
-      </div>
+
 
       {/* Main Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -141,6 +126,8 @@ export function Hero({ onBookingClick }: HeroProps) {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <ChevronDown className="w-6 h-6 text-white opacity-70" />
       </div>
+
+
     </section>
   );
 }
