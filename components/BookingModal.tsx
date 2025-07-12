@@ -75,16 +75,38 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     setIsSubmitting(true);
     
     try {
-      // Simulate booking process
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Generate booking ID
-      const newBookingId = `YNS-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
-      setBookingId(newBookingId);
-      setIsSuccess(true);
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          email: formData.email,
+          name: formData.name,
+          source: 'booking-modal'
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Generate a booking reference for display
+        const newBookingId = `YNS-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+        setBookingId(newBookingId);
+        setIsSuccess(true);
+      } else {
+        if (response.status === 409) {
+          // User already on waitlist
+          const newBookingId = `YNS-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+          setBookingId(newBookingId);
+          setIsSuccess(true);
+        } else {
+          throw new Error(data.error || 'Failed to join waitlist');
+        }
+      }
     } catch (error) {
-      console.error('Booking error:', error);
-      alert('Booking failed. Please try again.');
+      console.error('Waitlist signup error:', error);
+      alert('Failed to join waitlist. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -100,18 +122,18 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
             <div className="w-16 h-16 lg:w-20 lg:h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <Check className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
             </div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-green-800 mb-4">{t('bookingConfirmed')}</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold text-green-800 mb-4">Welcome to the Waitlist!</h2>
             <p className="text-lg lg:text-xl text-green-600 mb-6">
-              {t('adventureBegins')}
+              You&apos;re now on the exclusive waitlist for early access!
             </p>
             <div className="bg-green-50 rounded-lg p-4 lg:p-6 mb-6">
-              <h3 className="text-base lg:text-lg font-bold text-green-800 mb-2">{t('bookingNumber')}</h3>
+              <h3 className="text-base lg:text-lg font-bold text-green-800 mb-2">Reference Number</h3>
               <div className="text-xl lg:text-2xl font-mono font-bold text-green-700">
                 {bookingId}
               </div>
             </div>
             <p className="text-green-700 mb-6 lg:mb-8 text-sm lg:text-base">
-              Je ontvangt binnen enkele minuten een bevestigingsmail met alle details. Je bestemming wordt 1-2 weken voor vertrek onthuld!
+              You&apos;ll receive a confirmation email within minutes with your waitlist position and exclusive benefits. We&apos;ll notify you as soon as bookings open!
             </p>
             <button
               onClick={() => {
