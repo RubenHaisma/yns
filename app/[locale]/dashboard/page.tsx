@@ -272,7 +272,7 @@ export default function Dashboard() {
                     <Mail className="w-8 h-8 text-green-600" />
                     <div>
                       <div className="font-semibold text-green-800">{t('dashboard.emailSupport')}</div>
-                      <div className="text-green-600">support@yournextstadium.nl</div>
+                      <div className="text-green-600">support@yournextstadium.com</div>
                     </div>
                   </div>
                 </div>

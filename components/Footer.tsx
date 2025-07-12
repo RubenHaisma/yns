@@ -86,13 +86,13 @@ export function Footer() {
             <div className="space-y-3 text-green-200 text-sm">
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                <span>info@yournextstadium.nl</span>
+                <span>info@yournextstadium.com</span>
               </div>
             </div>
             
             <div className="mt-4 p-3 bg-white/10 rounded-lg">
               <div className="text-sm font-medium mb-1">{t('emergencyLine')}</div>
-              <div className="text-orange-300 font-bold">info@yournextstadium.nl</div>
+              <div className="text-orange-300 font-bold">info@yournextstadium.com</div>
             </div>
           </div>
         </div>

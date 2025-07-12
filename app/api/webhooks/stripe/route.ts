@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { prisma } from '@/lib/prisma';
-import { sendBookingConfirmation } from '@/lib/email';
+import { sendBookingConfirmation } from '@/lib/resend';
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
@@ -47,6 +47,9 @@ async function handleSuccessfulPayment(paymentIntent: any) {
   try {
     const metadata = paymentIntent.metadata;
     
+    // Extract locale from metadata (default to 'nl' if not provided)
+    const locale = metadata.locale || 'nl';
+    
     // Generate booking ID
     const bookingId = `YNS-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
 
@@ -66,15 +69,15 @@ async function handleSuccessfulPayment(paymentIntent: any) {
       }
     });
 
-    // Send confirmation email
+    // Send confirmation email with locale
     await sendBookingConfirmation(metadata.customerEmail, {
       bookingId,
       name: metadata.customerName,
       package: metadata.bookingPackage,
-      date: new Date(metadata.bookingDate).toLocaleDateString('nl-NL'),
+      date: new Date(metadata.bookingDate).toLocaleDateString(locale === 'en' ? 'en-US' : 'nl-NL'),
       travelers: metadata.travelers,
       totalPrice: `€${(paymentIntent.amount / 100).toFixed(2)}`,
-    });
+    }, locale);
 
     console.log('Booking created successfully:', bookingId);
   } catch (error) {

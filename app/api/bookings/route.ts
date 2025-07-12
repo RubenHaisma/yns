@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { sendBookingConfirmation } from '@/lib/email';
+import { sendBookingConfirmation } from '@/lib/resend';
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,6 +15,11 @@ export async function POST(request: NextRequest) {
       preferences,
       totalPrice 
     } = body;
+
+    // Extract locale from the request URL
+    const url = new URL(request.url);
+    const pathname = url.pathname;
+    const locale = pathname.startsWith('/en/') ? 'en' : 'nl';
 
     // Validate required fields
     if (!email || !name || !packageType || !date || !travelers) {
@@ -44,16 +49,16 @@ export async function POST(request: NextRequest) {
       }
     });
 
-    // Send confirmation email
+    // Send confirmation email with locale
     try {
       await sendBookingConfirmation(email, {
         bookingId,
         name,
         package: packageType,
-        date: new Date(date).toLocaleDateString('nl-NL'),
+        date: new Date(date).toLocaleDateString(locale === 'en' ? 'en-US' : 'nl-NL'),
         travelers,
         totalPrice
-      });
+      }, locale);
     } catch (error) {
       console.error('Failed to send booking confirmation email:', error);
     }
@@ -87,7 +92,7 @@ export async function GET(request: NextRequest) {
     }
 
     const booking = await prisma.booking.findFirst({
-      where: bookingId ? { bookingId } : { email },
+      where: bookingId ? { bookingId } : { email: email || undefined },
       orderBy: { createdAt: 'desc' }
     });
 

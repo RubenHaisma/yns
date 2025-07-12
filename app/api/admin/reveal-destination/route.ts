@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
 async function sendDestinationRevealEmail(email: string, name: string, revealData: any, bookingId: string) {
   try {
     await resend.emails.send({
-      from: 'YourNextStadium <bookings@yournextstadium.nl>',
+      from: 'YourNextStadium <bookings@yournextstadium.com>',
       to: [email],
       subject: '🎉 Je Mystery Bestemming is Onthuld!',
       html: `
@@ -102,7 +102,7 @@ async function sendDestinationRevealEmail(email: string, name: string, revealDat
               
               <p>Je volledige reisdetails en tickets worden binnenkort naar je verzonden.</p>
               
-              <a href="https://yournextstadium.nl/nl/dashboard" class="cta-button">
+              <a href="https://yournextstadium.com/nl/dashboard" class="cta-button">
                 Bekijk Je Dashboard
               </a>
               

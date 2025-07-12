@@ -55,22 +55,23 @@ model ContactSubmission {
 }
 
 model Booking {
-  id            String   @id @default(cuid())
-  bookingId     String   @unique
-  email         String
-  name          String
-  phone         String?
-  package       String   // basic, comfort, premium
-  date          DateTime
-  travelers     Int
-  preferences   String?  // JSON string
-  totalPrice    String
-  status        String   @default("pending") // pending, confirmed, cancelled
-  paymentStatus String   @default("pending") // pending, paid, failed, refunded
-  destination   String?  // Will be revealed later
-  revealedAt    DateTime?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id                    String   @id @default(cuid())
+  bookingId             String   @unique
+  email                 String
+  name                  String
+  phone                 String?
+  package               String   // basic, comfort, premium
+  date                  DateTime
+  travelers             Int
+  preferences           String?  // JSON string
+  totalPrice            String
+  status                String   @default("pending") // pending, confirmed, cancelled
+  paymentStatus         String   @default("pending") // pending, paid, failed, refunded
+  stripePaymentIntentId String?  // Store Stripe payment intent ID
+  destination           String?  // Will be revealed later
+  revealedAt            DateTime?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
   
   @@map("bookings")
 }

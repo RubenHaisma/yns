@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { sendWelcomeEmail } from '@/lib/email';
+import { sendWelcomeEmail } from '@/lib/resend';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { email, name, source } = body;
+
+    // Extract locale from the request URL
+    const url = new URL(request.url);
+    const pathname = url.pathname;
+    const locale = pathname.startsWith('/en/') ? 'en' : 'nl';
 
     // Validate required fields
     if (!email) {
@@ -50,9 +55,9 @@ export async function POST(request: NextRequest) {
       console.log('Newsletter subscription failed:', error);
     }
 
-    // Send welcome email to all waitlist signups
+    // Send welcome email to all waitlist signups with locale
     try {
-      await sendWelcomeEmail(email, name || 'Voetbalfan', waitlistUser.position);
+      await sendWelcomeEmail(email, name || (locale === 'en' ? 'Football Fan' : 'Voetbalfan'), waitlistUser.position, locale);
     } catch (error) {
       console.error('Failed to send welcome email:', error);
     }

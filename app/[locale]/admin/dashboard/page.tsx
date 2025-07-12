@@ -15,7 +15,10 @@ import {
   Download,
   Bell,
   Settings,
-  LogOut
+  LogOut,
+  UserPlus,
+  Mail,
+  Trash2
 } from 'lucide-react';
 
 interface Booking {
@@ -35,18 +38,36 @@ interface Booking {
   preferences?: any;
 }
 
+interface WaitlistUser {
+  id: string;
+  email: string;
+  name: string | null;
+  position: number;
+  source: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('bookings');
   const [bookings, setBookings] = useState<Booking[]>([]);
+  const [waitlistUsers, setWaitlistUsers] = useState<WaitlistUser[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
   const [revealDestination, setRevealDestination] = useState('');
+  const [waitlistSearchTerm, setWaitlistSearchTerm] = useState('');
+  const [waitlistPage, setWaitlistPage] = useState(1);
+  const [waitlistTotal, setWaitlistTotal] = useState(0);
 
   useEffect(() => {
-    fetchBookings();
-  }, [statusFilter, searchTerm]);
+    if (activeTab === 'bookings') {
+      fetchBookings();
+    } else if (activeTab === 'waitlist') {
+      fetchWaitlistUsers();
+    }
+  }, [activeTab, statusFilter, searchTerm, waitlistSearchTerm, waitlistPage]);
 
   const fetchBookings = async () => {
     try {
@@ -62,6 +83,27 @@ export default function AdminDashboard() {
       }
     } catch (error) {
       console.error('Error fetching bookings:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchWaitlistUsers = async () => {
+    try {
+      const params = new URLSearchParams();
+      if (waitlistSearchTerm) params.append('search', waitlistSearchTerm);
+      params.append('page', waitlistPage.toString());
+      params.append('limit', '50');
+
+      const response = await fetch(`/api/admin/waitlist?${params}`);
+      const data = await response.json();
+
+      if (response.ok) {
+        setWaitlistUsers(data.users);
+        setWaitlistTotal(data.total);
+      }
+    } catch (error) {
+      console.error('Error fetching waitlist users:', error);
     } finally {
       setLoading(false);
     }
@@ -104,6 +146,26 @@ export default function AdminDashboard() {
     }
   };
 
+  const deleteWaitlistUser = async (userId: string) => {
+    if (!confirm('Are you sure you want to delete this user from the waitlist?')) {
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/admin/waitlist', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: userId }),
+      });
+
+      if (response.ok) {
+        fetchWaitlistUsers();
+      }
+    } catch (error) {
+      console.error('Error deleting waitlist user:', error);
+    }
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'confirmed': return 'bg-green-100 text-green-800';
@@ -117,7 +179,7 @@ export default function AdminDashboard() {
     { label: 'Total Bookings', value: bookings.length, icon: Users, color: 'from-blue-500 to-blue-600' },
     { label: 'Confirmed', value: bookings.filter(b => b.status === 'confirmed').length, icon: CreditCard, color: 'from-green-500 to-green-600' },
     { label: 'Pending', value: bookings.filter(b => b.status === 'pending').length, icon: Calendar, color: 'from-yellow-500 to-yellow-600' },
-    { label: 'Revealed', value: bookings.filter(b => b.destination).length, icon: Eye, color: 'from-purple-500 to-purple-600' },
+    { label: 'Waitlist', value: waitlistTotal, icon: UserPlus, color: 'from-purple-500 to-purple-600' },
   ];
 
   return (
@@ -141,7 +203,7 @@ export default function AdminDashboard() {
                 <Settings className="w-5 h-5" />
               </button>
               <button 
-                onClick={() => window.location.href = '/admin'}
+                onClick={() => window.location.href = '/nl/admin'}
                 className="p-2 text-gray-400 hover:text-gray-600"
               >
                 <LogOut className="w-5 h-5" />
@@ -174,7 +236,8 @@ export default function AdminDashboard() {
           <div className="border-b border-gray-200">
             <nav className="flex space-x-8 px-6">
               {[
-                { id: 'bookings', label: 'Bookings', icon: Users, href: '/admin/dashboard/bookings' },
+                { id: 'bookings', label: 'Bookings', icon: Users, href: '/nl/admin/dashboard/bookings' },
+                { id: 'waitlist', label: 'Waitlist', icon: UserPlus },
                 { id: 'destinations', label: 'Destinations', icon: MapPin },
                 { id: 'analytics', label: 'Analytics', icon: CreditCard },
               ].map((tab) => (
@@ -203,7 +266,7 @@ export default function AdminDashboard() {
                   For detailed booking management, visit the dedicated bookings page.
                 </p>
                 <a
-                  href="/admin/dashboard/bookings"
+                  href="/nl/admin/dashboard/bookings"
                   className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
                 >
                   <Users className="w-4 h-4 mr-2" />
@@ -335,9 +398,142 @@ export default function AdminDashboard() {
                   </tbody>
                 </table>
                 <div className="text-center py-4 text-gray-500">
-                  Showing preview only. <a href="/admin/dashboard/bookings" className="text-green-600 hover:text-green-800">View all bookings →</a>
+                  Showing preview only. <a href="/nl/admin/dashboard/bookings" className="text-green-600 hover:text-green-800">View all bookings →</a>
                 </div>
               </div>
+            </div>
+          )}
+
+          {/* Waitlist Tab */}
+          {activeTab === 'waitlist' && (
+            <div className="p-6">
+              {/* Filters */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <div className="flex-1">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <input
+                      type="text"
+                      placeholder="Search waitlist users..."
+                      value={waitlistSearchTerm}
+                      onChange={(e) => setWaitlistSearchTerm(e.target.value)}
+                      className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    />
+                  </div>
+                </div>
+
+                <button className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                  <Download className="w-4 h-4" />
+                  <span>Export CSV</span>
+                </button>
+              </div>
+
+              {/* Waitlist Table */}
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Position
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        User
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Source
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Joined
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {waitlistUsers.map((user) => (
+                      <tr key={user.id} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
+                              <span className="text-white font-bold text-sm">{user.position}</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div>
+                            <div className="text-sm font-medium text-gray-900">{user.name || 'Anonymous'}</div>
+                            <div className="text-sm text-gray-500">{user.email}</div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                            {user.source}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {new Date(user.createdAt).toLocaleDateString()}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                          <div className="flex space-x-2">
+                            <button
+                              onClick={() => window.open(`mailto:${user.email}`, '_blank')}
+                              className="text-blue-600 hover:text-blue-900"
+                              title="Send email"
+                            >
+                              <Mail className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={() => deleteWaitlistUser(user.id)}
+                              className="text-red-600 hover:text-red-900"
+                              title="Delete user"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                
+                {waitlistUsers.length === 0 && !loading && (
+                  <div className="text-center py-8 text-gray-500">
+                    No waitlist users found.
+                  </div>
+                )}
+                
+                {loading && (
+                  <div className="text-center py-8 text-gray-500">
+                    Loading waitlist users...
+                  </div>
+                )}
+              </div>
+
+              {/* Pagination */}
+              {waitlistTotal > 50 && (
+                <div className="mt-6 flex justify-between items-center">
+                  <div className="text-sm text-gray-700">
+                    Showing {((waitlistPage - 1) * 50) + 1} to {Math.min(waitlistPage * 50, waitlistTotal)} of {waitlistTotal} users
+                  </div>
+                  <div className="flex space-x-2">
+                    <button
+                      onClick={() => setWaitlistPage(Math.max(1, waitlistPage - 1))}
+                      disabled={waitlistPage === 1}
+                      className="px-3 py-1 border border-gray-300 rounded-md text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                    >
+                      Previous
+                    </button>
+                    <button
+                      onClick={() => setWaitlistPage(waitlistPage + 1)}
+                      disabled={waitlistPage * 50 >= waitlistTotal}
+                      className="px-3 py-1 border border-gray-300 rounded-md text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                    >
+                      Next
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
