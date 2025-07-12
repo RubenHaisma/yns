@@ -1,7 +1,7 @@
 {
-  "name": "YourNextStadium - Mystery Voetbalreizen",
+  "name": "YourNextStadium - Mystery Voetbalreizen & Stadium Tours",
   "short_name": "YourNextStadium",
-  "description": "Ontdek je volgende stadium met onze mystery voetbalreizen door Europa",
+  "description": "Ontdek je volgende stadium met onze mystery voetbalreizen door Europa. Van Premier League tot Champions League - ervaar Europese topvoetbal.",
   "start_url": "/nl",
   "display": "standalone",
   "background_color": "#1f2937",
@@ -10,7 +10,19 @@
   "scope": "/",
   "lang": "nl",
   "dir": "ltr",
-  "categories": ["travel", "sports", "entertainment"],
+  "categories": ["travel", "sports", "entertainment", "football", "stadium", "mystery"],
+  "keywords": [
+    "mystery voetbalreis",
+    "stadium tours",
+    "premier league",
+    "champions league",
+    "european football",
+    "voetbal vakanties",
+    "stadium ervaringen",
+    "mystery football trips",
+    "football travel",
+    "european competitions"
+  ],
   "icons": [
     {
       "src": "/logo.png",

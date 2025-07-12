@@ -20,6 +20,31 @@ Allow: /stories
 Allow: /privacy
 Allow: /terms
 
+# Allow football-specific pages
+Allow: /mystery-voetbalreizen
+Allow: /mystery-football-trips
+Allow: /stadium-tours
+Allow: /voetbal-vakanties
+Allow: /football-vacations
+Allow: /premier-league
+Allow: /la-liga
+Allow: /bundesliga
+Allow: /serie-a
+Allow: /champions-league
+Allow: /europa-league
+Allow: /match-tickets
+Allow: /stadium-experiences
+Allow: /european-football
+Allow: /football-travel
+Allow: /stadium-visits
+Allow: /football-destinations
+Allow: /voetbal-reizen
+Allow: /stadium-avonturen
+Allow: /europese-competities
+Allow: /top-voetbal
+Allow: /voetbal-ervaringen
+Allow: /stadium-beleving
+
 # Block common bot traps
 Disallow: /search?
 Disallow: /*?utm_

@@ -167,9 +167,9 @@
     "countries": "Countries"
   },
   "footer": {
-    "description": "Discover your next stadium with our mystery football trips across Europe.",
+    "description": "Discover your next stadium with our mystery football trips across Europe. From Premier League to Champions League - experience the excitement of European top football.",
     "quickLinks": "Quick links",
-    "destinations": "Destinations",
+    "destinations": "Football Destinations",
     "contact": "Contact",
     "emergencyLine": "24/7 email",
     "copyright": "© 2025 YourNextStadium. All rights reserved.",
@@ -180,7 +180,20 @@
     "packages": "Packages",
     "stories": "Stories",
     "faq": "FAQ",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "footballTerms": "Football Terms",
+    "stadiumTours": "Stadium Tours",
+    "mysteryTrips": "Mystery Trips",
+    "europeanFootball": "European Football",
+    "matchTickets": "Match Tickets",
+    "footballVacations": "Football Vacations",
+    "stadiumExperiences": "Stadium Experiences",
+    "premierLeague": "Premier League",
+    "laLiga": "La Liga",
+    "bundesliga": "Bundesliga",
+    "serieA": "Serie A",
+    "championsLeague": "Champions League",
+    "europaLeague": "Europa League"
   },
   "modal": {
     "bookTrip": "Book your mystery trip",

@@ -168,9 +168,9 @@
     "countries": "Landen"
   },
   "footer": {
-    "description": "Ontdek je volgende stadium met onze mystery voetbalreizen door heel Europa.",
+    "description": "Ontdek je volgende stadium met onze mystery voetbalreizen door heel Europa. Van Premier League tot Champions League - ervaar de spanning van Europese topvoetbal.",
     "quickLinks": "Snelle links",
-    "destinations": "Bestemmingen",
+    "destinations": "Voetbal Bestemmingen",
     "contact": "Contact",
     "emergencyLine": "24/7 email",
     "copyright": "© 2025 YourNextStadium. Alle rechten voorbehouden.",
@@ -181,7 +181,20 @@
     "packages": "Pakketten",
     "stories": "Verhalen",
     "faq": "Veelgestelde vragen",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "footballTerms": "Voetbal Termen",
+    "stadiumTours": "Stadium Tours",
+    "mysteryTrips": "Mystery Trips",
+    "europeanFootball": "Europese Voetbal",
+    "matchTickets": "Wedstrijd Tickets",
+    "footballVacations": "Voetbal Vakanties",
+    "stadiumExperiences": "Stadium Ervaringen",
+    "premierLeague": "Premier League",
+    "laLiga": "La Liga",
+    "bundesliga": "Bundesliga",
+    "serieA": "Serie A",
+    "championsLeague": "Champions League",
+    "europaLeague": "Europa League"
   },
   "modal": {
     "bookTrip": "Boek je mystery trip",

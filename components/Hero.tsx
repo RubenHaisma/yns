@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronDown, Shield, Clock, Star } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 interface HeroProps {
   onBookingClick: () => void;
@@ -12,6 +12,7 @@ export function Hero({ onBookingClick }: HeroProps) {
   const [currentWord, setCurrentWord] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
   const t = useTranslations('hero');
+  const locale = useLocale();
 
     const words = [
     'Amsterdam', 'Barcelona', 'München', 'Madrid', 'Milano', 'London',
@@ -73,8 +74,32 @@ export function Hero({ onBookingClick }: HeroProps) {
               {words[currentWord]}
             </span>
           </div>
+          
+          {/* Football-specific highlights */}
+          <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm">
+            <span className="bg-white/20 px-3 py-1 rounded-full text-white">
+              Premier League
+            </span>
+            <span className="bg-white/20 px-3 py-1 rounded-full text-white">
+              Champions League
+            </span>
+            <span className="bg-white/20 px-3 py-1 rounded-full text-white">
+              La Liga
+            </span>
+            <span className="bg-white/20 px-3 py-1 rounded-full text-white">
+              Bundesliga
+            </span>
+          </div>
           <p className="text-lg sm:text-xl text-green-100 font-light max-w-2xl mx-auto">
             {t('mystery')}
+          </p>
+          
+          {/* Football-specific description */}
+          <p className="text-base sm:text-lg text-green-200 font-light max-w-3xl mx-auto mt-4">
+            {locale === 'nl' 
+              ? "Ervaar de spanning van Europese topvoetbal. Van Premier League tot Champions League - ontdek je volgende stadium."
+              : "Experience the excitement of European top football. From Premier League to Champions League - discover your next stadium."
+            }
           </p>
         </div>
 

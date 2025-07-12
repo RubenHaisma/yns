@@ -33,7 +33,28 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'Europa voetbal',
         'stadium tour',
         'voetbal ervaring',
-        'mystery travel'
+        'mystery travel',
+        'Premier League reizen',
+        'La Liga vakantie',
+        'Bundesliga trip',
+        'Serie A ervaring',
+        'Champions League tickets',
+        'Europa League wedstrijden',
+        'voetbal stadions Europa',
+        'mystery football trips',
+        'stadium adventures',
+        'European football',
+        'match tickets',
+        'voetbal bestemmingen',
+        'stadium tours',
+        'football vacations',
+        'voetbal ervaringen',
+        'mystery destination',
+        'voetbal reizen',
+        'stadium visits',
+        'European competitions',
+        'voetbal vakanties',
+        'mystery stadium trips'
       ]
     : [
         'mystery football trip',
@@ -45,7 +66,28 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'Europe football',
         'stadium tour',
         'football experience',
-        'mystery travel'
+        'mystery travel',
+        'Premier League trips',
+        'La Liga vacation',
+        'Bundesliga travel',
+        'Serie A experience',
+        'Champions League tickets',
+        'Europa League matches',
+        'European stadiums',
+        'mystery football trips',
+        'stadium adventures',
+        'European football',
+        'match tickets',
+        'football destinations',
+        'stadium tours',
+        'football vacations',
+        'football experiences',
+        'mystery destination',
+        'football travel',
+        'stadium visits',
+        'European competitions',
+        'football holidays',
+        'mystery stadium trips'
       ];
 
   return {
@@ -123,6 +165,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'application-name': 'YourNextStadium',
       'msapplication-TileColor': '#1f2937',
       'msapplication-config': '/browserconfig.xml',
+      'sport': 'Football',
+      'competition': 'European Football',
+      'destination': 'Europe',
+      'experience': 'Mystery Football Trips',
+      'stadium-tours': 'Available',
+      'football-vacations': 'Available',
+      'european-competitions': 'Premier League, La Liga, Bundesliga, Serie A, Champions League',
+      'mystery-trips': 'Available',
+      'match-tickets': 'Available',
+      'stadium-experiences': 'Available'
     },
   };
 }
@@ -186,7 +238,47 @@ export default async function LocaleLayout({
             "serviceType": locale === 'nl' ? "Mystery Voetbalreizen" : "Mystery Football Travel",
             "areaServed": "Europe",
             "priceRange": "€€",
-            "inLanguage": locale === 'nl' ? "nl" : "en"
+            "inLanguage": locale === 'nl' ? "nl" : "en",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": locale === 'nl' ? "Mystery Voetbalreizen" : "Mystery Football Trips",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": locale === 'nl' ? "Wedstrijd Ticket" : "Match Ticket",
+                    "description": locale === 'nl' ? "Pure voetbalervaring met mystery bestemming" : "Pure football experience with mystery destination"
+                  }
+                },
+                {
+                  "@type": "Offer", 
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": locale === 'nl' ? "Match + Vliegtuig" : "Match + Flight",
+                    "description": locale === 'nl' ? "Match ticket inclusief transport" : "Match ticket including transport"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service", 
+                    "name": locale === 'nl' ? "Alles Inclusief" : "All Inclusive",
+                    "description": locale === 'nl' ? "Complete voetbalvakantie met hotel" : "Complete football vacation with hotel"
+                  }
+                }
+              ]
+            },
+            "sport": "Football",
+            "sportEvent": [
+              "Premier League",
+              "La Liga", 
+              "Bundesliga",
+              "Serie A",
+              "Ligue 1",
+              "Champions League",
+              "Europa League"
+            ]
           })
         }}
       />
