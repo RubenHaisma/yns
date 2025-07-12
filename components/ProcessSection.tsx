@@ -2,112 +2,156 @@
 
 import { Calendar, Gift, MapPin, Sparkles } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 
 export function ProcessSection() {
-  const t = useTranslations('process');
+  const t = useTranslations();
+  const tProcess = useTranslations('process');
+  const tTimeline = useTranslations('timeline');
 
   const steps = [
     {
       icon: Calendar,
-      title: t('step1.title'),
-      description: t('step1.description'),
-      color: "from-blue-500 to-blue-600"
+      title: tProcess('step1.title'),
+      description: tProcess('step1.description'),
+      color: "bg-green-50 border-green-200"
     },
     {
       icon: Gift,
-      title: t('step2.title'),
-      description: t('step2.description'),
-      color: "from-purple-500 to-purple-600"
+      title: tProcess('step2.title'),
+      description: tProcess('step2.description'),
+      color: "bg-orange-50 border-orange-200"
     },
     {
       icon: MapPin,
-      title: t('step3.title'),
-      description: t('step3.description'),
-      color: "from-orange-500 to-orange-600"
+      title: tProcess('step3.title'),
+      description: tProcess('step3.description'),
+      color: "bg-green-50 border-green-200"
     }
   ];
 
+  const timelineSteps = [
+    { number: "0", label: tTimeline('booking'), color: "bg-green-600" },
+    { number: "7", label: tTimeline('daysLater'), color: "bg-orange-600" },
+    { icon: Sparkles, label: tTimeline('reveal'), color: "bg-green-600" },
+    { symbol: "✈", label: tTimeline('departure'), color: "bg-orange-600" }
+  ];
+
   return (
-    <section id="process" className="py-16 lg:py-20 bg-gradient-to-b from-green-50 to-white">
+    <section id="process" className="py-20 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold text-green-800 mb-6">
-            {t('title')}
+        <div className="text-center mb-16 lg:mb-20">
+          <h2 className="text-4xl lg:text-5xl font-bold text-green-800 mb-6">
+            {tProcess('title')}
           </h2>
-          <p className="text-lg lg:text-xl text-green-600 max-w-3xl mx-auto">
-            {t('subtitle')}
+          <p className="text-lg lg:text-xl text-green-600 max-w-3xl mx-auto leading-relaxed">
+            {tProcess('subtitle')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {steps.map((step, index) => (
-            <div key={index} className="relative group">
+            <div key={index} className="relative">
               {/* Connection Line - Desktop Only */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 left-full w-8 h-0.5 bg-gradient-to-r from-green-300 to-green-400 transform -translate-y-1/2 z-0"></div>
+                <div className="hidden lg:block absolute top-1/2 left-full w-12 h-px bg-green-200 transform -translate-y-1/2 z-0"></div>
               )}
               
               {/* Step Card */}
-              <div className="relative bg-white rounded-2xl p-6 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-green-100 group-hover:border-green-200">
+              <div className={`relative bg-white rounded-lg p-8 border ${step.color} hover:shadow-lg transition-all duration-300 group`}>
                 {/* Icon */}
-                <div className={`w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br ${step.color} rounded-full flex items-center justify-center mb-6 mx-auto transform group-hover:scale-110 transition-transform`}>
-                  <step.icon className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
+                <div className="w-14 h-14 bg-white rounded-lg border border-gray-200 flex items-center justify-center mb-6 group-hover:border-gray-300 transition-colors">
+                  <step.icon className="w-7 h-7 text-gray-700" />
                 </div>
 
                 {/* Step Number */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">{index + 1}</span>
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-semibold text-sm">{index + 1}</span>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl lg:text-2xl font-bold text-green-800 mb-4 text-center">
+                <h3 className="text-xl lg:text-2xl font-semibold text-green-800 mb-4">
                   {step.title}
                 </h3>
-                <p className="text-green-600 text-center leading-relaxed text-sm lg:text-base">
+                <p className="text-green-600 leading-relaxed">
                   {step.description}
                 </p>
-
-                {/* Decorative Elements */}
-                <div className="absolute top-4 left-4 w-2 h-2 bg-orange-300 rounded-full opacity-60"></div>
-                <div className="absolute bottom-4 right-4 w-3 h-3 bg-green-300 rounded-full opacity-40"></div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Timeline Visual */}
-        <div className="mt-12 lg:mt-16 max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg border border-green-100">
-            <h3 className="text-xl lg:text-2xl font-bold text-green-800 mb-6 text-center">
-              {t('timeline.title')}
+        <div className="mt-20 lg:mt-24 max-w-5xl mx-auto">
+          <div className="bg-gray-50 rounded-lg p-8 lg:p-12 border border-gray-100">
+            <h3 className="text-2xl lg:text-3xl font-semibold text-green-800 mb-8 text-center">
+              {tTimeline('title')}
             </h3>
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
-              <div className="text-center">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                  <span className="text-white font-bold text-sm lg:text-base">0</span>
-                </div>
-                <p className="text-xs lg:text-sm text-green-600">{t('timeline.booking')}</p>
-              </div>
-              <div className="w-full md:w-24 h-0.5 md:h-auto md:w-0.5 bg-green-200"></div>
-              <div className="text-center">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                  <span className="text-white font-bold text-sm lg:text-base">7</span>
-                </div>
-                <p className="text-xs lg:text-sm text-green-600">{t('timeline.daysLater')}</p>
-              </div>
-              <div className="w-full md:w-24 h-0.5 md:h-auto md:w-0.5 bg-green-200"></div>
-              <div className="text-center">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-2">
-                  <Sparkles className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
-                </div>
-                <p className="text-xs lg:text-sm text-green-600">{t('timeline.reveal')}</p>
-              </div>
-              <div className="w-full md:w-24 h-0.5 md:h-auto md:w-0.5 bg-green-200"></div>
-              <div className="text-center">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-2">
-                  <span className="text-white font-bold text-sm lg:text-base">✈</span>
-                </div>
-                <p className="text-xs lg:text-sm text-green-600">{t('timeline.departure')}</p>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 items-center">
+              {timelineSteps.map((step, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.3,
+                    ease: "easeOut"
+                  }}
+                  viewport={{ once: true }}
+                >
+                  <motion.div
+                    className={`w-12 h-12 lg:w-14 lg:h-14 ${step.color} rounded-full flex items-center justify-center mx-auto mb-3`}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {step.number && (
+                      <span className="text-white font-semibold text-sm lg:text-base">{step.number}</span>
+                    )}
+                    {step.icon && (
+                      <step.icon className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
+                    )}
+                    {step.symbol && (
+                      <span className="text-white font-semibold text-sm lg:text-base">{step.symbol}</span>
+                    )}
+                  </motion.div>
+                  <motion.p 
+                    className="text-sm lg:text-base text-green-600 font-medium"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ 
+                      duration: 0.4, 
+                      delay: index * 0.3 + 0.2,
+                      ease: "easeOut"
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    {step.label}
+                  </motion.p>
+                </motion.div>
+              ))}
+            </div>
+            
+            {/* Connection Lines - Desktop Only */}
+            <div className="hidden md:block relative mt-8">
+              <div className="flex justify-between items-center px-8">
+                {timelineSteps.map((_, index) => (
+                  index < timelineSteps.length - 1 && (
+                    <motion.div
+                      key={`line-${index}`}
+                      className="w-16 h-0.5 bg-green-300"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      transition={{ 
+                        duration: 0.8, 
+                        delay: index * 0.3 + 0.4,
+                        ease: "easeOut"
+                      }}
+                      viewport={{ once: true }}
+                    />
+                  )
+                ))}
               </div>
             </div>
           </div>

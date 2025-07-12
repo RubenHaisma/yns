@@ -8,11 +8,11 @@ export function Footer() {
   const locale = useLocale();
 
   const quickLinks = [
-    { key: 'howItWorks', href: `/${locale}/hoe-het-werkt` },
-    { key: 'packages', href: `/${locale}/pakketten` },
-    { key: 'stories', href: `/${locale}/verhalen` },
+    { key: 'howItWorks', href: `/${locale}/how-it-works` },
+    { key: 'packages', href: `/${locale}/packages` },
+    { key: 'stories', href: `/${locale}/stories` },
     { key: 'contact', href: `/${locale}/contact` },
-    { key: 'faq', href: `/${locale}/veelgestelde-vragen` },
+    { key: 'faq', href: `/${locale}/faq` },
     { key: 'dashboard', href: `/${locale}/dashboard` },
   ];
 
@@ -106,7 +106,7 @@ export function Footer() {
             <a href={`/${locale}/privacy`} className="hover:text-white transition-colors">
               {t('privacy')}
             </a>
-            <a href={`/${locale}/algemene-voorwaarden`} className="hover:text-white transition-colors">
+            <a href={`/${locale}/terms`} className="hover:text-white transition-colors">
               {t('terms')}
             </a>
             <div className="flex items-center space-x-1">

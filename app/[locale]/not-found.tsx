@@ -3,10 +3,11 @@ import Link from 'next/link';
 export default async function LocaleNotFound({
   params
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }> | { locale: string };
 }) {
   // Await the params to handle the async nature of Next.js 15
-  const { locale } = await params;
+  const resolvedParams = await params;
+  const { locale } = resolvedParams || { locale: 'en' };
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-800 to-green-900 flex items-center justify-center">

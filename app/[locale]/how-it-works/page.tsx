@@ -17,21 +17,21 @@ export default function HowItWorks() {
       title: t('howItWorks.step1.title'),
       description: t('howItWorks.step1.description'),
       details: t('howItWorks.step1.details'),
-      color: "from-blue-500 to-blue-600"
+      color: "bg-green-50 border-green-200"
     },
     {
       icon: Gift,
       title: t('howItWorks.step2.title'),
       description: t('howItWorks.step2.description'),
       details: t('howItWorks.step2.details'),
-      color: "from-purple-500 to-purple-600"
+      color: "bg-orange-50 border-orange-200"
     },
     {
       icon: MapPin,
       title: t('howItWorks.step3.title'),
       description: t('howItWorks.step3.description'),
       details: t('howItWorks.step3.details'),
-      color: "from-orange-500 to-orange-600"
+      color: "bg-green-50 border-green-200"
     }
   ];
 
@@ -60,50 +60,50 @@ export default function HowItWorks() {
       
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
+        <section className="py-20 lg:py-24 bg-green-800 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl lg:text-6xl font-bold mb-8">
               {t('howItWorks.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
+            <p className="text-xl lg:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
               {t('howItWorks.subtitle')}
             </p>
           </div>
         </section>
 
         {/* Steps Section */}
-        <section className="py-20 bg-gradient-to-b from-green-50 to-white">
+        <section className="py-20 lg:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="space-y-16">
+            <div className="space-y-20 lg:space-y-24">
               {steps.map((step, index) => (
-                <div key={index} className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12`}>
+                <div key={index} className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-16`}>
                   <div className="flex-1">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${step.color} rounded-full mb-6`}>
-                      <step.icon className="w-8 h-8 text-white" />
+                    <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mb-8">
+                      <step.icon className="w-8 h-8 text-gray-700" />
                     </div>
-                    <h3 className="text-3xl font-bold text-green-800 mb-4">
+                    <h3 className="text-3xl lg:text-4xl font-semibold text-gray-900 mb-6">
                       {step.title}
                     </h3>
-                    <p className="text-xl text-green-600 mb-6">
+                    <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                       {step.description}
                     </p>
-                    <ul className="space-y-3">
+                    <ul className="space-y-4">
                       {Array.isArray(step.details) && step.details.map((detail, detailIndex) => (
-                        <li key={detailIndex} className="flex items-center space-x-3">
-                          <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                          <span className="text-green-700">{detail}</span>
+                        <li key={detailIndex} className="flex items-start space-x-4">
+                          <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-gray-700 leading-relaxed">{detail}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div className="flex-1">
-                    <div className="bg-white rounded-2xl shadow-xl p-8 border border-green-100">
-                      <div className="aspect-video bg-gradient-to-br from-green-100 to-orange-100 rounded-lg flex items-center justify-center">
+                    <div className={`bg-white rounded-lg border ${step.color} p-8 shadow-lg`}>
+                      <div className="aspect-video bg-gray-50 rounded-lg flex items-center justify-center border border-gray-200">
                         <div className="text-center">
-                          <div className={`w-20 h-20 bg-gradient-to-br ${step.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                            <step.icon className="w-10 h-10 text-white" />
+                          <div className="w-20 h-20 bg-white rounded-lg border border-gray-200 flex items-center justify-center mx-auto mb-6">
+                            <step.icon className="w-10 h-10 text-gray-700" />
                           </div>
-                          <p className="text-green-700 font-medium">Stap {index + 1} Illustratie</p>
+                          <p className="text-gray-600 font-medium">Stap {index + 1} Illustratie</p>
                         </div>
                       </div>
                     </div>
@@ -115,24 +115,24 @@ export default function HowItWorks() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-white">
+        <section className="py-20 lg:py-24 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-green-800 mb-6">
+            <div className="text-center mb-16 lg:mb-20">
+              <h2 className="text-4xl lg:text-5xl font-semibold text-gray-900 mb-6">
                 {t('howItWorks.faqTitle')}
               </h2>
-              <p className="text-xl text-green-600">
+              <p className="text-xl text-gray-600 leading-relaxed">
                 {t('howItWorks.faqSubtitle')}
               </p>
             </div>
 
             <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-green-50 rounded-lg p-6 border border-green-100">
-                  <h3 className="text-lg font-bold text-green-800 mb-3">
+                <div key={index} className="bg-white rounded-lg p-8 border border-gray-200 shadow-sm">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
                     {faq.question}
                   </h3>
-                  <p className="text-green-700">
+                  <p className="text-gray-700 leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
@@ -142,17 +142,17 @@ export default function HowItWorks() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-green-800 to-green-900 text-white">
+        <section className="py-20 lg:py-24 bg-green-800 text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl lg:text-4xl font-semibold mb-8">
               {t('howItWorks.readyTitle')}
             </h2>
-            <p className="text-xl text-green-100 mb-8">
+            <p className="text-xl text-green-100 mb-10 leading-relaxed">
               {t('howItWorks.readySubtitle')}
             </p>
             <button
               onClick={() => setIsBookingModalOpen(true)}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all transform hover:scale-105 shadow-2xl"
+              className="bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-700 transition-colors shadow-lg"
             >
               {t('howItWorks.bookTrip')}
             </button>

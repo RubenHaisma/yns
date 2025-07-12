@@ -2,46 +2,89 @@
   "nav": {
     "home": "Home",
     "book": "Boeken",
-    "howItWorks": "Hoe Het Werkt",
+    "howItWorks": "Hoe het werkt",
     "packages": "Pakketten",
     "stories": "Verhalen",
     "contact": "Contact",
-    "faq": "Veelgestelde Vragen",
+    "faq": "Veelgestelde vragen",
     "dashboard": "Dashboard",
-    "bookNow": "Boek Nu",
+    "bookNow": "Boek nu",
     "emergency": "24/7: info@yournextstadium.nl"
   },
   "hero": {
     "title": "Waar ga jij naartoe?",
     "subtitle": "Misschien wel naar",
     "mystery": "Het blijft een verrassing.",
-    "findStadium": "Ontdek Je Stadium",
-    "moreInfo": "Meer Informatie",
-    "guarantee1": "Mystery Garantie",
-    "guarantee2": "SGR Beschermd",
-    "guarantee3": "Premium Stadions"
+    "findStadium": "Ontdek je stadium",
+    "moreInfo": "Meer informatie",
+    "guarantee1": "Mystery garantie",
+    "guarantee2": "SGR beschermd",
+    "guarantee3": "Premium stadions"
+  },
+  "process": {
+    "title": "Het mysterie onthuld",
+    "subtitle": "Van boeking tot beleving - zo werkt jouw volgende stadium avontuur",
+    "step1": {
+      "title": "Boek je avontuur",
+      "description": "Kies je datum en pakket. Betaal veilig online en begin met dromen over je volgende stadium."
+    },
+    "step2": {
+      "title": "Wacht vol spanning",
+      "description": "Ontvang hints en updates. De spanning stijgt terwijl je bestemming geheim blijft."
+    },
+    "step3": {
+      "title": "Ontdek je bestemming",
+      "description": "1-2 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!"
+    }
+  },
+  "timeline": {
+    "title": "Je reis tijdlijn",
+    "booking": "Boeking",
+    "daysLater": "Dagen later",
+    "reveal": "Onthulling",
+    "departure": "Vertrek"
   },
   "booking": {
-    "title": "Boek Je Mystery Stadium Trip",
+    "title": "Boek je mystery stadium trip",
     "subtitle": "Ontdek Europa's mooiste voetbalstadions. Bestemming blijft geheim tot de onthulling!",
-    "nextReveal": "Volgende Onthulling Over:",
+    "nextReveal": "Volgende onthulling over:",
     "revealSchedule": "Elke vrijdag om 18:00 onthullen we nieuwe mystery bestemmingen!",
-    "chooseAdventure": "Kies Je Avontuur",
+    "chooseAdventure": "Kies je avontuur",
     "chooseSubtitle": "Van een simpel match bezoek tot een compleet luxury weekend",
-    "availableDates": "Beschikbare Data",
+    "availableDates": "Beschikbare data",
     "availableSubtitle": "Kies uit onze aankomende mystery trips",
-    "selectDate": "Selecteer Datum",
+    "selectDate": "Selecteer datum",
     "spots": "plekken",
     "from": "Vanaf",
     "days": "Dagen",
     "hours": "Uren",
     "minutes": "Minuten",
     "seconds": "Seconden",
-    "newDestinations": "NIEUWE BESTEMMINGEN ELKE WEEK"
+    "newDestinations": "Nieuwe bestemmingen elke week"
   },
   "packages": {
+    "title": "Onze pakketten",
+    "subtitle": "Van een simpel match bezoek tot een compleet luxury weekend - kies het pakket dat bij jou past",
+    "choosePackage": "Kies dit pakket",
+    "extrasTitle": "Extra's & upgrades",
+    "comparisonTitle": "Pakket vergelijking",
+    "category": "Categorie",
+    "feature": "Feature",
+    "matchTicket": "Wedstrijd ticket",
+    "transport": "Transport",
+    "accommodation": "Accommodatie",
+    "meals": "Maaltijden",
+    "support": "Support",
+    "nights": "2 nachten",
+    "breakfastDinner": "Ontbijt & diner",
+    "moneyBackGuarantee": "100% geld terug garantie",
+    "moneyBackDesc": "Niet tevreden? Volledige terugbetaling",
+    "freeRebooking": "Gratis herboeken",
+    "freeRebookingDesc": "Flexibel reizen zonder extra kosten",
+    "rating": "4.9/5 rating",
+    "ratingDesc": "Door meer dan 1000 reizigers",
     "basic": {
-      "name": "Alleen Match",
+      "name": "Wedstrijd ticket",
       "subtitle": "Pure voetbalervaring",
       "price": "€199",
       "originalPrice": "€299",
@@ -56,8 +99,8 @@
       ]
     },
     "comfort": {
-      "name": "Match + Vliegtuig",
-      "subtitle": "Match + Transport",
+      "name": "Match + vliegtuig",
+      "subtitle": "Match + transport",
       "price": "€449",
       "originalPrice": "€599",
       "category": "A",
@@ -70,11 +113,13 @@
         "Digitale reisguide",
         "Lokale restaurant tips"
       ],
-      "popular": true
+      "popular": true,
+      "popularLabel": "Populair"
     },
     "premium": {
-      "name": "Alles Inclusief",
-      "subtitle": "Ticket + Vliegtuig + Hotel",
+      "name": "Alles inclusief",
+      
+      "subtitle": "Ticket + vliegtuig + hotel",
       "price": "€799",
       "originalPrice": "€999",
       "category": "VIP",
@@ -90,35 +135,26 @@
       ]
     }
   },
-  "process": {
-    "title": "Het Mysterie Onthuld",
-    "subtitle": "Van boeking tot beleving - zo werkt jouw volgende stadium avontuur",
-    "step1": {
-      "title": "Boek je Avontuur",
-      "description": "Kies je datum en pakket. Betaal veilig online en begin met dromen over je volgende stadium."
-    },
-    "step2": {
-      "title": "Wacht vol Spanning",
-      "description": "Ontvang hints en updates. De spanning stijgt terwijl je bestemming geheim blijft."
-    },
-    "step3": {
-      "title": "Ontdek je Bestemming",
-      "description": "1-2 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!"
+  "waitlistSection": {
+    "title": "Sluit je aan bij de waitlist",
+    "subtitle": "Wees een van de eersten die toegang krijgt tot onze mystery football trips",
+    "description": "Exclusieve kortingen en vroege toegang gegarandeerd!",
+    "joinWaitlist": "Meld je aan voor de waitlist",
+    "email": "Email adres",
+    "emailPlaceholder": "your@email.com",
+    "termsText": "Door je aan te melden ga je akkoord met onze voorwaarden en privacybeleid. Je kunt je altijd uitschrijven.",
+    "stats": {
+      "waiting": "Mensen wachten",
+      "stadiums": "Stadions klaar", 
+      "countries": "Landen beschikbaar"
     }
   },
-  "timeline": {
-    "title": "Je Reis Tijdlijn",
-    "booking": "Boeking",
-    "daysLater": "Dagen Later",
-    "reveal": "Onthulling",
-    "departure": "Vertrek"
-  },
   "trust": {
-    "moneyBack": "100% Geld Terug",
+    "moneyBack": "100% geld terug",
     "moneyBackDesc": "Niet tevreden? Volledige terugbetaling",
-    "support": "24/7 Support",
+    "support": "24/7 support",
     "supportDesc": "Altijd bereikbaar tijdens je reis",
-    "certified": "SGR Erkend",
+    "certified": "SGR erkend",
     "certifiedDesc": "Je geld is volledig beschermd"
   },
   "stats": {
@@ -128,25 +164,25 @@
   },
   "footer": {
     "description": "Ontdek je volgende stadium met onze mystery voetbalreizen door heel Europa.",
-    "quickLinks": "Snelle Links",
+    "quickLinks": "Snelle links",
     "destinations": "Bestemmingen",
     "contact": "Contact",
-    "emergencyLine": "24/7 Email",
+    "emergencyLine": "24/7 email",
     "copyright": "© 2024 YourNextStadium. Alle rechten voorbehouden.",
-    "privacy": "Privacy Policy",
-    "terms": "Algemene Voorwaarden",
-    "sgr": "SGR Erkend",
-    "howItWorks": "Hoe Het Werkt",
+    "privacy": "Privacy policy",
+    "terms": "Algemene voorwaarden",
+    "sgr": "SGR erkend",
+    "howItWorks": "Hoe het werkt",
     "packages": "Pakketten",
     "stories": "Verhalen",
-    "faq": "Veelgestelde Vragen",
+    "faq": "Veelgestelde vragen",
     "dashboard": "Dashboard"
   },
   "modal": {
-    "bookTrip": "Boek Je Mystery Trip",
+    "bookTrip": "Boek je mystery trip",
     "step": "Stap",
     "of": "van",
-    "choosePackage": "Kies je Pakket",
+    "choosePackage": "Kies je pakket",
     "packageQuestion": "Welk avontuur past bij jou?",
     "whenTravel": "Wanneer wil je gaan?",
     "chooseDateSubtitle": "Kies je vertrekdatum",
@@ -162,7 +198,7 @@
     "alone": "Alleen - ik ontmoet graag nieuwe mensen",
     "friends": "Met vrienden - we willen samen plezier hebben",
     "flexible": "Flexibel - maakt mij niet uit",
-    "confirmBooking": "Bevestig je Boeking",
+    "confirmBooking": "Bevestig je boeking",
     "confirmSubtitle": "Controleer je gegevens en betaal veilig",
     "package": "Pakket",
     "date": "Datum",
@@ -170,52 +206,70 @@
     "fullName": "Volledige naam",
     "email": "Email adres",
     "phone": "Telefoonnummer",
-    "securePayment": "Veilige Betaling via Stripe",
+    "securePayment": "Veilige betaling via Stripe",
     "paymentDesc": "Je betaling wordt veilig verwerkt door Stripe. Je bestemming wordt 1-2 weken voor vertrek onthuld.",
     "previous": "Vorige",
     "next": "Volgende",
-    "payBook": "Betaal & Boek Nu",
+    "payBook": "Betaal & boek nu",
     "processing": "Betaling verwerken...",
-    "bookingConfirmed": "Boeking Bevestigd! 🎉",
+    "joinWaitlist": "Meld je aan voor de waitlist",
+    "joining": "Aanmelden...",
+    "joinWaitlistTitle": "Meld je aan voor de waitlist",
+    "joinWaitlistSubtitle": "Wees de eerste die weet wanneer boekingen openen!",
+    "earlyAccess": "Vroege toegang",
+    "earlyAccessDesc": "Krijg als eerste bericht wanneer we live gaan en verzeker je plek!",
+    "bookingConfirmed": "Boeking bevestigd!",
     "adventureBegins": "Je mystery avontuur kan beginnen",
-    "bookingNumber": "Je Boekingnummer",
-    "close": "Sluiten"
+    "bookingNumber": "Je boekingnummer",
+    "close": "Sluiten",
+    "basic": {
+      "name": "Wedstrijd ticket",
+      "price": "€199"
+    },
+    "comfort": {
+      "name": "Match + vliegtuig",
+      "price": "€449"
+    },
+    "premium": {
+      "name": "Alles inclusief",
+      "price": "€799"
+    }
   },
   "waitlist": {
-    "title": "Sluit Je Aan Bij De Waitlist",
+    "title": "Sluit je aan bij de waitlist",
     "subtitle": "Wees een van de eersten die toegang krijgt tot onze mystery football trips",
     "description": "Exclusieve kortingen en vroege toegang gegarandeerd!",
-    "joinWaitlist": "Meld Je Aan Voor De Waitlist",
+    "joinWaitlist": "Meld je aan voor de waitlist",
     "email": "Email adres",
     "name": "Naam",
     "city": "Stad",
     "phone": "Telefoon",
     "favoriteTeam": "Favoriete team",
     "interests": "Welke competities interesseren je?",
-    "success": "Welkom bij de Waitlist!",
+    "success": "Welkom bij de waitlist!",
     "successMessage": "Je bent succesvol aangemeld voor vroege toegang!",
-    "position": "Je Positie",
+    "position": "Je positie",
     "benefits": {
-      "earlyAccess": "Vroege Toegang",
+      "earlyAccess": "Vroege toegang",
       "earlyAccessDesc": "Als eerste boeken wanneer we live gaan",
-      "discounts": "Exclusieve Kortingen", 
+      "discounts": "Exclusieve kortingen", 
       "discountsDesc": "Speciale prijzen voor waitlist leden",
-      "updates": "Insider Updates",
+      "updates": "Insider updates",
       "updatesDesc": "Eerste updates over nieuwe bestemmingen"
     }
   },
   "contact": {
     "title": "Contact",
     "subtitle": "Heb je vragen over onze mystery trips? We helpen je graag verder!",
-    "sendMessage": "Stuur ons een Bericht",
+    "sendMessage": "Stuur ons een bericht",
     "name": "Naam",
     "email": "Email",
     "subject": "Onderwerp",
     "message": "Bericht",
-    "send": "Verstuur Bericht",
+    "send": "Verstuur bericht",
     "selectSubject": "Selecteer een onderwerp",
-    "newBooking": "Nieuwe Boeking",
-    "existingBooking": "Bestaande Boeking",
+    "newBooking": "Nieuwe boeking",
+    "existingBooking": "Bestaande boeking",
     "complaint": "Klacht",
     "suggestion": "Suggestie",
     "other": "Anders",
@@ -225,57 +279,57 @@
     "error": "Er is iets misgegaan. Probeer het opnieuw."
   },
   "dashboard": {
-    "title": "Mijn Dashboard",
+    "title": "Mijn dashboard",
     "subtitle": "Bekijk je boekingen en volg je mystery trip avontuur",
-    "searchBooking": "Zoek Je Boeking",
+    "searchBooking": "Zoek je boeking",
     "bookingNumber": "Boekingnummer",
-    "emailAddress": "Email Adres",
-    "search": "Zoek Boeking",
+    "emailAddress": "Email adres",
+    "search": "Zoek boeking",
     "searching": "Zoeken...",
     "bookingDetails": "Boeking {bookingId}",
     "bookedOn": "Geboekt op",
     "totalPrice": "Totaalprijs",
-    "countdownTitle": "Aftellen naar je Avontuur!",
+    "countdownTitle": "Aftellen naar je avontuur!",
     "daysToGo": "dagen te gaan",
-    "tripDetails": "Reis Details",
+    "tripDetails": "Reis details",
     "departureDate": "Vertrekdatum",
-    "travelers": "Aantal Reizigers",
+    "travelers": "Aantal reizigers",
     "person": "persoon",
     "people": "personen",
     "package": "Pakket",
     "paymentStatus": "Betaalstatus",
     "paid": "Betaald",
     "pending": "In behandeling",
-    "mysteryStatus": "Mystery Status",
-    "destinationRevealed": "Bestemming Onthuld!",
+    "mysteryStatus": "Mystery status",
+    "destinationRevealed": "Bestemming onthuld!",
     "revealedOn": "Je mystery bestemming is onthuld op",
-    "mysteryOngoing": "Het Mysterie Duurt Voort...",
+    "mysteryOngoing": "Het mysterie duurt voort...",
     "revealTiming": "Je bestemming wordt 1-2 weken voor vertrek onthuld",
     "hint": "Bereid je voor op een onvergetelijke ervaring in een van Europa's mooiste voetbalstadions!",
-    "needHelp": "Hulp Nodig?",
-    "emergencyLine": "24/7 Noodlijn",
-    "emailSupport": "Email Support",
+    "needHelp": "Hulp nodig?",
+    "emergencyLine": "24/7 noodlijn",
+    "emailSupport": "Email support",
     "confirmed": "Bevestigd",
     "cancelled": "Geannuleerd",
     "notFound": "Boeking niet gevonden",
     "fillBookingOrEmail": "Vul een boekingnummer of email adres in"
   },
   "stories": {
-    "title": "Verhalen van Avonturiers",
+    "title": "Verhalen van avonturiers",
     "subtitle": "Ontdek waarom meer dan 500 voetbalfans hun volgende stadium hebben gevonden",
-    "moreStories": "Meer Verhalen",
-    "shareStory": "Deel je Verhaal",
+    "moreStories": "Meer verhalen",
+    "shareStory": "Deel je verhaal",
     "tagUs": "Tag ons @yournextstadium en gebruik #MysteryStadium",
     "followInstagram": "Volg ons op Instagram",
-    "writeYourStory": "Schrijf Jouw Eigen Verhaal",
+    "writeYourStory": "Schrijf jouw eigen verhaal",
     "joinCommunity": "Word onderdeel van onze community en ontdek jouw volgende stadium",
-    "startAdventure": "Start Je Avontuur"
+    "startAdventure": "Start je avontuur"
   },
   "howItWorks": {
-    "title": "Hoe Het Werkt",
+    "title": "Hoe het werkt",
     "subtitle": "Van boeking tot beleving - ontdek hoe jouw mystery stadium avontuur tot leven komt",
     "step1": {
-      "title": "1. Boek je Avontuur",
+      "title": "1. Boek je avontuur",
       "description": "Kies je pakket, selecteer je datum, vul je voorkeuren in en betaal veilig online via iDEAL, creditcard of bankoverschrijving.",
       "details": [
         "Selecteer je gewenste vertrekdatum",
@@ -285,7 +339,7 @@
       ]
     },
     "step2": {
-      "title": "2. Wacht vol Spanning",
+      "title": "2. Wacht vol spanning",
       "description": "Ontvang hints en updates via email. De spanning stijgt terwijl je bestemming geheim blijft.",
       "details": [
         "Ontvang bevestiging per email",
@@ -295,7 +349,7 @@
       ]
     },
     "step3": {
-      "title": "3. Ontdek je Bestemming",
+      "title": "3. Ontdek je bestemming",
       "description": "1-2 weken voor vertrek onthullen we je mysterie bestemming via een speciale onthullingsvideo.",
       "details": [
         "Ontvang je persoonlijke onthullingsvideo",
@@ -304,60 +358,365 @@
         "Bereid je voor op het avontuur"
       ]
     },
-    "faqTitle": "Veelgestelde Vragen",
+    "faqTitle": "Veelgestelde vragen",
     "faqSubtitle": "Alles wat je wilt weten over onze mystery trips",
-    "readyTitle": "Klaar voor je Mystery Avontuur?",
+    "readyTitle": "Klaar voor je mystery avontuur?",
     "readySubtitle": "Boek nu je volgende stadium en laat je verrassen door Europa's mooiste voetbalstadions",
-    "bookTrip": "Boek Je Mystery Trip"
-  },
-  "packages": {
-    "title": "Onze Pakketten",
-    "subtitle": "Van een simpel match bezoek tot een compleet luxury weekend - kies het pakket dat bij jou past",
-    "extrasTitle": "Extra's & Upgrades",
-    "comparisonTitle": "Pakket Vergelijking",
-    "feature": "Feature",
-    "matchTicket": "Match Ticket",
-    "transport": "Transport",
-    "accommodation": "Accommodatie",
-    "meals": "Maaltijden",
-    "support": "24/7 Support",
-    "nights": "2 nachten",
-    "breakfastDinner": "Ontbijt & Diner",
-    "premium": "Premium",
-    "choosePackage": "Kies Dit Pakket",
-    "moneyBackGuarantee": "Geld Terug Garantie",
-    "moneyBackDesc": "Niet tevreden? 100% terugbetaling",
-    "freeRebooking": "Gratis Omboeken",
-    "freeRebookingDesc": "Tot 14 dagen voor vertrek",
-    "rating": "4.9/5 Rating",
-    "ratingDesc": "Van 500+ tevreden klanten"
+    "bookTrip": "Boek je mystery trip"
   },
   "faq": {
-    "title": "Veelgestelde Vragen",
+    "title": "Veelgestelde vragen",
     "subtitle": "Alles wat je wilt weten over onze mystery football trips",
     "searchPlaceholder": "Zoek in veelgestelde vragen...",
-    "allQuestions": "Alle Vragen",
+    "allQuestions": "Alle vragen",
     "booking": "Boeken",
     "travel": "Reizen",
     "safety": "Veiligheid",
     "support": "Support",
     "noResults": "Geen resultaten gevonden",
     "noResultsDesc": "Probeer een andere zoekterm of selecteer een andere categorie",
-    "stillQuestions": "Nog Vragen?",
+    "stillQuestions": "Nog vragen?",
     "stillQuestionsDesc": "Ons team staat klaar om je te helpen met al je vragen over mystery football trips",
-    "contactUs": "Neem Contact Op",
-    "callNow": "Bel Ons Nu",
-    "emergencyLine": "24/7 Noodlijn: +31 20 987 6543"
+    "contactUs": "Neem contact op",
+    "callNow": "Bel ons nu",
+    "emergencyLine": "24/7 noodlijn: +31 20 987 6543"
   },
   "privacy": {
     "title": "Privacy Policy",
-    "subtitle": "Jouw privacy is belangrijk voor ons. Lees hoe we je gegevens beschermen.",
-    "lastUpdated": "Laatst bijgewerkt: 1 januari 2024"
+    "subtitle": "YourNextStadium B.V. - Uitgebreide Gegevensbescherming & Privacy",
+    "lastUpdated": "Laatst bijgewerkt: December 2024",
+    "version": "Versie 2.1",
+    "tableOfContents": "Inhoudsopgave",
+    "introduction": {
+      "title": "1. Inleiding & Reikwijdte",
+      "company": "YourNextStadium B.V. (&ldquo;Bedrijf&rdquo;, &ldquo;wij&rdquo;, &ldquo;ons&rdquo;, of &ldquo;onze&rdquo;) exploiteert de website yournextstadium.nl en gerelateerde diensten (gezamenlijk de &ldquo;Dienst&rdquo;). Dit Privacy Policy beschrijft hoe wij uw persoonsgegevens verzamelen, gebruiken, verwerken en beschermen in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) en toepasselijke Nederlandse gegevensbeschermingswetten.",
+      "applies": "Dit beleid is van toepassing op alle gebruikers van onze Dienst, inclusief bezoekers, klanten en zakelijke partners. Door gebruik te maken van onze Dienst erkent u dat u dit Privacy Policy heeft gelezen, begrepen en ermee instemt.",
+      "important": "Belangrijk: Dit beleid is effectief vanaf December 2024. Wij kunnen dit beleid periodiek bijwerken om wijzigingen in onze praktijken of toepasselijke wetten te weerspiegelen. Wij zullen u op de hoogte stellen van materiële wijzigingen via onze Dienst of per e-mail."
+    },
+    "definitions": {
+      "title": "2. Definities & Juridisch Kader",
+      "keyDefinitions": "Belangrijke Definities",
+      "personalData": "Persoonsgegevens:",
+      "personalDataDesc": "Alle informatie over een geïdentificeerde of identificeerbare natuurlijke persoon.",
+      "processing": "Verwerking:",
+      "processingDesc": "Elke bewerking die wordt uitgevoerd op persoonsgegevens, inclusief verzameling, opslag en overdracht.",
+      "dataController": "Gegevensverwerkingsverantwoordelijke:",
+      "dataControllerDesc": "YourNextStadium B.V., verantwoordelijk voor het bepalen van verwerkingsdoeleinden en middelen.",
+      "dataProcessor": "Gegevensverwerker:",
+      "dataProcessorDesc": "Externe dienstverleners die gegevens namens ons verwerken.",
+      "legalFramework": "Juridisch Kader",
+      "gdpr": "• Algemene Verordening Gegevensbescherming (AVG) - EU Verordening 2016/679",
+      "uavg": "• Nederlandse Uitvoeringswet AVG (UAVG)",
+      "privacyRegs": "• Europese Privacy- en Telecommunicatiewetgeving",
+      "industryRegs": "• Toepasselijke branchespecifieke regelgeving"
+    },
+    "collection": {
+      "title": "3. Gegevensverzamelingsmethoden",
+      "directCollection": "Directe Verzameling",
+      "directItems": [
+        "• Informatie verstrekt tijdens accountregistratie en profielaanmaak",
+        "• Boekingsformulieren en betalingsinformatie",
+        "• Klantenservice communicatie en ondersteuningsverzoeken",
+        "• Feedback, enquêtes en vrijwillige inzendingen",
+        "• Marketing voorkeuren en toestemmingsbeheer"
+      ],
+      "automaticCollection": "Automatische Verzameling",
+      "automaticItems": [
+        "• Technische gegevens: IP-adressen, browsertype, apparaatinformatie",
+        "• Gebruiksanalyses: paginaweergaven, sessieduur, navigatiepatronen",
+        "• Cookies en vergelijkbare tracking technologieën",
+        "• Locatiegegevens (met uitdrukkelijke toestemming)",
+        "• Prestatie- en foutlogboeken"
+      ],
+      "thirdPartySources": "Externe Bronnen",
+      "thirdPartyItems": [
+        "• Sociale media platforms (wanneer u accounts koppelt)",
+        "• Betalingsverwerkers en financiële instellingen",
+        "• Reispartners en dienstverleners",
+        "• Openbare registers en zakelijke directories"
+      ]
+    },
+    "categories": {
+      "title": "4. Categorieën Persoonsgegevens",
+      "identityContact": "Identiteit & Contactgegevens",
+      "identityItems": [
+        "• Volledige naam en titel",
+        "• E-mailadres en telefoonnummer",
+        "• Postadres en factureringsinformatie",
+        "• Geboortedatum en nationaliteit",
+        "• Paspoort- of ID-informatie"
+      ],
+      "financialPayment": "Financiële & Betalingsgegevens",
+      "financialItems": [
+        "• Betalingsmethode details",
+        "• Transactiegeschiedenis en bonnetjes",
+        "• Factureringsadres en belastinginformatie",
+        "• Terugbetaling en chargeback registraties"
+      ],
+      "travelBooking": "Reis- & Boekingsgegevens",
+      "travelItems": [
+        "• Reisvoorkeuren en geschiedenis",
+        "• Boekingsbevestigingen en reisschema's",
+        "• Specifieke vereisten en accommodaties",
+        "• Reisverzekeringsinformatie"
+      ],
+      "technicalUsage": "Technische & Gebruiksgegevens",
+      "technicalItems": [
+        "• Apparaat- en browserinformatie",
+        "• IP-adres en geolocatie",
+        "• Website gebruikspatronen en analyses",
+        "• Foutlogboeken en prestatiegegevens"
+      ]
+    },
+    "purposes": {
+      "title": "5. Verwerkingsdoeleinden & Juridische Grondslag",
+      "purpose": "Doel",
+      "legalBasis": "Juridische Grondslag",
+      "dataCategories": "Gegevenscategorieën",
+      "serviceProvision": "Dienstverlening",
+      "contractPerformance": "Contractuitvoering",
+      "identityContactTravelFinancial": "Identiteit, Contact, Reis, Financieel",
+      "paymentProcessing": "Betalingsverwerking",
+      "financialIdentity": "Financieel, Identiteit",
+      "customerSupport": "Klantenservice",
+      "legitimateInterest": "Gerechtvaardigd Belang",
+      "identityContactTravel": "Identiteit, Contact, Reis",
+      "marketingCommunications": "Marketing Communicatie",
+      "consent": "Toestemming",
+      "identityContact": "Identiteit, Contact",
+      "analyticsImprovement": "Analyses & Verbetering",
+      "technicalUsage": "Technisch, Gebruik",
+      "legalCompliance": "Juridische Naleving",
+      "legalObligation": "Juridische Verplichting",
+      "allCategories": "Alle Categorieën",
+      "note": "Opmerking: Wij zullen uw persoonsgegevens alleen verwerken voor de hierboven genoemde doeleinden. Als wij uw gegevens voor een nieuw doel moeten gebruiken, zullen wij u hiervan op de hoogte stellen en uw toestemming verkrijgen waar vereist."
+    },
+    "sharing": {
+      "title": "6. Gegevensdeling & Derden",
+      "serviceProviders": "Dienstverleners",
+      "paymentProcessors": "Betalingsverwerkers",
+      "paymentProcessorsDesc": "Stripe, PayPal - voor veilige betalingsverwerking",
+      "cloudServices": "Cloud Diensten",
+      "cloudServicesDesc": "AWS, Google Cloud - voor gegevensopslag en hosting",
+      "analytics": "Analyses",
+      "analyticsDesc": "Google Analytics, Mixpanel - voor gebruiksanalyse",
+      "communication": "Communicatie",
+      "communicationDesc": "SendGrid, Twilio - voor e-mail en SMS diensten",
+      "travelPartners": "Reispartners",
+      "travelPartnersItems": [
+        "• Luchtvaartmaatschappijen en transportbedrijven",
+        "• Hotels en accommodatiepartners",
+        "• Reisorganisaties en activiteitenaanbieders",
+        "• Verzekeringsmaatschappijen en reisbijstand"
+      ],
+      "important": "Belangrijk: Wij verkopen, verhuren of verhandelen uw persoonsgegevens niet aan derden voor marketingdoeleinden. Alle gegevensdeling wordt uitgevoerd onder strikte contractuele verplichtingen en gegevensbeschermingsovereenkomsten."
+    },
+    "security": {
+      "title": "7. Gegevensbeveiliging & Bescherming",
+      "technicalMeasures": "Technische Maatregelen",
+      "technicalItems": [
+        "• AES-256 encryptie voor data in rust",
+        "• TLS 1.3 encryptie voor data in transit",
+        "• Multi-factor authenticatie voor systeemtoegang",
+        "• Regelmatige beveiligingsaudits en penetratietests",
+        "• Intrusie detectie en preventiesystemen"
+      ],
+      "organizationalMeasures": "Organisatorische Maatregelen",
+      "organizationalItems": [
+        "• Medewerkerstraining over gegevensbescherming",
+        "• Toegangscontroles en rolgebaseerde machtigingen",
+        "• Incident response en datalek meldingsprocedures",
+        "• Regelmatige beleidsreviews en updates",
+        "• Leverancier beveiligingsbeoordelingen"
+      ],
+      "certification": "Certificering: Wij behouden ISO 27001 certificering en ondergaan regelmatig SOC 2 Type II audits om ervoor te zorgen dat onze beveiligingspraktijken voldoen aan industriestandaarden."
+    },
+    "retention": {
+      "title": "8. Gegevensbewaring & Verwijdering",
+      "dataCategory": "Gegevenscategorie",
+      "retentionPeriod": "Bewaartermijn",
+      "legalBasis": "Juridische Grondslag",
+      "bookingRecords": "Boekingsgegevens",
+      "sevenYears": "7 jaar",
+      "legalObligationTax": "Juridische verplichting (belastingwet)",
+      "financialTransactions": "Financiële Transacties",
+      "legalObligationAccounting": "Juridische verplichting (boekhouding)",
+      "marketingData": "Marketing Gegevens",
+      "untilConsentWithdrawal": "Tot intrekking toestemming",
+      "analyticsData": "Analyses Gegevens",
+      "twentySixMonths": "26 maanden",
+      "legitimateInterest": "Gerechtvaardigd belang",
+      "supportCommunications": "Ondersteuningscommunicatie",
+      "threeYears": "3 jaar",
+      "deletionProcess": "Verwijderingsproces: Na afloop van bewaartermijnen worden gegevens automatisch verwijderd of geanonimiseerd. U kunt vroegtijdige verwijdering aanvragen onder voorbehoud van juridische vereisten."
+    },
+    "rights": {
+      "title": "9. Uw Rechten & Controles",
+      "accessPortability": "Toegang & Portabiliteit",
+      "accessPortabilityDesc": "Vraag een kopie van uw gegevens in een draagbaar formaat",
+      "rectification": "Rectificatie",
+      "rectificationDesc": "Corrigeer onjuiste of onvolledige gegevens",
+      "erasure": "Verwijdering",
+      "erasureDesc": "Vraag verwijdering van uw persoonsgegevens",
+      "restriction": "Beperking",
+      "restrictionDesc": "Beperk verwerking van uw gegevens",
+      "objection": "Bezwaar",
+      "objectionDesc": "Maak bezwaar tegen verwerking op basis van gerechtvaardigde belangen",
+      "withdrawal": "Intrekking",
+      "withdrawalDesc": "Trek toestemming in voor marketingcommunicatie",
+      "automatedDecisions": "Geautomatiseerde Beslissingen",
+      "automatedDecisionsDesc": "Vraag menselijke beoordeling van geautomatiseerde beslissingen",
+      "complaints": "Klachten",
+      "complaintsDesc": "Dien klachten in bij toezichthoudende autoriteiten",
+      "howToExercise": "Hoe Uw Rechten Uit te Oefenen",
+      "contactDPO": "Om een van deze rechten uit te oefenen, neem contact op met onze Functionaris Gegevensbescherming:",
+      "email": "E-mail:",
+      "dpoEmail": "dpo@yournextstadium.nl",
+      "responseTime": "Reactietijd:",
+      "responseTimeDesc": "Binnen 30 dagen (kan worden verlengd tot 60 dagen voor complexe verzoeken)"
+    },
+    "contact": {
+      "title": "10. Contact & Klachten",
+      "dataProtectionOfficer": "Functionaris Gegevensbescherming",
+      "phone": "Telefoon:",
+      "address": "Adres:",
+      "companyAddress": "YourNextStadium B.V.",
+      "streetAddress": "Voetbalstraat 123",
+      "postalCode": "1012 AB Amsterdam",
+      "country": "Nederland",
+      "supervisoryAuthority": "Toezichthoudende Autoriteit",
+      "apName": "Autoriteit Persoonsgegevens (AP)",
+      "website": "Website:",
+      "apWebsite": "autoriteitpersoonsgegevens.nl",
+      "apPhone": "088 - 1805 250",
+      "apAddress": "Autoriteit Persoonsgegevens",
+      "apPostal": "Postbus 93374",
+      "apCity": "2509 AJ Den Haag",
+      "complaintProcess": "Klachtenprocedure: Als u zorgen heeft over onze gegevensverwerking, raden wij u aan eerst contact met ons op te nemen. U heeft ook het recht om een klacht in te dienen bij de Autoriteit Persoonsgegevens (AP) of uw lokale toezichthoudende autoriteit."
+    },
+    "notices": {
+      "title": "Belangrijke Mededelingen",
+      "internationalTransfers": "Internationale Overdrachten: Uw gegevens kunnen worden overgedragen naar landen buiten de Europese Economische Ruimte (EER). Wij zorgen voor adequate bescherming door middel van Standaard Contractuele Bepalingen en adequaatheidsbeslissingen.",
+      "childrenPrivacy": "Privacy van Kinderen: Onze Dienst is niet bedoeld voor kinderen onder de 16. Wij verzamelen niet bewust persoonsgegevens van kinderen onder de 16 zonder ouderlijke toestemming.",
+      "cookiesPolicy": "Cookies Beleid: Wij gebruiken cookies en vergelijkbare technologieën. U kunt uw voorkeuren beheren via onze Cookie Instellingen of uw browserinstellingen.",
+      "updates": "Updates: Dit beleid kan periodiek worden bijgewerkt. Wij zullen u op de hoogte stellen van materiële wijzigingen per e-mail of via onze Dienst."
+    }
   },
   "terms": {
     "title": "Algemene Voorwaarden",
-    "subtitle": "Belangrijke informatie over je boeking en onze dienstverlening",
-    "lastUpdated": "Laatst bijgewerkt: 1 januari 2024"
+    "subtitle": "YourNextStadium B.V. - Uitgebreide Boekingsvoorwaarden & Dienstverleningscondities",
+    "lastUpdated": "Laatst bijgewerkt: December 2024",
+    "version": "Versie 2.1",
+    "tableOfContents": "Inhoudsopgave",
+    "introduction": {
+      "title": "1. Algemene Bepalingen",
+      "company": "Deze algemene voorwaarden zijn van toepassing op alle overeenkomsten tussen YourNextStadium B.V., gevestigd te Amsterdam (hierna: &ldquo;YourNextStadium&rdquo; of &ldquo;wij&rdquo;), en de klant (hierna: &ldquo;u&rdquo; of &ldquo;de reiziger&rdquo;).",
+      "agreement": "Door een boeking te maken via onze website of andere kanalen, gaat u akkoord met deze voorwaarden. Wij adviseren u deze voorwaarden zorgvuldig door te lezen voordat u een boeking maakt.",
+      "important": "YourNextStadium is aangesloten bij de Stichting Garantiefonds Reisgelden (SGR). Uw geld is beschermd conform de Wet op het consumentenrecht."
+    },
+    "booking": {
+      "title": "2. Boeking en Betaling",
+      "process": {
+        "title": "2.1 Boekingsproces",
+        "items": [
+          "Een boeking komt tot stand na ontvangst van uw betaling en onze schriftelijke bevestiging",
+          "Alle prijzen zijn per persoon en inclusief BTW, tenzij anders vermeld",
+          "Boekingen zijn bindend en kunnen alleen worden gewijzigd of geannuleerd conform deze voorwaarden",
+          "U bent verplicht correcte en volledige gegevens te verstrekken"
+        ]
+      },
+      "payment": {
+        "title": "2.2 Betaling",
+        "methods": "Betaalmethoden",
+        "methodsItems": [
+          "• iDEAL",
+          "• Creditcard (Visa, Mastercard)",
+          "• PayPal",
+          "• Bankoverschrijving"
+        ],
+        "terms": "Betalingstermijnen",
+        "termsItems": [
+          "• Volledige betaling bij boeking",
+          "• Bij groepen >6 personen: 50% aanbetaling",
+          "• Restbetaling 30 dagen voor vertrek"
+        ]
+      }
+    },
+    "mystery": {
+      "title": "3. Mystery Concept",
+      "destination": "3.1 Bestemming: De exacte bestemming van uw reis blijft geheim tot 1-2 weken voor vertrek. Wij houden rekening met uw opgegeven voorkeuren en afkeuringen.",
+      "reveal": "3.2 Onthulling: De bestemming wordt onthuld via email en uw persoonlijke dashboard. U ontvangt dan alle reisdetails, tickets en praktische informatie.",
+      "guarantees": "3.3 Garanties: Wij garanderen dat uw bestemming voldoet aan het geboekte pakket en dat u niet naar teams/steden gaat die u expliciet heeft uitgesloten.",
+      "mysteryGuarantee": "Mystery Garantie",
+      "mysteryGuaranteeDesc": "Niet tevreden met de onthulde bestemming? U kunt binnen 24 uur na onthulling kosteloos omboeken naar een andere datum of uw geld terugkrijgen."
+    },
+    "cancellation": {
+      "title": "4. Annulering en Wijzigingen",
+      "cancellationByTraveler": {
+        "title": "4.1 Annulering door de Reiziger",
+        "cancellationMoment": "Annuleringsmoment",
+        "costs": "Kosten",
+        "moreThan30Days": "Meer dan 30 dagen voor vertrek",
+        "adminCosts": "€50 administratiekosten",
+        "fifteenTo30Days": "15-30 dagen voor vertrek",
+        "twentyFivePercent": "25% van de reissom",
+        "eightTo14Days": "8-14 dagen voor vertrek",
+        "fiftyPercent": "50% van de reissom",
+        "lessThan8Days": "Minder dan 8 dagen voor vertrek",
+        "hundredPercent": "100% van de reissom"
+      },
+      "changes": {
+        "title": "4.2 Wijzigingen",
+        "items": [
+          "Wijzigingen zijn mogelijk tot 14 dagen voor vertrek (€25 wijzigingskosten)",
+          "Naamswijzigingen zijn gratis mogelijk tot 7 dagen voor vertrek",
+          "Datumwijzigingen zijn afhankelijk van beschikbaarheid"
+        ]
+      }
+    },
+    "travel": {
+      "title": "5. Reisvoorwaarden",
+      "documents": "5.1 Documenten: U bent zelf verantwoordelijk voor geldige reisdocumenten (paspoort/ID). Voor reizen buiten de EU kunnen aanvullende documenten vereist zijn.",
+      "health": "5.2 Gezondheid: U dient fysiek en mentaal in staat te zijn om de reis te ondernemen. Bij twijfel adviseren wij medisch advies in te winnen.",
+      "behavior": "5.3 Gedrag: U dient zich te houden aan lokale wetten en gebruiken. Ongepast gedrag kan leiden tot uitsluiting van de reis zonder recht op terugbetaling.",
+      "insurance": "5.4 Verzekering: Wij adviseren sterk een reisverzekering af te sluiten. YourNextStadium is niet aansprakelijk voor kosten door ziekte, ongeval of andere onvoorziene omstandigheden."
+    },
+    "liability": {
+      "title": "6. Aansprakelijkheid",
+      "ourLiability": "6.1 Onze aansprakelijkheid: YourNextStadium is aansprakelijk voor de juiste uitvoering van de geboekte diensten. Onze aansprakelijkheid is beperkt tot de reissom.",
+      "forceMajeure": "6.2 Overmacht: Wij zijn niet aansprakelijk voor schade door overmacht, zoals natuurrampen, stakingen, terrorisme, pandemieën of overheidsmaatregelen.",
+      "thirdParties": "6.3 Derde partijen: Voor diensten van derde partijen (hotels, vervoerders, stadions) gelden hun eigen voorwaarden. Wij bemiddelen bij problemen maar zijn niet primair aansprakelijk.",
+      "sgrGuarantee": "SGR Garantie",
+      "sgrGuaranteeDesc": "YourNextStadium is aangesloten bij SGR (Stichting Garantiefonds Reisgelden). Uw geld is beschermd bij faillissement. SGR nummer: 4321."
+    },
+    "complaints": {
+      "title": "7. Klachten en Geschillen",
+      "procedure": "7.1 Klachtenprocedure: Klachten dienen binnen 14 dagen na terugkeer schriftelijk te worden ingediend bij onze klantenservice.",
+      "disputes": "7.2 Geschillencommissie: Bij onopgeloste geschillen kunt u zich wenden tot de Geschillencommissie Reizen (www.degeschillencommissie.nl).",
+      "applicableLaw": "7.3 Toepasselijk recht: Op deze overeenkomst is Nederlands recht van toepassing. Geschillen worden voorgelegd aan de bevoegde rechter in Amsterdam."
+    },
+    "contact": {
+      "title": "8. Contact",
+      "company": "YourNextStadium B.V.",
+      "address": "Adres:",
+      "streetAddress": "Voetbalstraat 123, 1012 AB Amsterdam",
+      "kvk": "KvK:",
+      "kvkNumber": "12345678",
+      "vat": "BTW:",
+      "vatNumber": "NL123456789B01",
+      "anvr": "ANVR:",
+      "anvrNumber": "98765",
+      "sgr": "SGR:",
+      "sgrNumber": "4321",
+      "phone": "Telefoon:",
+      "phoneNumber": "+31 20 123 4567",
+      "emergencyLine": "24/7 Noodlijn:",
+      "emergencyNumber": "+31 20 987 6543",
+      "email": "Email:",
+      "emailAddress": "info@yournextstadium.nl",
+      "website": "Website:",
+      "websiteAddress": "www.yournextstadium.nl"
+    }
   },
   "common": {
     "loading": "Laden...",

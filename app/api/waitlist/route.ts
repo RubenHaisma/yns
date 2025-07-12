@@ -50,13 +50,11 @@ export async function POST(request: NextRequest) {
       console.log('Newsletter subscription failed:', error);
     }
 
-    // Send welcome email if name is provided
-    if (name) {
-      try {
-        await sendWelcomeEmail(email, name, waitlistUser.position);
-      } catch (error) {
-        console.error('Failed to send welcome email:', error);
-      }
+    // Send welcome email to all waitlist signups
+    try {
+      await sendWelcomeEmail(email, name || 'Voetbalfan', waitlistUser.position);
+    } catch (error) {
+      console.error('Failed to send welcome email:', error);
     }
 
     return NextResponse.json({

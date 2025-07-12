@@ -12,7 +12,8 @@ export function WaitlistSection() {
   const [position, setPosition] = useState<number | null>(null);
   const [totalWaitlist, setTotalWaitlist] = useState(0);
 
-  const t = useTranslations('waitlist');
+  const tWaitlist = useTranslations('waitlistSection');
+  const tSuccess = useTranslations('waitlist');
 
   useEffect(() => {
     // Fetch current waitlist count
@@ -72,35 +73,35 @@ export function WaitlistSection() {
             <div className="w-16 h-16 lg:w-20 lg:h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <Check className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t('success')} 🎉</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">{tSuccess('success')}</h2>
             <p className="text-lg lg:text-xl text-green-100 mb-8">
-              {t('successMessage')}
+              {tSuccess('successMessage')}
             </p>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 lg:p-8 mb-8">
-            <h3 className="text-xl lg:text-2xl font-bold mb-4">{t('position')}</h3>
+            <h3 className="text-xl lg:text-2xl font-bold mb-4">{tSuccess('position')}</h3>
             <div className="text-5xl lg:text-6xl font-bold text-orange-400 mb-2">#{position}</div>
             <p className="text-green-100">
-              {totalWaitlist > 0 && `${t('waitlist.benefits.earlyAccessDesc')} - ${totalWaitlist} ${t('waitlist.benefits.updatesDesc')}`}
+              {totalWaitlist > 0 && `${tSuccess('benefits.earlyAccessDesc')} - ${totalWaitlist} ${tSuccess('benefits.updatesDesc')}`}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 mb-8">
             <div className="bg-white/5 rounded-lg p-4 lg:p-6">
               <Gift className="w-6 h-6 lg:w-8 lg:h-8 text-orange-400 mx-auto mb-3" />
-              <h4 className="font-bold mb-2 text-sm lg:text-base">{t('benefits.earlyAccess')}</h4>
-              <p className="text-xs lg:text-sm text-green-200">{t('benefits.earlyAccessDesc')}</p>
+              <h4 className="font-bold mb-2 text-sm lg:text-base">{tSuccess('benefits.earlyAccess')}</h4>
+              <p className="text-xs lg:text-sm text-green-200">{tSuccess('benefits.earlyAccessDesc')}</p>
             </div>
             <div className="bg-white/5 rounded-lg p-4 lg:p-6">
               <Trophy className="w-6 h-6 lg:w-8 lg:h-8 text-orange-400 mx-auto mb-3" />
-              <h4 className="font-bold mb-2 text-sm lg:text-base">{t('benefits.discounts')}</h4>
-              <p className="text-xs lg:text-sm text-green-200">{t('benefits.discountsDesc')}</p>
+              <h4 className="font-bold mb-2 text-sm lg:text-base">{tSuccess('benefits.discounts')}</h4>
+              <p className="text-xs lg:text-sm text-green-200">{tSuccess('benefits.discountsDesc')}</p>
             </div>
             <div className="bg-white/5 rounded-lg p-4 lg:p-6">
               <Sparkles className="w-6 h-6 lg:w-8 lg:h-8 text-orange-400 mx-auto mb-3" />
-              <h4 className="font-bold mb-2 text-sm lg:text-base">{t('benefits.updates')}</h4>
-              <p className="text-xs lg:text-sm text-green-200">{t('benefits.updatesDesc')}</p>
+              <h4 className="font-bold mb-2 text-sm lg:text-base">{tSuccess('benefits.updates')}</h4>
+              <p className="text-xs lg:text-sm text-green-200">{tSuccess('benefits.updatesDesc')}</p>
             </div>
           </div>
 
@@ -116,30 +117,26 @@ export function WaitlistSection() {
     <section className="py-16 lg:py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center space-x-2 bg-orange-500 text-white px-4 py-2 rounded-full font-bold text-sm mb-6">
-            <Sparkles className="w-4 h-4" />
-            <span>EXCLUSIVE EARLY ACCESS</span>
-          </div>
           
           <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-            {t('title')}
+            {tWaitlist('title')}
           </h2>
           <p className="text-lg lg:text-xl text-green-100 max-w-3xl mx-auto mb-8">
-            {t('subtitle')}. {t('description')}
+            {tWaitlist('subtitle')}. {tWaitlist('description')}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
             <div className="text-center">
               <div className="text-2xl lg:text-3xl font-bold text-orange-400">{totalWaitlist}+</div>
-              <div className="text-green-200 text-sm">{t('waitlist.benefits.earlyAccessDesc')}</div>
+              <div className="text-green-200 text-sm">{tWaitlist('stats.waiting')}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl lg:text-3xl font-bold text-orange-400">50+</div>
-              <div className="text-green-200 text-sm">{t('stats.stadiums')}</div>
+              <div className="text-green-200 text-sm">{tWaitlist('stats.stadiums')}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl lg:text-3xl font-bold text-orange-400">15+</div>
-              <div className="text-green-200 text-sm">{t('stats.countries')}</div>
+              <div className="text-green-200 text-sm">{tWaitlist('stats.countries')}</div>
             </div>
           </div>
         </div>
@@ -151,10 +148,10 @@ export function WaitlistSection() {
               <div className="text-center mb-6">
                 <Mail className="w-10 h-10 lg:w-12 lg:h-12 text-green-600 mx-auto mb-3" />
                 <h3 className="text-xl lg:text-2xl font-bold text-green-800 mb-2">
-                  {t('joinWaitlist')}
+                  {tWaitlist('joinWaitlist')}
                 </h3>
                 <p className="text-green-600 text-sm lg:text-base">
-                  {t('waitlist.description')}
+                  {tWaitlist('description')}
                 </p>
               </div>
 
@@ -166,7 +163,7 @@ export function WaitlistSection() {
 
               <div>
                 <label className="block text-sm font-medium text-green-700 mb-2">
-                  {t('email')} *
+                  {tWaitlist('email')} *
                 </label>
                 <input
                   type="email"
@@ -174,7 +171,7 @@ export function WaitlistSection() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 text-sm lg:text-base"
-                  placeholder="your@email.com"
+                  placeholder={tWaitlist('emailPlaceholder')}
                 />
               </div>
 
@@ -191,13 +188,13 @@ export function WaitlistSection() {
                 ) : (
                   <>
                     <Mail className="w-5 h-5" />
-                    <span>{t('joinWaitlist')}</span>
+                    <span>{tWaitlist('joinWaitlist')}</span>
                   </>
                 )}
               </button>
 
               <p className="text-xs text-gray-500 text-center">
-                {t('waitlist.description')}
+                {tWaitlist('termsText')}
               </p>
             </form>
           </div>

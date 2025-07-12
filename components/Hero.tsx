@@ -53,22 +53,12 @@ export function Hero({ onBookingClick }: HeroProps) {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Football Icon */}
-        <div className="mb-8">
-          <div className="inline-block relative">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full transform animate-pulse shadow-2xl flex items-center justify-center">
-              <div className="text-white text-2xl sm:text-3xl">⚽</div>
-            </div>
-            <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-green-400 rounded-full animate-bounce"></div>
-          </div>
-        </div>
-
         {/* Headline */}
         <div className="mb-8">
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
             {t('title')}
           </h1>
-          <div className="text-lg sm:text-2xl lg:text-3xl font-medium text-orange-400 mb-4">
+          <div className="text-lg sm:text-2xl lg: text-3xl font-medium text-orange-400 mb-4">
             <span className="inline-block">{t('subtitle')}</span>
             {' '}
             <span className={`inline-block border-r-2 border-orange-400 transition-all duration-500 ${isTyping ? 'opacity-100' : 'opacity-50'}`}>

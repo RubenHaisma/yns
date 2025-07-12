@@ -9,9 +9,7 @@ const nextConfig = withNextIntl({
   images: { 
     unoptimized: true 
   },
-  experimental: {
-    serverComponentsExternalPackages: ['@prisma/client']
-  }
+  serverExternalPackages: ['@prisma/client']
 });
 
 module.exports = nextConfig;

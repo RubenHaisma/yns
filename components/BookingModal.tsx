@@ -21,12 +21,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     travelers: 1,
     name: '',
     email: '',
-    phone: '',
-    preferences: {
-      hatedTeams: [] as string[],
-      visitedCities: [] as string[],
-      travelStyle: ''
-    }
+    phone: ''
   });
 
   const t = useTranslations('modal');
@@ -38,35 +33,32 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     }
   }, [selectedPackage]);
 
+  // Calculate minimum date (1 month from today)
+  const getMinDate = () => {
+    const today = new Date();
+    const minDate = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+    return minDate.toISOString().split('T')[0];
+  };
+
   const packages = [
     { 
       id: 'basic', 
-      name: t('packages.basic.name'), 
-      price: t('packages.basic.price'), 
+      name: t('basic.name'), 
+      price: t('basic.price'), 
       popular: false 
     },
     { 
       id: 'comfort', 
-      name: t('packages.comfort.name'), 
-      price: t('packages.comfort.price'), 
+      name: t('comfort.name'), 
+      price: t('comfort.price'), 
       popular: true 
     },
     { 
       id: 'premium', 
-      name: t('packages.premium.name'), 
-      price: t('packages.premium.price'), 
+      name: t('premium.name'), 
+      price: t('premium.price'), 
       popular: false 
     }
-  ];
-
-  const teams = [
-    'Ajax', 'Feyenoord', 'PSV', 'Real Madrid', 'Barcelona', 'Bayern München', 
-    'Manchester United', 'Liverpool', 'Chelsea', 'Arsenal'
-  ];
-
-  const cities = [
-    'Amsterdam', 'London', 'Madrid', 'Barcelona', 'München', 'Milano', 
-    'Paris', 'Brussels', 'Liverpool', 'Manchester'
   ];
 
   const calculateTotalPrice = () => {
@@ -131,12 +123,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                   travelers: 1,
                   name: '',
                   email: '',
-                  phone: '',
-                  preferences: {
-                    hatedTeams: [],
-                    visitedCities: [],
-                    travelStyle: ''
-                  }
+                  phone: ''
                 });
                 onClose();
               }}
@@ -151,35 +138,11 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
   }
 
   const handleNext = () => {
-    if (step < 4) setStep(step + 1);
+    if (step < 3) setStep(step + 1);
   };
 
   const handlePrev = () => {
     if (step > 1) setStep(step - 1);
-  };
-
-  const handleTeamToggle = (team: string) => {
-    setFormData(prev => ({
-      ...prev,
-      preferences: {
-        ...prev.preferences,
-        hatedTeams: prev.preferences.hatedTeams.includes(team)
-          ? prev.preferences.hatedTeams.filter(t => t !== team)
-          : [...prev.preferences.hatedTeams, team]
-      }
-    }));
-  };
-
-  const handleCityToggle = (city: string) => {
-    setFormData(prev => ({
-      ...prev,
-      preferences: {
-        ...prev.preferences,
-        visitedCities: prev.preferences.visitedCities.includes(city)
-          ? prev.preferences.visitedCities.filter(c => c !== city)
-          : [...prev.preferences.visitedCities, city]
-      }
-    }));
   };
 
   return (
@@ -189,7 +152,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
         <div className="flex items-center justify-between p-4 lg:p-6 border-b border-green-100">
           <div>
             <h2 className="text-xl lg:text-2xl font-bold text-green-800">{t('bookTrip')}</h2>
-            <p className="text-green-600 text-sm lg:text-base">{t('step')} {step} {t('of')} 4</p>
+            <p className="text-green-600 text-sm lg:text-base">{t('step')} {step} {t('of')} 3</p>
           </div>
           <button
             onClick={onClose}
@@ -203,7 +166,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
         <div className="w-full bg-gray-200 h-2">
           <div 
             className="bg-gradient-to-r from-green-500 to-green-600 h-2 transition-all duration-300"
-            style={{ width: `${(step / 4) * 100}%` }}
+            style={{ width: `${(step / 3) * 100}%` }}
           />
         </div>
 
@@ -230,7 +193,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                     />
                     <label
                       htmlFor={pkg.id}
-                      className="flex items-center justify-between p-4 border-2 border-green-100 rounded-lg cursor-pointer peer-checked:border-orange-500 peer-checked:bg-orange-50 hover:bg-green-50 transition-colors"
+                      className="flex items-center justify-bet
+                      ween p-4 border-2 border-green-100 rounded-lg cursor-pointer peer-checked:border-orange-500 peer-checked:bg-orange-50 hover:bg-green-50 transition-colors"
                     >
                       <div>
                         <div className="font-semibold text-green-800 text-sm lg:text-base">{pkg.name}</div>
@@ -263,6 +227,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                   <input
                     type="date"
                     value={formData.date}
+                    min={getMinDate()}
                     onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
                     className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
                   />
@@ -291,91 +256,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           {step === 3 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('tellAbout')}</h3>
-                <p className="text-green-600 text-sm lg:text-base">{t('tellSubtitle')}</p>
-              </div>
-              
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-green-700 mb-3">
-                    {t('hatedTeams')}
-                  </label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {teams.map((team) => (
-                      <button
-                        key={team}
-                        type="button"
-                        onClick={() => handleTeamToggle(team)}
-                        className={`p-2 rounded-lg border transition-colors text-xs lg:text-sm ${
-                          formData.preferences.hatedTeams.includes(team)
-                            ? 'bg-red-100 border-red-300 text-red-800'
-                            : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
-                        }`}
-                      >
-                        {team}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-green-700 mb-3">
-                    {t('visitedCities')}
-                  </label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {cities.map((city) => (
-                      <button
-                        key={city}
-                        type="button"
-                        onClick={() => handleCityToggle(city)}
-                        className={`p-2 rounded-lg border transition-colors text-xs lg:text-sm ${
-                          formData.preferences.visitedCities.includes(city)
-                            ? 'bg-green-100 border-green-300 text-green-800'
-                            : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
-                        }`}
-                      >
-                        {city}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-green-700 mb-3">
-                    {t('travelStyle')}
-                  </label>
-                  <div className="space-y-2">
-                    {[
-                      { value: 'alone', label: t('alone') },
-                      { value: 'friends', label: t('friends') },
-                      { value: 'flexible', label: t('flexible') }
-                    ].map((option) => (
-                      <label key={option.value} className="flex items-center space-x-3">
-                        <input
-                          type="radio"
-                          name="travelStyle"
-                          value={option.value}
-                          checked={formData.preferences.travelStyle === option.value}
-                          onChange={(e) => setFormData(prev => ({
-                            ...prev,
-                            preferences: { ...prev.preferences, travelStyle: e.target.value }
-                          }))}
-                          className="w-4 h-4 text-green-600 focus:ring-green-500"
-                        />
-                        <span className="text-green-700 text-sm lg:text-base">{option.label}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {step === 4 && (
-            <div className="space-y-6">
-              <div className="text-center mb-6">
-                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('confirmBooking')}</h3>
-                <p className="text-green-600 text-sm lg:text-base">{t('confirmSubtitle')}</p>
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('joinWaitlistTitle')}</h3>
+                <p className="text-green-600 text-sm lg:text-base">{t('joinWaitlistSubtitle')}</p>
               </div>
               
               <div className="bg-green-50 rounded-lg p-4 space-y-3">
@@ -448,10 +330,10 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               <div className="bg-gradient-to-r from-green-100 to-orange-100 rounded-lg p-4">
                 <div className="flex items-center space-x-2 mb-2">
                   <Check className="w-5 h-5 text-green-600" />
-                  <span className="font-semibold text-green-800 text-sm lg:text-base">{t('securePayment')}</span>
+                  <span className="font-semibold text-green-800 text-sm lg:text-base">{t('earlyAccess')}</span>
                 </div>
                 <p className="text-xs lg:text-sm text-green-700">
-                  {t('paymentDesc')}
+                  {t('earlyAccessDesc')}
                 </p>
               </div>
             </div>
@@ -469,7 +351,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           </button>
           
           <div className="flex space-x-2">
-            {[1, 2, 3, 4].map((num) => (
+            {[1, 2, 3].map((num) => (
               <div
                 key={num}
                 className={`w-2 h-2 rounded-full transition-all ${
@@ -479,7 +361,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
             ))}
           </div>
           
-          {step < 4 ? (
+          {step < 3 ? (
             <button
               onClick={handleNext}
               className="px-4 lg:px-6 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all text-sm lg:text-base"
@@ -495,10 +377,10 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               {isSubmitting ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>{t('processing')}</span>
+                  <span>{t('joining')}</span>
                 </>
               ) : (
-                <span>{t('payBook')}</span>
+                <span>{t('joinWaitlist')}</span>
               )}
             </button>
           )}

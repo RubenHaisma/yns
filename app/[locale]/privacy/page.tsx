@@ -2,7 +2,7 @@
 
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Shield, Eye, Lock, Users, Mail, Clock } from 'lucide-react';
+import { Shield, Eye, Lock, Users, Mail, Clock, FileText, Database, Globe, AlertTriangle } from 'lucide-react';
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
 import { useTranslations } from 'next-intl';
@@ -26,284 +26,514 @@ export default function Privacy() {
             <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
               {t('privacy.subtitle')}
             </p>
-            <p className="text-green-200 mt-4">
-              {t('privacy.lastUpdated')}
-            </p>
+            <div className="mt-6 flex items-center justify-center space-x-4 text-green-200">
+              <Clock className="w-5 h-5" />
+              <span>{t('privacy.lastUpdated')}</span>
+              <span>•</span>
+              <span>{t('privacy.version')}</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Table of Contents */}
+        <section className="py-12 bg-gray-50 border-b">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <FileText className="w-6 h-6 mr-3 text-green-600" />
+                {t('privacy.tableOfContents')}
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="space-y-2">
+                  <a href="#introduction" className="block text-green-700 hover:text-green-800">{t('privacy.introduction.title')}</a>
+                  <a href="#definitions" className="block text-green-700 hover:text-green-800">{t('privacy.definitions.title')}</a>
+                  <a href="#collection" className="block text-green-700 hover:text-green-800">{t('privacy.collection.title')}</a>
+                  <a href="#categories" className="block text-green-700 hover:text-green-800">{t('privacy.categories.title')}</a>
+                  <a href="#purposes" className="block text-green-700 hover:text-green-800">{t('privacy.purposes.title')}</a>
+                </div>
+                <div className="space-y-2">
+                  <a href="#sharing" className="block text-green-700 hover:text-green-800">{t('privacy.sharing.title')}</a>
+                  <a href="#security" className="block text-green-700 hover:text-green-800">{t('privacy.security.title')}</a>
+                  <a href="#retention" className="block text-green-700 hover:text-green-800">{t('privacy.retention.title')}</a>
+                  <a href="#rights" className="block text-green-700 hover:text-green-800">{t('privacy.rights.title')}</a>
+                  <a href="#contact" className="block text-green-700 hover:text-green-800">{t('privacy.contact.title')}</a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Privacy Content */}
-        <section className="py-20 bg-gradient-to-b from-white to-green-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             
             {/* Introduction */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-              <h2 className="text-3xl font-bold text-green-800 mb-6">Inleiding</h2>
-              <p className="text-green-700 leading-relaxed mb-4">
-                YourNextStadium ("wij", "ons", "onze") respecteert je privacy en is toegewijd aan het beschermen van je persoonlijke gegevens. 
-                Deze privacy policy legt uit hoe we je informatie verzamelen, gebruiken en beschermen wanneer je onze website bezoekt of onze diensten gebruikt.
-              </p>
-              <p className="text-green-700 leading-relaxed">
-                Door onze website te gebruiken of een boeking te maken, ga je akkoord met de praktijken beschreven in deze policy.
-              </p>
+            <div id="introduction" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('privacy.introduction.title')}</h2>
+              <div className="prose prose-lg text-gray-700">
+                <p className="mb-4" dangerouslySetInnerHTML={{ __html: t('privacy.introduction.company') }} />
+                <p className="mb-4">{t('privacy.introduction.applies')}</p>
+                <div className="bg-blue-50 border-l-4 border-blue-400 p-4 my-6">
+                  <p className="text-blue-800">
+                    {t('privacy.introduction.important')}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Definitions */}
+            <div id="definitions" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('privacy.definitions.title')}</h2>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">{t('privacy.definitions.keyDefinitions')}</h3>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <strong className="text-gray-900">{t('privacy.definitions.personalData')}</strong>
+                      <p className="text-gray-700 mt-1">{t('privacy.definitions.personalDataDesc')}</p>
+                    </div>
+                    <div>
+                      <strong className="text-gray-900">{t('privacy.definitions.processing')}</strong>
+                      <p className="text-gray-700 mt-1">{t('privacy.definitions.processingDesc')}</p>
+                    </div>
+                    <div>
+                      <strong className="text-gray-900">{t('privacy.definitions.dataController')}</strong>
+                      <p className="text-gray-700 mt-1">{t('privacy.definitions.dataControllerDesc')}</p>
+                    </div>
+                    <div>
+                      <strong className="text-gray-900">{t('privacy.definitions.dataProcessor')}</strong>
+                      <p className="text-gray-700 mt-1">{t('privacy.definitions.dataProcessorDesc')}</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">{t('privacy.definitions.legalFramework')}</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    <li>{t('privacy.definitions.gdpr')}</li>
+                    <li>{t('privacy.definitions.uavg')}</li>
+                    <li>{t('privacy.definitions.privacyRegs')}</li>
+                    <li>{t('privacy.definitions.industryRegs')}</li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
             {/* Data Collection */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+            <div id="collection" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
               <div className="flex items-center mb-6">
-                <Eye className="w-8 h-8 text-green-600 mr-3" />
-                <h2 className="text-3xl font-bold text-green-800">Welke Gegevens Verzamelen We?</h2>
+                <Database className="w-8 h-8 text-green-600 mr-3" />
+                <h2 className="text-3xl font-bold text-gray-900">{t('privacy.collection.title')}</h2>
               </div>
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-green-800 mb-3">Persoonlijke Informatie</h3>
-                  <ul className="list-disc list-inside text-green-700 space-y-2">
-                    <li>Naam en contactgegevens (email, telefoon)</li>
-                    <li>Boekingsinformatie en reisvoorkeuren</li>
-                    <li>Betaalgegevens (verwerkt door beveiligde betalingsproviders)</li>
-                    <li>Communicatie met onze klantenservice</li>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">{t('privacy.collection.directCollection')}</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    {t.raw('privacy.collection.directItems').map((item: string, index: number) => (
+                      <li key={index}>{item}</li>
+                    ))}
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-green-800 mb-3">Automatisch Verzamelde Gegevens</h3>
-                  <ul className="list-disc list-inside text-green-700 space-y-2">
-                    <li>IP-adres en browserinformatie</li>
-                    <li>Website gebruiksstatistieken</li>
-                    <li>Cookies en vergelijkbare technologieën</li>
-                    <li>Apparaat- en locatiegegevens (indien toegestaan)</li>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">{t('privacy.collection.automaticCollection')}</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    {t.raw('privacy.collection.automaticItems').map((item: string, index: number) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">{t('privacy.collection.thirdPartySources')}</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    {t.raw('privacy.collection.thirdPartyItems').map((item: string, index: number) => (
+                      <li key={index}>{item}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
             </div>
 
-            {/* Data Usage */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+            {/* Data Categories */}
+            <div id="categories" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
               <div className="flex items-center mb-6">
-                <Users className="w-8 h-8 text-green-600 mr-3" />
-                <h2 className="text-3xl font-bold text-green-800">Hoe Gebruiken We Je Gegevens?</h2>
+                <Eye className="w-8 h-8 text-green-600 mr-3" />
+                <h2 className="text-3xl font-bold text-gray-900">{t('privacy.categories.title')}</h2>
               </div>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-green-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-bold text-green-800 mb-3">Dienstverlening</h3>
-                  <ul className="text-green-700 space-y-2 text-sm">
-                    <li>• Verwerken van boekingen</li>
-                    <li>• Versturen van bevestigingen</li>
-                    <li>• Klantenservice verlenen</li>
-                    <li>• Mystery bestemmingen selecteren</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-orange-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-bold text-green-800 mb-3">Communicatie</h3>
-                  <ul className="text-green-700 space-y-2 text-sm">
-                    <li>• Reisupdate emails</li>
-                    <li>• Marketing (met toestemming)</li>
-                    <li>• Belangrijke mededelingen</li>
-                    <li>• Feedback verzamelen</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-blue-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-bold text-green-800 mb-3">Verbetering</h3>
-                  <ul className="text-green-700 space-y-2 text-sm">
-                    <li>• Website optimalisatie</li>
-                    <li>• Nieuwe diensten ontwikkelen</li>
-                    <li>• Gebruikerservaring verbeteren</li>
-                    <li>• Technische problemen oplossen</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-purple-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-bold text-green-800 mb-3">Juridisch</h3>
-                  <ul className="text-green-700 space-y-2 text-sm">
-                    <li>• Wettelijke verplichtingen</li>
-                    <li>• Fraude preventie</li>
-                    <li>• Geschillen oplossen</li>
-                    <li>• Veiligheid waarborgen</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Data Protection */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-              <div className="flex items-center mb-6">
-                <Lock className="w-8 h-8 text-green-600 mr-3" />
-                <h2 className="text-3xl font-bold text-green-800">Hoe Beschermen We Je Gegevens?</h2>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-sm">🔒</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-green-800">SSL Encryptie</h3>
-                    <p className="text-green-700">Alle gegevensoverdracht is beveiligd met 256-bit SSL encryptie</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-sm">🛡️</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-green-800">Beveiligde Servers</h3>
-                    <p className="text-green-700">Je gegevens worden opgeslagen op beveiligde servers in Europa</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-sm">👥</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-green-800">Beperkte Toegang</h3>
-                    <p className="text-green-700">Alleen geautoriseerd personeel heeft toegang tot je gegevens</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-sm">🔄</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-green-800">Regelmatige Audits</h3>
-                    <p className="text-green-700">We voeren regelmatig beveiligingsaudits uit</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Your Rights */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-              <h2 className="text-3xl font-bold text-green-800 mb-6">Je Rechten (AVG/GDPR)</h2>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-lg font-bold text-green-800 mb-3">Toegang & Controle</h3>
-                  <ul className="text-green-700 space-y-2">
-                    <li>• Inzage in je gegevens</li>
-                    <li>• Correctie van onjuiste gegevens</li>
-                    <li>• Verwijdering van gegevens</li>
-                    <li>• Beperking van verwerking</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h3 className="text-lg font-bold text-green-800 mb-3">Overdracht & Bezwaar</h3>
-                  <ul className="text-green-700 space-y-2">
-                    <li>• Gegevensoverdracht</li>
-                    <li>• Bezwaar tegen verwerking</li>
-                    <li>• Intrekken van toestemming</li>
-                    <li>• Klacht indienen bij AP</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="bg-green-50 p-6 rounded-lg mt-6">
-                <p className="text-green-700">
-                  <strong>Wil je gebruik maken van je rechten?</strong> Stuur een email naar 
-                  <a href="mailto:privacy@yournextstadium.nl" className="text-green-800 font-bold"> privacy@yournextstadium.nl</a> 
-                  met je verzoek. We reageren binnen 30 dagen.
-                </p>
-              </div>
-            </div>
-
-            {/* Cookies */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-              <h2 className="text-3xl font-bold text-green-800 mb-6">Cookies</h2>
-              
-              <div className="space-y-4">
-                <p className="text-green-700">
-                  We gebruiken cookies om je ervaring op onze website te verbeteren. Je kunt cookies beheren via je browserinstellingen.
-                </p>
-                
-                <div className="grid md:grid-cols-3 gap-4">
-                  <div className="bg-green-50 p-4 rounded-lg">
-                    <h4 className="font-bold text-green-800 mb-2">Noodzakelijk</h4>
-                    <p className="text-green-700 text-sm">Voor basisfunctionaliteit</p>
+                <div className="space-y-4">
+                  <div className="bg-green-50 p-6 rounded-lg">
+                    <h3 className="text-lg font-bold text-gray-800 mb-3">{t('privacy.categories.identityContact')}</h3>
+                    <ul className="text-gray-700 space-y-1 text-sm">
+                      {t.raw('privacy.categories.identityItems').map((item: string, index: number) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
                   
-                  <div className="bg-orange-50 p-4 rounded-lg">
-                    <h4 className="font-bold text-green-800 mb-2">Analytics</h4>
-                    <p className="text-green-700 text-sm">Voor website verbetering</p>
+                  <div className="bg-blue-50 p-6 rounded-lg">
+                    <h3 className="text-lg font-bold text-gray-800 mb-3">{t('privacy.categories.financialPayment')}</h3>
+                    <ul className="text-gray-700 space-y-1 text-sm">
+                      {t.raw('privacy.categories.financialItems').map((item: string, index: number) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-orange-50 p-6 rounded-lg">
+                    <h3 className="text-lg font-bold text-gray-800 mb-3">{t('privacy.categories.travelBooking')}</h3>
+                    <ul className="text-gray-700 space-y-1 text-sm">
+                      {t.raw('privacy.categories.travelItems').map((item: string, index: number) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-purple-50 p-6 rounded-lg">
+                    <h3 className="text-lg font-bold text-gray-800 mb-3">{t('privacy.categories.technicalUsage')}</h3>
+                    <ul className="text-gray-700 space-y-1 text-sm">
+                      {t.raw('privacy.categories.technicalItems').map((item: string, index: number) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Processing Purposes */}
+            <div id="purposes" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <div className="flex items-center mb-6">
+                <Users className="w-8 h-8 text-green-600 mr-3" />
+                <h2 className="text-3xl font-bold text-gray-900">{t('privacy.purposes.title')}</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse border border-gray-200">
+                    <thead>
+                      <tr className="bg-gray-50">
+                        <th className="border border-gray-200 p-3 text-left font-bold text-gray-800">{t('privacy.purposes.purpose')}</th>
+                        <th className="border border-gray-200 p-3 text-left font-bold text-gray-800">{t('privacy.purposes.legalBasis')}</th>
+                        <th className="border border-gray-200 p-3 text-left font-bold text-gray-800">{t('privacy.purposes.dataCategories')}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.serviceProvision')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.contractPerformance')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.identityContactTravelFinancial')}</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.paymentProcessing')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.contractPerformance')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.financialIdentity')}</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.customerSupport')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.legitimateInterest')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.identityContactTravel')}</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.marketingCommunications')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.consent')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.identityContact')}</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.analyticsImprovement')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.legitimateInterest')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.technicalUsage')}</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.legalCompliance')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.legalObligation')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.allCategories')}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+                <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                  <p className="text-yellow-800">
+                    {t('privacy.purposes.note')}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Data Sharing */}
+            <div id="sharing" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <div className="flex items-center mb-6">
+                <Globe className="w-8 h-8 text-green-600 mr-3" />
+                <h2 className="text-3xl font-bold text-gray-900">{t('privacy.sharing.title')}</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">{t('privacy.sharing.serviceProviders')}</h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-bold text-gray-800 mb-2">{t('privacy.sharing.paymentProcessors')}</h4>
+                      <p className="text-gray-700 text-sm">{t('privacy.sharing.paymentProcessorsDesc')}</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-bold text-gray-800 mb-2">{t('privacy.sharing.cloudServices')}</h4>
+                      <p className="text-gray-700 text-sm">{t('privacy.sharing.cloudServicesDesc')}</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-bold text-gray-800 mb-2">{t('privacy.sharing.analytics')}</h4>
+                      <p className="text-gray-700 text-sm">{t('privacy.sharing.analyticsDesc')}</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-bold text-gray-800 mb-2">{t('privacy.sharing.communication')}</h4>
+                      <p className="text-gray-700 text-sm">{t('privacy.sharing.communicationDesc')}</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">{t('privacy.sharing.travelPartners')}</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    {t.raw('privacy.sharing.travelPartnersItems').map((item: string, index: number) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="bg-red-50 border-l-4 border-red-400 p-4">
+                  <p className="text-red-800">
+                    {t('privacy.sharing.important')}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Security */}
+            <div id="security" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <div className="flex items-center mb-6">
+                <Lock className="w-8 h-8 text-green-600 mr-3" />
+                <h2 className="text-3xl font-bold text-gray-900">{t('privacy.security.title')}</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3">{t('privacy.security.technicalMeasures')}</h3>
+                    <ul className="space-y-2 text-gray-700">
+                      {t.raw('privacy.security.technicalItems').map((item: string, index: number) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3">{t('privacy.security.organizationalMeasures')}</h3>
+                    <ul className="space-y-2 text-gray-700">
+                      {t.raw('privacy.security.organizationalItems').map((item: string, index: number) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="bg-green-50 border-l-4 border-green-400 p-4">
+                  <p className="text-green-800">
+                    {t('privacy.security.certification')}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Retention */}
+            <div id="retention" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <div className="flex items-center mb-6">
+                <Clock className="w-8 h-8 text-green-600 mr-3" />
+                <h2 className="text-3xl font-bold text-gray-900">{t('privacy.retention.title')}</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse border border-gray-200">
+                    <thead>
+                      <tr className="bg-gray-50">
+                        <th className="border border-gray-200 p-3 text-left font-bold text-gray-800">{t('privacy.retention.dataCategory')}</th>
+                        <th className="border border-gray-200 p-3 text-left font-bold text-gray-800">{t('privacy.retention.retentionPeriod')}</th>
+                        <th className="border border-gray-200 p-3 text-left font-bold text-gray-800">{t('privacy.retention.legalBasis')}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.bookingRecords')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.sevenYears')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.legalObligationTax')}</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.financialTransactions')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.sevenYears')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.legalObligationAccounting')}</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.marketingData')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.untilConsentWithdrawal')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.purposes.consent')}</td>
+                      </tr>
+                      <tr className="bg-gray-50">
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.analyticsData')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.twentySixMonths')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.legitimateInterest')}</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.supportCommunications')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.threeYears')}</td>
+                        <td className="border border-gray-200 p-3 text-gray-700">{t('privacy.retention.legitimateInterest')}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+                <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+                  <p className="text-blue-800">
+                    {t('privacy.retention.deletionProcess')}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Rights */}
+            <div id="rights" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('privacy.rights.title')}</h2>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="bg-green-50 p-4 rounded-lg">
+                    <h3 className="font-bold text-gray-800 mb-2">{t('privacy.rights.accessPortability')}</h3>
+                    <p className="text-gray-700 text-sm">{t('privacy.rights.accessPortabilityDesc')}</p>
                   </div>
                   
                   <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-bold text-green-800 mb-2">Marketing</h4>
-                    <p className="text-green-700 text-sm">Voor gepersonaliseerde content</p>
+                    <h3 className="font-bold text-gray-800 mb-2">{t('privacy.rights.rectification')}</h3>
+                    <p className="text-gray-700 text-sm">{t('privacy.rights.rectificationDesc')}</p>
+                  </div>
+                  
+                  <div className="bg-orange-50 p-4 rounded-lg">
+                    <h3 className="font-bold text-gray-800 mb-2">{t('privacy.rights.erasure')}</h3>
+                    <p className="text-gray-700 text-sm">{t('privacy.rights.erasureDesc')}</p>
+                  </div>
+                  
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h3 className="font-bold text-gray-800 mb-2">{t('privacy.rights.restriction')}</h3>
+                    <p className="text-gray-700 text-sm">{t('privacy.rights.restrictionDesc')}</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-yellow-50 p-4 rounded-lg">
+                    <h3 className="font-bold text-gray-800 mb-2">{t('privacy.rights.objection')}</h3>
+                    <p className="text-gray-700 text-sm">{t('privacy.rights.objectionDesc')}</p>
+                  </div>
+                  
+                  <div className="bg-red-50 p-4 rounded-lg">
+                    <h3 className="font-bold text-gray-800 mb-2">{t('privacy.rights.withdrawal')}</h3>
+                    <p className="text-gray-700 text-sm">{t('privacy.rights.withdrawalDesc')}</p>
+                  </div>
+                  
+                  <div className="bg-indigo-50 p-4 rounded-lg">
+                    <h3 className="font-bold text-gray-800 mb-2">{t('privacy.rights.automatedDecisions')}</h3>
+                    <p className="text-gray-700 text-sm">{t('privacy.rights.automatedDecisionsDesc')}</p>
+                  </div>
+                  
+                  <div className="bg-teal-50 p-4 rounded-lg">
+                    <h3 className="font-bold text-gray-800 mb-2">{t('privacy.rights.complaints')}</h3>
+                    <p className="text-gray-700 text-sm">{t('privacy.rights.complaintsDesc')}</p>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Data Retention */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-              <div className="flex items-center mb-6">
-                <Clock className="w-8 h-8 text-green-600 mr-3" />
-                <h2 className="text-3xl font-bold text-green-800">Hoe Lang Bewaren We Je Gegevens?</h2>
-              </div>
               
-              <div className="space-y-4">
-                <div className="flex justify-between items-center p-4 bg-green-50 rounded-lg">
-                  <span className="font-semibold text-green-800">Boekingsgegevens</span>
-                  <span className="text-green-700">7 jaar (wettelijk verplicht)</span>
-                </div>
-                
-                <div className="flex justify-between items-center p-4 bg-orange-50 rounded-lg">
-                  <span className="font-semibold text-green-800">Marketing gegevens</span>
-                  <span className="text-green-700">Tot uitschrijving</span>
-                </div>
-                
-                <div className="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
-                  <span className="font-semibold text-green-800">Website analytics</span>
-                  <span className="text-green-700">26 maanden</span>
-                </div>
-                
-                <div className="flex justify-between items-center p-4 bg-purple-50 rounded-lg">
-                  <span className="font-semibold text-green-800">Klantenservice</span>
-                  <span className="text-green-700">3 jaar</span>
+              <div className="mt-6 bg-gray-50 p-6 rounded-lg">
+                <h3 className="font-bold text-gray-800 mb-3">{t('privacy.rights.howToExercise')}</h3>
+                <p className="text-gray-700 mb-4">
+                  {t('privacy.rights.contactDPO')}
+                </p>
+                <div className="grid md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <strong className="text-gray-800">{t('privacy.rights.email')}</strong>
+                    <p className="text-gray-700">{t('privacy.rights.dpoEmail')}</p>
+                  </div>
+                  <div>
+                    <strong className="text-gray-800">{t('privacy.rights.responseTime')}</strong>
+                    <p className="text-gray-700">{t('privacy.rights.responseTimeDesc')}</p>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Contact */}
-            <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div id="contact" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
               <div className="flex items-center mb-6">
                 <Mail className="w-8 h-8 text-green-600 mr-3" />
-                <h2 className="text-3xl font-bold text-green-800">Contact & Vragen</h2>
+                <h2 className="text-3xl font-bold text-gray-900">{t('privacy.contact.title')}</h2>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-lg font-bold text-green-800 mb-3">Privacy Officer</h3>
-                  <p className="text-green-700 mb-2">
-                    <strong>Email:</strong> privacy@yournextstadium.nl
-                  </p>
-                  <p className="text-green-700 mb-2">
-                    <strong>Telefoon:</strong> +31 20 123 4567
-                  </p>
-                  <p className="text-green-700">
-                    <strong>Adres:</strong> Voetbalstraat 123, 1012 AB Amsterdam
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-4">{t('privacy.contact.dataProtectionOfficer')}</h3>
+                  <div className="space-y-3 text-gray-700">
+                    <p><strong>{t('privacy.rights.email')}</strong> {t('privacy.rights.dpoEmail')}</p>
+                    <p><strong>{t('privacy.contact.phone')}</strong> +31 20 123 4567</p>
+                    <p><strong>{t('privacy.contact.address')}</strong><br />
+                    {t('privacy.contact.companyAddress')}<br />
+                    {t('privacy.contact.streetAddress')}<br />
+                    {t('privacy.contact.postalCode')}<br />
+                    {t('privacy.contact.country')}</p>
+                  </div>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-bold text-green-800 mb-3">Autoriteit Persoonsgegevens</h3>
-                  <p className="text-green-700 mb-2">
-                    Bij klachten kun je contact opnemen met de AP:
-                  </p>
-                  <p className="text-green-700 mb-2">
-                    <strong>Website:</strong> autoriteitpersoonsgegevens.nl
-                  </p>
-                  <p className="text-green-700">
-                    <strong>Telefoon:</strong> 088 - 1805 250
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-4">{t('privacy.contact.supervisoryAuthority')}</h3>
+                  <div className="space-y-3 text-gray-700">
+                    <p><strong>{t('privacy.contact.apName')}</strong></p>
+                    <p><strong>{t('privacy.contact.website')}</strong> {t('privacy.contact.apWebsite')}</p>
+                    <p><strong>{t('privacy.contact.phone')}</strong> {t('privacy.contact.apPhone')}</p>
+                    <p><strong>{t('privacy.contact.address')}</strong><br />
+                    {t('privacy.contact.apAddress')}<br />
+                    {t('privacy.contact.apPostal')}<br />
+                    {t('privacy.contact.apCity')}</p>
+                  </div>
                 </div>
+              </div>
+              
+              <div className="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                <p className="text-yellow-800">
+                  {t('privacy.contact.complaintProcess')}
+                </p>
+              </div>
+            </div>
+
+            {/* Final Notice */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+              <div className="flex items-center mb-6">
+                <AlertTriangle className="w-8 h-8 text-orange-600 mr-3" />
+                <h2 className="text-2xl font-bold text-gray-900">{t('privacy.notices.title')}</h2>
+              </div>
+              
+              <div className="space-y-4 text-gray-700">
+                <p>
+                  <strong>{t('privacy.notices.internationalTransfers').split(':')[0]}:</strong> {t('privacy.notices.internationalTransfers').split(':')[1]}
+                </p>
+                <p>
+                  <strong>{t('privacy.notices.childrenPrivacy').split(':')[0]}:</strong> {t('privacy.notices.childrenPrivacy').split(':')[1]}
+                </p>
+                <p>
+                  <strong>{t('privacy.notices.cookiesPolicy').split(':')[0]}:</strong> {t('privacy.notices.cookiesPolicy').split(':')[1]}
+                </p>
+                <p>
+                  <strong>{t('privacy.notices.updates').split(':')[0]}:</strong> {t('privacy.notices.updates').split(':')[1]}
+                </p>
               </div>
             </div>
           </div>

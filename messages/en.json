@@ -2,46 +2,89 @@
   "nav": {
     "home": "Home",
     "book": "Book",
-    "howItWorks": "How It Works",
+    "howItWorks": "How it works",
     "packages": "Packages",
     "stories": "Stories",
     "contact": "Contact",
     "faq": "FAQ",
     "dashboard": "Dashboard",
-    "bookNow": "Book Now",
+    "bookNow": "Book now",
     "emergency": "24/7: info@yournextstadium.nl"
   },
   "hero": {
     "title": "Where are you going?",
     "subtitle": "Maybe to",
     "mystery": "It remains a surprise.",
-    "findStadium": "Find Your Stadium",
-    "moreInfo": "More Information",
-    "guarantee1": "Mystery Guarantee",
-    "guarantee2": "SGR Protected",
-    "guarantee3": "Premium Stadiums"
+    "findStadium": "Find your stadium",
+    "moreInfo": "More information",
+    "guarantee1": "Mystery guarantee",
+    "guarantee2": "SGR protected",
+    "guarantee3": "Premium stadiums"
+  },
+  "process": {
+    "title": "The mystery revealed",
+    "subtitle": "From booking to experience - how your next stadium adventure works",
+    "step1": {
+      "title": "Book your adventure",
+      "description": "Choose your date and package. Pay securely online and start dreaming about your next stadium."
+    },
+    "step2": {
+      "title": "Wait in suspense",
+      "description": "Receive hints and updates. The excitement builds while your destination remains secret."
+    },
+    "step3": {
+      "title": "Discover your destination",
+      "description": "1-2 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!"
+    }
+  },
+  "timeline": {
+    "title": "Your journey timeline",
+    "booking": "Booking",
+    "daysLater": "Days later",
+    "reveal": "Reveal",
+    "departure": "Departure"
   },
   "booking": {
-    "title": "Book Your Mystery Stadium Trip",
+    "title": "Book your mystery stadium trip",
     "subtitle": "Discover Europe's most beautiful football stadiums. Destination remains secret until the reveal!",
-    "nextReveal": "Next Reveal In:",
+    "nextReveal": "Next reveal in:",
     "revealSchedule": "Every Friday at 6 PM we reveal new mystery destinations!",
-    "chooseAdventure": "Choose Your Adventure",
+    "chooseAdventure": "Choose your adventure",
     "chooseSubtitle": "From a simple match visit to a complete luxury weekend",
-    "availableDates": "Available Dates",
+    "availableDates": "Available dates",
     "availableSubtitle": "Choose from our upcoming mystery trips",
-    "selectDate": "Select Date",
+    "selectDate": "Select date",
     "spots": "spots",
     "from": "From",
     "days": "Days",
     "hours": "Hours",
     "minutes": "Minutes",
     "seconds": "Seconds",
-    "newDestinations": "NEW DESTINATIONS EVERY WEEK"
+    "newDestinations": "New destinations every week"
   },
   "packages": {
+    "title": "Our packages",
+    "subtitle": "From a simple match visit to a complete luxury weekend - choose the package that suits you",
+    "choosePackage": "Choose this package",
+    "extrasTitle": "Extras & upgrades",
+    "comparisonTitle": "Package comparison",
+    "category": "Category",
+    "feature": "Feature",
+    "matchTicket": "Match ticket",
+    "transport": "Transport",
+    "accommodation": "Accommodation",
+    "meals": "Meals",
+    "support": "Support",
+    "nights": "2 nights",
+    "breakfastDinner": "Breakfast & dinner",
+    "moneyBackGuarantee": "100% money back guarantee",
+    "moneyBackDesc": "Not satisfied? Full refund",
+    "freeRebooking": "Free rebooking",
+    "freeRebookingDesc": "Flexible travel without extra costs",
+    "rating": "4.9/5 rating",
+    "ratingDesc": "By over 1000 travelers",
     "basic": {
-      "name": "Match Only",
+      "name": "Match ticket",
       "subtitle": "Pure football experience",
       "price": "€199",
       "originalPrice": "€299",
@@ -56,8 +99,8 @@
       ]
     },
     "comfort": {
-      "name": "Match + Flight",
-      "subtitle": "Match + Transport",
+      "name": "Match + flight",
+      "subtitle": "Match + transport",
       "price": "€449",
       "originalPrice": "€599",
       "category": "A",
@@ -70,11 +113,12 @@
         "Digital travel guide",
         "Local restaurant tips"
       ],
-      "popular": true
+      "popular": true,
+      "popularLabel": "Popular"
     },
     "premium": {
-      "name": "All Inclusive",
-      "subtitle": "Ticket + Flight + Hotel",
+      "name": "All inclusive",
+      "subtitle": "Ticket + flight + hotel",
       "price": "€799",
       "originalPrice": "€999",
       "category": "VIP",
@@ -90,35 +134,26 @@
       ]
     }
   },
-  "process": {
-    "title": "The Mystery Revealed",
-    "subtitle": "From booking to experience - how your next stadium adventure works",
-    "step1": {
-      "title": "Book Your Adventure",
-      "description": "Choose your date and package. Pay securely online and start dreaming about your next stadium."
-    },
-    "step2": {
-      "title": "Wait in Suspense",
-      "description": "Receive hints and updates. The excitement builds while your destination remains secret."
-    },
-    "step3": {
-      "title": "Discover Your Destination",
-      "description": "1-2 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!"
+  "waitlistSection": {
+    "title": "Join the waitlist",
+    "subtitle": "Be among the first to get access to our mystery football trips",
+    "description": "Exclusive discounts and early access guaranteed!",
+    "joinWaitlist": "Join the waitlist",
+    "email": "Email address",
+    "emailPlaceholder": "your@email.com",
+    "termsText": "By signing up you agree to our terms and privacy policy. You can always unsubscribe.",
+    "stats": {
+      "waiting": "People waiting",
+      "stadiums": "Stadiums ready",
+      "countries": "Countries available"
     }
   },
-  "timeline": {
-    "title": "Your Journey Timeline",
-    "booking": "Booking",
-    "daysLater": "Days Later",
-    "reveal": "Reveal",
-    "departure": "Departure"
-  },
   "trust": {
-    "moneyBack": "100% Money Back",
+    "moneyBack": "100% money back",
     "moneyBackDesc": "Not satisfied? Full refund",
-    "support": "24/7 Support",
+    "support": "24/7 support",
     "supportDesc": "Always available during your trip",
-    "certified": "SGR Certified",
+    "certified": "SGR certified",
     "certifiedDesc": "Your money is fully protected"
   },
   "stats": {
@@ -128,29 +163,29 @@
   },
   "footer": {
     "description": "Discover your next stadium with our mystery football trips across Europe.",
-    "quickLinks": "Quick Links",
+    "quickLinks": "Quick links",
     "destinations": "Destinations",
     "contact": "Contact",
-    "emergencyLine": "24/7 Email",
+    "emergencyLine": "24/7 email",
     "copyright": "© 2024 YourNextStadium. All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms & Conditions",
-    "sgr": "SGR Certified",
-    "howItWorks": "How It Works",
+    "privacy": "Privacy policy",
+    "terms": "Terms & conditions",
+    "sgr": "SGR certified",
+    "howItWorks": "How it works",
     "packages": "Packages",
     "stories": "Stories",
     "faq": "FAQ",
     "dashboard": "Dashboard"
   },
   "modal": {
-    "bookTrip": "Book Your Mystery Trip",
+    "bookTrip": "Book your mystery trip",
     "step": "Step",
     "of": "of",
-    "choosePackage": "Choose your Package",
+    "choosePackage": "Choose your package",
     "packageQuestion": "Which adventure suits you?",
     "whenTravel": "When do you want to travel?",
     "chooseDateSubtitle": "Choose your departure date",
-    "departureDate": "Departure Date",
+    "departureDate": "Departure date",
     "travelers": "Number of travelers",
     "person": "person",
     "people": "people",
@@ -162,7 +197,7 @@
     "alone": "Alone - I like meeting new people",
     "friends": "With friends - we want to have fun together",
     "flexible": "Flexible - doesn't matter to me",
-    "confirmBooking": "Confirm your Booking",
+    "confirmBooking": "Confirm your booking",
     "confirmSubtitle": "Check your details and pay securely",
     "package": "Package",
     "date": "Date",
@@ -170,52 +205,70 @@
     "fullName": "Full name",
     "email": "Email address",
     "phone": "Phone number",
-    "securePayment": "Secure Payment via Stripe",
+    "securePayment": "Secure payment via Stripe",
     "paymentDesc": "Your payment is securely processed by Stripe. Your destination will be revealed 1-2 weeks before travel.",
     "previous": "Previous",
     "next": "Next",
-    "payBook": "Pay & Book Now",
-    "processing": "Processing Payment...",
-    "bookingConfirmed": "Booking Confirmed! 🎉",
+    "payBook": "Pay & book now",
+    "processing": "Processing payment...",
+    "joinWaitlist": "Join Waitlist",
+    "joining": "Joining...",
+    "joinWaitlistTitle": "Join the Waitlist",
+    "joinWaitlistSubtitle": "Be the first to know when bookings open!",
+    "earlyAccess": "Early Access",
+    "earlyAccessDesc": "Get notified first when we launch and secure your spot!",
+    "bookingConfirmed": "Booking confirmed!",
     "adventureBegins": "Your mystery adventure can begin",
-    "bookingNumber": "Your Booking Number",
-    "close": "Close"
+    "bookingNumber": "Your booking number",
+    "close": "Close",
+    "basic": {
+      "name": "Match ticket",
+      "price": "€199"
+    },
+    "comfort": {
+      "name": "Match + flight",
+      "price": "€449"
+    },
+    "premium": {
+      "name": "All inclusive",
+      "price": "€799"
+    }
   },
   "waitlist": {
-    "title": "Join The Waitlist",
+    "title": "Join the waitlist",
     "subtitle": "Be among the first to get access to our mystery football trips",
     "description": "Exclusive discounts and early access guaranteed!",
-    "joinWaitlist": "Join The Waitlist",
+    "joinWaitlist": "Join the waitlist",
     "email": "Email address",
     "name": "Name",
     "city": "City",
     "phone": "Phone",
     "favoriteTeam": "Favorite team",
-    "interests": "Which leagues interest you?",
-    "success": "Welcome to the Waitlist!",
-    "successMessage": "You've successfully signed up for early access!",
-    "position": "Your Position",
+    "interests": "Which competitions interest you?",
+    "success": "Welcome to the waitlist!",
+    "successMessage": "You have successfully signed up for early access!",
+    "position": "Your position",
     "benefits": {
-      "earlyAccess": "Early Access",
+      "earlyAccess": "Early access",
       "earlyAccessDesc": "Book first when we go live",
-      "discounts": "Exclusive Discounts",
+      "discounts": "Exclusive discounts",
       "discountsDesc": "Special prices for waitlist members",
-      "updates": "Insider Updates",
+      "updates": "Insider updates",
       "updatesDesc": "First updates about new destinations"
     }
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "Have questions about our mystery trips? We're here to help!",
-    "sendMessage": "Send us a Message",
+    "subtitle": "Do you have questions about our mystery trips? We're happy to help!",
+    "sendMessage": "Send us a message",
     "name": "Name",
     "email": "Email",
     "subject": "Subject",
     "message": "Message",
-    "send": "Send Message",
+    "send": "Send message",
     "selectSubject": "Select a subject",
-    "newBooking": "New Booking",
-    "existingBooking": "Existing Booking",
+    "newBooking": "New booking",
+    "existingBooking": "Existing booking",
     "complaint": "Complaint",
     "suggestion": "Suggestion",
     "other": "Other",
@@ -225,57 +278,57 @@
     "error": "Something went wrong. Please try again."
   },
   "dashboard": {
-    "title": "My Dashboard",
-    "subtitle": "View your bookings and track your mystery trip adventure",
-    "searchBooking": "Search Your Booking",
-    "bookingNumber": "Booking Number",
-    "emailAddress": "Email Address",
-    "search": "Search Booking",
+    "title": "My dashboard",
+    "subtitle": "View your bookings and follow your mystery trip adventure",
+    "searchBooking": "Search your booking",
+    "bookingNumber": "Booking number",
+    "emailAddress": "Email address",
+    "search": "Search booking",
     "searching": "Searching...",
     "bookingDetails": "Booking {bookingId}",
     "bookedOn": "Booked on",
-    "totalPrice": "Total Price",
-    "countdownTitle": "Countdown to your Adventure!",
+    "totalPrice": "Total price",
+    "countdownTitle": "Countdown to your adventure!",
     "daysToGo": "days to go",
-    "tripDetails": "Trip Details",
-    "departureDate": "Departure Date",
-    "travelers": "Number of Travelers",
+    "tripDetails": "Trip details",
+    "departureDate": "Departure date",
+    "travelers": "Number of travelers",
     "person": "person",
     "people": "people",
     "package": "Package",
-    "paymentStatus": "Payment Status",
+    "paymentStatus": "Payment status",
     "paid": "Paid",
     "pending": "Pending",
-    "mysteryStatus": "Mystery Status",
-    "destinationRevealed": "Destination Revealed!",
+    "mysteryStatus": "Mystery status",
+    "destinationRevealed": "Destination revealed!",
     "revealedOn": "Your mystery destination was revealed on",
-    "mysteryOngoing": "The Mystery Continues...",
+    "mysteryOngoing": "The mystery continues...",
     "revealTiming": "Your destination will be revealed 1-2 weeks before departure",
     "hint": "Prepare for an unforgettable experience at one of Europe's most beautiful football stadiums!",
-    "needHelp": "Need Help?",
-    "emergencyLine": "24/7 Emergency Line",
-    "emailSupport": "Email Support",
+    "needHelp": "Need help?",
+    "emergencyLine": "24/7 emergency line",
+    "emailSupport": "Email support",
     "confirmed": "Confirmed",
     "cancelled": "Cancelled",
     "notFound": "Booking not found",
     "fillBookingOrEmail": "Please enter a booking number or email address"
   },
   "stories": {
-    "title": "Stories from Adventurers",
+    "title": "Adventurer stories",
     "subtitle": "Discover why more than 500 football fans have found their next stadium",
-    "moreStories": "More Stories",
-    "shareStory": "Share your Story",
+    "moreStories": "More stories",
+    "shareStory": "Share your story",
     "tagUs": "Tag us @yournextstadium and use #MysteryStadium",
     "followInstagram": "Follow us on Instagram",
-    "writeYourStory": "Write Your Own Story",
+    "writeYourStory": "Write your own story",
     "joinCommunity": "Become part of our community and discover your next stadium",
-    "startAdventure": "Start Your Adventure"
+    "startAdventure": "Start your adventure"
   },
   "howItWorks": {
-    "title": "How It Works",
+    "title": "How it works",
     "subtitle": "From booking to experience - discover how your mystery stadium adventure comes to life",
     "step1": {
-      "title": "1. Book your Adventure",
+      "title": "1. Book your adventure",
       "description": "Choose your package, select your date, fill in your preferences and pay securely online via iDEAL, credit card or bank transfer.",
       "details": [
         "Select your desired departure date",
@@ -285,7 +338,7 @@
       ]
     },
     "step2": {
-      "title": "2. Wait in Suspense",
+      "title": "2. Wait in suspense",
       "description": "Receive hints and updates via email. The excitement builds while your destination remains secret.",
       "details": [
         "Receive confirmation by email",
@@ -295,7 +348,7 @@
       ]
     },
     "step3": {
-      "title": "3. Discover your Destination",
+      "title": "3. Discover your destination",
       "description": "1-2 weeks before departure we reveal your mystery destination via a special reveal video.",
       "details": [
         "Receive your personal reveal video",
@@ -304,65 +357,370 @@
         "Prepare for the adventure"
       ]
     },
-    "faqTitle": "Frequently Asked Questions",
+    "faqTitle": "Frequently asked questions",
     "faqSubtitle": "Everything you want to know about our mystery trips",
-    "readyTitle": "Ready for your Mystery Adventure?",
+    "readyTitle": "Ready for your mystery adventure?",
     "readySubtitle": "Book your next stadium now and be surprised by Europe's most beautiful football stadiums",
-    "bookTrip": "Book Your Mystery Trip"
-  },
-  "packages": {
-    "title": "Our Packages",
-    "subtitle": "From a simple match visit to a complete luxury weekend - choose the package that suits you",
-    "extrasTitle": "Extras & Upgrades",
-    "comparisonTitle": "Package Comparison",
-    "feature": "Feature",
-    "matchTicket": "Match Ticket",
-    "transport": "Transport",
-    "accommodation": "Accommodation",
-    "meals": "Meals",
-    "support": "24/7 Support",
-    "nights": "2 nights",
-    "breakfastDinner": "Breakfast & Dinner",
-    "premium": "Premium",
-    "choosePackage": "Choose This Package",
-    "moneyBackGuarantee": "Money Back Guarantee",
-    "moneyBackDesc": "Not satisfied? 100% refund",
-    "freeRebooking": "Free Rebooking",
-    "freeRebookingDesc": "Up to 14 days before departure",
-    "rating": "4.9/5 Rating",
-    "ratingDesc": "From 500+ satisfied customers"
+    "bookTrip": "Book your mystery trip"
   },
   "faq": {
-    "title": "Frequently Asked Questions",
+    "title": "Frequently asked questions",
     "subtitle": "Everything you want to know about our mystery football trips",
-    "searchPlaceholder": "Search in frequently asked questions...",
-    "allQuestions": "All Questions",
+    "searchPlaceholder": "Search frequently asked questions...",
+    "allQuestions": "All questions",
     "booking": "Booking",
     "travel": "Travel",
     "safety": "Safety",
     "support": "Support",
     "noResults": "No results found",
     "noResultsDesc": "Try a different search term or select another category",
-    "stillQuestions": "Still have Questions?",
+    "stillQuestions": "Still have questions?",
     "stillQuestionsDesc": "Our team is ready to help you with all your questions about mystery football trips",
-    "contactUs": "Contact Us",
-    "callNow": "Call Us Now",
-    "emergencyLine": "24/7 Emergency Line: +31 20 987 6543"
+    "contactUs": "Contact us",
+    "callNow": "Call us now",
+    "emergencyLine": "24/7 emergency line: +31 20 987 6543"
   },
   "privacy": {
     "title": "Privacy Policy",
-    "subtitle": "Your privacy is important to us. Read how we protect your data.",
-    "lastUpdated": "Last updated: January 1, 2024"
+    "subtitle": "YourNextStadium B.V. - Comprehensive Data Protection & Privacy",
+    "lastUpdated": "Last Updated: December 2024",
+    "version": "Version 2.1",
+    "tableOfContents": "Table of Contents",
+    "introduction": {
+      "title": "1. Introduction & Scope",
+      "company": "YourNextStadium B.V. (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) operates the website yournextstadium.nl and related services (collectively, the &ldquo;Service&rdquo;). This Privacy Policy describes how we collect, use, process, and protect your personal data in accordance with the General Data Protection Regulation (GDPR) and applicable Dutch data protection laws.",
+      "applies": "This policy applies to all users of our Service, including visitors, customers, and business partners. By using our Service, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy.",
+      "important": "Important: This policy is effective as of December 2024. We may update this policy periodically to reflect changes in our practices or applicable laws. We will notify you of any material changes through our Service or via email."
+    },
+    "definitions": {
+      "title": "2. Definitions & Legal Framework",
+      "keyDefinitions": "Key Definitions",
+      "personalData": "Personal Data:",
+      "personalDataDesc": "Any information relating to an identified or identifiable natural person.",
+      "processing": "Processing:",
+      "processingDesc": "Any operation performed on personal data, including collection, storage, and transmission.",
+      "dataController": "Data Controller:",
+      "dataControllerDesc": "YourNextStadium B.V., responsible for determining processing purposes and means.",
+      "dataProcessor": "Data Processor:",
+      "dataProcessorDesc": "Third-party service providers who process data on our behalf.",
+      "legalFramework": "Legal Framework",
+      "gdpr": "• General Data Protection Regulation (GDPR) - EU Regulation 2016/679",
+      "uavg": "• Dutch Data Protection Act (UAVG)",
+      "privacyRegs": "• European Privacy and Electronic Communications Regulations",
+      "industryRegs": "• Applicable industry-specific regulations"
+    },
+    "collection": {
+      "title": "3. Data Collection Methods",
+      "directCollection": "Direct Collection",
+      "directItems": [
+        "• Information provided during account registration and profile creation",
+        "• Booking forms and payment information",
+        "• Customer service communications and support requests",
+        "• Feedback, surveys, and voluntary submissions",
+        "• Marketing preferences and consent management"
+      ],
+      "automaticCollection": "Automatic Collection",
+      "automaticItems": [
+        "• Technical data: IP addresses, browser type, device information",
+        "• Usage analytics: page views, session duration, navigation patterns",
+        "• Cookies and similar tracking technologies",
+        "• Location data (with explicit consent)",
+        "• Performance and error logs"
+      ],
+      "thirdPartySources": "Third-Party Sources",
+      "thirdPartyItems": [
+        "• Social media platforms (when you connect accounts)",
+        "• Payment processors and financial institutions",
+        "• Travel partners and service providers",
+        "• Public records and business directories"
+      ]
+    },
+    "categories": {
+      "title": "4. Categories of Personal Data",
+      "identityContact": "Identity & Contact Data",
+      "identityItems": [
+        "• Full name and title",
+        "• Email address and phone number",
+        "• Postal address and billing information",
+        "• Date of birth and nationality",
+        "• Passport or ID information"
+      ],
+      "financialPayment": "Financial & Payment Data",
+      "financialItems": [
+        "• Payment method details",
+        "• Transaction history and receipts",
+        "• Billing address and tax information",
+        "• Refund and chargeback records"
+      ],
+      "travelBooking": "Travel & Booking Data",
+      "travelItems": [
+        "• Travel preferences and history",
+        "• Booking confirmations and itineraries",
+        "• Special requirements and accommodations",
+        "• Travel insurance information"
+      ],
+      "technicalUsage": "Technical & Usage Data",
+      "technicalItems": [
+        "• Device and browser information",
+        "• IP address and geolocation",
+        "• Website usage patterns and analytics",
+        "• Error logs and performance data"
+      ]
+    },
+    "purposes": {
+      "title": "5. Processing Purposes & Legal Basis",
+      "purpose": "Purpose",
+      "legalBasis": "Legal Basis",
+      "dataCategories": "Data Categories",
+      "serviceProvision": "Service Provision",
+      "contractPerformance": "Contract Performance",
+      "identityContactTravelFinancial": "Identity, Contact, Travel, Financial",
+      "paymentProcessing": "Payment Processing",
+      "financialIdentity": "Financial, Identity",
+      "customerSupport": "Customer Support",
+      "legitimateInterest": "Legitimate Interest",
+      "identityContactTravel": "Identity, Contact, Travel",
+      "marketingCommunications": "Marketing Communications",
+      "consent": "Consent",
+      "identityContact": "Identity, Contact",
+      "analyticsImprovement": "Analytics & Improvement",
+      "technicalUsage": "Technical, Usage",
+      "legalCompliance": "Legal Compliance",
+      "legalObligation": "Legal Obligation",
+      "allCategories": "All Categories",
+      "note": "Note: We will only process your personal data for the purposes stated above. If we need to use your data for a new purpose, we will notify you and obtain your consent where required."
+    },
+    "sharing": {
+      "title": "6. Data Sharing & Third Parties",
+      "serviceProviders": "Service Providers",
+      "paymentProcessors": "Payment Processors",
+      "paymentProcessorsDesc": "Stripe, PayPal - for secure payment processing",
+      "cloudServices": "Cloud Services",
+      "cloudServicesDesc": "AWS, Google Cloud - for data storage and hosting",
+      "analytics": "Analytics",
+      "analyticsDesc": "Google Analytics, Mixpanel - for usage analysis",
+      "communication": "Communication",
+      "communicationDesc": "SendGrid, Twilio - for email and SMS services",
+      "travelPartners": "Travel Partners",
+      "travelPartnersItems": [
+        "• Airlines and transportation providers",
+        "• Hotels and accommodation partners",
+        "• Tour operators and activity providers",
+        "• Insurance companies and travel assistance"
+      ],
+      "important": "Important: We do not sell, rent, or trade your personal data to third parties for marketing purposes. All data sharing is conducted under strict contractual obligations and data protection agreements."
+    },
+    "security": {
+      "title": "7. Data Security & Protection",
+      "technicalMeasures": "Technical Measures",
+      "technicalItems": [
+        "• AES-256 encryption for data at rest",
+        "• TLS 1.3 encryption for data in transit",
+        "• Multi-factor authentication for system access",
+        "• Regular security audits and penetration testing",
+        "• Intrusion detection and prevention systems"
+      ],
+      "organizationalMeasures": "Organizational Measures",
+      "organizationalItems": [
+        "• Employee training on data protection",
+        "• Access controls and role-based permissions",
+        "• Incident response and breach notification procedures",
+        "• Regular policy reviews and updates",
+        "• Vendor security assessments"
+      ],
+      "certification": "Certification: We maintain ISO 27001 certification and regularly undergo SOC 2 Type II audits to ensure our security practices meet industry standards."
+    },
+    "retention": {
+      "title": "8. Data Retention & Deletion",
+      "dataCategory": "Data Category",
+      "retentionPeriod": "Retention Period",
+      "legalBasis": "Legal Basis",
+      "bookingRecords": "Booking Records",
+      "sevenYears": "7 years",
+      "legalObligationTax": "Legal obligation (tax law)",
+      "financialTransactions": "Financial Transactions",
+      "legalObligationAccounting": "Legal obligation (accounting)",
+      "marketingData": "Marketing Data",
+      "untilConsentWithdrawal": "Until consent withdrawal",
+      "analyticsData": "Analytics Data",
+      "twentySixMonths": "26 months",
+      "legitimateInterest": "Legitimate interest",
+      "supportCommunications": "Support Communications",
+      "threeYears": "3 years",
+      "deletionProcess": "Deletion Process: Upon expiration of retention periods, data is automatically deleted or anonymized. You may request early deletion subject to legal requirements."
+    },
+    "rights": {
+      "title": "9. Your Rights & Controls",
+      "accessPortability": "Access & Portability",
+      "accessPortabilityDesc": "Request a copy of your data in a portable format",
+      "rectification": "Rectification",
+      "rectificationDesc": "Correct inaccurate or incomplete data",
+      "erasure": "Erasure",
+      "erasureDesc": "Request deletion of your personal data",
+      "restriction": "Restriction",
+      "restrictionDesc": "Limit processing of your data",
+      "objection": "Objection",
+      "objectionDesc": "Object to processing based on legitimate interests",
+      "withdrawal": "Withdrawal",
+      "withdrawalDesc": "Withdraw consent for marketing communications",
+      "automatedDecisions": "Automated Decisions",
+      "automatedDecisionsDesc": "Request human review of automated decisions",
+      "complaints": "Complaints",
+      "complaintsDesc": "Lodge complaints with supervisory authorities",
+      "howToExercise": "How to Exercise Your Rights",
+      "contactDPO": "To exercise any of these rights, please contact our Data Protection Officer:",
+      "email": "Email:",
+      "dpoEmail": "dpo@yournextstadium.nl",
+      "responseTime": "Response Time:",
+      "responseTimeDesc": "Within 30 days (may be extended to 60 days for complex requests)"
+    },
+    "contact": {
+      "title": "10. Contact & Complaints",
+      "dataProtectionOfficer": "Data Protection Officer",
+      "phone": "Phone:",
+      "address": "Address:",
+      "companyAddress": "YourNextStadium B.V.",
+      "streetAddress": "Voetbalstraat 123",
+      "postalCode": "1012 AB Amsterdam",
+      "country": "The Netherlands",
+      "supervisoryAuthority": "Supervisory Authority",
+      "apName": "Autoriteit Persoonsgegevens (AP)",
+      "website": "Website:",
+      "apWebsite": "autoriteitpersoonsgegevens.nl",
+      "apPhone": "088 - 1805 250",
+      "apAddress": "Autoriteit Persoonsgegevens",
+      "apPostal": "Postbus 93374",
+      "apCity": "2509 AJ Den Haag",
+      "complaintProcess": "Complaint Process: If you have concerns about our data processing, we encourage you to contact us first. You also have the right to lodge a complaint with the Dutch Data Protection Authority (AP) or your local supervisory authority."
+    },
+    "notices": {
+      "title": "Important Notices",
+      "internationalTransfers": "International Transfers: Your data may be transferred to countries outside the European Economic Area (EEA). We ensure adequate protection through Standard Contractual Clauses and adequacy decisions.",
+      "childrenPrivacy": "Children's Privacy: Our Service is not intended for children under 16. We do not knowingly collect personal data from children under 16 without parental consent.",
+      "cookiesPolicy": "Cookies Policy: We use cookies and similar technologies. You can manage your preferences through our Cookie Settings or your browser settings.",
+      "updates": "Updates: This policy may be updated periodically. We will notify you of material changes via email or through our Service."
+    }
   },
   "terms": {
     "title": "Terms & Conditions",
-    "subtitle": "Important information about your booking and our services",
-    "lastUpdated": "Last updated: January 1, 2024"
+    "subtitle": "YourNextStadium B.V. - Comprehensive Booking Terms & Service Conditions",
+    "lastUpdated": "Last Updated: December 2024",
+    "version": "Version 2.1",
+    "tableOfContents": "Table of Contents",
+    "introduction": {
+      "title": "1. General Provisions",
+      "company": "These general terms and conditions apply to all agreements between YourNextStadium B.V., established in Amsterdam (hereinafter: &ldquo;YourNextStadium&rdquo; or &ldquo;we&rdquo;), and the customer (hereinafter: &ldquo;you&rdquo; or &ldquo;the traveler&rdquo;).",
+      "agreement": "By making a booking through our website or other channels, you agree to these terms. We advise you to read these terms carefully before making a booking.",
+      "important": "YourNextStadium is affiliated with the Foundation for the Guarantee Fund for Travel Money (SGR). Your money is protected in accordance with the Consumer Rights Act."
+    },
+    "booking": {
+      "title": "2. Booking and Payment",
+      "process": {
+        "title": "2.1 Booking Process",
+        "items": [
+          "A booking is established after receipt of your payment and our written confirmation",
+          "All prices are per person and include VAT, unless stated otherwise",
+          "Bookings are binding and can only be modified or cancelled in accordance with these terms",
+          "You are obliged to provide correct and complete information"
+        ]
+      },
+      "payment": {
+        "title": "2.2 Payment",
+        "methods": "Payment Methods",
+        "methodsItems": [
+          "• iDEAL",
+          "• Credit card (Visa, Mastercard)",
+          "• PayPal",
+          "• Bank transfer"
+        ],
+        "terms": "Payment Terms",
+        "termsItems": [
+          "• Full payment upon booking",
+          "• For groups >6 persons: 50% deposit",
+          "• Remaining payment 30 days before departure"
+        ]
+      }
+    },
+    "mystery": {
+      "title": "3. Mystery Concept",
+      "destination": "3.1 Destination: The exact destination of your trip remains secret until 1-2 weeks before departure. We take into account your stated preferences and dislikes.",
+      "reveal": "3.2 Reveal: The destination is revealed via email and your personal dashboard. You will then receive all travel details, tickets and practical information.",
+      "guarantees": "3.3 Guarantees: We guarantee that your destination meets the booked package and that you will not go to teams/cities that you have explicitly excluded.",
+      "mysteryGuarantee": "Mystery Guarantee",
+      "mysteryGuaranteeDesc": "Not satisfied with the revealed destination? You can rebook to another date free of charge or get your money back within 24 hours after the reveal."
+    },
+    "cancellation": {
+      "title": "4. Cancellation and Changes",
+      "cancellationByTraveler": {
+        "title": "4.1 Cancellation by the Traveler",
+        "cancellationMoment": "Cancellation Moment",
+        "costs": "Costs",
+        "moreThan30Days": "More than 30 days before departure",
+        "adminCosts": "€50 administration costs",
+        "fifteenTo30Days": "15-30 days before departure",
+        "twentyFivePercent": "25% of the travel sum",
+        "eightTo14Days": "8-14 days before departure",
+        "fiftyPercent": "50% of the travel sum",
+        "lessThan8Days": "Less than 8 days before departure",
+        "hundredPercent": "100% of the travel sum"
+      },
+      "changes": {
+        "title": "4.2 Changes",
+        "items": [
+          "Changes are possible until 14 days before departure (€25 change costs)",
+          "Name changes are free until 7 days before departure",
+          "Date changes are subject to availability"
+        ]
+      }
+    },
+    "travel": {
+      "title": "5. Travel Conditions",
+      "documents": "5.1 Documents: You are responsible for valid travel documents (passport/ID). Additional documents may be required for travel outside the EU.",
+      "health": "5.2 Health: You must be physically and mentally capable of undertaking the trip. In case of doubt, we advise seeking medical advice.",
+      "behavior": "5.3 Behavior: You must comply with local laws and customs. Inappropriate behavior may result in exclusion from the trip without right to refund.",
+      "insurance": "5.4 Insurance: We strongly advise taking out travel insurance. YourNextStadium is not liable for costs due to illness, accident or other unforeseen circumstances."
+    },
+    "liability": {
+      "title": "6. Liability",
+      "ourLiability": "6.1 Our liability: YourNextStadium is liable for the proper execution of the booked services. Our liability is limited to the travel sum.",
+      "forceMajeure": "6.2 Force majeure: We are not liable for damage due to force majeure, such as natural disasters, strikes, terrorism, pandemics or government measures.",
+      "thirdParties": "6.3 Third parties: For services of third parties (hotels, carriers, stadiums) their own terms apply. We mediate in problems but are not primarily liable.",
+      "sgrGuarantee": "SGR Guarantee",
+      "sgrGuaranteeDesc": "YourNextStadium is affiliated with SGR (Foundation for the Guarantee Fund for Travel Money). Your money is protected in case of bankruptcy. SGR number: 4321."
+    },
+    "complaints": {
+      "title": "7. Complaints and Disputes",
+      "procedure": "7.1 Complaint procedure: Complaints must be submitted in writing to our customer service within 14 days after return.",
+      "disputes": "7.2 Disputes committee: For unresolved disputes, you can contact the Travel Disputes Committee (www.degeschillencommissie.nl).",
+      "applicableLaw": "7.3 Applicable law: Dutch law applies to this agreement. Disputes are submitted to the competent court in Amsterdam."
+    },
+    "contact": {
+      "title": "8. Contact",
+      "company": "YourNextStadium B.V.",
+      "address": "Address:",
+      "streetAddress": "Voetbalstraat 123, 1012 AB Amsterdam",
+      "kvk": "Chamber of Commerce:",
+      "kvkNumber": "12345678",
+      "vat": "VAT:",
+      "vatNumber": "NL123456789B01",
+      "anvr": "ANVR:",
+      "anvrNumber": "98765",
+      "sgr": "SGR:",
+      "sgrNumber": "4321",
+      "phone": "Phone:",
+      "phoneNumber": "+31 20 123 4567",
+      "emergencyLine": "24/7 Emergency Line:",
+      "emergencyNumber": "+31 20 987 6543",
+      "email": "Email:",
+      "emailAddress": "info@yournextstadium.nl",
+      "website": "Website:",
+      "websiteAddress": "www.yournextstadium.nl"
+    }
   },
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
-    "success": "Successful",
+    "success": "Success",
     "cancel": "Cancel",
     "save": "Save",
     "edit": "Edit",
