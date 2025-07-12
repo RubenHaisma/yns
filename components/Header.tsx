@@ -151,7 +151,7 @@ export function Header({ onBookingClick }: HeaderProps) {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div 
-              className="lg:hidden py-4 border-t border-gray-100 bg-white"
+              className="lg:hidden py-4 border-t border-gray-100"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}

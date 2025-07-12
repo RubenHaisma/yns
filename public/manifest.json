@@ -1,0 +1,72 @@
+{
+  "name": "YourNextStadium - Mystery Voetbalreizen",
+  "short_name": "YourNextStadium",
+  "description": "Ontdek je volgende stadium met onze mystery voetbalreizen door Europa",
+  "start_url": "/nl",
+  "display": "standalone",
+  "background_color": "#1f2937",
+  "theme_color": "#1f2937",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "nl",
+  "dir": "ltr",
+  "categories": ["travel", "sports", "entertainment"],
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/logo.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "YourNextStadium Homepage"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Boek een Reis",
+      "short_name": "Boeken",
+      "description": "Boek je mystery voetbalreis",
+      "url": "/nl/packages",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Neem contact op",
+      "url": "/nl/contact",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "i18n": {
+    "lang": "nl",
+    "dir": "ltr"
+  }
+} 

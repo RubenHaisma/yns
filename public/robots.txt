@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://yournextstadium.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/admin/
+
+# Allow important pages
+Allow: /packages
+Allow: /contact
+Allow: /faq
+Allow: /how-it-works
+Allow: /stories
+Allow: /privacy
+Allow: /terms
+
+# Block common bot traps
+Disallow: /search?
+Disallow: /*?utm_
+Disallow: /*?fb_
+Disallow: /*?gclid
+Disallow: /*?msclkid 
