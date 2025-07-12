@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import Script from 'next/script';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'metadata' });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'metadata' });
   
   const baseUrl = 'https://yournextstadium.com';
-  const locale = params.locale || 'nl';
   const localeUrl = locale === 'nl' ? baseUrl : `${baseUrl}/${locale}`;
   
   const title = locale === 'nl' 
@@ -122,14 +122,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = params.locale || 'nl';
+  const { locale } = await params;
   
   return (
     <html lang={locale} suppressHydrationWarning>
