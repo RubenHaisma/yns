@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { MapPin, Trophy, Star } from 'lucide-react';
+import Image from 'next/image';
 
 export function MapSection() {
   const [hoveredDestination, setHoveredDestination] = useState<string | null>(null);
@@ -90,10 +91,12 @@ export function MapSection() {
         {/* Stadium Gallery */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="relative overflow-hidden rounded-2xl shadow-xl group">
-            <img 
+            <Image 
               src="https://images.pexels.com/photos/2916450/pexels-photo-2916450.jpeg?auto=compress&cs=tinysrgb&w=600" 
               alt="Stadium" 
               className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+              width={600}
+              height={600}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
               <div className="absolute bottom-4 left-4 text-white">
@@ -104,10 +107,12 @@ export function MapSection() {
           </div>
 
           <div className="relative overflow-hidden rounded-2xl shadow-xl group">
-            <img 
+            <Image 
               src="https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=600" 
               alt="Stadium" 
               className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+              width={600}
+              height={600}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
               <div className="absolute bottom-4 left-4 text-white">
@@ -118,10 +123,12 @@ export function MapSection() {
           </div>
 
           <div className="relative overflow-hidden rounded-2xl shadow-xl group">
-            <img 
+            <Image 
               src="https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=600" 
               alt="Stadium" 
               className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+              width={600}
+              height={600}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
               <div className="absolute bottom-4 left-4 text-white">
@@ -144,7 +151,7 @@ export function MapSection() {
               ))}
             </div>
             <p className="text-xl mb-6">
-              Meer dan 50 stadions in 15+ landen wachten op je ontdekking
+              Meer dan 50 stadions in 5+ landen wachten op je ontdekking
             </p>
             <div className="flex justify-center space-x-4">
               {[...Array(5)].map((_, i) => (

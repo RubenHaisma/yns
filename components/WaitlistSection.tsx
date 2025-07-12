@@ -135,7 +135,7 @@ export function WaitlistSection() {
               <div className="text-green-200 text-sm">{tWaitlist('stats.stadiums')}</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl lg:text-3xl font-bold text-orange-400">15+</div>
+              <div className="text-2xl lg:text-3xl font-bold text-orange-400">5+</div>
               <div className="text-green-200 text-sm">{tWaitlist('stats.countries')}</div>
             </div>
           </div>

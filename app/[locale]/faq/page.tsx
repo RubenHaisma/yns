@@ -22,100 +22,10 @@ export default function FAQ() {
     { id: 'support', name: t('faq.support'), icon: Clock }
   ];
 
-  const faqs = [
-    {
-      id: 1,
-      category: 'booking',
-      question: "Hoe werkt het boeken van een mystery trip?",
-      answer: "Het boeken is heel eenvoudig! Kies je pakket, selecteer je datum, vul je voorkeuren in en betaal veilig online. Je ontvangt direct een bevestiging en 1-2 weken voor vertrek onthullen we je bestemming."
-    },
-    {
-      id: 2,
-      category: 'booking',
-      question: "Kan ik mijn boeking annuleren?",
-      answer: "Ja, je kunt tot 14 dagen voor vertrek gratis annuleren en krijg je 100% van je geld terug. Binnen 14 dagen gelden onze annuleringsvoorwaarden."
-    },
-    {
-      id: 3,
-      category: 'travel',
-      question: "Wat als ik niet naar de onthulde bestemming wil?",
-      answer: "Geen probleem! Als je echt niet naar de onthulde bestemming wilt, krijg je 100% van je geld terug of kun je omboeken naar een andere datum."
-    },
-    {
-      id: 4,
-      category: 'travel',
-      question: "Welke bestemmingen zijn mogelijk?",
-      answer: "We organiseren trips naar meer dan 50 stadions in 15+ Europese landen. Denk aan Premier League, La Liga, Bundesliga, Serie A, Ligue 1 en meer!"
-    },
-    {
-      id: 5,
-      category: 'booking',
-      question: "Hoe weet ik zeker dat ik niet naar een team ga dat ik haat?",
-      answer: "In je boekingsformulier kun je teams opgeven die je absoluut niet wilt zien. Wij houden hier 100% rekening mee bij het selecteren van je bestemming."
-    },
-    {
-      id: 6,
-      category: 'travel',
-      question: "Wat gebeurt er als de wedstrijd wordt afgelast?",
-      answer: "We hebben altijd een backup plan. Je krijgt tickets voor een andere wedstrijd in dezelfde stad of een volledige terugbetaling als dat niet mogelijk is."
-    },
-    {
-      id: 7,
-      category: 'safety',
-      question: "Is mijn geld veilig bij jullie?",
-      answer: "Absoluut! We zijn SGR erkend (Stichting Garantiefonds Reisgelden) en je geld is volledig beschermd. Ook bieden we een 100% geld terug garantie."
-    },
-    {
-      id: 8,
-      category: 'support',
-      question: "Kan ik jullie bereiken tijdens mijn reis?",
-      answer: "Ja! We hebben een 24/7 noodlijn (+31 20 987 6543) speciaal voor reizigers onderweg. Je bent nooit alleen!"
-    },
-    {
-      id: 9,
-      category: 'booking',
-      question: "Kan ik voor meerdere personen boeken?",
-      answer: "Natuurlijk! Je kunt voor maximaal 6 personen tegelijk boeken. Alle reizigers krijgen dezelfde bestemming."
-    },
-    {
-      id: 10,
-      category: 'travel',
-      question: "Wat is inbegrepen in de pakketten?",
-      answer: "Dit verschilt per pakket. 'Alleen de Match' bevat alleen tickets, 'Match + Reis' bevat ook transport, en 'Alles Inclusief' bevat ook hotel en maaltijden."
-    },
-    {
-      id: 11,
-      category: 'booking',
-      question: "Welke betaalmethoden accepteren jullie?",
-      answer: "We accepteren iDEAL, creditcards (Visa, Mastercard), bankoverschrijving en PayPal. Alle betalingen zijn 100% veilig."
-    },
-    {
-      id: 12,
-      category: 'travel',
-      question: "Kan ik mijn reis verlengen?",
-      answer: "Ja! Je kunt extra nachten bijboeken of je verblijf verlengen. Neem contact met ons op voor de mogelijkheden."
-    },
-    {
-      id: 13,
-      category: 'support',
-      question: "Hoe krijg ik updates over mijn reis?",
-      answer: "Je ontvangt regelmatig updates via email en hebt toegang tot je persoonlijke dashboard waar je alle informatie kunt vinden."
-    },
-    {
-      id: 14,
-      category: 'safety',
-      question: "Wat als ik ziek word voor mijn reis?",
-      answer: "We raden een reisverzekering aan. Bij ziekte kun je vaak gratis omboeken of krijg je je geld terug via je verzekering."
-    },
-    {
-      id: 15,
-      category: 'travel',
-      question: "Zijn de hotels van goede kwaliteit?",
-      answer: "Ja! We werken alleen met 4-5 sterren hotels in het premium pakket en zorgen altijd voor schone, veilige accommodatie."
-    }
-  ];
+  // Get FAQ questions from translations
+  const faqs = t.raw('faq.questions') || [];
 
-  const filteredFAQs = faqs.filter(faq => {
+  const filteredFAQs = faqs.filter((faq: any) => {
     const matchesCategory = selectedCategory === 'all' || faq.category === selectedCategory;
     const matchesSearch = faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          faq.answer.toLowerCase().includes(searchTerm.toLowerCase());
@@ -192,7 +102,7 @@ export default function FAQ() {
               </div>
             ) : (
               <div className="space-y-4">
-                {filteredFAQs.map((faq) => (
+                {filteredFAQs.map((faq: any) => (
                   <div
                     key={faq.id}
                     className="bg-white rounded-lg shadow-lg border border-green-100 overflow-hidden"

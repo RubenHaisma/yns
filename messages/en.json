@@ -378,7 +378,99 @@
     "stillQuestionsDesc": "Our team is ready to help you with all your questions about mystery football trips",
     "contactUs": "Contact us",
     "callNow": "Call us now",
-    "emergencyLine": "24/7 emergency line: +31 20 987 6543"
+    "emergencyLine": "24/7 emergency line: +31 20 987 6543",
+    "questions": [
+      {
+        "id": 1,
+        "category": "booking",
+        "question": "How does booking a mystery trip work?",
+        "answer": "Booking is very simple! Choose your package, select your date, fill in your preferences and pay securely online. You'll receive immediate confirmation and 1-2 weeks before departure we reveal your destination."
+      },
+      {
+        "id": 2,
+        "category": "booking",
+        "question": "Can I cancel my booking?",
+        "answer": "Yes, you can cancel for free up to 14 days before departure and get 100% of your money back. Within 14 days our cancellation terms apply."
+      },
+      {
+        "id": 3,
+        "category": "travel",
+        "question": "What if I don't want to go to the revealed destination?",
+        "answer": "No problem! If you really don't want to go to the revealed destination, you'll get 100% of your money back or you can rebook to another date."
+      },
+      {
+        "id": 4,
+        "category": "travel",
+        "question": "Which destinations are possible?",
+        "answer": "We organize trips to more than 50 stadiums in 15+ European countries. Think Premier League, La Liga, Bundesliga, Serie A, Ligue 1 and more!"
+      },
+      {
+        "id": 5,
+        "category": "booking",
+        "question": "How do I know for sure I won't go to a team I hate?",
+        "answer": "In your booking form you can specify teams you absolutely don't want to see. We take this 100% into account when selecting your destination."
+      },
+      {
+        "id": 6,
+        "category": "travel",
+        "question": "What happens if the match is cancelled?",
+        "answer": "We always have a backup plan. You'll get tickets for another match in the same city or a full refund if that's not possible."
+      },
+      {
+        "id": 7,
+        "category": "safety",
+        "question": "Is my money safe with you?",
+        "answer": "Absolutely! We are SGR certified (Foundation for the Guarantee Fund for Travel Money) and your money is fully protected. We also offer a 100% money back guarantee."
+      },
+      {
+        "id": 8,
+        "category": "support",
+        "question": "Can I reach you during my trip?",
+        "answer": "Yes! We have a 24/7 emergency line (+31 20 987 6543) specifically for travelers on the road. You're never alone!"
+      },
+      {
+        "id": 9,
+        "category": "booking",
+        "question": "Can I book for multiple people?",
+        "answer": "Of course! You can book for up to 6 people at once. All travelers get the same destination."
+      },
+      {
+        "id": 10,
+        "category": "travel",
+        "question": "What's included in the packages?",
+        "answer": "This varies by package. 'Match Only' contains only tickets, 'Match + Travel' also includes transport, and 'All Inclusive' also includes hotel and meals."
+      },
+      {
+        "id": 11,
+        "category": "booking",
+        "question": "Which payment methods do you accept?",
+        "answer": "We accept iDEAL, credit cards (Visa, Mastercard), bank transfer and PayPal. All payments are 100% secure."
+      },
+      {
+        "id": 12,
+        "category": "travel",
+        "question": "Can I extend my trip?",
+        "answer": "Yes! You can book extra nights or extend your stay. Contact us for the possibilities."
+      },
+      {
+        "id": 13,
+        "category": "support",
+        "question": "How do I get updates about my trip?",
+        "answer": "You'll receive regular updates via email and have access to your personal dashboard where you can find all information."
+      },
+      {
+        "id": 14,
+        "category": "safety",
+        "question": "What if I get sick before my trip?",
+        "answer": "We recommend travel insurance. If you get sick you can often rebook for free or get your money back through your insurance."
+      },
+      {
+        "id": 15,
+        "category": "travel",
+        "question": "Are the hotels of good quality?",
+        "answer": "Yes! We only work with 4-5 star hotels in the premium package and always ensure clean, safe accommodation."
+      }
+    ]
   },
   "privacy": {
     "title": "Privacy Policy",
