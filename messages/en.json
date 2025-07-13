@@ -15,6 +15,7 @@
     "title": "Where are you going?",
     "subtitle": "Maybe to",
     "mystery": "It remains a surprise.",
+    "description": "Experience the excitement of European top football. From Premier League to Champions League - discover your next stadium.",
     "findStadium": "Find your stadium",
     "moreInfo": "More information",
     "guarantee1": "Mystery guarantee",
@@ -84,12 +85,12 @@
     "rating": "4.9/5 rating",
     "ratingDesc": "By over 1000 travelers",
     "basic": {
-      "name": "Match ticket",
-      "subtitle": "Pure football experience",
-      "price": "€199",
-      "originalPrice": "€299",
+      "name": "Budget Fan",
+      "subtitle": "Surprise second-division game",
+      "price": "€99",
+      "originalPrice": "€129",
       "category": "C",
-      "savings": "Save €100",
+      "savings": "Save €50",
       "features": [
         "Match ticket",
         "Mystery destination reveal",
@@ -99,12 +100,12 @@
       ]
     },
     "comfort": {
-      "name": "Match + flight",
-      "subtitle": "Match + transport",
-      "price": "€449",
-      "originalPrice": "€599",
+      "name": "Mid-Range Fan",
+      "subtitle": "Match + flight to Marseille",
+      "price": "€249",
+      "originalPrice": "€299",
       "category": "A",
-      "savings": "Save €150",
+      "savings": "Save €100",
       "features": [
         "Match ticket",
         "Return flight",
@@ -117,12 +118,12 @@
       "popularLabel": "Popular"
     },
     "premium": {
-      "name": "All inclusive",
-      "subtitle": "Ticket + flight + hotel",
-      "price": "€799",
-      "originalPrice": "€999",
+      "name": "Premium Football Tourist",
+      "subtitle": "Barcelona or Milan experience",
+      "price": "€449",
+      "originalPrice": "€549",
       "category": "VIP",
-      "savings": "Save €200",
+      "savings": "Save €150",
       "features": [
         "Match ticket",
         "Return flight",
@@ -240,16 +241,16 @@
     "bookingNumber": "Your booking number",
     "close": "Close",
     "basic": {
-      "name": "Match ticket",
-      "price": "€199"
+      "name": "Budget Fan",
+      "price": "€99"
     },
     "comfort": {
-      "name": "Match + flight",
-      "price": "€449"
+      "name": "Mid-Range Fan",
+      "price": "€249"
     },
     "premium": {
-      "name": "All inclusive",
-      "price": "€799"
+      "name": "Premium Football Tourist",
+      "price": "€449"
     }
   },
   "waitlist": {

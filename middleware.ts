@@ -14,7 +14,7 @@ const intlMiddleware = createMiddleware({
 });
 
 export default async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, hostname } = request.nextUrl;
 
   // Handle admin routes
   if (pathname.startsWith('/admin') || pathname.startsWith('/nl/admin') || pathname.startsWith('/en/admin')) {
@@ -59,9 +59,18 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Handle root redirect
+  // Handle root redirect based on domain
   if (pathname === '/') {
-    return NextResponse.redirect(new URL('/nl', request.url));
+    // Determine locale based on domain
+    let targetLocale = 'nl'; // default
+    
+    if (hostname === 'yournextstadium.com' || hostname === 'www.yournextstadium.com') {
+      targetLocale = 'en';
+    } else if (hostname === 'yournextstadium.nl' || hostname === 'www.yournextstadium.nl') {
+      targetLocale = 'nl';
+    }
+    
+    return NextResponse.redirect(new URL(`/${targetLocale}`, request.url));
   }
 
   // Apply internationalization middleware for other routes

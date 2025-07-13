@@ -15,6 +15,7 @@
     "title": "Waar ga jij naartoe?",
     "subtitle": "Misschien wel naar",
     "mystery": "Het blijft een verrassing.",
+    "description": "Ervaar de spanning van Europese topvoetbal. Van Premier League tot Champions League - ontdek je volgende stadium.",
     "findStadium": "Ontdek je stadium",
     "moreInfo": "Meer informatie",
     "guarantee1": "Mystery garantie",
@@ -84,12 +85,12 @@
     "rating": "4.9/5 rating",
     "ratingDesc": "Door meer dan 1000 reizigers",
     "basic": {
-      "name": "Wedstrijd ticket",
-      "subtitle": "Pure voetbalervaring",
-      "price": "€199",
-      "originalPrice": "€299",
+      "name": "Budget Fan",
+      "subtitle": "Verrassing tweede divisie wedstrijd",
+      "price": "€99",
+      "originalPrice": "€129",
       "category": "C",
-      "savings": "Bespaar €100",
+      "savings": "Bespaar €50",
       "features": [
         "Match ticket",
         "Mystery bestemming onthulling",
@@ -99,12 +100,12 @@
       ]
     },
     "comfort": {
-      "name": "Match + vliegtuig",
-      "subtitle": "Match + transport",
-      "price": "€449",
-      "originalPrice": "€599",
+      "name": "Mid-Range Fan",
+      "subtitle": "Wedstrijd + vliegtuig naar Marseille",
+      "price": "€249",
+      "originalPrice": "€299",
       "category": "A",
-      "savings": "Bespaar €150",
+      "savings": "Bespaar €100",
       "features": [
         "Match ticket",
         "Retour vliegtuig",
@@ -117,13 +118,12 @@
       "popularLabel": "Populair"
     },
     "premium": {
-      "name": "Alles inclusief",
-      
-      "subtitle": "Ticket + vliegtuig + hotel",
-      "price": "€799",
-      "originalPrice": "€999",
+      "name": "Premium Football Tourist",
+      "subtitle": "Barcelona of Milaan ervaring",
+      "price": "€449",
+      "originalPrice": "€549",
       "category": "VIP",
-      "savings": "Bespaar €200",
+      "savings": "Bespaar €150",
       "features": [
         "Match ticket",
         "Retour vliegtuig",
@@ -241,16 +241,16 @@
     "bookingNumber": "Je boekingnummer",
     "close": "Sluiten",
     "basic": {
-      "name": "Wedstrijd ticket",
-      "price": "€199"
+      "name": "Budget Fan",
+      "price": "€99"
     },
     "comfort": {
-      "name": "Match + vliegtuig",
-      "price": "€449"
+      "name": "Mid-Range Fan",
+      "price": "€249"
     },
     "premium": {
-      "name": "Alles inclusief",
-      "price": "€799"
+      "name": "Premium Football Tourist",
+      "price": "€449"
     }
   },
   "waitlist": {

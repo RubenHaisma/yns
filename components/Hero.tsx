@@ -81,10 +81,7 @@ export function Hero({ onBookingClick }: HeroProps) {
           
           {/* Football-specific description */}
           <p className="text-base sm:text-lg text-green-200 font-light max-w-3xl mx-auto mt-4">
-            {locale === 'nl' 
-              ? "Ervaar de spanning van Europese topvoetbal. Van Premier League tot Champions League - ontdek je volgende stadium."
-              : "Experience the excitement of European top football. From Premier League to Champions League - discover your next stadium."
-            }
+            {t('description')}
           </p>
         </div>
 
