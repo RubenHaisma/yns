@@ -386,7 +386,25 @@
     "faqSubtitle": "Everything you want to know about our mystery trips",
     "readyTitle": "Ready for your mystery adventure?",
     "readySubtitle": "Book your next stadium now and be surprised by Europe's most beautiful football stadiums",
-    "bookTrip": "Book your mystery trip"
+    "bookTrip": "Book your mystery trip",
+    "faqQuestions": [
+      {
+        "question": "What if I can't make it on the booked date?",
+        "answer": "You can rebook for free to another date up to 14 days before departure, subject to availability."
+      },
+      {
+        "question": "Can I refuse my destination?",
+        "answer": "Yes! If you really don't want to go to the revealed destination, you'll get 100% of your money back or you can rebook to another date."
+      },
+      {
+        "question": "How do I know for sure I won't go to a team I hate?",
+        "answer": "In your booking form you can specify teams you absolutely don't want to see. We take this into account 100% when selecting your destination."
+      },
+      {
+        "question": "What if the match is cancelled?",
+        "answer": "We always have a backup plan. You'll get tickets for another match or a full refund."
+      }
+    ]
   },
   "faq": {
     "title": "Frequently asked questions",

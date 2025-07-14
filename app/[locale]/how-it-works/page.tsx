@@ -6,6 +6,7 @@ import { Calendar, Gift, MapPin, Sparkles, Clock, Shield, Users } from 'lucide-r
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 export default function HowItWorks() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -17,42 +18,28 @@ export default function HowItWorks() {
       title: t('howItWorks.step1.title'),
       description: t('howItWorks.step1.description'),
       details: t('howItWorks.step1.details'),
-      color: "bg-green-50 border-green-200"
+      color: "bg-green-50 border-green-200",
+      image: "/images/stap1.png"
     },
     {
       icon: Gift,
       title: t('howItWorks.step2.title'),
       description: t('howItWorks.step2.description'),
       details: t('howItWorks.step2.details'),
-      color: "bg-orange-50 border-orange-200"
+      color: "bg-orange-50 border-orange-200",
+      image: "/images/stap2.png"
     },
     {
       icon: MapPin,
       title: t('howItWorks.step3.title'),
       description: t('howItWorks.step3.description'),
       details: t('howItWorks.step3.details'),
-      color: "bg-green-50 border-green-200"
+      color: "bg-green-50 border-green-200",
+      image: "/images/stap3.png"
     }
   ];
 
-  const faqs = [
-    {
-      question: "Wat als ik niet kan op de geboekte datum?",
-      answer: "Je kunt tot 14 dagen voor vertrek gratis omboeken naar een andere datum, afhankelijk van beschikbaarheid."
-    },
-    {
-      question: "Kan ik mijn bestemming weigeren?",
-      answer: "Ja! Als je echt niet naar de onthulde bestemming wilt, krijg je 100% van je geld terug of kun je omboeken naar een andere datum."
-    },
-    {
-      question: "Hoe weet ik zeker dat ik niet naar een team ga dat ik haat?",
-      answer: "In je boekingsformulier kun je teams opgeven die je absoluut niet wilt zien. Wij houden hier rekening mee bij het selecteren van je bestemming."
-    },
-    {
-      question: "Wat als de wedstrijd wordt afgelast?",
-      answer: "We hebben altijd een backup plan. Je krijgt tickets voor een andere wedstrijd of een volledige terugbetaling."
-    }
-  ];
+  const faqs = t.raw('howItWorks.faqQuestions') || [];
 
   return (
     <div className="min-h-screen bg-white">
@@ -99,12 +86,7 @@ export default function HowItWorks() {
                   <div className="flex-1">
                     <div className={`bg-white rounded-lg border ${step.color} p-8 shadow-lg`}>
                       <div className="aspect-video bg-gray-50 rounded-lg flex items-center justify-center border border-gray-200">
-                        <div className="text-center">
-                          <div className="w-20 h-20 bg-white rounded-lg border border-gray-200 flex items-center justify-center mx-auto mb-6">
-                            <step.icon className="w-10 h-10 text-gray-700" />
-                          </div>
-                          <p className="text-gray-600 font-medium">Stap {index + 1} Illustratie</p>
-                        </div>
+                        <Image src={step.image} alt={`Stap ${index + 1}`} width={100} height={100} />
                       </div>
                     </div>
                   </div>
@@ -127,7 +109,7 @@ export default function HowItWorks() {
             </div>
 
             <div className="space-y-6">
-              {faqs.map((faq, index) => (
+              {faqs.map((faq: { question: string; answer: string }, index: number) => (
                 <div key={index} className="bg-white rounded-lg p-8 border border-gray-200 shadow-sm">
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">
                     {faq.question}

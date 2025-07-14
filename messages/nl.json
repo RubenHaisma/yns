@@ -386,7 +386,25 @@
     "faqSubtitle": "Alles wat je wilt weten over onze mystery trips",
     "readyTitle": "Klaar voor je mystery avontuur?",
     "readySubtitle": "Boek nu je volgende stadium en laat je verrassen door Europa's mooiste voetbalstadions",
-    "bookTrip": "Boek je mystery trip"
+    "bookTrip": "Boek je mystery trip",
+    "faqQuestions": [
+      {
+        "question": "Wat als ik niet kan op de geboekte datum?",
+        "answer": "Je kunt tot 14 dagen voor vertrek gratis omboeken naar een andere datum, afhankelijk van beschikbaarheid."
+      },
+      {
+        "question": "Kan ik mijn bestemming weigeren?",
+        "answer": "Ja! Als je echt niet naar de onthulde bestemming wilt, krijg je 100% van je geld terug of kun je omboeken naar een andere datum."
+      },
+      {
+        "question": "Hoe weet ik zeker dat ik niet naar een team ga dat ik haat?",
+        "answer": "In je boekingsformulier kun je teams opgeven die je absoluut niet wilt zien. Wij houden hier rekening mee bij het selecteren van je bestemming."
+      },
+      {
+        "question": "Wat als de wedstrijd wordt afgelast?",
+        "answer": "We hebben altijd een backup plan. Je krijgt tickets voor een andere wedstrijd of een volledige terugbetaling."
+      }
+    ]
   },
   "faq": {
     "title": "Veelgestelde vragen",
