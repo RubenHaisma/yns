@@ -2,8 +2,13 @@
 
 import { Instagram, Facebook, Twitter, Mail, Shield, MapPin, Trophy, Users, Calendar } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
+import React from 'react';
 
-export function Footer() {
+interface FooterProps {
+  onBookingClick?: () => void;
+}
+
+export function Footer({ onBookingClick = () => {} }: FooterProps) {
   const t = useTranslations('footer');
   const locale = useLocale();
 
@@ -62,6 +67,97 @@ export function Footer() {
     'Stadium Experiences'
   ];
 
+  // SEO Soccer Columns (all links trigger booking popup)
+  const seoColumns = [
+    {
+      title: 'Top Football Clubs',
+      keywords: [
+        'Liverpool FC Tickets',
+        'Arsenal Tickets',
+        'Manchester United Tickets',
+        'Chelsea Tickets',
+        'AC Milan Tickets',
+        'AFC Ajax Tickets',
+        'AS Roma Tickets',
+        'Atletico Madrid Tickets',
+        'Bayer Leverkusen Tickets',
+        'Bayern Munich Tickets',
+        'Borussia Dortmund Tickets',
+        'FC Barcelona Tickets',
+        'Inter Milan Tickets',
+        'Juventus Tickets',
+        'Manchester City Tickets',
+        'Paris Saint-Germain (PSG) Tickets',
+        'Real Madrid Tickets',
+        'Sevilla FC Tickets',
+        'Tottenham Hotspur Tickets',
+        'West Ham Tickets',
+      ],
+    },
+    {
+      title: 'Top Football Matches',
+      keywords: [
+        'Emirates Cup Tickets',
+        'FA Community Shield 2025 Tickets',
+        'UEFA Super Cup Tickets',
+        'Manchester United vs Arsenal Tickets',
+        'Liverpool vs Crystal Palace Tickets',
+        'Champions League Final 2026 Tickets',
+        'Championship Play Off Final Tickets',
+        'Paris Saint Germain (PSG) vs Arsenal Tickets',
+        'FC Barcelona vs Real Madrid Tickets',
+        'Real Madrid vs Arsenal Tickets',
+        'Atletico Madrid vs Real Madrid Tickets',
+        'Manchester United vs Liverpool Tickets',
+        'Chelsea vs Liverpool Tickets',
+        'Bayern Munich vs Borussia Dortmund Tickets',
+        'Arsenal vs Tottenham Hotspur Tickets',
+        'AC Milan vs Inter Milan Tickets',
+      ],
+    },
+    {
+      title: 'Top Competitions',  
+      keywords: [
+        'English Premier League Tickets',
+        'Champions League Tickets',
+        'FA Community Shield 2025 Tickets',
+        'La Liga Tickets',
+        'Italian Serie A Tickets',
+        'Europa League Tickets',
+        'FA Cup Tickets',
+        'Carabao Cup - EFL Cup Tickets',
+        'French Ligue 1 Tickets',
+        'Bundesliga Tickets',
+        'Dutch Eredivisie Tickets',
+      ],
+    },
+    {
+      title: 'Top Cities',
+      keywords: [
+        'London Tickets',
+        'Berlin Tickets',
+        'Manchester Tickets',
+        'Liverpool Tickets',
+        'Glasgow Tickets',
+        'Barcelona Tickets',
+        'Madrid Tickets',
+        'Amsterdam Tickets',
+        'Munich Tickets',
+        'Hamburg Tickets',
+        'Cologne Tickets',
+        'Milan Tickets',
+        'Paris Tickets',
+        'Lyon Tickets',
+        'Budapest Tickets',
+        'Rome Tickets',
+        'Lisbon Tickets',
+        'Copenhagen Tickets',
+        'Zurich Tickets',
+        'Helsinki Tickets',
+      ],
+    },
+  ];
+
   return (
     <footer className="bg-gradient-to-r from-green-800 to-green-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
@@ -86,11 +182,11 @@ export function Footer() {
               </div>
               <div className="bg-white/10 rounded-lg p-3">
                 <MapPin className="w-5 h-5 mx-auto mb-1 text-orange-400" />
-                <div className="text-xs text-green-200">15+ Landen</div>
+                <div className="text-xs text-green-200">5+ Landen</div>
               </div>
               <div className="bg-white/10 rounded-lg p-3">
                 <Users className="w-5 h-5 mx-auto mb-1 text-orange-400" />
-                <div className="text-xs text-green-200">1000+ Fans</div>
+                <div className="text-xs text-green-200">500+ Fans</div>
               </div>
             </div>
 
@@ -186,42 +282,26 @@ export function Footer() {
         {/* SEO Footer - Hidden but crawlable */}
         <div className="mt-8 pt-8 border-t border-green-700 text-xs text-green-300 opacity-60">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div>
-              <h4 className="font-semibold mb-2">Mystery Voetbalreizen</h4>
-              <ul className="space-y-1">
-                <li>• Mystery Football Trips</li>
-                <li>• Stadium Adventures</li>
-                <li>• European Football</li>
-                <li>• Match Tickets</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Voetbal Bestemmingen</h4>
-              <ul className="space-y-1">
-                <li>• Premier League</li>
-                <li>• La Liga</li>
-                <li>• Bundesliga</li>
-                <li>• Serie A</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Stadium Ervaringen</h4>
-              <ul className="space-y-1">
-                <li>• Stadium Tours</li>
-                <li>• Football Vacations</li>
-                <li>• Match Experiences</li>
-                <li>• European Competitions</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Voetbal Vakanties</h4>
-              <ul className="space-y-1">
-                <li>• Mystery Travel</li>
-                <li>• Football Trips</li>
-                <li>• Stadium Visits</li>
-                <li>• European Football</li>
-              </ul>
-            </div>
+            {seoColumns.map((col) => (
+              <div key={col.title}>
+                <h4 className="font-semibold mb-2">{col.title}</h4>
+                <ul className="space-y-1">
+                  {col.keywords.map((kw) => (
+                    <li key={kw}>
+                      <button
+                        type="button"
+                        onClick={onBookingClick}
+                        className="hover:underline hover:text-green-100 focus:outline-none bg-transparent text-left p-0 m-0 text-inherit"
+                        tabIndex={0}
+                        aria-label={kw}
+                      >
+                        • {kw}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </div>

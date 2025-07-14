@@ -33,7 +33,7 @@ export default function Home() {
         {/* <StatsSection /> */}
       </main>
 
-      <Footer />
+      <Footer onBookingClick={handleBookingClick} />
 
       <BookingModal 
         isOpen={isBookingModalOpen} 

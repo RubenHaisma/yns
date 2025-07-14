@@ -156,7 +156,7 @@ export default function Contact() {
         </section>
       </main>
 
-      <Footer />
+      <Footer onBookingClick={() => setIsBookingModalOpen(true)} />
 
       <BookingModal 
         isOpen={isBookingModalOpen} 

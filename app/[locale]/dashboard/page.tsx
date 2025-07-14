@@ -282,7 +282,7 @@ export default function Dashboard() {
         )}
       </main>
 
-      <Footer />
+      <Footer onBookingClick={() => setIsBookingModalOpen(true)} />
 
       <BookingModal 
         isOpen={isBookingModalOpen} 

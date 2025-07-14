@@ -86,7 +86,7 @@
     "ratingDesc": "By over 1000 travelers",
     "basic": {
       "name": "Budget Fan",
-      "subtitle": "Surprise second-division game",
+      "subtitle": "Surprise game",
       "price": "€50",
       "originalPrice": "€69",
       "category": "C",
@@ -101,7 +101,7 @@
     },
     "comfort": {
       "name": "Mid-Range Fan",
-      "subtitle": "Match + flight to Marseille",
+      "subtitle": "Match + flight to mystery destination",
       "price": "€199",
       "originalPrice": "€249",
       "category": "A",
@@ -109,7 +109,7 @@
       "features": [
         "Match ticket",
         "Return flight",
-        "Mystery destination reveal",
+        "Mystery destination reveal", 
         "24/7 support",
         "Digital travel guide",
         "Local restaurant tips"
@@ -119,7 +119,7 @@
     },
     "premium": {
       "name": "Premium Football Tourist",
-      "subtitle": "Barcelona or Milan experience",
+      "subtitle": "Match + flight + hotel to mystery destination",
       "price": "€349",
       "originalPrice": "€399",
       "category": "VIP",
@@ -427,7 +427,7 @@
         "id": 4,
         "category": "travel",
         "question": "Which destinations are possible?",
-        "answer": "We organize trips to more than 50 stadiums in 15+ European countries. Think Premier League, La Liga, Bundesliga, Serie A, Ligue 1 and more!"
+        "answer": "We organize trips to more than 50 stadiums in 5+ European countries. Think Premier League, La Liga, Bundesliga, Serie A, Ligue 1 and more!"
       },
       {
         "id": 5,

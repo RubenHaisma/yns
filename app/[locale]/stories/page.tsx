@@ -291,7 +291,7 @@ export default function Stories() {
         </section>
       </main>
 
-      <Footer />
+      <Footer onBookingClick={() => setIsBookingModalOpen(true)} />
 
       <BookingModal 
         isOpen={isBookingModalOpen} 

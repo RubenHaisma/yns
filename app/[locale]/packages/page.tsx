@@ -280,7 +280,7 @@ export default function Packages() {
         </section> */}
       </main>
 
-      <Footer />
+      <Footer onBookingClick={() => setIsBookingModalOpen(true)} />
 
       <BookingModal 
         isOpen={isBookingModalOpen} 
