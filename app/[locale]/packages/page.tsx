@@ -6,6 +6,7 @@ import { Check, Star, Plane, Hotel, Ticket, Crown, Shield, Clock } from 'lucide-
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
 import { useTranslations } from 'next-intl';
+import { PackageSection } from '@/components/PackageSection';
 
 export default function Packages() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -97,85 +98,7 @@ export default function Packages() {
         {/* Packages Section */}
         <section className="py-20 lg:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto mb-20">
-              {packages.map((pkg, index) => (
-                <div
-                  key={index}
-                  className={`relative bg-white rounded-lg border transition-all duration-300 ${
-                    pkg.popular 
-                      ? 'border-orange-300 shadow-lg' 
-                      : 'border-gray-200 hover:border-gray-300'
-                  }`}
-                >
-                  {/* Popular Badge */}
-                  {pkg.popular && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white px-4 py-1 rounded-full font-semibold text-sm">
-                      <Star className="w-4 h-4 inline mr-1" />
-                      POPULAIR
-                    </div>
-                  )}
-
-                  {/* Savings Badge */}
-                  <div className="absolute -top-2 -right-2 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    {pkg.savings}
-                  </div>
-
-                  {/* Package Header */}
-                  <div className={`${pkg.color} rounded-t-lg p-8 text-center border-b`}>
-                    <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mb-6 mx-auto">
-                      <pkg.icon className="w-8 h-8 text-gray-700" />
-                    </div>
-                    <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-3">{pkg.name}</h3>
-                    <p className="text-gray-600 text-base leading-relaxed">{pkg.subtitle}</p>
-                  </div>
-
-                  {/* Package Content */}
-                  <div className="p-8">
-                    {/* Price */}
-                    <div className="text-center mb-8">
-                      <div className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">{pkg.price}</div>
-                      <div className="text-sm text-gray-500 line-through mb-3">{pkg.originalPrice}</div>
-                      <div className="inline-flex items-center space-x-2">
-                        <span className={`px-3 py-1 rounded-lg text-sm font-semibold ${
-                          pkg.category === 'VIP' 
-                            ? 'bg-purple-100 text-purple-800'
-                            : pkg.category === 'A'
-                            ? 'bg-orange-100 text-orange-800'
-                            : 'bg-green-100 text-green-800'
-                        }`}>
-                          {t('packages.category')} {pkg.category}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Features */}
-                    <ul className="space-y-4 mb-8">
-                      {Array.isArray(pkg.features) && pkg.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start space-x-3">
-                          <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 text-base leading-relaxed">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* CTA Button */}
-                    <button
-                      onClick={() => {
-                        setSelectedPackage(pkg.id);
-                        setIsBookingModalOpen(true);
-                      }}
-                      className={`w-full py-4 rounded-lg font-semibold text-base transition-all ${
-                        pkg.popular
-                          ? 'bg-orange-600 text-white hover:bg-orange-700'
-                          : 'bg-green-600 text-white hover:bg-green-700'
-                      }`}
-                    >
-                      {t('packages.choosePackage')}
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PackageSection onBookingClick={() => setIsBookingModalOpen(true)} />
 
             {/* Add-ons Section */}
             {/* <div className="bg-gray-50 rounded-lg border border-gray-200 p-8 lg:p-12 mb-20">
