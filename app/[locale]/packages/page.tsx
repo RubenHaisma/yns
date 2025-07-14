@@ -87,10 +87,10 @@ export default function Packages() {
         <section className="py-20 lg:py-24 bg-green-800 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl lg:text-6xl font-bold mb-8">
-              {t('packages.title')}
+              Jouw Mystery Voetbalreis, Jouw Stijl
             </h1>
             <p className="text-xl lg:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
-              {t('packages.subtitle')}
+              Van verrassingswedstrijd tot luxe voetbalweekend – kies het avontuur dat bij jou past en laat je verrassen door Europa’s mooiste stadions.
             </p>
           </div>
         </section>
