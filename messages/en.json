@@ -76,7 +76,7 @@
     "accommodation": "Accommodation",
     "meals": "Meals",
     "support": "Support",
-    "nights": "2 nights",
+    "nights": "1 night",
     "breakfastDinner": "Breakfast & dinner",
     "moneyBackGuarantee": "100% money back guarantee",
     "moneyBackDesc": "Not satisfied? Full refund",
@@ -127,11 +127,10 @@
       "features": [
         "Match ticket",
         "Return flight",
-        "2 nights hotel",
+        "1 night hotel",
         "Breakfast included",
         "Mystery destination reveal",
-        "24/7 premium support",
-        "Local guide"
+        "24/7 premium support"
       ]
     }
   },

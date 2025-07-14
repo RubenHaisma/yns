@@ -76,7 +76,7 @@
     "accommodation": "Accommodatie",
     "meals": "Maaltijden",
     "support": "Support",
-    "nights": "2 nachten",
+    "nights": "1 nacht",
     "breakfastDinner": "Ontbijt & diner",
     "moneyBackGuarantee": "100% geld terug garantie",
     "moneyBackDesc": "Niet tevreden? Volledige terugbetaling",
@@ -127,11 +127,10 @@
       "features": [
         "Match ticket",
         "Retour vliegtuig",
-        "2 nachten hotel",
+        "1 nacht hotel",
         "Ontbijt inclusief",
         "Mystery bestemming onthulling",
-        "24/7 premium support",
-        "Lokale gids"
+        "24/7 premium support"
       ]
     }
   },
