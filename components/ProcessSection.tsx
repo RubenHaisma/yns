@@ -3,6 +3,7 @@
 import { Calendar, Gift, MapPin, Sparkles } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { Button } from './ui/button';
 
 export function ProcessSection() {
   const t = useTranslations();
@@ -49,40 +50,33 @@ export function ProcessSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
           {steps.map((step, index) => (
-            <div key={index} className="relative">
+            <div key={index} className="relative flex flex-col h-full group transition-all duration-300">
               {/* Connection Line - Desktop Only */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 left-full w-12 h-px bg-green-200 transform -translate-y-1/2 z-0"></div>
+                <div className="hidden lg:block absolute top-1/2 left-full w-10 h-px bg-green-200 transform -translate-y-1/2 z-0"></div>
               )}
-              
               {/* Step Card */}
-              <div className={`relative bg-white rounded-lg p-8 border ${step.color} hover:shadow-lg transition-all duration-300 group`}>
+              <div className={`relative flex flex-col flex-1 bg-white rounded-2xl p-4 border ${step.color} shadow-md group-hover:shadow-xl group-hover:scale-105 transition-all duration-300`} style={{ transition: 'box-shadow 0.3s, transform 0.3s' }}>
                 {/* Icon */}
-                <div className="w-14 h-14 bg-white rounded-lg border border-gray-200 flex items-center justify-center mb-6 group-hover:border-gray-300 transition-colors">
-                  <step.icon className="w-7 h-7 text-gray-700" />
+                <div className="w-10 h-10 bg-white rounded-lg border border-gray-200 flex items-center justify-center mb-1 mx-auto shadow-sm">
+                  <step.icon className="w-6 h-6 text-gray-700" />
                 </div>
-
                 {/* Step Number */}
-                <div className="absolute -top-3 -right-3 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-sm">{index + 1}</span>
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-green-600 to-orange-500 shadow-lg rounded-full flex items-center justify-center z-10 border-2 border-white">
+                  <span className="text-white font-bold text-sm">{index + 1}</span>
                 </div>
-
                 {/* Content */}
-                <h3 className="text-xl lg:text-2xl font-semibold text-green-800 mb-4">
-                  {step.title}
-                </h3>
-                <p className="text-green-600 leading-relaxed">
-                  {step.description}
-                </p>
+                <h3 className="text-sm lg:text-base font-semibold text-green-800 mb-2 text-center">{step.title}</h3>
+                <p className="text-green-600 leading-snug text-center text-sm mb-0">{step.description}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Timeline Visual */}
-        <div className="mt-20 lg:mt-24 max-w-5xl mx-auto">
+        {/* <div className="mt-20 lg:mt-24 max-w-5xl mx-auto">
           <div className="bg-gray-50 rounded-lg p-8 lg:p-12 border border-gray-100">
             <h3 className="text-2xl lg:text-3xl font-semibold text-green-800 mb-8 text-center">
               {tTimeline('title')}
@@ -131,10 +125,10 @@ export function ProcessSection() {
                   </motion.p>
                 </motion.div>
               ))}
-            </div>
+            </div> */}
             
             {/* Connection Lines - Desktop Only */}
-            <div className="hidden md:block relative mt-8">
+            {/* <div className="hidden md:block relative mt-8">
               <div className="flex justify-between items-center px-8">
                 {timelineSteps.map((_, index) => (
                   index < timelineSteps.length - 1 && (
@@ -155,7 +149,7 @@ export function ProcessSection() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
