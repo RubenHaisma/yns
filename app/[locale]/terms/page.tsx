@@ -254,7 +254,7 @@ export default function Terms() {
                     <p><strong>{t('terms.contact.kvk')}</strong> {t('terms.contact.kvkNumber')}</p>
                     <p><strong>{t('terms.contact.vat')}</strong> {t('terms.contact.vatNumber')}</p>
                     <p><strong>{t('terms.contact.anvr')}</strong> {t('terms.contact.anvrNumber')}</p>
-                    <p><strong>{t('terms.contact.sgr')}</strong> {t('terms.contact.sgrNumber')}</p>
+                    {/* SGR removed: replaced by trusted booking label in translations */}
                   </div>
                 </div>
                 

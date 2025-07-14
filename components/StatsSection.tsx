@@ -68,8 +68,8 @@ export function StatsSection() {
     },
     {
       icon: Users,
-      title: 'SGR Erkend',
-      description: 'Officieel erkend door de Stichting Garantiefonds Reisgelden.'
+      title: 'Vertrouwd door reizigers',
+      description: 'Duizenden tevreden klanten gingen je voor.'
     }
   ];
 

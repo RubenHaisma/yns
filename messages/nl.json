@@ -19,7 +19,7 @@
     "findStadium": "Ontdek je stadium",
     "moreInfo": "Meer informatie",
     "guarantee1": "Mystery garantie",
-    "guarantee2": "SGR beschermd",
+    "guarantee2": "Veilig boeken & betalen",
     "guarantee3": "Premium stadions"
   },
   "process": {
@@ -35,7 +35,7 @@
     },
     "step3": {
       "title": "Ontdek je bestemming",
-      "description": "1-2 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!"
+      "description": "Minimaal 3-4 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!"
     }
   },
   "timeline": {
@@ -158,8 +158,8 @@
     "moneyBackDesc": "Niet tevreden? Volledige terugbetaling",
     "support": "24/7 support",
     "supportDesc": "Altijd bereikbaar tijdens je reis",
-    "certified": "SGR erkend",
-    "certifiedDesc": "Je geld is volledig beschermd"
+    "certified": "Vertrouwd boeken",
+    "certifiedDesc": "Je boeking en betalingen worden met de grootste zorg en veiligheid behandeld."
   },
   "stats": {
     "travelers": "Reizigers",
@@ -175,7 +175,6 @@
     "copyright": "© 2025 YourNextStadium. Alle rechten voorbehouden.",
     "privacy": "Privacy policy",
     "terms": "Algemene voorwaarden",
-    "sgr": "SGR erkend",
     "howItWorks": "Hoe het werkt",
     "packages": "Pakketten",
     "stories": "Verhalen",
@@ -224,7 +223,7 @@
     "email": "Email adres",
     "phone": "Telefoonnummer",
     "securePayment": "Veilige betaling via Stripe",
-    "paymentDesc": "Je betaling wordt veilig verwerkt door Stripe. Je bestemming wordt 1-2 weken voor vertrek onthuld.",
+    "paymentDesc": "Je betaling wordt veilig verwerkt door Stripe. Je bestemming wordt minimaal 3-4 weken voor vertrek onthuld.",
     "previous": "Vorige",
     "next": "Volgende",
     "payBook": "Betaal & boek nu",
@@ -328,7 +327,7 @@
     "destinationRevealed": "Bestemming onthuld!",
     "revealedOn": "Je mystery bestemming is onthuld op",
     "mysteryOngoing": "Het mysterie duurt voort...",
-    "revealTiming": "Je bestemming wordt 1-2 weken voor vertrek onthuld",
+    "revealTiming": "Je bestemming wordt minimaal 3-4 weken voor vertrek onthuld",
     "hint": "Bereid je voor op een onvergetelijke ervaring in een van Europa's mooiste voetbalstadions!",
     "needHelp": "Hulp nodig?",
     "emergencyLine": "24/7 noodlijn",
@@ -374,7 +373,7 @@
     },
     "step3": {
       "title": "3. Ontdek je bestemming",
-      "description": "1-2 weken voor vertrek onthullen we je mysterie bestemming via een speciale onthullingsvideo.",
+      "description": "Minimaal 3-4 weken voor vertrek onthullen we je mysterie bestemming via een speciale onthullingsvideo.",
       "details": [
         "Ontvang je persoonlijke onthullingsvideo",
         "Krijg alle reisdetails en tickets",
@@ -427,7 +426,7 @@
         "id": 1,
         "category": "booking",
         "question": "Hoe werkt het boeken van een mystery trip?",
-        "answer": "Het boeken is heel eenvoudig! Kies je pakket, selecteer je datum, vul je voorkeuren in en betaal veilig online. Je ontvangt direct een bevestiging en 1-2 weken voor vertrek onthullen we je bestemming."
+        "answer": "Het boeken is heel eenvoudig! Kies je pakket, selecteer je datum, vul je voorkeuren in en betaal veilig online. Je ontvangt direct een bevestiging en minimaal 3-4 weken voor vertrek onthullen we je bestemming."
       },
       {
         "id": 2,
@@ -463,7 +462,7 @@
         "id": 7,
         "category": "safety",
         "question": "Is mijn geld veilig bij jullie?",
-        "answer": "Absoluut! We zijn SGR erkend (Stichting Garantiefonds Reisgelden) en je geld is volledig beschermd. Ook bieden we een 100% geld terug garantie."
+        "answer": "Absoluut! YourNextStadium behandelt je boeking en betalingen met de grootste zorg en veiligheid. Niet tevreden? Je krijgt je geld terug."
       },
       {
         "id": 8,
@@ -475,7 +474,7 @@
         "id": 9,
         "category": "booking",
         "question": "Kan ik voor meerdere personen boeken?",
-        "answer": "Natuurlijk! Je kunt voor maximaal 6 personen tegelijk boeken. Alle reizigers krijgen dezelfde bestemming."
+        "answer": "Natuurlijk! Je kunt voor meerdere personen tegelijk boeken. Alle reizigers krijgen dezelfde bestemming."
       },
       {
         "id": 10,
@@ -511,7 +510,7 @@
         "id": 15,
         "category": "travel",
         "question": "Zijn de hotels van goede kwaliteit?",
-        "answer": "Ja! We werken alleen met 4-5 sterren hotels in het premium pakket en zorgen altijd voor schone, veilige accommodatie."
+        "answer": "We selecteren onze hotelpartners zorgvuldig zodat je een comfortabel en prettig verblijf hebt tijdens je reis."
       }
     ]
   },
@@ -746,7 +745,7 @@
       "title": "1. Algemene Bepalingen",
       "company": "Deze algemene voorwaarden zijn van toepassing op alle overeenkomsten tussen YourNextStadium B.V., gevestigd te Amsterdam (hierna: &ldquo;YourNextStadium&rdquo; of &ldquo;wij&rdquo;), en de klant (hierna: &ldquo;u&rdquo; of &ldquo;de reiziger&rdquo;).",
       "agreement": "Door een boeking te maken via onze website of andere kanalen, gaat u akkoord met deze voorwaarden. Wij adviseren u deze voorwaarden zorgvuldig door te lezen voordat u een boeking maakt.",
-      "important": "YourNextStadium is aangesloten bij de Stichting Garantiefonds Reisgelden (SGR). Uw geld is beschermd conform de Wet op het consumentenrecht."
+      "important": "YourNextStadium behandelt je boeking en betalingen met de grootste zorg en veiligheid. Niet tevreden? Je krijgt je geld terug."
     },
     "booking": {
       "title": "2. Boeking en Betaling",
@@ -778,11 +777,11 @@
     },
     "mystery": {
       "title": "3. Mystery Concept",
-      "destination": "3.1 Bestemming: De exacte bestemming van uw reis blijft geheim tot 1-2 weken voor vertrek. Wij houden rekening met uw opgegeven voorkeuren en afkeuringen.",
+      "destination": "3.1 Bestemming: De exacte bestemming van uw reis blijft geheim tot minimaal 3-4 weken voor vertrek. Wij houden rekening met uw opgegeven voorkeuren en afkeuringen.",
       "reveal": "3.2 Onthulling: De bestemming wordt onthuld via email en uw persoonlijke dashboard. U ontvangt dan alle reisdetails, tickets en praktische informatie.",
       "guarantees": "3.3 Garanties: Wij garanderen dat uw bestemming voldoet aan het geboekte pakket en dat u niet naar teams/steden gaat die u expliciet heeft uitgesloten.",
-      "mysteryGuarantee": "Mystery Garantie",
-      "mysteryGuaranteeDesc": "Niet tevreden met de onthulde bestemming? U kunt binnen 24 uur na onthulling kosteloos omboeken naar een andere datum of uw geld terugkrijgen."
+      "mysteryGuarantee": "Geld Terug Garantie",
+      "mysteryGuaranteeDesc": "Niet tevreden? Je krijgt je geld terug, geen vragen gesteld."
     },
     "cancellation": {
       "title": "4. Annulering en Wijzigingen",
@@ -820,8 +819,8 @@
       "ourLiability": "6.1 Onze aansprakelijkheid: YourNextStadium is aansprakelijk voor de juiste uitvoering van de geboekte diensten. Onze aansprakelijkheid is beperkt tot de reissom.",
       "forceMajeure": "6.2 Overmacht: Wij zijn niet aansprakelijk voor schade door overmacht, zoals natuurrampen, stakingen, terrorisme, pandemieën of overheidsmaatregelen.",
       "thirdParties": "6.3 Derde partijen: Voor diensten van derde partijen (hotels, vervoerders, stadions) gelden hun eigen voorwaarden. Wij bemiddelen bij problemen maar zijn niet primair aansprakelijk.",
-      "sgrGuarantee": "SGR Garantie",
-      "sgrGuaranteeDesc": "YourNextStadium is aangesloten bij SGR (Stichting Garantiefonds Reisgelden). Uw geld is beschermd bij faillissement. SGR nummer: 4321."
+      "sgrGuarantee": "Geld Terug Garantie",
+      "sgrGuaranteeDesc": "Niet tevreden? Je krijgt je geld terug, geen vragen gesteld."
     },
     "complaints": {
       "title": "7. Klachten en Geschillen",
@@ -840,8 +839,6 @@
       "vatNumber": "-",
       "anvr": "-",
       "anvrNumber": "-",
-      "sgr": "-",
-      "sgrNumber": "-",
       "phone": "-",
       "phoneNumber": "-",
       "emergencyLine": "-",

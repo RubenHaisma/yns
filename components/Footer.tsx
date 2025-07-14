@@ -190,14 +190,11 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
             </div>
 
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
-                <Twitter className="w-5 h-5" />
+              <a href="https://www.tiktok.com/@yournextstadium?_t=ZG-8y1oCSTjW2y&_r=1" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                {/* TikTok SVG icon */}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" className="w-5 h-5">
+                  <path d="M24.5 10.5c-2.2 0-4-1.8-4-4V3h-4.2c-4.7 0-8.5 3.8-8.5 8.5v9c0 4.1 3.4 7.5 7.5 7.5s7.5-3.4 7.5-7.5v-4.5h-3V21c0 2.5-2 4.5-4.5 4.5S7.5 23.5 7.5 21v-9c0-3.1 2.5-5.5 5.5-5.5H17v1c0 4.1 3.4 7.5 7.5 7.5h1v-4.5h-1z"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -277,7 +274,7 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
             </a>
             <div className="flex items-center space-x-1">
               <Shield className="w-4 h-4" />
-              <span>{t('sgr')}</span>
+              <span>{t('trust')}</span>
             </div>
           </div>
         </div>

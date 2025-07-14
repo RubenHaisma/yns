@@ -19,7 +19,7 @@
     "findStadium": "Find your stadium",
     "moreInfo": "More information",
     "guarantee1": "Mystery guarantee",
-    "guarantee2": "SGR protected",
+    "guarantee2": "Book & pay securely",
     "guarantee3": "Premium stadiums"
   },
   "process": {
@@ -35,7 +35,7 @@
     },
     "step3": {
       "title": "Discover your destination",
-      "description": "1-2 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!"
+      "description": "3-4 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!"
     }
   },
   "timeline": {
@@ -158,8 +158,8 @@
     "moneyBackDesc": "Not satisfied? Full refund",
     "support": "24/7 support",
     "supportDesc": "Always available during your trip",
-    "certified": "SGR certified",
-    "certifiedDesc": "Your money is fully protected"
+    "certified": "Trusted booking",
+    "certifiedDesc": "Your booking and payments are handled with the utmost care and security."
   },
   "stats": {
     "travelers": "Travelers",
@@ -175,7 +175,7 @@
     "copyright": "© 2025 YourNextStadium. All rights reserved.",
     "privacy": "Privacy policy",
     "terms": "Terms & conditions",
-    "sgr": "SGR certified",
+    "sgr": "Trusted booking",
     "howItWorks": "How it works",
     "packages": "Packages",
     "stories": "Stories",
@@ -328,7 +328,7 @@
     "destinationRevealed": "Destination revealed!",
     "revealedOn": "Your mystery destination was revealed on",
     "mysteryOngoing": "The mystery continues...",
-    "revealTiming": "Your destination will be revealed 1-2 weeks before departure",
+    "revealTiming": "Your destination will be revealed 3-4 weeks before departure",
     "hint": "Prepare for an unforgettable experience at one of Europe's most beautiful football stadiums!",
     "needHelp": "Need help?",
     "emergencyLine": "24/7 emergency line",
@@ -374,7 +374,7 @@
     },
     "step3": {
       "title": "3. Discover your destination",
-      "description": "1-2 weeks before departure we reveal your mystery destination via a special reveal video.",
+      "description": "3-4 weeks before departure we reveal your mystery destination via a special reveal video.",
       "details": [
         "Receive your personal reveal video",
         "Get all travel details and tickets",
@@ -427,7 +427,7 @@
         "id": 1,
         "category": "booking",
         "question": "How does booking a mystery trip work?",
-        "answer": "Booking is very simple! Choose your package, select your date, fill in your preferences and pay securely online. You'll receive immediate confirmation and 1-2 weeks before departure we reveal your destination."
+        "answer": "Booking is very simple! Choose your package, select your date, fill in your preferences and pay securely online. You'll receive immediate confirmation and 3-4 weeks before departure we reveal your destination."
       },
       {
         "id": 2,
@@ -463,7 +463,7 @@
         "id": 7,
         "category": "safety",
         "question": "Is my money safe with you?",
-        "answer": "Absolutely! We are SGR certified (Foundation for the Guarantee Fund for Travel Money) and your money is fully protected. We also offer a 100% money back guarantee."
+        "answer": "Absolutely! YourNextStadium handles your booking and payments with the utmost care and security. We also offer a 100% money back guarantee if you are not satisfied."
       },
       {
         "id": 8,
@@ -475,7 +475,7 @@
         "id": 9,
         "category": "booking",
         "question": "Can I book for multiple people?",
-        "answer": "Of course! You can book for up to 6 people at once. All travelers get the same destination."
+        "answer": "Of course! You can book for multiple people at once. All travelers get the same destination."
       },
       {
         "id": 10,
@@ -511,7 +511,7 @@
         "id": 15,
         "category": "travel",
         "question": "Are the hotels of good quality?",
-        "answer": "Yes! We only work with 4-5 star hotels in the premium package and always ensure clean, safe accommodation."
+        "answer": "We carefully select our hotel partners to ensure you have a comfortable and enjoyable stay during your trip."
       }
     ]
   },
@@ -746,7 +746,7 @@
       "title": "1. General Provisions",
       "company": "These general terms and conditions apply to all agreements between YourNextStadium B.V., established in Amsterdam (hereinafter: &ldquo;YourNextStadium&rdquo; or &ldquo;we&rdquo;), and the customer (hereinafter: &ldquo;you&rdquo; or &ldquo;the traveler&rdquo;).",
       "agreement": "By making a booking through our website or other channels, you agree to these terms. We advise you to read these terms carefully before making a booking.",
-      "important": "YourNextStadium is affiliated with the Foundation for the Guarantee Fund for Travel Money (SGR). Your money is protected in accordance with the Consumer Rights Act."
+      "important": "YourNextStadium handles your booking and payments with the utmost care and security. We offer a 100% money back guarantee if you are not satisfied."
     },
     "booking": {
       "title": "2. Booking and Payment",
@@ -778,7 +778,7 @@
     },
     "mystery": {
       "title": "3. Mystery Concept",
-      "destination": "3.1 Destination: The exact destination of your trip remains secret until 1-2 weeks before departure. We take into account your stated preferences and dislikes.",
+      "destination": "3.1 Destination: The exact destination of your trip remains secret until 3-4 weeks before departure. We take into account your stated preferences and dislikes.",
       "reveal": "3.2 Reveal: The destination is revealed via email and your personal dashboard. You will then receive all travel details, tickets and practical information.",
       "guarantees": "3.3 Guarantees: We guarantee that your destination meets the booked package and that you will not go to teams/cities that you have explicitly excluded.",
       "mysteryGuarantee": "Mystery Guarantee",
@@ -820,8 +820,8 @@
       "ourLiability": "6.1 Our liability: YourNextStadium is liable for the proper execution of the booked services. Our liability is limited to the travel sum.",
       "forceMajeure": "6.2 Force majeure: We are not liable for damage due to force majeure, such as natural disasters, strikes, terrorism, pandemics or government measures.",
       "thirdParties": "6.3 Third parties: For services of third parties (hotels, carriers, stadiums) their own terms apply. We mediate in problems but are not primarily liable.",
-      "sgrGuarantee": "SGR Guarantee",
-      "sgrGuaranteeDesc": "YourNextStadium is affiliated with SGR (Foundation for the Guarantee Fund for Travel Money). Your money is protected in case of bankruptcy. SGR number: 4321."
+      "sgrGuarantee": "Money Back Guarantee",
+      "sgrGuaranteeDesc": "Not satisfied? You get your money back, no questions asked."
     },
     "complaints": {
       "title": "7. Complaints and Disputes",
@@ -840,8 +840,6 @@
       "vatNumber": "-",
       "anvr": "ANVR:",
       "anvrNumber": "-",
-      "sgr": "-",
-      "sgrNumber": "-",
       "phone": "Phone:",
       "phoneNumber": "-",
       "emergencyLine": "-",
