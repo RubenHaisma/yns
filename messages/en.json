@@ -87,10 +87,10 @@
     "basic": {
       "name": "Budget Fan",
       "subtitle": "Surprise second-division game",
-      "price": "€99",
-      "originalPrice": "€129",
+      "price": "€50",
+      "originalPrice": "€69",
       "category": "C",
-      "savings": "Save €50",
+      "savings": "Save €19",
       "features": [
         "Match ticket",
         "Mystery destination reveal",
@@ -102,10 +102,10 @@
     "comfort": {
       "name": "Mid-Range Fan",
       "subtitle": "Match + flight to Marseille",
-      "price": "€249",
-      "originalPrice": "€299",
+      "price": "€199",
+      "originalPrice": "€249",
       "category": "A",
-      "savings": "Save €100",
+      "savings": "Save €50",
       "features": [
         "Match ticket",
         "Return flight",
@@ -120,10 +120,10 @@
     "premium": {
       "name": "Premium Football Tourist",
       "subtitle": "Barcelona or Milan experience",
-      "price": "€449",
-      "originalPrice": "€549",
+      "price": "€349",
+      "originalPrice": "€399",
       "category": "VIP",
-      "savings": "Save €150",
+      "savings": "Save €50",
       "features": [
         "Match ticket",
         "Return flight",
@@ -242,15 +242,15 @@
     "close": "Close",
     "basic": {
       "name": "Budget Fan",
-      "price": "€99"
+      "price": "€49"
     },
     "comfort": {
       "name": "Mid-Range Fan",
-      "price": "€249"
+      "price": "€149"
     },
     "premium": {
       "name": "Premium Football Tourist",
-      "price": "€449"
+      "price": "€299"
     }
   },
   "waitlist": {

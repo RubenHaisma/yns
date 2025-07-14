@@ -87,10 +87,10 @@
     "basic": {
       "name": "Budget Fan",
       "subtitle": "Verrassing tweede divisie wedstrijd",
-      "price": "€99",
-      "originalPrice": "€129",
+      "price": "€50",
+      "originalPrice": "€69",
       "category": "C",
-      "savings": "Bespaar €50",
+      "savings": "Bespaar €19",
       "features": [
         "Match ticket",
         "Mystery bestemming onthulling",
@@ -102,10 +102,10 @@
     "comfort": {
       "name": "Mid-Range Fan",
       "subtitle": "Wedstrijd + vliegtuig naar Marseille",
-      "price": "€249",
-      "originalPrice": "€299",
+      "price": "€199",
+      "originalPrice": "€249",
       "category": "A",
-      "savings": "Bespaar €100",
+      "savings": "Bespaar €50",
       "features": [
         "Match ticket",
         "Retour vliegtuig",
@@ -120,10 +120,10 @@
     "premium": {
       "name": "Premium Football Tourist",
       "subtitle": "Barcelona of Milaan ervaring",
-      "price": "€449",
-      "originalPrice": "€549",
+      "price": "€349",
+      "originalPrice": "€399",
       "category": "VIP",
-      "savings": "Bespaar €150",
+      "savings": "Bespaar €50",
       "features": [
         "Match ticket",
         "Retour vliegtuig",
@@ -242,15 +242,15 @@
     "close": "Sluiten",
     "basic": {
       "name": "Budget Fan",
-      "price": "€99"
+      "price": "€50"
     },
     "comfort": {
       "name": "Mid-Range Fan",
-      "price": "€249"
+      "price": "€199"
     },
     "premium": {
       "name": "Premium Football Tourist",
-      "price": "€449"
+      "price": "€349"
     }
   },
   "waitlist": {
