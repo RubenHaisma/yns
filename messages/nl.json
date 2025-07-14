@@ -299,7 +299,9 @@
     "messagePlaceholder": "Vertel ons hoe we je kunnen helpen...",
     "required": "*",
     "success": "Bericht verzonden! We nemen zo snel mogelijk contact met je op.",
-    "error": "Er is iets misgegaan. Probeer het opnieuw."
+    "error": "Er is iets misgegaan. Probeer het opnieuw.",
+    "successDescription": "Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.",
+    "errorDescription": "Er is iets misgegaan bij het verzenden. Probeer het later opnieuw of mail direct naar info@yournextstadium.nl."
   },
   "dashboard": {
     "title": "Mijn dashboard",

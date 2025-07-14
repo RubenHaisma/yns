@@ -4,6 +4,7 @@ import { Inter, Montserrat } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import Script from 'next/script';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' });
@@ -284,6 +285,7 @@ export default async function LocaleLayout({
       />
       
       <NextIntlClientProvider messages={messages}>
+        <Toaster />
         {children}
       </NextIntlClientProvider>
     </div>

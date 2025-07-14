@@ -6,10 +6,12 @@ import { Send } from 'lucide-react';
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
 import { useTranslations } from 'next-intl';
+import { useToast } from '@/hooks/use-toast';
 
 export default function Contact() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const t = useTranslations();
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -30,7 +32,10 @@ export default function Contact() {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        alert(t('contact.success'));
+        toast({
+          title: t('contact.success'),
+          description: t('contact.successDescription'),
+        });
         setFormData({
           name: '',
           email: '',
@@ -38,12 +43,20 @@ export default function Contact() {
           message: ''
         });
       } else {
-        alert(t('contact.error'));
+        toast({
+          title: t('contact.error'),
+          description: t('contact.errorDescription'),
+          variant: 'destructive',
+        });
       }
     })
     .catch(error => {
       console.error('Error:', error);
-      alert(t('contact.error'));
+      toast({
+        title: t('contact.error'),
+        description: t('contact.errorDescription'),
+        variant: 'destructive',
+      });
     });
   };
 
