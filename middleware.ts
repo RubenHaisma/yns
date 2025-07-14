@@ -16,6 +16,18 @@ const intlMiddleware = createMiddleware({
 export default async function middleware(request: NextRequest) {
   const { pathname, hostname } = request.nextUrl;
 
+  // Handle root redirect based on domain FIRST
+  if (pathname === '/') {
+    // Determine locale based on domain
+    let targetLocale = 'nl'; // default
+    if (hostname === 'yournextstadium.com' || hostname === 'www.yournextstadium.com') {
+      targetLocale = 'en';
+    } else if (hostname === 'yournextstadium.nl' || hostname === 'www.yournextstadium.nl') {
+      targetLocale = 'nl';
+    }
+    return NextResponse.redirect(new URL(`/${targetLocale}`, request.url));
+  }
+
   // Handle admin routes
   if (pathname.startsWith('/admin') || pathname.startsWith('/nl/admin') || pathname.startsWith('/en/admin')) {
     // Admin login page - allow access
@@ -57,20 +69,6 @@ export default async function middleware(request: NextRequest) {
   // Handle payment success page (no locale needed)
   if (pathname === '/payment-success') {
     return NextResponse.next();
-  }
-
-  // Handle root redirect based on domain
-  if (pathname === '/') {
-    // Determine locale based on domain
-    let targetLocale = 'nl'; // default
-    
-    if (hostname === 'yournextstadium.com' || hostname === 'www.yournextstadium.com') {
-      targetLocale = 'en';
-    } else if (hostname === 'yournextstadium.nl' || hostname === 'www.yournextstadium.nl') {
-      targetLocale = 'nl';
-    }
-    
-    return NextResponse.redirect(new URL(`/${targetLocale}`, request.url));
   }
 
   // Apply internationalization middleware for other routes
