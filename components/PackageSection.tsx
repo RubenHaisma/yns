@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Check, Plane, Hotel, Ticket } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { Button } from './ui/button';
 
 interface PackageSectionProps {
   onBookingClick: () => void;
@@ -66,24 +67,25 @@ export function PackageSection({ onBookingClick }: PackageSectionProps) {
           {packages.map((pkg, index) => (
             <div
               key={index}
-              className={`relative bg-white rounded-lg border transition-all duration-300 ${
+              className={`relative flex flex-col bg-white rounded-2xl border transition-all duration-300 h-full min-h-[600px] ${
                 pkg.popular 
-                  ? 'border-orange-300 shadow-lg' 
-                  : 'border-gray-200 hover:border-gray-300'
-              } ${hoveredPackage === index ? 'shadow-xl' : 'shadow-md'}`}
+                  ? 'border-orange-300 shadow-xl scale-[1.03]' 
+                  : 'border-gray-200 hover:border-green-300 hover:shadow-lg'
+              } ${hoveredPackage === index ? 'shadow-2xl scale-105 z-10' : 'shadow-md'} group`}
               onMouseEnter={() => setHoveredPackage(index)}
               onMouseLeave={() => setHoveredPackage(null)}
+              style={{ transition: 'box-shadow 0.3s, transform 0.3s' }}
             >
               {/* Popular Badge */}
               {pkg.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white px-4 py-1 rounded-full font-semibold text-sm">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white px-4 py-1 rounded-full font-semibold text-sm shadow-lg z-20">
                   POPULAIR
                 </div>
               )}
 
               {/* Package Header */}
-              <div className={`${pkg.color} rounded-t-lg p-8 text-center border-b`}>
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mb-6 mx-auto">
+              <div className={`${pkg.color} rounded-t-2xl p-8 text-center border-b`}> 
+                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mb-6 mx-auto shadow-sm">
                   <pkg.icon className="w-8 h-8 text-gray-700" />
                 </div>
                 <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-3">{pkg.name}</h3>
@@ -91,14 +93,14 @@ export function PackageSection({ onBookingClick }: PackageSectionProps) {
               </div>
 
               {/* Package Content */}
-              <div className="p-8">
+              <div className="flex flex-col flex-1 p-8">
                 {/* Price */}
                 <div className="text-center mb-8">
                   <div className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">{pkg.price}</div>
                 </div>
 
                 {/* Features */}
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-4 mb-8 flex-1">
                   {Array.isArray(pkg.features) && pkg.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start space-x-3">
                       <Check className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
@@ -108,16 +110,19 @@ export function PackageSection({ onBookingClick }: PackageSectionProps) {
                 </ul>
 
                 {/* CTA Button */}
-                <button
-                  onClick={onBookingClick}
-                  className={`w-full py-4 rounded-lg font-semibold text-base transition-all ${
-                    pkg.popular
-                      ? 'bg-orange-600 text-white hover:bg-orange-700'
-                      : 'bg-green-600 text-white hover:bg-green-700'
-                  }`}
-                >
-                  {t('packages.choosePackage')}
-                </button>
+                <div className="mt-auto pt-2">
+                  <Button
+                    onClick={onBookingClick}
+                    size="lg"
+                    className={`w-full rounded-xl font-bold text-lg shadow-lg transition-all duration-200 border-2 border-transparent group-hover:scale-105 group-hover:-translate-y-1 ${
+                      pkg.popular
+                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 border-orange-400'
+                        : 'bg-gradient-to-r from-green-600 to-green-700 text-white hover:from-green-700 hover:to-green-800 border-green-400'
+                    }`}
+                  >
+                    {t('packages.choosePackage')}
+                  </Button>
+                </div>
               </div>
             </div>
           ))}
