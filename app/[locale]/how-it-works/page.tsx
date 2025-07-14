@@ -85,8 +85,8 @@ export default function HowItWorks() {
                   </div>
                   <div className="flex-1">
                     <div className={`bg-white rounded-lg border ${step.color} p-8 shadow-lg`}>
-                      <div className="aspect-video bg-gray-50 rounded-lg flex items-center justify-center border border-gray-200">
-                        <Image src={step.image} alt={`Stap ${index + 1}`} width={100} height={100} />
+                      <div className="aspect-video bg-gray-50 rounded-lg flex items-center justify-center border border-gray-200 relative overflow-hidden">
+                        <Image src={step.image} alt={`Stap ${index + 1}`} fill className="object-contain" />
                       </div>
                     </div>
                   </div>
