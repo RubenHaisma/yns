@@ -15,7 +15,6 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
   const quickLinks = [
     { key: 'howItWorks', href: `/${locale}/how-it-works` },
     { key: 'packages', href: `/${locale}/packages` },
-    { key: 'stories', href: `/${locale}/stories` },
     { key: 'contact', href: `/${locale}/contact` },
     { key: 'faq', href: `/${locale}/faq` },
     { key: 'dashboard', href: `/${locale}/dashboard` },
