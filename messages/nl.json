@@ -158,7 +158,6 @@
     "moneyBackDesc": "Niet tevreden? Volledige terugbetaling",
     "support": "24/7 support",
     "supportDesc": "Altijd bereikbaar tijdens je reis",
-    "certified": "Vertrouwd boeken",
     "certifiedDesc": "Je boeking en betalingen worden met de grootste zorg en veiligheid behandeld."
   },
   "stats": {
@@ -192,7 +191,8 @@
     "bundesliga": "Bundesliga",
     "serieA": "Serie A",
     "championsLeague": "Champions League",
-    "europaLeague": "Europa League"
+    "europaLeague": "Europa League",
+    "certified": "Vertrouwd boeken"
   },
   "modal": {
     "bookTrip": "Boek je mystery trip",
