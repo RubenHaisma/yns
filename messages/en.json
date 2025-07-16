@@ -12,15 +12,47 @@
     "emergency": "24/7: -"
   },
   "hero": {
-    "title": "Where are you going?",
-    "subtitle": "Maybe to",
-    "mystery": "It remains a surprise.",
-    "description": "Experience the excitement of European top football. From Premier League to Champions League - discover your next stadium.",
-    "findStadium": "Find your stadium",
-    "moreInfo": "More information",
-    "guarantee1": "Mystery guarantee",
-    "guarantee2": "Book & pay securely",
-    "guarantee3": "Premium stadiums"
+    "headline1": "Mystery",
+    "headline2": "Football",
+    "headline3": "Adventures",
+    "subtitle": "Discover Europe's most iconic stadiums through our exclusive mystery travel experiences.",
+    "subtitleHighlight": "Where will your next adventure take you?",
+    "ctaStart": "Start Your Journey",
+    "ctaWatch": "Watch Story",
+    "stats": [
+      { "value": "50+", "label": "Stadiums" },
+      { "value": "500+", "label": "Travelers" },
+      { "value": "24/7", "label": "Support" }
+    ],
+    "destinations": [
+      {
+        "city": "Barcelona",
+        "stadium": "Camp Nou",
+        "league": "La Liga",
+        "description": "Experience the magic of Catalonia"
+      },
+      {
+        "city": "London",
+        "stadium": "Wembley",
+        "league": "Premier League",
+        "description": "The home of football awaits"
+      },
+      {
+        "city": "München",
+        "stadium": "Allianz Arena",
+        "league": "Bundesliga",
+        "description": "Bavarian football excellence"
+      },
+      {
+        "city": "Milano",
+        "stadium": "San Siro",
+        "league": "Serie A",
+        "description": "Italian passion and style"
+      }
+    ],
+    "mysteryDestination": "Mystery Destination",
+    "scrollIndicator": "Explore More",
+    "videoComingSoon": "Video coming soon..."
   },
   "process": {
     "title": "The mystery revealed",
@@ -132,7 +164,13 @@
         "Mystery destination reveal",
         "24/7 premium support"
       ]
-    }
+    },
+    "heroLine1": "Your Mystery",
+    "heroLine2": "Football Trip",
+    "heroLine3": "Your Style",
+    "heroSubtitle": "From surprise matches to luxury football weekends – choose the adventure that suits you and be surprised by Europe’s most beautiful stadiums.",
+    "comparisonLabel": "Package Comparison",
+    "comparisonHeader": "Package Features Comparison"
   },
   "waitlistSection": {
     "title": "Join the waitlist",
@@ -142,16 +180,52 @@
     "email": "Email address",
     "emailPlaceholder": "your@email.com",
     "termsText": "By signing up you agree to our terms and privacy policy. You can always unsubscribe.",
-    "stats": {
-      "waiting": "People waiting",
-      "stadiums": "Stadiums ready",
-      "countries": "Countries available"
-    },
     "discount": {
       "title": "10% OFF",
       "subtitle": "Exclusive Waitlist Discount",
       "description": "Join the waitlist and get 10% off your first booking when we launch."
-    }
+    },
+    "successTitle": "Welcome to the",
+    "successElite": "Elite Circle! 🎉",
+    "successDesc": "You're now part of an exclusive community of football adventurers ready to discover Europe's most iconic stadiums!",
+    "vipPosition": "YOUR VIP POSITION",
+    "outOf": "Out of {total} football fans waiting for their next adventure",
+    "benefits": [
+      {
+        "icon": "Zap",
+        "title": "Lightning Access",
+        "desc": "First to book when we launch"
+      },
+      {
+        "icon": "Gift",
+        "title": "10% VIP Discount",
+        "desc": "Exclusive waitlist member pricing"
+      },
+      {
+        "icon": "Star",
+        "title": "Royal Treatment",
+        "desc": "Priority support & insider updates"
+      }
+    ],
+    "vipCodeTitle": "Your Exclusive VIP Code",
+    "vipCodeDesc": "Save this golden ticket! Use it when booking opens for an exclusive 10% discount on your mystery football adventure.",
+    "shareWithFriends": "Share with Friends",
+    "beFirst": "Be the First to",
+    "unlockMystery": "Unlock Mystery",
+    "waitlistDesc": "Join our exclusive waitlist and get VIP access to Europe's most thrilling football adventures. Limited spots available!",
+    "stats": [
+      { "label": "VIP Members" },
+      { "label": "Elite Stadiums" },
+      { "label": "Exclusive Discount" }
+    ],
+    "formTitle": "Get Exclusive VIP Access",
+    "formDesc": "Be among the first to book your mystery football adventure and enjoy exclusive perks",
+    "joinButton": "Join the VIP Waitlist",
+    "joining": "Joining the Elite Circle...",
+    "noSpam": "No spam, just exclusive updates about your next football adventure.",
+    "alreadyWaiting": "Join {total}+ football fans already waiting!",
+    "errorAlready": "You are already on the waitlist!",
+    "errorGeneric": "Something went wrong. Please try again."
   },
   "trust": {
     "moneyBack": "100% money back",
@@ -192,7 +266,16 @@
     "bundesliga": "Bundesliga",
     "serieA": "Serie A",
     "championsLeague": "Champions League",
-    "europaLeague": "Europa League"
+    "europaLeague": "Europa League",
+    "brandShort": "YNS",
+    "brandFull": "YourNextStadium",
+    "brandTagline": "Mystery Football Adventures",
+    "statStadiums": "50+ Stadiums",
+    "statCountries": "5+ Countries",
+    "statFans": "500+ Fans",
+    "email": "Email",
+    "certifiedDesc": "Certified travel partner with 24/7 support",
+    "madeIn": "Made in Netherlands"
   },
   "modal": {
     "bookTrip": "Book your mystery trip",
@@ -515,6 +598,11 @@
         "answer": "We carefully select our hotel partners to ensure you have a comfortable and enjoyable stay during your trip."
       }
     ]
+  },
+  "faqPage": {
+    "sectionLabel": "FAQ",
+    "browseCategories": "Browse Categories",
+    "findYourAnswer": "Find Your Answer"
   },
   "privacy": {
     "title": "Privacy Policy",
@@ -871,5 +959,22 @@
     "previous": "Previous",
     "submit": "Submit",
     "confirm": "Confirm"
+  },
+  "contactPage": {
+    "sectionLabel": "Contact Information",
+    "headline": "Multiple Ways to",
+    "headlineConnect": "Connect",
+    "formSubtitle": "Ready to start your mystery football adventure? Let's talk!",
+    "formSuccessTitle": "Message Sent!",
+    "formSuccessDesc": "We'll get back to you within 24 hours.",
+    "info": [
+      { "description": "Get in touch for any inquiries" },
+      { "description": "24/7 emergency support" },
+      { "title": "Location", "details": "Amsterdam, Netherlands", "description": "Our headquarters" },
+      { "title": "Response Time", "details": "Within 24 hours", "description": "We respond quickly" }
+    ]
+  },
+  "dashboard": {
+    "heroBadge": "Dashboard"
   }
 }

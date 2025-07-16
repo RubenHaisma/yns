@@ -113,20 +113,6 @@ export default function HowItWorks() {
         {/* Steps Section */}
         <section className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-              className="text-center mb-20"
-            >
-              <h2 className="text-5xl lg:text-7xl font-black text-gray-800 mb-8">
-                Simple Process
-              </h2>
-              <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                From booking to adventure - your journey in three easy steps
-              </p>
-            </motion.div>
 
             <div className="space-y-32">
               {steps.map((step, index) => (

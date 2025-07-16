@@ -178,11 +178,11 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
-                <span className="text-white font-bold text-lg">YNS</span>
+                <span className="text-white font-bold text-lg">{t('brandShort')}</span>
               </motion.div>
               <div>
-                <span className="font-black text-xl">YourNextStadium</span>
-                <div className="text-gray-400 text-sm font-medium">Mystery Football Adventures</div>
+                <span className="font-black text-xl">{t('brandFull')}</span>
+                <div className="text-gray-400 text-sm font-medium">{t('brandTagline')}</div>
               </div>
             </div>
             
@@ -193,9 +193,9 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
             {/* Stats Grid */}
             <div className="grid grid-cols-3 gap-4">
               {[
-                { icon: Trophy, label: '50+ Stadions', color: 'text-orange-400' },
-                { icon: MapPin, label: '5+ Landen', color: 'text-green-400' },
-                { icon: Users, label: '500+ Fans', color: 'text-blue-400' }
+                { icon: Trophy, label: t('statStadiums'), color: 'text-orange-400' },
+                { icon: MapPin, label: t('statCountries'), color: 'text-green-400' },
+                { icon: Users, label: t('statFans'), color: 'text-blue-400' }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -313,7 +313,7 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
               <div className="flex items-start space-x-4">
                 <Mail className="w-5 h-5 text-orange-400 flex-shrink-0 mt-1" />
                 <div>
-                  <div className="text-gray-300 text-sm mb-1">Email</div>
+                  <div className="text-gray-300 text-sm mb-1">{t('email')}</div>
                   <a
                     href="mailto:info@yournextstadium.com"
                     className="text-white hover:text-orange-400 transition-colors font-medium"
@@ -342,7 +342,7 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
                   <span className="text-white font-semibold text-sm">{t('certified')}</span>
                 </div>
                 <p className="text-gray-300 text-xs leading-relaxed">
-                  Certified travel partner with 24/7 support
+                  {t('certifiedDesc')}
                 </p>
               </div>
             </div>
@@ -378,7 +378,7 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
               </a>
               <div className="flex items-center space-x-2">
                 <Globe className="w-4 h-4" />
-                <span>Made in Netherlands</span>
+                <span>{t('madeIn')}</span>
               </div>
             </div>
           </div>

@@ -70,15 +70,15 @@ export default function Packages() {
             >
 
               <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-tight mt-20">
-                <span className="block">Jouw Mystery</span>
+                <span className="block">{t('packages.heroLine1')}</span>
                 <span className="block bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
-                  Voetbalreis
+                  {t('packages.heroLine2')}
                 </span>
-                <span className="block text-5xl lg:text-7xl">Jouw Stijl</span>
+                <span className="block text-5xl lg:text-7xl">{t('packages.heroLine3')}</span>
               </h1>
               
               <p className="text-xl lg:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
-                Van verrassingswedstrijd tot luxe voetbalweekend – kies het avontuur dat bij jou past en laat je verrassen door Europa&apos;s mooiste stadions.
+                {t('packages.heroSubtitle')}
               </p>
             </motion.div>
           </div>
@@ -106,7 +106,7 @@ export default function Packages() {
                   className="inline-flex items-center space-x-3 bg-gradient-to-r from-green-500/10 to-orange-500/10 rounded-full px-8 py-4 border border-green-200/50 mb-12"
                 >
                   <Shield className="w-6 h-6 text-green-500" />
-                  <span className="text-green-600 font-bold">Package Comparison</span>
+                  <span className="text-green-600 font-bold">{t('packages.comparisonLabel')}</span>
                   <Zap className="w-6 h-6 text-orange-500" />
                 </motion.div>
 
@@ -118,7 +118,7 @@ export default function Packages() {
               <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-2xl">
                 <div className="bg-gradient-to-r from-green-800 to-green-900 p-8">
                   <h3 className="text-3xl font-black text-white text-center">
-                    Package Features Comparison
+                    {t('packages.comparisonHeader')}
                   </h3>
                 </div>
                 <div className="overflow-x-auto">
@@ -218,9 +218,9 @@ export default function Packages() {
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
-                  { icon: Shield, title: 'Money Back Guarantee', desc: '100% satisfaction or full refund', color: 'from-green-500 to-green-600' },
-                  { icon: Clock, title: 'Free Rebooking', desc: 'Change your dates without extra costs', color: 'from-orange-500 to-orange-600' },
-                  { icon: Star, title: '4.9/5 Rating', desc: 'Loved by 500+ travelers', color: 'from-purple-500 to-purple-600' }
+                  { icon: Shield, title: t('packages.moneyBackGuarantee'), desc: t('packages.moneyBackDesc'), color: 'from-green-500 to-green-600' },
+                  { icon: Clock, title: t('packages.freeRebooking'), desc: t('packages.freeRebookingDesc'), color: 'from-orange-500 to-orange-600' },
+                  { icon: Star, title: t('packages.rating'), desc: t('packages.ratingDesc'), color: 'from-purple-500 to-purple-600' }
                 ].map((trust, index) => (
                   <motion.div
                     key={index}

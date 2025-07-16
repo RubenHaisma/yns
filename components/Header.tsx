@@ -76,12 +76,12 @@ export function Header({ onBookingClick }: HeaderProps) {
                 <span className={`font-black text-xl transition-colors duration-500 ${
                   scrolled ? 'text-green-800' : 'text-white'
                 }`}>
-                  YourNextStadium
+                  {t('brandFull')}
                 </span>
                 <div className={`text-xs font-semibold transition-colors duration-500 ${
                   scrolled ? 'text-green-600' : 'text-green-200'
                 }`}>
-                  Mystery Football Adventures
+                  {t('brandTagline')}
                 </div>
               </motion.div>
             </div>
@@ -127,7 +127,7 @@ export function Header({ onBookingClick }: HeaderProps) {
 
                 {/* Dropdown Menu */}
                 <AnimatePresence>
-                  {item.hasDropdown && activeDropdown === item.key && (
+                  {item.hasDropdown && activeDropdown === item.key && Array.isArray((item as any).dropdownItems) && (
                     <motion.div
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -135,7 +135,7 @@ export function Header({ onBookingClick }: HeaderProps) {
                       transition={{ duration: 0.2 }}
                       className="absolute top-full left-0 mt-2 w-48 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-green-100/50 overflow-hidden"
                     >
-                      {item.dropdownItems?.map((dropdownItem, idx) => (
+                      {((item as any).dropdownItems).map((dropdownItem: any, idx: number) => (
                         <motion.a
                           key={dropdownItem.key}
                           href={dropdownItem.href}

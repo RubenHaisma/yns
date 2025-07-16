@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function FAQ() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const t = useTranslations();
+  const tFaqPage = useTranslations('faqPage');
   const [searchTerm, setSearchTerm] = useState('');
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -98,7 +99,7 @@ export default function FAQ() {
                 className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-xl rounded-full px-8 py-4 border border-white/20 mb-12"
               >
                 <HelpCircle className="w-8 h-8 text-orange-400" />
-                <span className="text-white font-bold text-lg">FAQ</span>
+                <span className="text-white font-bold text-lg">{tFaqPage('sectionLabel')}</span>
                 <Sparkles className="w-8 h-8 text-green-400" />
               </motion.div>
 
@@ -150,12 +151,12 @@ export default function FAQ() {
                 className="inline-flex items-center space-x-3 bg-gradient-to-r from-green-500/10 to-orange-500/10 rounded-full px-8 py-4 border border-green-200/50 mb-12"
               >
                 <Star className="w-6 h-6 text-green-500" />
-                <span className="text-green-600 font-bold">Browse Categories</span>
+                <span className="text-green-600 font-bold">{tFaqPage('browseCategories')}</span>
                 <HelpCircle className="w-6 h-6 text-orange-500" />
               </motion.div>
 
               <h2 className="text-4xl lg:text-5xl font-black text-gray-800">
-                Find Your Answer
+                {tFaqPage('findYourAnswer')}
               </h2>
             </motion.div>
 

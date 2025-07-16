@@ -12,15 +12,47 @@
     "emergency": "24/7: info@yournextstadium.nl"
   },
   "hero": {
-    "title": "Waar ga jij naartoe?",
-    "subtitle": "Misschien wel naar",
-    "mystery": "Het blijft een verrassing.",
-    "description": "Ervaar de spanning van Europese topvoetbal. Van Premier League tot Champions League - ontdek je volgende stadium.",
-    "findStadium": "Ontdek je stadium",
-    "moreInfo": "Meer informatie",
-    "guarantee1": "Mystery garantie",
-    "guarantee2": "Veilig boeken & betalen",
-    "guarantee3": "Premium stadions"
+    "headline1": "Mysterie",
+    "headline2": "Voetbal",
+    "headline3": "Avonturen",
+    "subtitle": "Ontdek Europa's meest iconische stadions met onze exclusieve mystery travel ervaringen.",
+    "subtitleHighlight": "Waar brengt jouw volgende avontuur je naartoe?",
+    "ctaStart": "Begin je reis",
+    "ctaWatch": "Bekijk verhaal",
+    "stats": [
+      { "value": "50+", "label": "Stadions" },
+      { "value": "500+", "label": "Reizigers" },
+      { "value": "24/7", "label": "Support" }
+    ],
+    "destinations": [
+      {
+        "city": "Barcelona",
+        "stadium": "Camp Nou",
+        "league": "La Liga",
+        "description": "Ervaar de magie van Catalonië"
+      },
+      {
+        "city": "Londen",
+        "stadium": "Wembley",
+        "league": "Premier League",
+        "description": "Het thuis van het voetbal wacht"
+      },
+      {
+        "city": "München",
+        "stadium": "Allianz Arena",
+        "league": "Bundesliga",
+        "description": "Beierse voetbalexcellentie"
+      },
+      {
+        "city": "Milaan",
+        "stadium": "San Siro",
+        "league": "Serie A",
+        "description": "Italiaanse passie en stijl"
+      }
+    ],
+    "mysteryDestination": "Mystery Bestemming",
+    "scrollIndicator": "Ontdek meer",
+    "videoComingSoon": "Video binnenkort beschikbaar..."
   },
   "process": {
     "title": "Het mysterie onthuld",
@@ -132,7 +164,13 @@
         "Mystery bestemming onthulling",
         "24/7 premium support"
       ]
-    }
+    },
+    "heroLine1": "Jouw Mystery",
+    "heroLine2": "Voetbalreis",
+    "heroLine3": "Jouw Stijl",
+    "heroSubtitle": "Van verrassingswedstrijd tot luxe voetbalweekend – kies het avontuur dat bij jou past en laat je verrassen door Europa's mooiste stadions.",
+    "comparisonLabel": "Pakket Vergelijking",
+    "comparisonHeader": "Pakket Features Vergelijking"
   },
   "waitlistSection": {
     "title": "Sluit je aan bij de waitlist",
@@ -142,11 +180,6 @@
     "email": "Email adres",
     "emailPlaceholder": "your@email.com",
     "termsText": "Door je aan te melden ga je akkoord met onze voorwaarden en privacybeleid. Je kunt je altijd uitschrijven.",
-    "stats": {
-      "waiting": "Mensen wachten",
-      "stadiums": "Stadions klaar", 
-      "countries": "Landen beschikbaar"
-    },
     "discount": {
       "title": "10% KORTING",
       "subtitle": "Exclusieve Waitlist Korting",
@@ -192,7 +225,16 @@
     "serieA": "Serie A",
     "championsLeague": "Champions League",
     "europaLeague": "Europa League",
-    "certified": "Vertrouwd boeken"
+    "certified": "Vertrouwd boeken",
+    "brandShort": "YNS",
+    "brandFull": "YourNextStadium",
+    "brandTagline": "Mystery Football Adventures",
+    "statStadiums": "50+ Stadions",
+    "statCountries": "5+ Landen",
+    "statFans": "500+ Fans",
+    "email": "Email",
+    "certifiedDesc": "Gecertificeerde reispartner met 24/7 support",
+    "madeIn": "Gemaakt in Nederland"
   },
   "modal": {
     "bookTrip": "Boek je mystery trip",
@@ -268,7 +310,7 @@
     "benefits": {
       "earlyAccess": "Vroege toegang",
       "earlyAccessDesc": "Als eerste boeken wanneer we live gaan",
-      "discounts": "Exclusieve kortingen", 
+      "discounts": "Exclusieve kortingen",
       "discountsDesc": "Speciale prijzen voor waitlist leden",
       "updates": "Insider updates",
       "updatesDesc": "Eerste updates over nieuwe bestemmingen"
@@ -279,7 +321,49 @@
       "description": "Als waitlist lid krijg je een speciale 10% korting op je eerste boeking wanneer we live gaan.",
       "codeLabel": "Gebruik code:",
       "code": "WAITLIST10"
-    }
+    },
+    "successTitle": "Welkom bij de",
+    "successElite": "Elite Circle! 🎉",
+    "successDesc": "Je bent nu onderdeel van een exclusieve community van voetbalavonturiers die klaar zijn om Europa's meest iconische stadions te ontdekken!",
+    "vipPosition": "JOUW VIP POSITIE",
+    "outOf": "Uit {total} voetbalfans die wachten op hun volgende avontuur",
+    "benefits": [
+      {
+        "icon": "Zap",
+        "title": "Bliksemsnelle Toegang",
+        "desc": "Als eerste boeken wanneer we live gaan"
+      },
+      {
+        "icon": "Gift",
+        "title": "10% VIP Korting",
+        "desc": "Exclusieve waitlist ledenprijs"
+      },
+      {
+        "icon": "Star",
+        "title": "Koninklijke Behandeling",
+        "desc": "Prioriteit support & insider updates"
+      }
+    ],
+    "vipCodeTitle": "Jouw Exclusieve VIP Code",
+    "vipCodeDesc": "Bewaar dit gouden ticket! Gebruik het zodra de boekingen openen voor een exclusieve 10% korting op jouw mystery voetbalavontuur.",
+    "shareWithFriends": "Deel met vrienden",
+    "beFirst": "Wees de eerste die",
+    "unlockMystery": "Mysterie Ontgrendelt",
+    "waitlistDesc": "Sluit je aan bij onze exclusieve wachtlijst en krijg VIP-toegang tot Europa's spannendste voetbalavonturen. Beperkte plekken beschikbaar!",
+    "stats": [
+      { "label": "VIP Leden" },
+      { "label": "Elite Stadions" },
+      { "label": "Exclusieve Korting" }
+    ],
+    "formTitle": "Krijg Exclusieve VIP Toegang",
+    "formDesc": "Wees een van de eersten die jouw mystery voetbalavontuur kan boeken en geniet van exclusieve voordelen",
+    "emailPlaceholder": "Vul je e-mailadres in",
+    "joinButton": "Word VIP op de wachtlijst",
+    "joining": "Toevoegen aan de Elite Circle...",
+    "noSpam": "Geen spam, alleen exclusieve updates over jouw volgende voetbalavontuur.",
+    "alreadyWaiting": "Sluit je aan bij {total}+ voetbalfans die al wachten!",
+    "errorAlready": "Je staat al op de wachtlijst!",
+    "errorGeneric": "Er is iets misgegaan. Probeer het opnieuw."
   },
   "contact": {
     "title": "Contact",
@@ -516,8 +600,13 @@
       }
     ]
   },
+  "faqPage": {
+    "sectionLabel": "FAQ",
+    "browseCategories": "Blader door categorieën",
+    "findYourAnswer": "Vind je antwoord"
+  },
   "privacy": {
-    "title": "Privacy Policy",  
+    "title": "Privacy Policy",
     "subtitle": "YourNextStadium B.V. - Uitgebreide Gegevensbescherming & Privacy",
     "lastUpdated": "Laatst bijgewerkt: Juli 2025",
     "version": "Versie 2.1",
@@ -528,7 +617,7 @@
       "applies": "Dit beleid is van toepassing op alle gebruikers van onze Dienst, inclusief bezoekers, klanten en zakelijke partners. Door gebruik te maken van onze Dienst erkent u dat u dit Privacy Policy heeft gelezen, begrepen en ermee instemt.",
       "important": "Belangrijk: Dit beleid is effectief vanaf Juli 2025. Wij kunnen dit beleid periodiek bijwerken om wijzigingen in onze praktijken of toepasselijke wetten te weerspiegelen. Wij zullen u op de hoogte stellen van materiële wijzigingen via onze Dienst of per e-mail."
     },
-    "definitions": {    
+    "definitions": {
       "title": "2. Definities & Juridisch Kader",
       "keyDefinitions": "Belangrijke Definities",
       "personalData": "Persoonsgegevens:",
@@ -871,5 +960,22 @@
     "previous": "Vorige",
     "submit": "Versturen",
     "confirm": "Bevestigen"
+  },
+  "contactPage": {
+    "sectionLabel": "Contactinformatie",
+    "headline": "Meerdere manieren om",
+    "headlineConnect": "Contact te maken",
+    "formSubtitle": "Klaar om je mystery voetbalavontuur te starten? Laten we praten!",
+    "formSuccessTitle": "Bericht verzonden!",
+    "formSuccessDesc": "We nemen binnen 24 uur contact met je op.",
+    "info": [
+      { "description": "Neem contact op voor vragen" },
+      { "description": "24/7 noodondersteuning" },
+      { "title": "Locatie", "details": "Amsterdam, Nederland", "description": "Ons hoofdkantoor" },
+      { "title": "Reactietijd", "details": "Binnen 24 uur", "description": "We reageren snel" }
+    ]
+  },
+  "dashboard": {
+    "heroBadge": "Dashboard"
   }
 }

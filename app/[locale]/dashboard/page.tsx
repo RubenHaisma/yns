@@ -115,7 +115,7 @@ export default function Dashboard() {
                 className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-xl rounded-full px-8 py-4 border border-white/20 mb-12"
               >
                 <MapPin className="w-8 h-8 text-orange-400" />
-                <span className="text-white font-bold text-lg">Dashboard</span>
+                <span className="text-white font-bold text-lg">{t('dashboard.heroBadge')}</span>
                 <Users className="w-8 h-8 text-green-400" />
               </motion.div>
 
@@ -459,7 +459,7 @@ export default function Dashboard() {
         )}
       </main>
 
-      <Footer onBookingClick={() => setIsBookingModalOpen(true)} className="animate-fade-in" />
+      <Footer onBookingClick={() => setIsBookingModalOpen(true)} />
 
       <BookingModal 
         isOpen={isBookingModalOpen} 

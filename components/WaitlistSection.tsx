@@ -64,14 +64,14 @@ export function WaitlistSection() {
         setTotalWaitlist(prev => prev + 1);
       } else {
         if (response.status === 409) {
-          setError('You are already on the waitlist!');
+          setError(tWaitlist('errorAlready'));
           setPosition(data.position);
         } else {
-          setError(data.error || 'Something went wrong. Please try again.');
+          setError(data.error || tWaitlist('errorGeneric'));
         }
       }
     } catch (error) {
-      setError('Something went wrong. Please try again.');
+      setError(tWaitlist('errorGeneric'));
     } finally {
       setIsSubmitting(false);
     }
@@ -152,9 +152,9 @@ export function WaitlistSection() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-5xl lg:text-7xl font-black text-green-800 mb-8"
             >
-              Welcome to the
+              {tWaitlist('successTitle')}
               <span className="block bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                Elite Circle! 🎉
+                {tWaitlist('successElite')}
               </span>
             </motion.h2>
 
@@ -164,7 +164,7 @@ export function WaitlistSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-xl lg:text-2xl text-green-700 mb-16 max-w-4xl mx-auto leading-relaxed"
             >
-              You're now part of an exclusive community of football adventurers ready to discover Europe's most iconic stadiums!
+              {tWaitlist('successDesc')}
             </motion.p>
 
             {/* Position Display */}
@@ -177,7 +177,7 @@ export function WaitlistSection() {
               <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
                 <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-3 rounded-full text-white font-bold text-lg shadow-lg">
                   <Crown className="w-5 h-5 inline mr-2" />
-                  YOUR VIP POSITION
+                  {tWaitlist('vipPosition')}
                 </div>
               </div>
               
@@ -200,7 +200,7 @@ export function WaitlistSection() {
               </motion.div>
               
               <p className="text-green-600 text-xl font-semibold">
-                Out of <span className="text-orange-600 font-bold">{totalWaitlist}</span> football fans waiting for their next adventure
+                {tWaitlist('outOf', { total: totalWaitlist })}
               </p>
             </motion.div>
 
@@ -211,49 +211,30 @@ export function WaitlistSection() {
               transition={{ duration: 1, delay: 1.2 }}
               className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
             >
-              {[
-                { 
-                  icon: Zap, 
-                  title: 'Lightning Access', 
-                  desc: 'First to book when we launch',
-                  color: 'from-yellow-400 to-orange-500',
-                  bgColor: 'from-yellow-50 to-orange-50'
-                },
-                { 
-                  icon: Gift, 
-                  title: '10% VIP Discount', 
-                  desc: 'Exclusive waitlist member pricing',
-                  color: 'from-green-400 to-green-600',
-                  bgColor: 'from-green-50 to-green-100'
-                },
-                { 
-                  icon: Star, 
-                  title: 'Royal Treatment', 
-                  desc: 'Priority support & insider updates',
-                  color: 'from-purple-400 to-purple-600',
-                  bgColor: 'from-purple-50 to-purple-100'
-                }
-              ].map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1.4 + index * 0.2 }}
-                  className={`relative bg-gradient-to-br ${benefit.bgColor} rounded-3xl p-8 border border-white/50 shadow-xl hover:shadow-2xl transition-all duration-500 group`}
-                  whileHover={{ scale: 1.05, y: -10 }}
-                >
-                  <div className={`w-16 h-16 bg-gradient-to-br ${benefit.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
-                    <benefit.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h4 className="text-xl font-bold text-gray-800 mb-3">{benefit.title}</h4>
-                  <p className="text-gray-600 leading-relaxed">{benefit.desc}</p>
-                  
+              {tWaitlist.raw('benefits').map((benefit: any, index: number) => {
+                const iconMap = { Zap, Gift, Star };
+                const Icon = iconMap[benefit.icon as keyof typeof iconMap];
+                return (
                   <motion.div
-                    className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-                    initial={false}
-                  />
-                </motion.div>
-              ))}
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 1.4 + index * 0.2 }}
+                    className={`relative bg-gradient-to-br from-white to-white rounded-3xl p-8 border border-white/50 shadow-xl hover:shadow-2xl transition-all duration-500 group`}
+                    whileHover={{ scale: 1.05, y: -10 }}
+                  >
+                    <div className={`w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-800 mb-3">{benefit.title}</h4>
+                    <p className="text-gray-600 leading-relaxed">{benefit.desc}</p>
+                    <motion.div
+                      className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                      initial={false}
+                    />
+                  </motion.div>
+                );
+              })}
             </motion.div>
 
             {/* Exclusive Discount Code */}
@@ -265,14 +246,14 @@ export function WaitlistSection() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-transparent" />
               <div className="relative z-10">
-                <h3 className="text-3xl font-black text-white mb-6">Your Exclusive VIP Code</h3>
+                <h3 className="text-3xl font-black text-white mb-6">{tWaitlist('vipCodeTitle')}</h3>
                 <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 mb-6 border border-white/30">
                   <code className="text-4xl font-mono font-black text-white tracking-wider">
                     EARLY10
                   </code>
                 </div>
                 <p className="text-orange-100 text-lg leading-relaxed mb-8">
-                  Save this golden ticket! Use it when booking opens for an exclusive 10% discount on your mystery football adventure.
+                  {tWaitlist('vipCodeDesc')}
                 </p>
                 
                 <motion.button
@@ -280,7 +261,7 @@ export function WaitlistSection() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span>Share with Friends</span>
+                  <span>{tWaitlist('shareWithFriends')}</span>
                   <ArrowRight className="w-5 h-5" />
                 </motion.button>
               </div>
@@ -359,45 +340,47 @@ export function WaitlistSection() {
           className="text-center mb-20"
         >
           <h2 className="text-6xl lg:text-8xl font-black text-green-800 mb-8 leading-tight">
-            <span className="block">Be the First to</span>
+            <span className="block">{tWaitlist('beFirst')}</span>
             <span className="block bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-              Unlock Mystery
+              {tWaitlist('unlockMystery')}
             </span>
           </h2>
           
           <p className="text-xl lg:text-2xl text-green-600 max-w-4xl mx-auto leading-relaxed mb-16">
-            Join our exclusive waitlist and get VIP access to Europe's most thrilling football adventures. Limited spots available!
+            {tWaitlist('waitlistDesc')}
           </p>
 
           {/* Enhanced Stats */}
           <div className="flex flex-wrap justify-center gap-8 mb-20">
-            {[
-              { value: totalWaitlist + '+', label: 'VIP Members', icon: Users, color: 'from-purple-500 to-purple-600' },
-              { value: '50+', label: 'Elite Stadiums', icon: Trophy, color: 'from-green-500 to-green-600' },
-              { value: '10%', label: 'Exclusive Discount', icon: Gift, color: 'from-orange-500 to-orange-600' }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 + index * 0.2 }}
-                viewport={{ once: true }}
-                className="relative group"
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
-                    <stat.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-4xl font-black text-gray-800 mb-2">{stat.value}</div>
-                  <div className="text-gray-600 font-semibold">{stat.label}</div>
-                </div>
+            {[0, 1, 2].map((index) => {
+              const iconMap = [Users, Trophy, Gift];
+              const Icon = iconMap[index];
+              const values = [totalWaitlist + '+', '50+', '10%'];
+              const label = tWaitlist(`stats.${index}.label`);
+              return (
                 <motion.div
-                  className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-400/10 to-green-400/10 opacity-0 group-hover:opacity-100 transition-opacity"
-                  initial={false}
-                />
-              </motion.div>
-            ))}
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.4 + index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="relative group"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500">
+                    <div className={`w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="text-4xl font-black text-gray-800 mb-2">{values[index]}</div>
+                    <div className="text-gray-600 font-semibold">{label}</div>
+                  </div>
+                  <motion.div
+                    className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-400/10 to-green-400/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                    initial={false}
+                  />
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 
@@ -433,10 +416,10 @@ export function WaitlistSection() {
                 </motion.div>
                 
                 <h3 className="text-4xl font-black text-gray-800 mb-6">
-                  Get Exclusive VIP Access
+                  {tWaitlist('formTitle')}
                 </h3>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Be among the first to book your mystery football adventure and enjoy exclusive perks
+                  {tWaitlist('formDesc')}
                 </p>
               </div>
 
@@ -458,7 +441,7 @@ export function WaitlistSection() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full px-8 py-6 bg-gray-50 border-2 border-gray-200 rounded-2xl text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-orange-400/30 focus:border-orange-400 transition-all duration-300 text-lg font-medium"
-                    placeholder="Enter your email address"
+                    placeholder={tWaitlist('emailPlaceholder')}
                   />
                   <div className="absolute inset-y-0 right-6 flex items-center pointer-events-none">
                     <Mail className="w-6 h-6 text-gray-400" />
@@ -475,21 +458,21 @@ export function WaitlistSection() {
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-6 h-6 animate-spin" />
-                      <span>Joining the Elite Circle...</span>
+                      <span>{tWaitlist('joining')}</span>
                     </>
                   ) : (
                     <>
                       <Crown className="w-6 h-6" />
-                      <span>Join the VIP Waitlist</span>
+                      <span>{tWaitlist('joinButton')}</span>
                       <ArrowRight className="w-6 h-6" />
                     </>
                   )}
                 </motion.button>
 
                 <p className="text-center text-gray-500 leading-relaxed">
-                  🔒 No spam, just exclusive updates about your next football adventure. 
+                  🔒 {tWaitlist('noSpam')}
                   <br />
-                  <span className="font-semibold text-orange-600">Join {totalWaitlist}+ football fans already waiting!</span>
+                  <span className="font-semibold text-orange-600">{tWaitlist('alreadyWaiting', { total: totalWaitlist })}</span>
                 </p>
               </form>
             </div>

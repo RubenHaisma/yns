@@ -16,40 +16,24 @@ export function Hero({ onBookingClick }: HeroProps) {
   const t = useTranslations('hero');
   const locale = useLocale();
 
-  const destinations = [
-    { 
-      city: 'Barcelona', 
-      stadium: 'Camp Nou', 
-      league: 'La Liga', 
-      color: 'from-blue-600 to-red-600',
-      image: 'https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-      description: 'Experience the magic of Catalonia'
-    },
-    { 
-      city: 'London', 
-      stadium: 'Wembley', 
-      league: 'Premier League', 
-      color: 'from-blue-800 to-blue-600',
-      image: 'https://images.pexels.com/photos/2916450/pexels-photo-2916450.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-      description: 'The home of football awaits'
-    },
-    { 
-      city: 'München', 
-      stadium: 'Allianz Arena', 
-      league: 'Bundesliga', 
-      color: 'from-red-600 to-red-800',
-      image: 'https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-      description: 'Bavarian football excellence'
-    },
-    { 
-      city: 'Milano', 
-      stadium: 'San Siro', 
-      league: 'Serie A', 
-      color: 'from-blue-900 to-black',
-      image: 'https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-      description: 'Italian passion and style'
-    }
-  ];
+  const destinations = [0, 1, 2, 3].map(i => ({
+    city: t(`destinations.${i}.city`),
+    stadium: t(`destinations.${i}.stadium`),
+    league: t(`destinations.${i}.league`),
+    color: [
+      'from-blue-600 to-red-600',
+      'from-blue-800 to-blue-600',
+      'from-red-600 to-red-800',
+      'from-blue-900 to-black',
+    ][i],
+    image: [
+      'https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
+      'https://images.pexels.com/photos/2916450/pexels-photo-2916450.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
+      'https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
+      'https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
+    ][i],
+    description: t(`destinations.${i}.description`),
+  }));
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -158,11 +142,11 @@ export function Hero({ onBookingClick }: HeroProps) {
                   transition={{ duration: 1, delay: 0.4 }}
                   className="text-6xl lg:text-8xl font-black text-white leading-none"
                 >
-                  <span className="block">Mystery</span>
+                  <span className="block">{t('headline1')}</span>
                   <span className="block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
-                    Football
+                    {t('headline2')}
                   </span>
-                  <span className="block text-5xl lg:text-7xl">Adventures</span>
+                  <span className="block text-5xl lg:text-7xl">{t('headline3')}</span>
                 </motion.h1>
                 
                 <motion.p
@@ -171,8 +155,8 @@ export function Hero({ onBookingClick }: HeroProps) {
                   transition={{ duration: 0.8, delay: 0.6 }}
                   className="text-xl lg:text-2xl text-green-100 max-w-2xl leading-relaxed"
                 >
-                  Discover Europe's most iconic stadiums through our exclusive mystery travel experiences. 
-                  <span className="text-orange-300 font-semibold"> Where will your next adventure take you?</span>
+                  {t('subtitle')} 
+                  <span className="text-orange-300 font-semibold"> {t('subtitleHighlight')}</span>
                 </motion.p>
               </div>
 
@@ -196,7 +180,7 @@ export function Hero({ onBookingClick }: HeroProps) {
                     transition={{ duration: 0.3 }}
                   />
                   <span className="relative z-10 flex items-center space-x-3">
-                    <span>Start Your Journey</span>
+                    <span>{t('ctaStart')}</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </motion.button>
@@ -210,7 +194,7 @@ export function Hero({ onBookingClick }: HeroProps) {
                   <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-orange-500 transition-colors">
                     <Play className="w-4 h-4 ml-0.5" />
                   </div>
-                  <span>Watch Story</span>
+                  <span>{t('ctaWatch')}</span>
                 </motion.button>
               </motion.div>
 
@@ -221,25 +205,26 @@ export function Hero({ onBookingClick }: HeroProps) {
                 transition={{ duration: 0.8, delay: 1 }}
                 className="flex flex-wrap gap-6"
               >
-                {[
-                  { icon: MapPin, value: '50+', label: 'Stadiums', color: 'text-green-400' },
-                  { icon: Users, value: '500+', label: 'Travelers', color: 'text-orange-400' },
-                  { icon: Calendar, value: '24/7', label: 'Support', color: 'text-blue-400' }
-                ].map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-                    className="flex items-center space-x-3 bg-black/20 backdrop-blur-md rounded-xl px-4 py-3 border border-white/10"
-                  >
-                    <stat.icon className={`w-5 h-5 ${stat.color}`} />
-                    <div>
-                      <div className="text-xl font-bold text-white">{stat.value}</div>
-                      <div className="text-sm text-gray-300">{stat.label}</div>
-                    </div>
-                  </motion.div>
-                ))}
+                {[0, 1, 2].map((index) => {
+                  const stat = t.raw('stats')[index];
+                  const icons = [MapPin, Users, Calendar];
+                  const Icon = icons[index];
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                      className="flex items-center space-x-3 bg-black/20 backdrop-blur-md rounded-xl px-4 py-3 border border-white/10"
+                    >
+                      <Icon className={`w-5 h-5 ${['text-green-400', 'text-orange-400', 'text-blue-400'][index]}`} />
+                      <div>
+                        <div className="text-xl font-bold text-white">{stat.value}</div>
+                        <div className="text-sm text-gray-300">{stat.label}</div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
             </motion.div>
 
@@ -279,7 +264,7 @@ export function Hero({ onBookingClick }: HeroProps) {
                         <span className={`px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r ${destinations[currentDestination].color} text-white`}>
                           {destinations[currentDestination].league}
                         </span>
-                        <div className="text-white/60 text-sm">Mystery Destination</div>
+                        <div className="text-white/60 text-sm">{t('mysteryDestination')}</div>
                       </div>
                       <p className="text-white/80">{destinations[currentDestination].description}</p>
                     </div>
@@ -330,7 +315,7 @@ export function Hero({ onBookingClick }: HeroProps) {
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center space-y-2 text-white/70 cursor-pointer hover:text-white transition-colors"
         >
-          <span className="text-sm font-medium">Explore More</span>
+          <span className="text-sm font-medium">{t('scrollIndicator')}</span>
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
             <motion.div
               animate={{ y: [0, 12, 0] }}
@@ -361,7 +346,7 @@ export function Hero({ onBookingClick }: HeroProps) {
               <div className="absolute inset-0 flex items-center justify-center text-white">
                 <div className="text-center">
                   <Play className="w-16 h-16 mx-auto mb-4 text-orange-400" />
-                  <p className="text-xl">Video coming soon...</p>
+                  <p className="text-xl">{t('videoComingSoon')}</p>
                 </div>
               </div>
               <button

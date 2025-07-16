@@ -79,17 +79,6 @@ export function ProcessSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2, type: "spring", bounce: 0.4 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center space-x-3 bg-gradient-to-r from-green-500/10 to-orange-500/10 rounded-full px-8 py-4 border border-green-200/50 mb-12"
-          >
-            <CheckCircle className="w-6 h-6 text-green-500" />
-            <span className="text-green-600 font-bold">Simple Process</span>
-            <Sparkles className="w-6 h-6 text-orange-500" />
-          </motion.div>
 
           <h2 className="text-5xl lg:text-7xl font-black text-gray-800 mb-8">
             {tProcess('title')}

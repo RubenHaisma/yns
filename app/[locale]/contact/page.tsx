@@ -13,6 +13,7 @@ export default function Contact() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const t = useTranslations();
+  const tContactPage = useTranslations('contactPage');
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
@@ -72,28 +73,28 @@ export default function Contact() {
       icon: Mail,
       title: t('contact.email'),
       details: 'info@yournextstadium.com',
-      description: 'Get in touch for any inquiries',
+      description: tContactPage('info.0.description'),
       color: 'from-blue-500 to-blue-600'
     },
     {
       icon: Phone,
       title: t('contact.phone'),
       details: '+31 20 123 4567',
-      description: '24/7 emergency support',
+      description: tContactPage('info.1.description'),
       color: 'from-green-500 to-green-600'
     },
     {
       icon: MapPin,
-      title: 'Location',
-      details: 'Amsterdam, Netherlands',
-      description: 'Our headquarters',
+      title: tContactPage('info.2.title'),
+      details: tContactPage('info.2.details'),
+      description: tContactPage('info.2.description'),
       color: 'from-orange-500 to-orange-600'
     },
     {
       icon: Clock,
-      title: 'Response Time',
-      details: 'Within 24 hours',
-      description: 'We respond quickly',
+      title: tContactPage('info.3.title'),
+      details: tContactPage('info.3.details'),
+      description: tContactPage('info.3.description'),
       color: 'from-purple-500 to-purple-600'
     }
   ];
@@ -182,14 +183,14 @@ export default function Contact() {
                 className="inline-flex items-center space-x-3 bg-gradient-to-r from-green-500/10 to-orange-500/10 rounded-full px-8 py-4 border border-green-200/50 mb-12"
               >
                 <Shield className="w-6 h-6 text-green-500" />
-                <span className="text-green-600 font-bold">Contact Information</span>
+                <span className="text-green-600 font-bold">{tContactPage('sectionLabel')}</span>
                 <Phone className="w-6 h-6 text-orange-500" />
               </motion.div>
 
               <h2 className="text-5xl lg:text-7xl font-black text-gray-800 mb-8">
-                Multiple Ways to
+                {tContactPage('headline')}
                 <span className="block bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                  Connect
+                  {tContactPage('headlineConnect')}
                 </span>
               </h2>
             </motion.div>
@@ -237,7 +238,7 @@ export default function Contact() {
                 {t('contact.sendMessage')}
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
-                Ready to start your mystery football adventure? Let&apos;s talk!
+                {tContactPage('formSubtitle')}
               </p>
             </motion.div>
 
@@ -266,8 +267,8 @@ export default function Contact() {
                       >
                         <CheckCircle className="w-10 h-10 text-white" />
                       </motion.div>
-                      <h3 className="text-2xl font-bold text-green-800 mb-4">Message Sent!</h3>
-                      <p className="text-green-600">We&apos;ll get back to you within 24 hours.</p>
+                      <h3 className="text-2xl font-bold text-green-800 mb-4">{tContactPage('formSuccessTitle')}</h3>
+                      <p className="text-green-600">{tContactPage('formSuccessDesc')}</p>
                     </div>
                   </motion.div>
                 )}
