@@ -102,9 +102,9 @@ export default function Contact() {
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
       
-      <main className="pt-16">
+      <main>
         {/* Hero Section */}
-        <section className="relative py-32 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
+        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(25)].map((_, i) => (
@@ -152,18 +152,8 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.4 }}
-                className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-xl rounded-full px-8 py-4 border border-white/20 mb-12"
-              >
-                <Mail className="w-8 h-8 text-orange-400" />
-                <span className="text-white font-bold text-lg">Get In Touch</span>
-                <Sparkles className="w-8 h-8 text-green-400" />
-              </motion.div>
 
-              <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-tight">
+              <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-tight mt-20">
                 <span className="block">{t('contact.title')}</span>
               </h1>
               
@@ -247,7 +237,7 @@ export default function Contact() {
                 {t('contact.sendMessage')}
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
-                Ready to start your mystery football adventure? Let's talk!
+                Ready to start your mystery football adventure? Let&apos;s talk!
               </p>
             </motion.div>
 
@@ -277,7 +267,7 @@ export default function Contact() {
                         <CheckCircle className="w-10 h-10 text-white" />
                       </motion.div>
                       <h3 className="text-2xl font-bold text-green-800 mb-4">Message Sent!</h3>
-                      <p className="text-green-600">We'll get back to you within 24 hours.</p>
+                      <p className="text-green-600">We&apos;ll get back to you within 24 hours.</p>
                     </div>
                   </motion.div>
                 )}

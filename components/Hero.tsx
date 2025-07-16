@@ -149,23 +149,6 @@ export function Hero({ onBookingClick }: HeroProps) {
               transition={{ duration: 1, ease: "easeOut" }}
               className="space-y-8"
             >
-              {/* Brand Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: -30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-xl rounded-full px-6 py-3 border border-white/20"
-              >
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center"
-                >
-                  <Sparkles className="w-4 h-4 text-white" />
-                </motion.div>
-                <span className="text-white font-semibold">YourNextStadium</span>
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              </motion.div>
 
               {/* Main Headline */}
               <div className="space-y-4">

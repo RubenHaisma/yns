@@ -35,7 +35,7 @@ export function MapSection() {
             Waar Kun Je Naartoe?
           </h2>
           <p className="text-xl text-green-600 max-w-3xl mx-auto">
-            Van de Premier League tot La Liga - ontdek Europa's mooiste stadions
+            Van de Premier League tot La Liga - ontdek Europa&apos;s mooiste stadions
           </p>
         </div>
 

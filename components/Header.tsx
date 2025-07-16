@@ -36,17 +36,7 @@ export function Header({ onBookingClick }: HeaderProps) {
     { 
       key: 'packages', 
       href: `/${locale}/packages`,
-      hasDropdown: true,
-      dropdownItems: [
-        { key: 'basic', href: `/${locale}/packages#basic` },
-        { key: 'comfort', href: `/${locale}/packages#comfort` },
-        { key: 'premium', href: `/${locale}/packages#premium` }
-      ]
-    },
-    { 
-      key: 'stories', 
-      href: `/${locale}/stories`,
-      hasDropdown: false
+      hasDropdown: false,
     },
     { 
       key: 'contact', 
@@ -76,22 +66,6 @@ export function Header({ onBookingClick }: HeaderProps) {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <motion.div 
-              className={`relative w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 ${
-                scrolled 
-                  ? 'bg-gradient-to-br from-green-600 to-green-700 shadow-lg' 
-                  : 'bg-white/15 backdrop-blur-xl border border-white/20'
-              }`}
-              whileHover={{ rotate: 5 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Sparkles className={`w-7 h-7 ${scrolled ? 'text-white' : 'text-white'}`} />
-              <motion.div
-                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-400/20 to-orange-600/20"
-                animate={{ opacity: [0, 0.5, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-            </motion.div>
             
             <div className="hidden sm:block">
               <motion.div

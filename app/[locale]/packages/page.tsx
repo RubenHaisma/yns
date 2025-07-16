@@ -18,9 +18,9 @@ export default function Packages() {
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
       
-      <main className="pt-16">
+      <main>
         {/* Hero Section */}
-        <section className="relative py-32 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
+        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(20)].map((_, i) => (
@@ -68,18 +68,8 @@ export default function Packages() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.4 }}
-                className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-xl rounded-full px-8 py-4 border border-white/20 mb-12"
-              >
-                <Crown className="w-8 h-8 text-orange-400" />
-                <span className="text-white font-bold text-lg">Choose Your Adventure</span>
-                <Trophy className="w-8 h-8 text-green-400" />
-              </motion.div>
 
-              <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-tight">
+              <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-tight mt-20">
                 <span className="block">Jouw Mystery</span>
                 <span className="block bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                   Voetbalreis
@@ -88,7 +78,7 @@ export default function Packages() {
               </h1>
               
               <p className="text-xl lg:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
-                Van verrassingswedstrijd tot luxe voetbalweekend – kies het avontuur dat bij jou past en laat je verrassen door Europa's mooiste stadions.
+                Van verrassingswedstrijd tot luxe voetbalweekend – kies het avontuur dat bij jou past en laat je verrassen door Europa&apos;s mooiste stadions.
               </p>
             </motion.div>
           </div>

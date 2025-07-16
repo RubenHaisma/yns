@@ -50,9 +50,9 @@ export default function HowItWorks() {
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
       
-      <main className="pt-16">
+      <main>
         {/* Hero Section */}
-        <section className="relative py-32 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
+        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(15)].map((_, i) => (
@@ -79,23 +79,13 @@ export default function HowItWorks() {
             ))}
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               className="text-center"
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.4 }}
-                className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-xl rounded-full px-8 py-4 border border-white/20 mb-12"
-              >
-                <Sparkles className="w-8 h-8 text-orange-400" />
-                <span className="text-white font-bold text-lg">How It Works</span>
-                <CheckCircle className="w-8 h-8 text-green-400" />
-              </motion.div>
 
               <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-tight">
                 <span className="block">{t('howItWorks.title')}</span>

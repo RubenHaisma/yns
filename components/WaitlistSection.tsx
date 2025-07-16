@@ -221,7 +221,7 @@ export function WaitlistSection() {
                 },
                 { 
                   icon: Gift, 
-                  title: '15% VIP Discount', 
+                  title: '10% VIP Discount', 
                   desc: 'Exclusive waitlist member pricing',
                   color: 'from-green-400 to-green-600',
                   bgColor: 'from-green-50 to-green-100'
@@ -268,11 +268,11 @@ export function WaitlistSection() {
                 <h3 className="text-3xl font-black text-white mb-6">Your Exclusive VIP Code</h3>
                 <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 mb-6 border border-white/30">
                   <code className="text-4xl font-mono font-black text-white tracking-wider">
-                    EARLY15
+                    EARLY10
                   </code>
                 </div>
                 <p className="text-orange-100 text-lg leading-relaxed mb-8">
-                  Save this golden ticket! Use it when booking opens for an exclusive 15% discount on your mystery football adventure.
+                  Save this golden ticket! Use it when booking opens for an exclusive 10% discount on your mystery football adventure.
                 </p>
                 
                 <motion.button
@@ -358,18 +358,6 @@ export function WaitlistSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.4 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center space-x-4 bg-gradient-to-r from-orange-500/10 to-green-500/10 backdrop-blur-md rounded-full px-8 py-4 border border-orange-200/50 mb-12"
-          >
-            <Sparkles className="w-8 h-8 text-orange-500" />
-            <span className="text-orange-600 font-bold text-lg">Join the Elite Adventure Club</span>
-            <Crown className="w-8 h-8 text-green-600" />
-          </motion.div>
-
           <h2 className="text-6xl lg:text-8xl font-black text-green-800 mb-8 leading-tight">
             <span className="block">Be the First to</span>
             <span className="block bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
@@ -386,7 +374,7 @@ export function WaitlistSection() {
             {[
               { value: totalWaitlist + '+', label: 'VIP Members', icon: Users, color: 'from-purple-500 to-purple-600' },
               { value: '50+', label: 'Elite Stadiums', icon: Trophy, color: 'from-green-500 to-green-600' },
-              { value: '15%', label: 'Exclusive Discount', icon: Gift, color: 'from-orange-500 to-orange-600' }
+              { value: '10%', label: 'Exclusive Discount', icon: Gift, color: 'from-orange-500 to-orange-600' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
