@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, Sparkles, Globe, ChevronDown } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname } from 'next/navigation';
-import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -14,111 +13,228 @@ interface HeaderProps {
 
 export function Header({ onBookingClick }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const t = useTranslations('nav');
   const locale = useLocale();
   const pathname = usePathname();
-  const [currentLocale, setCurrentLocale] = useState(locale);
 
-  const changeLanguage = (newLocale: string) => {
-    // Get the current path without the locale
-    const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, '') || '/';
-    
-    // Create the new URL with the selected locale
-    const newPath = `/${newLocale}${pathWithoutLocale}`;
-    
-    // Update local state immediately for UI feedback
-    setCurrentLocale(newLocale);
-    
-    // Use Next.js router for client-side navigation
-    window.location.href = newPath;
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
-    { key: 'howItWorks', href: `/${locale}/how-it-works` },
-    { key: 'packages', href: `/${locale}/packages` },
-    { key: 'contact', href: `/${locale}/contact` },
+    { 
+      key: 'howItWorks', 
+      href: `/${locale}/how-it-works`,
+      hasDropdown: false
+    },
+    { 
+      key: 'packages', 
+      href: `/${locale}/packages`,
+      hasDropdown: true,
+      dropdownItems: [
+        { key: 'basic', href: `/${locale}/packages#basic` },
+        { key: 'comfort', href: `/${locale}/packages#comfort` },
+        { key: 'premium', href: `/${locale}/packages#premium` }
+      ]
+    },
+    { 
+      key: 'stories', 
+      href: `/${locale}/stories`,
+      hasDropdown: false
+    },
+    { 
+      key: 'contact', 
+      href: `/${locale}/contact`,
+      hasDropdown: false
+    },
   ];
 
   return (
     <motion.header 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+        scrolled 
+          ? 'bg-white/90 backdrop-blur-2xl shadow-xl border-b border-green-100/50' 
+          : 'bg-transparent'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
+          
           {/* Logo */}
           <motion.a 
             href={`/${locale}`} 
-            className="flex items-center space-x-2 flex-shrink-0"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+            className="flex items-center space-x-4 group"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             <motion.div 
-              className="w-8 h-8 bg-gradient-to-br from-green-600 to-green-700 rounded-lg flex items-center justify-center"
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.6 }}
+              className={`relative w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+                scrolled 
+                  ? 'bg-gradient-to-br from-green-600 to-green-700 shadow-lg' 
+                  : 'bg-white/15 backdrop-blur-xl border border-white/20'
+              }`}
+              whileHover={{ rotate: 5 }}
+              transition={{ duration: 0.3 }}
             >
-              <span className="text-white font-bold text-sm">YNS</span>
+              <Sparkles className={`w-7 h-7 ${scrolled ? 'text-white' : 'text-white'}`} />
+              <motion.div
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-400/20 to-orange-600/20"
+                animate={{ opacity: [0, 0.5, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
             </motion.div>
-            <span className="font-bold text-lg text-green-800 hidden sm:block">YourNextStadium</span>
+            
+            <div className="hidden sm:block">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <span className={`font-black text-xl transition-colors duration-500 ${
+                  scrolled ? 'text-green-800' : 'text-white'
+                }`}>
+                  YourNextStadium
+                </span>
+                <div className={`text-xs font-semibold transition-colors duration-500 ${
+                  scrolled ? 'text-green-600' : 'text-green-200'
+                }`}>
+                  Mystery Football Adventures
+                </div>
+              </motion.div>
+            </div>
           </motion.a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item, index) => (
               <motion.div
                 key={item.key}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative group"
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative"
+                onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.key)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
                 <motion.a
                   href={item.href}
-                  className="text-gray-700 hover:text-green-600 transition-colors font-medium text-sm relative pb-2 block"
-                  whileHover={{ y: -2 }}
-                  transition={{ duration: 0.2 }}
+                  className={`relative flex items-center space-x-1 px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${
+                    scrolled 
+                      ? 'text-green-700 hover:text-green-900 hover:bg-green-50/80' 
+                      : 'text-white hover:text-green-200 hover:bg-white/10'
+                  }`}
+                  whileHover={{ y: -1 }}
+                  whileTap={{ y: 0 }}
                 >
-                  {t(item.key)}
+                  <span>{t(item.key)}</span>
+                  {item.hasDropdown && (
+                    <ChevronDown className={`w-4 h-4 transition-transform ${
+                      activeDropdown === item.key ? 'rotate-180' : ''
+                    }`} />
+                  )}
+                  
+                  <motion.div
+                    className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${
+                      scrolled ? 'bg-green-600' : 'bg-orange-400'
+                    }`}
+                    initial={{ width: 0 }}
+                    whileHover={{ width: '70%' }}
+                  />
                 </motion.a>
-                <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-green-600 rounded-full transform origin-left transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100"
-                />
+
+                {/* Dropdown Menu */}
+                <AnimatePresence>
+                  {item.hasDropdown && activeDropdown === item.key && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 mt-2 w-48 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-green-100/50 overflow-hidden"
+                    >
+                      {item.dropdownItems?.map((dropdownItem, idx) => (
+                        <motion.a
+                          key={dropdownItem.key}
+                          href={dropdownItem.href}
+                          className="block px-6 py-3 text-green-700 hover:text-green-900 hover:bg-green-50/80 transition-colors font-medium"
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.2, delay: idx * 0.05 }}
+                          whileHover={{ x: 5 }}
+                        >
+                          {t(`packages.${dropdownItem.key}.name`)}
+                        </motion.a>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             ))}
           </nav>
 
           {/* Right Side Actions */}
-          <motion.div 
-            className="flex items-center space-x-3"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            {/* Language Switcher */}
-            <LanguageSwitcher />
-
-            {/* CTA Button */}
+          <div className="flex items-center space-x-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <LanguageSwitcher />
+            </motion.div>
+            
             <motion.button
               onClick={onBookingClick}
-              className="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all transform hover:scale-105 shadow-sm text-sm"
+              className={`relative overflow-hidden px-8 py-3 rounded-2xl font-bold transition-all duration-500 group ${
+                scrolled 
+                  ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg hover:shadow-xl' 
+                  : 'bg-white/15 backdrop-blur-xl text-white border border-white/20 hover:bg-white/25'
+              }`}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
             >
-              {t('bookNow')}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-500"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '0%' }}
+                transition={{ duration: 0.4 }}
+              />
+              <span className="relative z-10 flex items-center space-x-2">
+                <span>{t('bookNow')}</span>
+                <motion.div
+                  animate={{ x: [0, 3, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="group-hover:translate-x-1 transition-transform"
+                >
+                  →
+                </motion.div>
+              </span>
             </motion.button>
 
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              className={`lg:hidden p-3 rounded-2xl transition-all duration-300 ${
+                scrolled 
+                  ? 'hover:bg-green-50/80 text-green-700' 
+                  : 'hover:bg-white/10 text-white'
+              }`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
             >
               <AnimatePresence mode="wait">
                 {isMenuOpen ? (
@@ -129,7 +245,7 @@ export function Header({ onBookingClick }: HeaderProps) {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-6 h-6" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -139,56 +255,49 @@ export function Header({ onBookingClick }: HeaderProps) {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu className="w-5 h-5" />
+                    <Menu className="w-6 h-6" />
                   </motion.div>
                 )}
               </AnimatePresence>
             </motion.button>
-          </motion.div>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div 
-              className="lg:hidden py-4 border-t border-gray-100"
+              className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-2xl border-b border-green-100/50 shadow-2xl"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              <nav className="flex flex-col space-y-3">
+              <div className="px-4 py-8 space-y-2">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.key}
                     href={item.href}
-                    className="text-gray-700 hover:text-green-600 transition-colors font-medium py-2 relative"
+                    className="block px-6 py-4 text-green-700 hover:text-green-900 hover:bg-green-50/80 rounded-2xl font-semibold transition-all duration-300"
                     onClick={() => setIsMenuOpen(false)}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    whileHover={{ x: 10 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    whileHover={{ x: 10, scale: 1.02 }}
                   >
                     {t(item.key)}
-                    <motion.div
-                      className="absolute left-0 top-0 bottom-0 w-1 bg-green-600"
-                      initial={{ scaleY: 0 }}
-                      whileHover={{ scaleY: 1 }}
-                      transition={{ duration: 0.2 }}
-                    />
                   </motion.a>
                 ))}
                 
-                {/* Mobile Language Switcher */}
                 <motion.div 
-                  className="pt-2"
+                  className="pt-6 border-t border-green-100/50"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.3 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
                 >
                   <LanguageSwitcher isMobile={true} onLanguageChange={() => setIsMenuOpen(false)} />
                 </motion.div>
-              </nav>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
