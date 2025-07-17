@@ -70,8 +70,8 @@ export function ProcessSection() {
   ];
 
   return (
-    <section id="process" className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="process" className="py-16 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+      <div className="max-w-3xl mx-auto px-2 sm:px-4 lg:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -80,10 +80,10 @@ export function ProcessSection() {
           className="text-center mb-20"
         >
 
-          <h2 className="text-5xl lg:text-7xl font-black text-gray-800 mb-8">
+          <h2 className="text-3xl lg:text-4xl font-black text-gray-800 mb-4">
             {tProcess('title')}
           </h2>
-          <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             {tProcess('subtitle')}
           </p>
         </motion.div>
@@ -103,22 +103,22 @@ export function ProcessSection() {
               <div className="flex-1 space-y-8">
                 <div className="flex items-center space-x-6">
                   <motion.div
-                    className={`w-20 h-20 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center shadow-xl`}
+                    className={`w-10 h-10 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center shadow-xl`}
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <step.icon className="w-10 h-10 text-white" />
+                    <step.icon className="w-5 h-5 text-white" />
                   </motion.div>
-                  <div className={`text-6xl font-black text-transparent bg-gradient-to-br ${step.color} bg-clip-text`}>
+                  <div className={`text-3xl font-black text-transparent bg-gradient-to-br ${step.color} bg-clip-text`}>
                     {step.number}
                   </div>
                 </div>
 
                 <div className="space-y-6">
-                  <h3 className="text-4xl lg:text-5xl font-black text-gray-800 leading-tight">
+                  <h3 className="text-2xl lg:text-3xl font-black text-gray-800 leading-tight">
                     {step.title}
                   </h3>
-                  <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed">
+                  <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
                     {step.description}
                   </p>
                   
@@ -147,7 +147,7 @@ export function ProcessSection() {
               {/* Visual */}
               <div className="flex-1">
                 <motion.div
-                  className={`relative bg-gradient-to-br ${step.bgColor} rounded-3xl p-12 shadow-2xl border border-gray-200/50`}
+                  className={`relative bg-gradient-to-br ${step.bgColor} rounded-3xl p-6 shadow-2xl border border-gray-200/50`}
                   whileHover={{ scale: 1.02, y: -10 }}
                   transition={{ duration: 0.5 }}
                 >
@@ -189,14 +189,14 @@ export function ProcessSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-12 lg:p-16 shadow-2xl"
+          className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-6 lg:p-8 shadow-2xl"
         >
           <div className="text-center mb-16">
-            <h3 className="text-4xl lg:text-5xl font-black text-white mb-6">
+            <h3 className="text-2xl lg:text-3xl font-black text-white mb-4">
               {tTimeline('title')}
             </h3>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              From booking to adventure - here's your complete journey timeline
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              From booking to adventure - here&apos;s your complete journey timeline
             </p>
           </div>
 

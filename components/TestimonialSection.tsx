@@ -2,59 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { Star, Quote, ChevronLeft, ChevronRight, Instagram } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export function TestimonialSection() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
-  const testimonials = [
-    {
-      name: "Marco van der Berg",
-      location: "Amsterdam",
-      trip: "Barcelona Mystery Trip",
-      rating: 5,
-      quote: "Ongelofelijk! Ik dacht dat ik naar Duitsland zou gaan, maar eindigde in het Camp Nou. De beste voetbalervaring van mijn leven!",
-      image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
-    },
-    {
-      name: "Lisa Janssen",
-      location: "Utrecht",
-      trip: "Premier League Mystery",
-      rating: 5,
-      quote: "Samen met mijn vriendin een mystery trip geboekt. We zijn in Liverpool terechtgekomen - wat een sfeer! Anfield was magisch.",
-      image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
-    },
-    {
-      name: "Tom Verschuren",
-      location: "Rotterdam",
-      trip: "Bundesliga Adventure",
-      rating: 5,
-      quote: "München was onze mysterie bestemming. Bayern tegen Dortmund in de Allianz Arena - beter wordt het niet! Top georganiseerd.",
-      image: "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
-    }
-  ];
-
-  const instagramPosts = [
-    {
-      image: "https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
-      caption: "Eindelijk onthuld! Madrid was onze bestemming 🇪🇸⚽ #YourNextStadium #MysteryTrip",
-      likes: 127
-    },
-    {
-      image: "https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
-      caption: "Van Amsterdam naar Barcelona in één dag ✈️ #VoetbalReizen #Mystery",
-      likes: 89
-    },
-    {
-      image: "https://images.pexels.com/photos/2916450/pexels-photo-2916450.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
-      caption: "Deze sfeer... kippenvel! 🔥 #StadiumLife #FootballFan",
-      likes: 156
-    },
-    {
-      image: "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
-      caption: "Bundesliga hier we come! 🇩🇪 #MysteryRevealed #Football",
-      likes: 94
-    }
-  ];
+  const t = useTranslations();
+  const testimonials = t.raw('testimonials') || [];
+  const instagramPosts = t.raw('instagramPosts') || [];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -69,10 +23,10 @@ export function TestimonialSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-green-800 mb-6">
-            Verhalen van Avonturiers
+            {t('stories.title')}
           </h2>
           <p className="text-xl text-green-600 max-w-3xl mx-auto">
-            Ontdek waarom meer dan 500 voetbalfans hun volgende stadium hebben gevonden
+            {t('stories.subtitle')}
           </p>
         </div>
 
@@ -85,13 +39,13 @@ export function TestimonialSection() {
 
             <div className="text-center">
               <div className="flex justify-center mb-4">
-                {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                {[...Array(testimonials[currentTestimonial].rating)].map((_, i: number) => (
                   <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
                 ))}
               </div>
 
               <blockquote className="text-xl md:text-2xl text-green-800 font-medium mb-8 leading-relaxed">
-                "{testimonials[currentTestimonial].quote}"
+                &quot;{testimonials[currentTestimonial].quote}&quot;
               </blockquote>
 
               <div className="flex items-center justify-center space-x-4">
@@ -131,7 +85,7 @@ export function TestimonialSection() {
 
           {/* Dots Indicator */}
           <div className="flex justify-center mt-6 space-x-2">
-            {testimonials.map((_, index) => (
+            {testimonials.map((_: any, index: number) => (
               <button
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
@@ -149,7 +103,7 @@ export function TestimonialSection() {
             Deel je Verhaal
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {instagramPosts.map((post, index) => (
+            {instagramPosts.map((post: any, index: number) => (
               <div key={index} className="relative group cursor-pointer">
                 <img
                   src={post.image}
@@ -175,15 +129,15 @@ export function TestimonialSection() {
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <div className="text-4xl font-bold mb-2">500+</div>
-              <div className="text-green-200">Gelukkige Reizigers</div>
+              <div className="text-green-200">{t('stats.travelers')}</div>
             </div>
             <div>
               <div className="text-4xl font-bold mb-2">4.9/5</div>
-              <div className="text-green-200">Gemiddelde Rating</div>
+              <div className="text-green-200">{t('packages.rating')}</div>
             </div>
             <div>
               <div className="text-4xl font-bold mb-2">98%</div>
-              <div className="text-green-200">Zou Opnieuw Boeken</div>
+              <div className="text-green-200">{t('trust.moneyBack')}</div>
             </div>
           </div>
         </div>

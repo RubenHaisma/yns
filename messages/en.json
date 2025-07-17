@@ -29,25 +29,29 @@
         "city": "Barcelona",
         "stadium": "Camp Nou",
         "league": "La Liga",
-        "description": "Experience the magic of Catalonia"
+        "description": "Experience the magic of Catalonia",
+        "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
       },
       {
         "city": "London",
         "stadium": "Wembley",
         "league": "Premier League",
-        "description": "The home of football awaits"
+        "description": "The home of football awaits",
+        "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80"
       },
       {
         "city": "München",
         "stadium": "Allianz Arena",
         "league": "Bundesliga",
-        "description": "Bavarian football excellence"
+        "description": "Bavarian football excellence",
+        "image": "https://images.unsplash.com/photo-1505843279827-4b522b6c1d68?auto=format&fit=crop&w=800&q=80"
       },
       {
         "city": "Milano",
         "stadium": "San Siro",
         "league": "Serie A",
-        "description": "Italian passion and style"
+        "description": "Italian passion and style",
+        "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80"
       }
     ],
     "mysteryDestination": "Mystery Destination",
@@ -59,15 +63,18 @@
     "subtitle": "From booking to experience - how your next stadium adventure works",
     "step1": {
       "title": "Book your adventure",
-      "description": "Choose your date and package. Pay securely online and start dreaming about your next stadium."
+      "description": "Choose your date and package. Pay securely online and start dreaming about your next stadium.",
+      "details": "Fill in your details and choose your preferred dates."
     },
     "step2": {
       "title": "Wait in suspense",
-      "description": "Receive hints and updates. The excitement builds while your destination remains secret."
+      "description": "Receive hints and updates. The excitement builds while your destination remains secret.",
+      "details": "We arrange your mystery football trip and send you all the details."
     },
     "step3": {
       "title": "Discover your destination",
-      "description": "3-4 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!"
+      "description": "3-4 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!",
+      "details": "Enjoy your adventure and share your experience with us!"
     }
   },
   "timeline": {
@@ -163,14 +170,16 @@
         "Breakfast included",
         "Mystery destination reveal",
         "24/7 premium support"
-      ]
+      ],
+      "badge": "Premium"
     },
     "heroLine1": "Your Mystery",
     "heroLine2": "Football Trip",
     "heroLine3": "Your Style",
     "heroSubtitle": "From surprise matches to luxury football weekends – choose the adventure that suits you and be surprised by Europe’s most beautiful stadiums.",
     "comparisonLabel": "Package Comparison",
-    "comparisonHeader": "Package Features Comparison"
+    "comparisonHeader": "Package Features Comparison",
+    "perPerson": "per person"
   },
   "waitlistSection": {
     "title": "Join the waitlist",
@@ -225,7 +234,20 @@
     "noSpam": "No spam, just exclusive updates about your next football adventure.",
     "alreadyWaiting": "Join {total}+ football fans already waiting!",
     "errorAlready": "You are already on the waitlist!",
-    "errorGeneric": "Something went wrong. Please try again."
+    "errorGeneric": "Something went wrong. Please try again.",
+    "successTitle": "You're on the waitlist!",
+    "successElite": "Welcome to the elite!",
+    "successDesc": "You’ve secured your spot. We’ll keep you posted with updates and surprises.",
+    "vipPosition": "Your VIP Position",
+    "outOf": "Out of {total} total",
+    "benefits": [
+      { "icon": "Zap", "title": "Early Access", "desc": "Get in before the crowd and unlock exclusive features." },
+      { "icon": "Gift", "title": "Special Gifts", "desc": "Receive unique rewards and surprises as a thank you." },
+      { "icon": "Star", "title": "VIP Status", "desc": "Enjoy premium status and recognition in our community." }
+    ],
+    "vipCodeTitle": "Your VIP Discount Code",
+    "vipCodeDesc": "Use this code for an exclusive discount when we launch!",
+    "shareWithFriends": "Share with friends"
   },
   "trust": {
     "moneyBack": "100% money back",
@@ -433,6 +455,60 @@
     "joinCommunity": "Become part of our community and discover your next stadium",
     "startAdventure": "Start your adventure"
   },
+  "testimonials": [
+    {
+      "name": "Marco van der Berg",
+      "location": "Amsterdam",
+      "trip": "Barcelona Mystery Trip",
+      "rating": 5,
+      "quote": "Unbelievable! I thought I was going to Germany, but ended up at Camp Nou. The best football experience of my life!",
+      "image": "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    },
+    {
+      "name": "Lisa Janssen",
+      "location": "Utrecht",
+      "trip": "Premier League Mystery",
+      "rating": 5,
+      "quote": "Booked a mystery trip with my friend. We ended up in Liverpool - what an atmosphere! Anfield was magical.",
+      "image": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    },
+    {
+      "name": "Tom Verschuren",
+      "location": "Rotterdam",
+      "trip": "Bundesliga Adventure",
+      "rating": 5,
+      "quote": "Munich was our mystery destination. Bayern vs Dortmund at Allianz Arena - it doesn't get better! Perfectly organized.",
+      "image": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    }
+  ],
+  "instagramPosts": [
+    {
+      "image": "https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Finally revealed! Madrid was our destination 🇪🇸⚽ #YourNextStadium #MysteryTrip",
+      "likes": 127
+    },
+    {
+      "image": "https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "From Amsterdam to Barcelona in one day ✈️ #FootballTrips #Mystery",
+      "likes": 89
+    },
+    {
+      "image": "https://images.pexels.com/photos/2916450/pexels-photo-2916450.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "This atmosphere... goosebumps! 🔥 #StadiumLife #FootballFan",
+      "likes": 156
+    },
+    {
+      "image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Bundesliga here we come! 🇩🇪 #MysteryRevealed #Football",
+      "likes": 94
+    }
+  ],
+  "notifications": [
+    { "name": "Jan", "city": "Amsterdam", "package": "Premium trip", "time": "2 minutes ago" },
+    { "name": "Lisa", "city": "Utrecht", "package": "Comfort trip", "time": "5 minutes ago" },
+    { "name": "Marco", "city": "Rotterdam", "package": "Premium trip", "time": "8 minutes ago" },
+    { "name": "Sarah", "city": "The Hague", "package": "Comfort trip", "time": "12 minutes ago" }
+  ],
   "howItWorks": {
     "title": "How it works",
     "subtitle": "From booking to experience - discover how your mystery stadium adventure comes to life",
@@ -975,6 +1051,7 @@
     ]
   },
   "dashboard": {
-    "heroBadge": "Dashboard"
+    "heroBadge": "Dashboard",
+    "map": "Map"
   }
 }

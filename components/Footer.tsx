@@ -1,10 +1,10 @@
 "use client";
 
-import { Instagram, Facebook, Twitter, Mail, Shield, MapPin, Trophy, Users, Calendar, Phone, Globe, Heart } from 'lucide-react';
+import { Mail, Shield, MapPin, Trophy, Users, Phone } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import React from 'react';
 import { SiTiktok } from 'react-icons/si';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; 
 
 interface FooterProps {
   onBookingClick?: () => void;
@@ -224,22 +224,6 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
               >
                 <SiTiktok className="w-5 h-5 group-hover:text-orange-400 transition-colors" />
               </motion.a>
-              <motion.a
-                href="#"
-                className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white/20 transition-all group"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Instagram className="w-5 h-5 group-hover:text-pink-400 transition-colors" />
-              </motion.a>
-              <motion.a
-                href="#"
-                className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white/20 transition-all group"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Twitter className="w-5 h-5 group-hover:text-blue-400 transition-colors" />
-              </motion.a>
             </div>
           </motion.div>
 
@@ -359,8 +343,7 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
             <div className="text-gray-400 text-sm text-center md:text-left flex items-center space-x-2">
-              <Heart className="w-4 h-4 text-red-400" />
-              <span>{t('copyright')}</span>
+                          <span>{t('copyright')}</span>
             </div>
             
             <div className="flex flex-wrap justify-center md:justify-end space-x-8 text-gray-400 text-sm">
@@ -376,10 +359,6 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
               >
                 {t('terms')}
               </a>
-              <div className="flex items-center space-x-2">
-                <Globe className="w-4 h-4" />
-                <span>{t('madeIn')}</span>
-              </div>
             </div>
           </div>
         </motion.div>

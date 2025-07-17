@@ -20,7 +20,7 @@ export default function Packages() {
       
       <main>
         {/* Hero Section */}
-        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
+        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden mt-20">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(20)].map((_, i) => (

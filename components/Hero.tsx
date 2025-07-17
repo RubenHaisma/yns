@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { ChevronDown, Sparkles, MapPin, Calendar, Users, Play, ArrowRight } from 'lucide-react';
+import { MapPin, Calendar, Users, Play, ArrowRight } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import React from 'react'; // Added missing import for React
 
 interface HeroProps {
   onBookingClick: () => void;
@@ -16,24 +18,7 @@ export function Hero({ onBookingClick }: HeroProps) {
   const t = useTranslations('hero');
   const locale = useLocale();
 
-  const destinations = [0, 1, 2, 3].map(i => ({
-    city: t(`destinations.${i}.city`),
-    stadium: t(`destinations.${i}.stadium`),
-    league: t(`destinations.${i}.league`),
-    color: [
-      'from-blue-600 to-red-600',
-      'from-blue-800 to-blue-600',
-      'from-red-600 to-red-800',
-      'from-blue-900 to-black',
-    ][i],
-    image: [
-      'https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-      'https://images.pexels.com/photos/2916450/pexels-photo-2916450.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-      'https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-      'https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=800&h=600',
-    ][i],
-    description: t(`destinations.${i}.description`),
-  }));
+  const destinations = t.raw('destinations');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -122,7 +107,7 @@ export function Hero({ onBookingClick }: HeroProps) {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex items-center">
+      <div className="relative z-10 min-h-screen flex items-center mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             
@@ -140,23 +125,23 @@ export function Hero({ onBookingClick }: HeroProps) {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.4 }}
-                  className="text-6xl lg:text-8xl font-black text-white leading-none"
+                  className="text-4xl lg:text-6xl font-bold text-white leading-tight"
                 >
                   <span className="block">{t('headline1')}</span>
                   <span className="block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
                     {t('headline2')}
                   </span>
-                  <span className="block text-5xl lg:text-7xl">{t('headline3')}</span>
+                  <span className="block text-3xl lg:text-5xl">{t('headline3')}</span>
                 </motion.h1>
                 
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className="text-xl lg:text-2xl text-green-100 max-w-2xl leading-relaxed"
+                  className="text-base lg:text-lg text-green-100 max-w-2xl leading-relaxed"
                 >
                   {t('subtitle')} 
-                  <span className="text-orange-300 font-semibold"> {t('subtitleHighlight')}</span>
+                  <span className="text-orange-300 font-medium"> {t('subtitleHighlight')}</span>
                 </motion.p>
               </div>
 
@@ -169,7 +154,7 @@ export function Hero({ onBookingClick }: HeroProps) {
               >
                 <motion.button
                   onClick={onBookingClick}
-                  className="group relative bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl overflow-hidden"
+                  className="group relative bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-xl font-semibold text-base shadow-xl overflow-hidden"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -187,7 +172,7 @@ export function Hero({ onBookingClick }: HeroProps) {
 
                 <motion.button
                   onClick={() => setIsVideoPlaying(true)}
-                  className="group flex items-center space-x-3 bg-white/10 backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-semibold border border-white/20 hover:bg-white/20 transition-all"
+                  className="group flex items-center space-x-3 bg-white/10 backdrop-blur-xl text-white px-6 py-3 rounded-xl font-medium border border-white/20 hover:bg-white/20 transition-all"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -205,26 +190,23 @@ export function Hero({ onBookingClick }: HeroProps) {
                 transition={{ duration: 0.8, delay: 1 }}
                 className="flex flex-wrap gap-6"
               >
-                {[0, 1, 2].map((index) => {
-                  const stat = t.raw('stats')[index];
-                  const icons = [MapPin, Users, Calendar];
-                  const Icon = icons[index];
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-                      className="flex items-center space-x-3 bg-black/20 backdrop-blur-md rounded-xl px-4 py-3 border border-white/10"
-                    >
-                      <Icon className={`w-5 h-5 ${['text-green-400', 'text-orange-400', 'text-blue-400'][index]}`} />
-                      <div>
-                        <div className="text-xl font-bold text-white">{stat.value}</div>
-                        <div className="text-sm text-gray-300">{stat.label}</div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
+                {t.raw('stats').map((stat: any, index: number) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                    className="flex items-center space-x-3 bg-black/20 backdrop-blur-md rounded-lg px-3 py-2 border border-white/10"
+                  >
+                    {[MapPin, Users, Calendar][index] && (
+                      React.createElement([MapPin, Users, Calendar][index], { className: `w-5 h-5 ${['text-green-400','text-orange-400','text-blue-400'][index]}` })
+                    )}
+                    <div>
+                      <div className="text-base font-semibold text-white">{stat.value}</div>
+                      <div className="text-xs text-gray-300">{stat.label}</div>
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
             </motion.div>
 
@@ -247,11 +229,15 @@ export function Hero({ onBookingClick }: HeroProps) {
                     className="relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl"
                   >
                     <div className="aspect-video rounded-2xl overflow-hidden mb-6 relative">
-                      <img
-                        src={destinations[currentDestination].image}
-                        alt={destinations[currentDestination].city}
-                        className="w-full h-full object-cover"
-                      />
+                      {destinations[currentDestination].image ? (
+                        <Image
+                          src={destinations[currentDestination].image}
+                          alt={destinations[currentDestination].city || ""}
+                          width={1000}
+                          height={1000}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : null}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       <div className="absolute bottom-4 left-4 text-white">
                         <div className="text-2xl font-bold">{destinations[currentDestination].city}</div>
@@ -273,7 +259,7 @@ export function Hero({ onBookingClick }: HeroProps) {
 
                 {/* Destination Navigation */}
                 <div className="flex justify-center mt-6 space-x-2">
-                  {destinations.map((_, index) => (
+                  {destinations.map((_: any, index: number) => (
                     <button
                       key={index}
                       onClick={() => setCurrentDestination(index)}
@@ -302,29 +288,6 @@ export function Hero({ onBookingClick }: HeroProps) {
           </div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center space-y-2 text-white/70 cursor-pointer hover:text-white transition-colors"
-        >
-          <span className="text-sm font-medium">{t('scrollIndicator')}</span>
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-orange-400 rounded-full mt-2"
-            />
-          </div>
-        </motion.div>
-      </motion.div>
 
       {/* Video Modal */}
       <AnimatePresence>

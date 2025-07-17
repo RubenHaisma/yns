@@ -23,8 +23,8 @@ export default function PaymentSuccess() {
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => {}} />
       
-      <main className="pt-16">
-        <section className="py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
+      <main>
+        <section className="py-20 pt-20 bg-gradient-to-br from-green-800 to-green-900 text-white mt-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <Check className="w-10 h-10 text-white" />

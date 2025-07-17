@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { AnimatePresence } from 'framer-motion';
 
-export default function Dashboard() {
+export default function Dashboard() { 
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const t = useTranslations();
   const [bookingId, setBookingId] = useState('');
@@ -73,9 +73,9 @@ export default function Dashboard() {
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
       
-      <main className="pt-16">
+      <main>
         {/* Hero Section */}
-        <section className="relative py-32 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
+        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden mt-20">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(15)].map((_, i) => (

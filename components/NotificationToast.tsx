@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { X, User } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface NotificationToastProps {
   show: boolean;
@@ -10,13 +11,8 @@ interface NotificationToastProps {
 
 export function NotificationToast({ show, onClose }: NotificationToastProps) {
   const [currentNotification, setCurrentNotification] = useState(0);
-
-  const notifications = [
-    { name: 'Jan', city: 'Amsterdam', package: 'Premium trip', time: '2 minuten geleden' },
-    { name: 'Lisa', city: 'Utrecht', package: 'Comfort trip', time: '5 minuten geleden' },
-    { name: 'Marco', city: 'Rotterdam', package: 'Premium trip', time: '8 minuten geleden' },
-    { name: 'Sarah', city: 'Den Haag', package: 'Comfort trip', time: '12 minuten geleden' },
-  ];
+  const t = useTranslations();
+  const notifications = t.raw('notifications') || [];
 
   useEffect(() => {
     if (show) {

@@ -59,14 +59,12 @@ export function LanguageSwitcher({ isMobile = false, onLanguageChange }: Languag
             onClick={() => changeLanguage('nl')}
             className={`cursor-pointer flex items-center space-x-2 ${actualLocale === 'nl' ? 'bg-green-50 text-green-700' : ''}`}
           >
-            <span>🇳🇱</span>
             <span>Nederlands</span>
           </DropdownMenuItem>
           <DropdownMenuItem 
             onClick={() => changeLanguage('en')}
             className={`cursor-pointer flex items-center space-x-2 ${actualLocale === 'en' ? 'bg-green-50 text-green-700' : ''}`}
           >
-            <span>🇬🇧</span>
             <span>English</span>
           </DropdownMenuItem>
         </DropdownMenuContent>

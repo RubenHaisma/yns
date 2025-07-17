@@ -29,25 +29,29 @@
         "city": "Barcelona",
         "stadium": "Camp Nou",
         "league": "La Liga",
-        "description": "Ervaar de magie van Catalonië"
+        "description": "Ervaar de magie van Catalonië",
+        "image": "https://images.unsplash.com/photo-1629217855633-79a6925d6c47"
       },
       {
         "city": "Londen",
         "stadium": "Wembley",
         "league": "Premier League",
-        "description": "Het thuis van het voetbal wacht"
+        "description": "Het thuis van het voetbal wacht",
+        "image": "https://images.unsplash.com/photo-1665413813191-3143ec934960?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "city": "München",
         "stadium": "Allianz Arena",
         "league": "Bundesliga",
-        "description": "Beierse voetbalexcellentie"
+        "description": "Beierse voetbalexcellentie",
+        "image": "https://images.unsplash.com/photo-1675474463858-54ea69949dfe?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         "city": "Milaan",
         "stadium": "San Siro",
         "league": "Serie A",
-        "description": "Italiaanse passie en stijl"
+        "description": "Italiaanse passie en stijl",
+        "image": "https://images.unsplash.com/photo-1693517343607-e7dced201648?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       }
     ],
     "mysteryDestination": "Mystery Bestemming",
@@ -59,15 +63,18 @@
     "subtitle": "Van boeking tot beleving - zo werkt jouw volgende stadium avontuur",
     "step1": {
       "title": "Boek je avontuur",
-      "description": "Kies je datum en pakket. Betaal veilig online en begin met dromen over je volgende stadium."
+      "description": "Kies je datum en pakket. Betaal veilig online en begin met dromen over je volgende stadium.",
+      "details": "Vul je gegevens in en kies je voorkeursdata."
     },
     "step2": {
       "title": "Wacht vol spanning",
-      "description": "Ontvang hints en updates. De spanning stijgt terwijl je bestemming geheim blijft."
+      "description": "Ontvang hints en updates. De spanning stijgt terwijl je bestemming geheim blijft.",
+      "details": "Wij regelen je mysterieuze voetbalreis en sturen je alle details."
     },
     "step3": {
       "title": "Ontdek je bestemming",
-      "description": "Minimaal 3-4 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!"
+      "description": "Minimaal 3-4 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!",
+      "details": "Geniet van je avontuur en deel je ervaring met ons!"
     }
   },
   "timeline": {
@@ -163,14 +170,16 @@
         "Ontbijt inclusief",
         "Mystery bestemming onthulling",
         "24/7 premium support"
-      ]
+      ],
+      "badge": "Premium"
     },
     "heroLine1": "Jouw Mystery",
     "heroLine2": "Voetbalreis",
     "heroLine3": "Jouw Stijl",
     "heroSubtitle": "Van verrassingswedstrijd tot luxe voetbalweekend – kies het avontuur dat bij jou past en laat je verrassen door Europa's mooiste stadions.",
     "comparisonLabel": "Pakket Vergelijking",
-    "comparisonHeader": "Pakket Features Vergelijking"
+    "comparisonHeader": "Pakket Features Vergelijking",
+    "perPerson": "per persoon"
   },
   "waitlistSection": {
     "title": "Sluit je aan bij de waitlist",
@@ -184,7 +193,36 @@
       "title": "10% KORTING",
       "subtitle": "Exclusieve Waitlist Korting",
       "description": "Sluit je aan bij de waitlist en krijg 10% korting op je eerste boeking wanneer we live gaan."
-    }
+    },
+    "beFirst": "Sta als eerste in de rij!",
+    "unlockMystery": "Ontgrendel het mysterie",
+    "waitlistDesc": "Meld je aan voor de wachtlijst voor exclusieve vroege toegang, voordelen en verrassingen!",
+    "stats": [
+      { "label": "Mensen wachten" },
+      { "label": "VIP plekken" },
+      { "label": "Cadeaus" }
+    ],
+    "formTitle": "Doe mee met de wachtlijst",
+    "formDesc": "Vul je e-mailadres in om je plek te reserveren en als eerste toegang te krijgen.",
+    "joinButton": "Doe mee",
+    "joining": "Bezig met aanmelden...",
+    "noSpam": "Geen spam, ooit. Uitschrijven kan altijd.",
+    "alreadyWaiting": "Al {total} mensen wachten!",
+    "errorAlready": "Je staat al op de wachtlijst!",
+    "errorGeneric": "Er is iets misgegaan. Probeer het opnieuw.",
+    "successTitle": "Je staat op de wachtlijst!",
+    "successElite": "Welkom bij de elite!",
+    "successDesc": "Je plek is gereserveerd. We houden je op de hoogte met updates en verrassingen.",
+    "vipPosition": "Jouw VIP positie",
+    "outOf": "Van de {total} totaal",
+    "benefits": [
+      { "icon": "Zap", "title": "Vroege toegang", "desc": "Krijg toegang voordat de rest dat kan en ontgrendel exclusieve functies." },
+      { "icon": "Gift", "title": "Speciale cadeaus", "desc": "Ontvang unieke beloningen en verrassingen als dank." },
+      { "icon": "Star", "title": "VIP-status", "desc": "Geniet van premium status en erkenning in onze community." }
+    ],
+    "vipCodeTitle": "Jouw VIP-kortingscode",
+    "vipCodeDesc": "Gebruik deze code voor een exclusieve korting bij de lancering!",
+    "shareWithFriends": "Deel met vrienden"
   },
   "trust": {
     "moneyBack": "100% geld terug",
@@ -327,23 +365,6 @@
     "successDesc": "Je bent nu onderdeel van een exclusieve community van voetbalavonturiers die klaar zijn om Europa's meest iconische stadions te ontdekken!",
     "vipPosition": "JOUW VIP POSITIE",
     "outOf": "Uit {total} voetbalfans die wachten op hun volgende avontuur",
-    "benefits": [
-      {
-        "icon": "Zap",
-        "title": "Bliksemsnelle Toegang",
-        "desc": "Als eerste boeken wanneer we live gaan"
-      },
-      {
-        "icon": "Gift",
-        "title": "10% VIP Korting",
-        "desc": "Exclusieve waitlist ledenprijs"
-      },
-      {
-        "icon": "Star",
-        "title": "Koninklijke Behandeling",
-        "desc": "Prioriteit support & insider updates"
-      }
-    ],
     "vipCodeTitle": "Jouw Exclusieve VIP Code",
     "vipCodeDesc": "Bewaar dit gouden ticket! Gebruik het zodra de boekingen openen voor een exclusieve 10% korting op jouw mystery voetbalavontuur.",
     "shareWithFriends": "Deel met vrienden",
@@ -434,6 +455,60 @@
     "joinCommunity": "Word onderdeel van onze community en ontdek jouw volgende stadium",
     "startAdventure": "Start je avontuur"
   },
+  "testimonials": [
+    {
+      "name": "Marco van der Berg",
+      "location": "Amsterdam",
+      "trip": "Barcelona Mystery Trip",
+      "rating": 5,
+      "quote": "Ongelofelijk! Ik dacht dat ik naar Duitsland zou gaan, maar eindigde in het Camp Nou. De beste voetbalervaring van mijn leven!",
+      "image": "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    },
+    {
+      "name": "Lisa Janssen",
+      "location": "Utrecht",
+      "trip": "Premier League Mystery",
+      "rating": 5,
+      "quote": "Samen met mijn vriendin een mystery trip geboekt. We zijn in Liverpool terechtgekomen - wat een sfeer! Anfield was magisch.",
+      "image": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    },
+    {
+      "name": "Tom Verschuren",
+      "location": "Rotterdam",
+      "trip": "Bundesliga Adventure",
+      "rating": 5,
+      "quote": "München was onze mysterie bestemming. Bayern tegen Dortmund in de Allianz Arena - beter wordt het niet! Top georganiseerd.",
+      "image": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    }
+  ],
+  "instagramPosts": [
+    {
+      "image": "https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Eindelijk onthuld! Madrid was onze bestemming 🇪🇸⚽ #YourNextStadium #MysteryTrip",
+      "likes": 127
+    },
+    {
+      "image": "https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Van Amsterdam naar Barcelona in één dag ✈️ #VoetbalReizen #Mystery",
+      "likes": 89
+    },
+    {
+      "image": "https://images.pexels.com/photos/2916450/pexels-photo-2916450.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Deze sfeer... kippenvel! 🔥 #StadiumLife #FootballFan",
+      "likes": 156
+    },
+    {
+      "image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Bundesliga hier we come! 🇩🇪 #MysteryRevealed #Football",
+      "likes": 94
+    }
+  ],
+  "notifications": [
+    { "name": "Jan", "city": "Amsterdam", "package": "Premium trip", "time": "2 minuten geleden" },
+    { "name": "Lisa", "city": "Utrecht", "package": "Comfort trip", "time": "5 minuten geleden" },
+    { "name": "Marco", "city": "Rotterdam", "package": "Premium trip", "time": "8 minuten geleden" },
+    { "name": "Sarah", "city": "Den Haag", "package": "Comfort trip", "time": "12 minuten geleden" }
+  ],
   "howItWorks": {
     "title": "Hoe het werkt",
     "subtitle": "Van boeking tot beleving - ontdek hoe jouw mystery stadium avontuur tot leven komt",
@@ -975,7 +1050,5 @@
       { "title": "Reactietijd", "details": "Binnen 24 uur", "description": "We reageren snel" }
     ]
   },
-  "dashboard": {
-    "heroBadge": "Dashboard"
-  }
+  "map": "Kaart"
 }

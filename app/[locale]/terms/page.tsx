@@ -15,9 +15,9 @@ export default function Terms() {
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
       
-      <main className="pt-16">
+      <main>
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-green-800 to-green-900 text-white">
+        <section className="py-20 pt-20 bg-gradient-to-br from-green-800 to-green-900 text-white mt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <FileText className="w-16 h-16 mx-auto mb-6 text-green-200" />
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
