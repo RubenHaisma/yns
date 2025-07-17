@@ -550,19 +550,19 @@
     "faqQuestions": [
       {
         "question": "Wat als ik niet kan op de geboekte datum?",
-        "answer": "Je kunt tot 14 dagen voor vertrek gratis omboeken naar een andere datum, afhankelijk van beschikbaarheid."
+        "answer": "Boekingen zijn definitief en kunnen niet worden gewijzigd of geannuleerd."
       },
       {
         "question": "Kan ik mijn bestemming weigeren?",
-        "answer": "Ja! Als je echt niet naar de onthulde bestemming wilt, krijg je 100% van je geld terug of kun je omboeken naar een andere datum."
+        "answer": "Het is niet mogelijk om een onthulde bestemming te weigeren. Boekingen zijn definitief."
       },
       {
         "question": "Hoe weet ik zeker dat ik niet naar een team ga dat ik haat?",
-        "answer": "In je boekingsformulier kun je teams opgeven die je absoluut niet wilt zien. Wij houden hier rekening mee bij het selecteren van je bestemming."
+        "answer": "We proberen rekening te houden met je voorkeuren, maar boekingen zijn definitief en er is geen garantie."
       },
       {
         "question": "Wat als de wedstrijd wordt afgelast?",
-        "answer": "We hebben altijd een backup plan. Je krijgt tickets voor een andere wedstrijd of een volledige terugbetaling."
+        "answer": "Indien een wedstrijd wordt afgelast, nemen wij contact met je op over de vervolgstappen."
       }
     ]
   },
@@ -587,91 +587,91 @@
         "id": 1,
         "category": "booking",
         "question": "Hoe werkt het boeken van een mystery trip?",
-        "answer": "Het boeken is heel eenvoudig! Kies je pakket, selecteer je datum, vul je voorkeuren in en betaal veilig online. Je ontvangt direct een bevestiging en minimaal 3-4 weken voor vertrek onthullen we je bestemming."
+        "answer": "Het boeken is eenvoudig: kies je pakket, selecteer je datum, vul je gegevens in en betaal online. Je ontvangt een bevestiging per e-mail."
       },
       {
         "id": 2,
         "category": "booking",
         "question": "Kan ik mijn boeking annuleren?",
-        "answer": "Ja, je kunt tot 14 dagen voor vertrek gratis annuleren en krijg je 100% van je geld terug. Binnen 14 dagen gelden onze annuleringsvoorwaarden."
+        "answer": "Boekingen zijn definitief en kunnen niet worden geannuleerd of gewijzigd."
       },
       {
         "id": 3,
         "category": "travel",
         "question": "Wat als ik niet naar de onthulde bestemming wil?",
-        "answer": "Geen probleem! Als je echt niet naar de onthulde bestemming wilt, krijg je 100% van je geld terug of kun je omboeken naar een andere datum."
+        "answer": "Het is niet mogelijk om een onthulde bestemming te weigeren. Boekingen zijn definitief."
       },
       {
         "id": 4,
         "category": "travel",
         "question": "Welke bestemmingen zijn mogelijk?",
-        "answer": "We organiseren trips naar meer dan 50 stadions in 5+ Europese landen. Denk aan Premier League, La Liga, Bundesliga, Serie A, Ligue 1 en meer!"
+        "answer": "We organiseren trips naar verschillende stadions in Europa."
       },
       {
         "id": 5,
         "category": "booking",
         "question": "Hoe weet ik zeker dat ik niet naar een team ga dat ik haat?",
-        "answer": "In je boekingsformulier kun je teams opgeven die je absoluut niet wilt zien. Wij houden hier 100% rekening mee bij het selecteren van je bestemming."
+        "answer": "We proberen rekening te houden met je voorkeuren, maar er is geen garantie."
       },
       {
         "id": 6,
         "category": "travel",
         "question": "Wat gebeurt er als de wedstrijd wordt afgelast?",
-        "answer": "We hebben altijd een backup plan. Je krijgt tickets voor een andere wedstrijd in dezelfde stad of een volledige terugbetaling als dat niet mogelijk is."
+        "answer": "Indien een wedstrijd wordt afgelast, nemen wij contact met je op over de vervolgstappen."
       },
       {
         "id": 7,
         "category": "safety",
         "question": "Is mijn geld veilig bij jullie?",
-        "answer": "Absoluut! YourNextStadium behandelt je boeking en betalingen met de grootste zorg en veiligheid. Niet tevreden? Je krijgt je geld terug."
+        "answer": "Je betaling wordt veilig verwerkt."
       },
       {
         "id": 8,
         "category": "support",
         "question": "Kan ik jullie bereiken tijdens mijn reis?",
-        "answer": "Ja! We hebben een 24/7 noodlijn (+31 20 987 6543) speciaal voor reizigers onderweg. Je bent nooit alleen!"
+        "answer": "Je kunt contact opnemen via het bekende e-mailadres."
       },
       {
         "id": 9,
         "category": "booking",
         "question": "Kan ik voor meerdere personen boeken?",
-        "answer": "Natuurlijk! Je kunt voor meerdere personen tegelijk boeken. Alle reizigers krijgen dezelfde bestemming."
+        "answer": "Je kunt voor meerdere personen tegelijk boeken."
       },
       {
         "id": 10,
         "category": "travel",
         "question": "Wat is inbegrepen in de pakketten?",
-        "answer": "Dit verschilt per pakket. 'Alleen de Match' bevat alleen tickets, 'Match + Reis' bevat ook transport, en 'Alles Inclusief' bevat ook hotel en maaltijden."
+        "answer": "Dit verschilt per pakket. Zie de pakketpagina voor details."
       },
       {
         "id": 11,
         "category": "booking",
         "question": "Welke betaalmethoden accepteren jullie?",
-        "answer": "We accepteren iDEAL, creditcards (Visa, Mastercard), bankoverschrijving en PayPal. Alle betalingen zijn 100% veilig."
+        "answer": "We accepteren iDEAL, creditcards en bankoverschrijving."
       },
       {
         "id": 12,
         "category": "travel",
         "question": "Kan ik mijn reis verlengen?",
-        "answer": "Ja! Je kunt extra nachten bijboeken of je verblijf verlengen. Neem contact met ons op voor de mogelijkheden."
+        "answer": "Neem contact op voor de mogelijkheden."
       },
       {
         "id": 13,
         "category": "support",
         "question": "Hoe krijg ik updates over mijn reis?",
-        "answer": "Je ontvangt regelmatig updates via email en hebt toegang tot je persoonlijke dashboard waar je alle informatie kunt vinden."
+        "answer": "Je ontvangt updates per e-mail indien van toepassing."
       },
       {
         "id": 14,
         "category": "safety",
         "question": "Wat als ik ziek word voor mijn reis?",
-        "answer": "We raden een reisverzekering aan. Bij ziekte kun je vaak gratis omboeken of krijg je je geld terug via je verzekering."
+        "answer": "We raden een reisverzekering aan."
       },
       {
         "id": 15,
         "category": "travel",
         "question": "Zijn de hotels van goede kwaliteit?",
-        "answer": "We selecteren onze hotelpartners zorgvuldig zodat je een comfortabel en prettig verblijf hebt tijdens je reis."
+        "answer": "De kwaliteit van hotels kan verschillen per bestemming en pakket."
       }
     ]
   },

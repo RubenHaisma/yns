@@ -550,19 +550,19 @@
     "faqQuestions": [
       {
         "question": "What if I can't make it on the booked date?",
-        "answer": "You can rebook for free to another date up to 14 days before departure, subject to availability."
+        "answer": "Bookings are final and cannot be changed or cancelled."
       },
       {
         "question": "Can I refuse my destination?",
-        "answer": "Yes! If you really don't want to go to the revealed destination, you'll get 100% of your money back or you can rebook to another date."
+        "answer": "It is not possible to refuse a revealed destination. Bookings are final."
       },
       {
         "question": "How do I know for sure I won't go to a team I hate?",
-        "answer": "In your booking form you can specify teams you absolutely don't want to see. We take this into account 100% when selecting your destination."
+        "answer": "We try to take your preferences into account, but there is no guarantee."
       },
       {
         "question": "What if the match is cancelled?",
-        "answer": "We always have a backup plan. You'll get tickets for another match or a full refund."
+        "answer": "If a match is cancelled, we will contact you about next steps."
       }
     ]
   },
@@ -587,7 +587,7 @@
         "id": 1,
         "category": "booking",
         "question": "How does booking a mystery trip work?",
-        "answer": "Booking is very simple! Choose your package, select your date, fill in your preferences and pay securely online. You'll receive immediate confirmation and 3-4 weeks before departure we reveal your destination."
+        "answer": "Booking is simple: choose your package, select your date, fill in your details, and pay online. You will receive a confirmation by email."
       },
       {
         "id": 2,
@@ -605,73 +605,73 @@
         "id": 4,
         "category": "travel",
         "question": "Which destinations are possible?",
-        "answer": "We organize trips to more than 50 stadiums in 5+ European countries. Think Premier League, La Liga, Bundesliga, Serie A, Ligue 1 and more!"
+        "answer": "We organize trips to various stadiums in Europe."
       },
       {
         "id": 5,
         "category": "booking",
         "question": "How do I know for sure I won't go to a team I hate?",
-        "answer": "In your booking form you can specify teams you absolutely don't want to see. We take this 100% into account when selecting your destination."
+        "answer": "We try to take your preferences into account, but there is no guarantee."
       },
       {
         "id": 6,
         "category": "travel",
         "question": "What happens if the match is cancelled?",
-        "answer": "We always have a backup plan. You'll get tickets for another match in the same city or a full refund if that's not possible."
+        "answer": "If a match is cancelled, we will contact you about next steps."
       },
       {
         "id": 7,
         "category": "safety",
         "question": "Is my money safe with you?",
-        "answer": "Absolutely! YourNextStadium handles your booking and payments with the utmost care and security. We also offer a 100% money back guarantee if you are not satisfied."
+        "answer": "Your payment is processed securely."
       },
       {
         "id": 8,
         "category": "support",
         "question": "Can I reach you during my trip?",
-        "answer": "Yes! We have a 24/7 emergency line (+31 20 987 6543) specifically for travelers on the road. You're never alone!"
+        "answer": "You can contact us via the known email address."
       },
       {
         "id": 9,
         "category": "booking",
         "question": "Can I book for multiple people?",
-        "answer": "Of course! You can book for multiple people at once. All travelers get the same destination."
+        "answer": "You can book for multiple people at once."
       },
       {
         "id": 10,
         "category": "travel",
         "question": "What's included in the packages?",
-        "answer": "This varies by package. 'Match Only' contains only tickets, 'Match + Travel' also includes transport, and 'All Inclusive' also includes hotel and meals."
+        "answer": "This depends on the package. See the package page for details."
       },
       {
         "id": 11,
         "category": "booking",
         "question": "Which payment methods do you accept?",
-        "answer": "We accept iDEAL, credit cards (Visa, Mastercard), bank transfer and PayPal. All payments are 100% secure."
+        "answer": "We accept iDEAL, credit cards, and bank transfer."
       },
       {
         "id": 12,
         "category": "travel",
         "question": "Can I extend my trip?",
-        "answer": "Yes! You can book extra nights or extend your stay. Contact us for the possibilities."
+        "answer": "Contact us for the possibilities."
       },
       {
         "id": 13,
         "category": "support",
         "question": "How do I get updates about my trip?",
-        "answer": "You'll receive regular updates via email and have access to your personal dashboard where you can find all information."
+        "answer": "You will receive updates by email if applicable."
       },
       {
         "id": 14,
         "category": "safety",
         "question": "What if I get sick before my trip?",
-        "answer": "We recommend travel insurance. If you get sick you can often rebook for free or get your money back through your insurance."
+        "answer": "We recommend travel insurance."
       },
       {
         "id": 15,
         "category": "travel",
         "question": "Are the hotels of good quality?",
-        "answer": "We carefully select our hotel partners to ensure you have a comfortable and enjoyable stay during your trip."
+        "answer": "Hotel quality may vary by destination and package."
       }
     ]
   },
