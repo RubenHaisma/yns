@@ -72,10 +72,9 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
-      
       <main>
         {/* Hero Section */}
-        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden mt-20">
+        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(15)].map((_, i) => (
@@ -112,20 +111,20 @@ export default function Dashboard() {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.4 }}
-                className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-xl rounded-full px-8 py-4 border border-white/20 mb-12"
+                className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-xl rounded-full px-8 py-4 border border-white/20 mb-8"
               >
-                <MapPin className="w-8 h-8 text-orange-400" />
-                <span className="text-white font-bold text-lg">{t('dashboard.heroBadge')}</span>
-                <Users className="w-8 h-8 text-green-400" />
+                <MapPin className="w-6 h-6 text-orange-400" />
+                <span className="text-white font-bold text-base">{t('dashboard.heroBadge')}</span>
+                <Users className="w-6 h-6 text-green-400" />
               </motion.div>
 
-              <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-black mb-6 leading-tight">
                 <span className="block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
                   {t('dashboard.title')}
                 </span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-green-100 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base lg:text-lg text-green-100 max-w-2xl mx-auto leading-relaxed">
                 {t('dashboard.subtitle')}
               </p>
             </motion.div>
@@ -133,7 +132,7 @@ export default function Dashboard() {
         </section>
 
         {/* Search Section */}
-        <section className="relative py-20 bg-green-50 overflow-hidden">
+        <section className="relative py-16 bg-green-50 overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0 pointer-events-none">
             {[...Array(10)].map((_, i) => (
@@ -160,18 +159,18 @@ export default function Dashboard() {
             ))}
           </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 max-w-2xl mx-auto px-2 sm:px-4 lg:px-6">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl shadow-xl p-8"
+              className="bg-white rounded-2xl shadow-xl p-6"
             >
-              <h2 className="text-2xl font-bold text-green-800 mb-6 text-center">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-green-800 mb-4 text-center">
                 {t('dashboard.searchBooking')}
               </h2>
-              <div className="grid md:grid-cols-2 gap-4 mb-6">
+              <div className="grid md:grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
                     {t('dashboard.bookingNumber')}
@@ -181,7 +180,7 @@ export default function Dashboard() {
                     value={bookingId}
                     onChange={(e) => setBookingId(e.target.value)}
                     placeholder="YNS-1234567890-ABC"
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-base"
                   />
                 </div>
                 <div>
@@ -193,7 +192,7 @@ export default function Dashboard() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="je@email.com"
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-base"
                   />
                 </div>
               </div>
@@ -205,7 +204,7 @@ export default function Dashboard() {
                     animate={{ opacity: 1, y: 0, height: 'auto' }}
                     exit={{ opacity: 0, y: -10, height: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 text-red-700 text-center"
+                    className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 text-red-700 text-center text-base"
                   >
                     {error}
                   </motion.div>
@@ -215,7 +214,7 @@ export default function Dashboard() {
               <motion.button
                 onClick={searchBooking}
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 px-6 rounded-lg font-bold hover:from-green-600 hover:to-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 shadow-lg"
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 px-6 rounded-lg font-bold text-base hover:from-green-600 hover:to-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 shadow-lg"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ duration: 0.2 }}
@@ -239,7 +238,7 @@ export default function Dashboard() {
 
         {/* Booking Details */}
         {booking && (
-          <section className="relative py-32 bg-gradient-to-b from-white to-green-50 overflow-hidden">
+          <section className="relative py-20 bg-gradient-to-b from-white to-green-50 overflow-hidden">
             {/* Animated Background */}
             <div className="absolute inset-0 pointer-events-none">
               {[...Array(12)].map((_, i) => (
@@ -265,18 +264,18 @@ export default function Dashboard() {
                 />
               ))}
             </div>
-            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 max-w-3xl mx-auto px-2 sm:px-4 lg:px-6">
               {/* Booking Header */}
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-xl p-8 mb-8"
+                className="bg-white rounded-2xl shadow-xl p-6 mb-6"
               >
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
                   <div>
-                    <h2 className="text-3xl font-bold text-green-800 mb-2">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-green-800 mb-2">
                       {t('dashboard.bookingDetails', { bookingId: booking.bookingId })}
                     </h2>
                     <div className="flex items-center space-x-4">
@@ -293,8 +292,8 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="text-right mt-4 md:mt-0">
-                    <div className="text-2xl font-bold text-green-800">{booking.totalPrice}</div>
-                    <div className="text-green-600">{t('dashboard.totalPrice')}</div>
+                    <div className="text-lg font-bold text-green-800">{booking.totalPrice}</div>
+                    <div className="text-green-600 text-base">{t('dashboard.totalPrice')}</div>
                   </div>
                 </div>
 
@@ -305,30 +304,30 @@ export default function Dashboard() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.7 }}
                     viewport={{ once: true }}
-                    className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-6 rounded-lg text-center shadow-lg"
+                    className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 rounded-lg text-center shadow-lg"
                     whileHover={{ scale: 1.03 }}
                   >
-                    <h3 className="text-xl font-bold mb-2 flex items-center justify-center gap-2">
+                    <h3 className="text-lg font-bold mb-2 flex items-center justify-center gap-2">
                       <Clock className="w-5 h-5 text-white/80" />
                       {t('dashboard.countdownTitle')}
                     </h3>
-                    <div className="text-4xl font-bold tracking-tight">{daysUntilTrip}</div>
-                    <div>{t('dashboard.daysToGo')}</div>
+                    <div className="text-2xl font-bold tracking-tight">{daysUntilTrip}</div>
+                    <div className="text-base">{t('dashboard.daysToGo')}</div>
                   </motion.div>
                 )}
               </motion.div>
 
-              <div className="grid lg:grid-cols-2 gap-8">
+              <div className="grid lg:grid-cols-2 gap-6">
                 {/* Trip Details */}
                 <motion.div
                   initial={{ opacity: 0, x: -40 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  className="bg-white rounded-2xl shadow-xl p-8"
+                  className="bg-white rounded-2xl shadow-xl p-6"
                   whileHover={{ scale: 1.02, y: -4 }}
                 >
-                  <h3 className="text-2xl font-bold text-green-800 mb-6 flex items-center gap-2">
+                  <h3 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
                     <Gift className="w-6 h-6 text-orange-400" />
                     {t('dashboard.tripDetails')}
                   </h3>
@@ -336,29 +335,29 @@ export default function Dashboard() {
                     <div className="flex items-center space-x-3">
                       <Calendar className="w-5 h-5 text-green-600" />
                       <div>
-                        <div className="font-semibold text-green-800">{t('dashboard.departureDate')}</div>
-                        <div className="text-green-600">{new Date(booking.date).toLocaleDateString('nl-NL')}</div>
+                        <div className="font-semibold text-green-800 text-base">{t('dashboard.departureDate')}</div>
+                        <div className="text-green-600 text-base">{new Date(booking.date).toLocaleDateString('nl-NL')}</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Users className="w-5 h-5 text-green-600" />
                       <div>
-                        <div className="font-semibold text-green-800">{t('dashboard.travelers')}</div>
-                        <div className="text-green-600">{booking.travelers} {booking.travelers === 1 ? t('dashboard.person') : t('dashboard.people')}</div>
+                        <div className="font-semibold text-green-800 text-base">{t('dashboard.travelers')}</div>
+                        <div className="text-green-600 text-base">{booking.travelers} {booking.travelers === 1 ? t('dashboard.person') : t('dashboard.people')}</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Gift className="w-5 h-5 text-green-600" />
                       <div>
-                        <div className="font-semibold text-green-800">{t('dashboard.package')}</div>
-                        <div className="text-green-600 capitalize">{booking.package}</div>
+                        <div className="font-semibold text-green-800 text-base">{t('dashboard.package')}</div>
+                        <div className="text-green-600 capitalize text-base">{booking.package}</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
                       <CreditCard className="w-5 h-5 text-green-600" />
                       <div>
-                        <div className="font-semibold text-green-800">{t('dashboard.paymentStatus')}</div>
-                        <div className="text-green-600">
+                        <div className="font-semibold text-green-800 text-base">{t('dashboard.paymentStatus')}</div>
+                        <div className="text-green-600 text-base">
                           {booking.paymentStatus === 'paid' ? t('dashboard.paid') : t('dashboard.pending')}
                         </div>
                       </div>
@@ -372,10 +371,10 @@ export default function Dashboard() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  className="bg-white rounded-2xl shadow-xl p-8"
+                  className="bg-white rounded-2xl shadow-xl p-6"
                   whileHover={{ scale: 1.02, y: -4 }}
                 >
-                  <h3 className="text-2xl font-bold text-green-800 mb-6 flex items-center gap-2">
+                  <h3 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
                     <Eye className="w-6 h-6 text-orange-400" />
                     {t('dashboard.mysteryStatus')}
                   </h3>
@@ -388,9 +387,9 @@ export default function Dashboard() {
                       >
                         <Eye className="w-10 h-10 text-white" />
                       </motion.div>
-                      <h4 className="text-xl font-bold text-green-800 mb-2">{t('dashboard.destinationRevealed')}</h4>
-                      <div className="text-2xl font-bold text-orange-600 mb-4">{booking.destination}</div>
-                      <p className="text-green-600">
+                      <h4 className="text-lg font-bold text-green-800 mb-2">{t('dashboard.destinationRevealed')}</h4>
+                      <div className="text-lg font-bold text-orange-600 mb-4">{booking.destination}</div>
+                      <p className="text-green-600 text-base">
                         {t('dashboard.revealedOn')} {new Date(booking.revealedAt).toLocaleDateString('nl-NL')}
                       </p>
                     </div>
@@ -403,12 +402,12 @@ export default function Dashboard() {
                       >
                         <span className="text-white text-3xl">?</span>
                       </motion.div>
-                      <h4 className="text-xl font-bold text-green-800 mb-2">{t('dashboard.mysteryOngoing')}</h4>
-                      <p className="text-green-600 mb-4">
+                      <h4 className="text-lg font-bold text-green-800 mb-2">{t('dashboard.mysteryOngoing')}</h4>
+                      <p className="text-green-600 mb-4 text-base">
                         {t('dashboard.revealTiming')}
                       </p>
                       <div className="bg-purple-50 p-4 rounded-lg">
-                        <p className="text-purple-700 text-sm">
+                        <p className="text-purple-700 text-xs">
                           💡 <strong>Hint:</strong> {t('dashboard.hint')}
                         </p>
                       </div>
@@ -423,9 +422,9 @@ export default function Dashboard() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-xl p-8 mt-8"
+                className="bg-white rounded-2xl shadow-xl p-6 mt-6"
               >
-                <h3 className="text-2xl font-bold text-green-800 mb-6 flex items-center gap-2">
+                <h3 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
                   <Phone className="w-6 h-6 text-orange-400" />
                   {t('dashboard.needHelp')}
                 </h3>
@@ -435,10 +434,10 @@ export default function Dashboard() {
                     whileHover={{ scale: 1.04, y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Phone className="w-8 h-8 text-green-600 group-hover:text-orange-500 transition-colors" />
+                    <Phone className="w-6 h-6 text-green-600 group-hover:text-orange-500 transition-colors" />
                     <div>
-                      <div className="font-semibold text-green-800">{t('dashboard.emergencyLine')}</div>
-                      <div className="text-green-600">+31 20 987 6543</div>
+                      <div className="font-semibold text-green-800 text-base">{t('dashboard.emergencyLine')}</div>
+                      <div className="text-green-600 text-base">+31 20 987 6543</div>
                     </div>
                   </motion.div>
                   <motion.div
@@ -446,10 +445,10 @@ export default function Dashboard() {
                     whileHover={{ scale: 1.04, y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Mail className="w-8 h-8 text-green-600 group-hover:text-orange-500 transition-colors" />
+                    <Mail className="w-6 h-6 text-green-600 group-hover:text-orange-500 transition-colors" />
                     <div>
-                      <div className="font-semibold text-green-800">{t('dashboard.emailSupport')}</div>
-                      <div className="text-green-600">support@yournextstadium.com</div>
+                      <div className="font-semibold text-green-800 text-base">{t('dashboard.emailSupport')}</div>
+                      <div className="text-green-600 text-base">support@yournextstadium.com</div>
                     </div>
                   </motion.div>
                 </div>

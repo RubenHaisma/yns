@@ -14,20 +14,19 @@ export default function Terms() {
   return (
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
-      
       <main>
         {/* Hero Section */}
-        <section className="py-20 pt-20 bg-gradient-to-br from-green-800 to-green-900 text-white mt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <FileText className="w-16 h-16 mx-auto mb-6 text-green-200" />
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+        <section className="relative py-20 pt-20 bg-gradient-to-br from-green-800 to-green-900 text-white overflow-hidden">
+          <div className="max-w-3xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
+            <FileText className="w-12 h-12 mx-auto mb-4 text-green-200" />
+            <h1 className="text-4xl lg:text-6xl font-black mb-6 leading-tight">
               {t('terms.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
+            <p className="text-base lg:text-lg text-green-100 max-w-2xl mx-auto mb-4">
               {t('terms.subtitle')}
             </p>
-            <div className="mt-6 flex items-center justify-center space-x-4 text-green-200">
-              <Clock className="w-5 h-5" />
+            <div className="mt-4 flex items-center justify-center space-x-3 text-green-200 text-sm">
+              <Clock className="w-4 h-4" />
               <span>{t('terms.lastUpdated')}</span>
               <span>•</span>
               <span>{t('terms.version')}</span>
@@ -36,10 +35,10 @@ export default function Terms() {
         </section>
 
         {/* Table of Contents */}
-        <section className="py-12 bg-gray-50 border-b">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <section className="py-10 bg-gray-50 border-b">
+          <div className="max-w-2xl mx-auto px-2 sm:px-4 lg:px-6">
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-4 flex items-center">
                 <FileText className="w-6 h-6 mr-3 text-green-600" />
                 {t('terms.tableOfContents')}
               </h2>
@@ -62,12 +61,12 @@ export default function Terms() {
         </section>
 
         {/* Terms Content */}
-        <section className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <section className="py-16 bg-white">
+          <div className="max-w-2xl mx-auto px-2 sm:px-4 lg:px-6 space-y-10">
             
             {/* Introduction */}
-            <div id="introduction" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('terms.introduction.title')}</h2>
+            <div id="introduction" className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-4">{t('terms.introduction.title')}</h2>
               <div className="space-y-4 text-gray-700">
                 <p dangerouslySetInnerHTML={{ __html: t('terms.introduction.company') }} />
                 <p>{t('terms.introduction.agreement')}</p>
@@ -75,8 +74,8 @@ export default function Terms() {
                   <div className="flex items-start space-x-3">
                     <AlertTriangle className="w-5 h-5 text-orange-600 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-orange-800">Belangrijk</p>
-                      <p className="text-orange-700 text-sm">
+                      <p className="font-semibold text-orange-800 text-sm">Belangrijk</p>
+                      <p className="text-orange-700 text-xs">
                         {t('terms.introduction.important')}
                       </p>
                     </div>
@@ -86,15 +85,15 @@ export default function Terms() {
             </div>
 
             {/* Booking Process */}
-            <div id="booking" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <div className="flex items-center mb-6">
-                <CreditCard className="w-8 h-8 text-green-600 mr-3" />
-                <h2 className="text-3xl font-bold text-gray-900">{t('terms.booking.title')}</h2>
+            <div id="booking" className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+              <div className="flex items-center mb-4">
+                <CreditCard className="w-6 h-6 text-green-600 mr-3" />
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">{t('terms.booking.title')}</h2>
               </div>
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">{t('terms.booking.process.title')}</h3>
+                  <h3 className="text-lg font-bold text-gray-800 mb-2">{t('terms.booking.process.title')}</h3>
                   <ul className="list-disc list-inside text-gray-700 space-y-2">
                     {t.raw('terms.booking.process.items').map((item: string, index: number) => (
                       <li key={index}>{item}</li>
@@ -103,10 +102,10 @@ export default function Terms() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">{t('terms.booking.payment.title')}</h3>
+                  <h3 className="text-lg font-bold text-gray-800 mb-2">{t('terms.booking.payment.title')}</h3>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="bg-green-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-gray-800 mb-2">{t('terms.booking.payment.methods')}</h4>
+                      <h4 className="font-semibold text-gray-800 mb-1 text-sm">{t('terms.booking.payment.methods')}</h4>
                       <ul className="text-gray-700 text-sm space-y-1">
                         {t.raw('terms.booking.payment.methodsItems').map((item: string, index: number) => (
                           <li key={index}>{item}</li>
@@ -114,7 +113,7 @@ export default function Terms() {
                       </ul>
                     </div>
                     <div className="bg-orange-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-gray-800 mb-2">{t('terms.booking.payment.terms')}</h4>
+                      <h4 className="font-semibold text-gray-800 mb-1 text-sm">{t('terms.booking.payment.terms')}</h4>
                       <ul className="text-gray-700 text-sm space-y-1">
                         {t.raw('terms.booking.payment.termsItems').map((item: string, index: number) => (
                           <li key={index}>{item}</li>
@@ -127,8 +126,8 @@ export default function Terms() {
             </div>    
 
             {/* Mystery Concept */}
-            <div id="mystery" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('terms.mystery.title')}</h2>
+            <div id="mystery" className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-4">{t('terms.mystery.title')}</h2>
               
               <div className="space-y-4 text-gray-700">
                 <p>{t('terms.mystery.destination')}</p>
@@ -136,8 +135,8 @@ export default function Terms() {
                 <p>{t('terms.mystery.guarantees')}</p>
                 
                 <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-purple-800 mb-2">{t('terms.mystery.mysteryGuarantee')}</h4>
-                  <p className="text-purple-700 text-sm">
+                  <h4 className="font-semibold text-purple-800 mb-1 text-sm">{t('terms.mystery.mysteryGuarantee')}</h4>
+                  <p className="text-purple-700 text-xs">
                     {t('terms.mystery.mysteryGuaranteeDesc')}
                   </p>
                 </div>
@@ -145,39 +144,39 @@ export default function Terms() {
             </div>
 
             {/* Cancellation */}
-            <div id="cancellation" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <div className="flex items-center mb-6">
-                <Clock className="w-8 h-8 text-green-600 mr-3" />
-                <h2 className="text-3xl font-bold text-gray-900">{t('terms.cancellation.title')}</h2>
+            <div id="cancellation" className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+              <div className="flex items-center mb-4">
+                <Clock className="w-6 h-6 text-green-600 mr-3" />
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">{t('terms.cancellation.title')}</h2>
               </div>
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">{t('terms.cancellation.cancellationByTraveler.title')}</h3>
+                  <h3 className="text-lg font-bold text-gray-800 mb-2">{t('terms.cancellation.cancellationByTraveler.title')}</h3>
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse border border-gray-200">
                       <thead>
                         <tr className="bg-gray-50">
-                          <th className="border border-gray-200 p-3 text-left text-gray-800">{t('terms.cancellation.cancellationByTraveler.cancellationMoment')}</th>
-                          <th className="border border-gray-200 p-3 text-left text-gray-800">{t('terms.cancellation.cancellationByTraveler.costs')}</th>
+                          <th className="border border-gray-200 p-2 text-left text-gray-800 text-sm">{t('terms.cancellation.cancellationByTraveler.cancellationMoment')}</th>
+                          <th className="border border-gray-200 p-2 text-left text-gray-800 text-sm">{t('terms.cancellation.cancellationByTraveler.costs')}</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-200 p-3 text-gray-700">{t('terms.cancellation.cancellationByTraveler.moreThan30Days')}</td>
-                          <td className="border border-gray-200 p-3 text-gray-700">{t('terms.cancellation.cancellationByTraveler.adminCosts')}</td>
+                          <td className="border border-gray-200 p-2 text-gray-700 text-xs">{t('terms.cancellation.cancellationByTraveler.moreThan30Days')}</td>
+                          <td className="border border-gray-200 p-2 text-gray-700 text-xs">{t('terms.cancellation.cancellationByTraveler.adminCosts')}</td>
                         </tr>
                         <tr className="bg-gray-50">
-                          <td className="border border-gray-200 p-3 text-gray-700">{t('terms.cancellation.cancellationByTraveler.fifteenTo30Days')}</td>
-                          <td className="border border-gray-200 p-3 text-gray-700">{t('terms.cancellation.cancellationByTraveler.twentyFivePercent')}</td>
+                          <td className="border border-gray-200 p-2 text-gray-700 text-xs">{t('terms.cancellation.cancellationByTraveler.fifteenTo30Days')}</td>
+                          <td className="border border-gray-200 p-2 text-gray-700 text-xs">{t('terms.cancellation.cancellationByTraveler.twentyFivePercent')}</td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-200 p-3 text-gray-700">{t('terms.cancellation.cancellationByTraveler.eightTo14Days')}</td>
-                          <td className="border border-gray-200 p-3 text-gray-700">{t('terms.cancellation.cancellationByTraveler.fiftyPercent')}</td>
+                          <td className="border border-gray-200 p-2 text-gray-700 text-xs">{t('terms.cancellation.cancellationByTraveler.eightTo14Days')}</td>
+                          <td className="border border-gray-200 p-2 text-gray-700 text-xs">{t('terms.cancellation.cancellationByTraveler.fiftyPercent')}</td>
                         </tr>
                         <tr className="bg-gray-50">
-                          <td className="border border-gray-200 p-3 text-gray-700">{t('terms.cancellation.cancellationByTraveler.lessThan8Days')}</td>
-                          <td className="border border-gray-200 p-3 text-gray-700">{t('terms.cancellation.cancellationByTraveler.hundredPercent')}</td>
+                          <td className="border border-gray-200 p-2 text-gray-700 text-xs">{t('terms.cancellation.cancellationByTraveler.lessThan8Days')}</td>
+                          <td className="border border-gray-200 p-2 text-gray-700 text-xs">{t('terms.cancellation.cancellationByTraveler.hundredPercent')}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -185,7 +184,7 @@ export default function Terms() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">{t('terms.cancellation.changes.title')}</h3>
+                  <h3 className="text-lg font-bold text-gray-800 mb-2">{t('terms.cancellation.changes.title')}</h3>
                   <ul className="list-disc list-inside text-gray-700 space-y-2">
                     {t.raw('terms.cancellation.changes.items').map((item: string, index: number) => (
                       <li key={index}>{item}</li>
@@ -196,10 +195,10 @@ export default function Terms() {
             </div>
 
             {/* Travel Conditions */}
-            <div id="travel" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <div className="flex items-center mb-6">
-                <Plane className="w-8 h-8 text-green-600 mr-3" />
-                <h2 className="text-3xl font-bold text-gray-900">{t('terms.travel.title')}</h2>
+            <div id="travel" className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+              <div className="flex items-center mb-4">
+                <Plane className="w-6 h-6 text-green-600 mr-3" />
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">{t('terms.travel.title')}</h2>
               </div>
               
               <div className="space-y-4 text-gray-700">
@@ -211,10 +210,10 @@ export default function Terms() {
             </div>
 
             {/* Liability */}
-            <div id="liability" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <div className="flex items-center mb-6">
-                <Shield className="w-8 h-8 text-green-600 mr-3" />
-                <h2 className="text-3xl font-bold text-gray-900">{t('terms.liability.title')}</h2>
+            <div id="liability" className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+              <div className="flex items-center mb-4">
+                <Shield className="w-6 h-6 text-green-600 mr-3" />
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">{t('terms.liability.title')}</h2>
               </div>
               
               <div className="space-y-4 text-gray-700">
@@ -223,8 +222,8 @@ export default function Terms() {
                 <p>{t('terms.liability.thirdParties')}</p>
                 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-blue-800 mb-2">{t('terms.liability.sgrGuarantee')}</h4>
-                  <p className="text-blue-700 text-sm">
+                  <h4 className="font-semibold text-blue-800 mb-1 text-sm">{t('terms.liability.sgrGuarantee')}</h4>
+                  <p className="text-blue-700 text-xs">
                     {t('terms.liability.sgrGuaranteeDesc')}
                   </p>
                 </div>
@@ -232,8 +231,8 @@ export default function Terms() {
             </div>
 
             {/* Complaints */}
-            <div id="complaints" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('terms.complaints.title')}</h2>
+            <div id="complaints" className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-4">{t('terms.complaints.title')}</h2>
               
               <div className="space-y-4 text-gray-700">
                 <p>{t('terms.complaints.procedure')}</p>
@@ -243,12 +242,12 @@ export default function Terms() {
             </div>
 
             {/* Contact */}
-            <div id="contact" className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('terms.contact.title')}</h2>
+            <div id="contact" className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-4">{t('terms.contact.title')}</h2>
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-lg font-bold text-gray-800 mb-3">{t('terms.contact.company')}</h3>
+                  <h3 className="text-base font-bold text-gray-800 mb-2">{t('terms.contact.company')}</h3>
                   <div className="text-gray-700 space-y-2">
                     <p><strong>{t('terms.contact.address')}</strong> {t('terms.contact.streetAddress')}</p>
                     <p><strong>{t('terms.contact.kvk')}</strong> {t('terms.contact.kvkNumber')}</p>
@@ -259,7 +258,7 @@ export default function Terms() {
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-bold text-gray-800 mb-3">Contact</h3>
+                  <h3 className="text-base font-bold text-gray-800 mb-2">Contact</h3>
                   <div className="text-gray-700 space-y-2">
                     <p><strong>{t('terms.contact.phone')}</strong> {t('terms.contact.phoneNumber')}</p>
                     <p><strong>{t('terms.contact.emergencyLine')}</strong> {t('terms.contact.emergencyNumber')}</p>

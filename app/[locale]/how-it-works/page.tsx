@@ -49,10 +49,9 @@ export default function HowItWorks() {
   return (
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
-      
       <main>
         {/* Hero Section */}
-        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden mt-20">
+        <section className="relative py-32 pt-25 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(15)].map((_, i) => (
@@ -79,7 +78,7 @@ export default function HowItWorks() {
             ))}
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -87,11 +86,11 @@ export default function HowItWorks() {
               className="text-center"
             >
 
-              <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-black mb-6 leading-tight">
                 <span className="block">{t('howItWorks.title')}</span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed mb-12">
+              <p className="text-base lg:text-lg text-green-100 max-w-2xl mx-auto leading-relaxed mb-8">
                 {t('howItWorks.subtitle')}
               </p>
 
@@ -111,8 +110,8 @@ export default function HowItWorks() {
         </section>
 
         {/* Steps Section */}
-        <section className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+          <div className="max-w-3xl mx-auto px-2 sm:px-4 lg:px-6">
 
             <div className="space-y-32">
               {steps.map((step, index) => (
@@ -126,24 +125,24 @@ export default function HowItWorks() {
                 >
                   {/* Content */}
                   <div className="flex-1 space-y-8">
-                    <div className="flex items-center space-x-6">
+                    <div className="flex items-center space-x-4">
                       <motion.div
-                        className={`w-20 h-20 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center shadow-xl`}
+                        className={`w-10 h-10 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center shadow-xl`}
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <step.icon className="w-10 h-10 text-white" />
+                        <step.icon className="w-5 h-5 text-white" />
                       </motion.div>
-                      <div className={`text-6xl font-black text-transparent bg-gradient-to-br ${step.color} bg-clip-text`}>
+                      <div className={`text-3xl font-black text-transparent bg-gradient-to-br ${step.color} bg-clip-text`}>
                         {step.number}
                       </div>
                     </div>
 
                     <div className="space-y-6">
-                      <h3 className="text-4xl lg:text-5xl font-black text-gray-800 leading-tight">
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 leading-tight">
                         {step.title}
                       </h3>
-                      <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed">
+                      <p className="text-base lg:text-lg text-gray-600 leading-relaxed">
                         {step.description}
                       </p>
                       
@@ -161,7 +160,7 @@ export default function HowItWorks() {
                               <div className={`w-6 h-6 bg-gradient-to-br ${step.color} rounded-full flex items-center justify-center flex-shrink-0 mt-1`}>
                                 <CheckCircle className="w-3 h-3 text-white" />
                               </div>
-                              <span className="text-gray-700 text-lg leading-relaxed">{detail}</span>
+                              <span className="text-gray-700 text-base lg:text-lg leading-relaxed">{detail}</span>
                             </motion.li>
                           ))}
                         </ul>
@@ -172,35 +171,33 @@ export default function HowItWorks() {
                   {/* Visual */}
                   <div className="flex-1">
                     <motion.div
-                      className={`relative bg-gradient-to-br ${step.bgColor} rounded-3xl p-12 shadow-2xl border border-gray-200/50`}
+                      className={`relative bg-gradient-to-br ${step.bgColor} rounded-3xl p-6 shadow-2xl border border-gray-200/50`}
                       whileHover={{ scale: 1.02, y: -10 }}
                       transition={{ duration: 0.5 }}
                     >
                       <div className="aspect-video bg-white rounded-2xl flex items-center justify-center border-2 border-gray-200/50 relative overflow-hidden shadow-lg">
-                        <div className={`text-8xl text-transparent bg-gradient-to-br ${step.color} bg-clip-text font-black`}>
+                        <div className={`text-4xl text-transparent bg-gradient-to-br ${step.color} bg-clip-text font-black`}>
                           {step.number}
                         </div>
-                        
                         {/* Decorative Elements */}
                         <motion.div
-                          className={`absolute top-4 right-4 w-16 h-16 bg-gradient-to-br ${step.color} rounded-full opacity-10`}
+                          className={`absolute top-4 right-4 w-8 h-8 bg-gradient-to-br ${step.color} rounded-full opacity-10`}
                           animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
                           transition={{ duration: 4, repeat: Infinity }}
                         />
                         <motion.div
-                          className={`absolute bottom-4 left-4 w-12 h-12 bg-gradient-to-br ${step.color} rounded-full opacity-20`}
+                          className={`absolute bottom-4 left-4 w-6 h-6 bg-gradient-to-br ${step.color} rounded-full opacity-20`}
                           animate={{ scale: [1, 0.8, 1], rotate: [0, -180, -360] }}
                           transition={{ duration: 3, repeat: Infinity }}
                         />
                       </div>
-                      
                       {/* Floating Icon */}
                       <motion.div
-                        className={`absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center shadow-xl`}
+                        className={`absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center shadow-xl`}
                         animate={{ y: [0, -10, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
                       >
-                        <step.icon className="w-8 h-8 text-white" />
+                        <step.icon className="w-5 h-5 text-white" />
                       </motion.div>
                     </motion.div>
                   </div>
@@ -211,8 +208,8 @@ export default function HowItWorks() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-32 bg-gradient-to-br from-green-50 via-white to-green-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 bg-gradient-to-br from-green-50 via-white to-green-50">
+          <div className="max-w-2xl mx-auto px-2 sm:px-4 lg:px-6">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -232,10 +229,10 @@ export default function HowItWorks() {
                 <Sparkles className="w-6 h-6 text-orange-500" />
               </motion.div>
 
-              <h2 className="text-5xl lg:text-7xl font-black text-gray-800 mb-8">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 mb-4">
                 {t('howItWorks.faqTitle')}
               </h2>
-              <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed">
+              <p className="text-base lg:text-lg text-gray-600 leading-relaxed">
                 {t('howItWorks.faqSubtitle')}
               </p>
             </motion.div>
@@ -251,10 +248,10 @@ export default function HowItWorks() {
                   className="bg-white rounded-2xl p-8 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-500 group"
                   whileHover={{ scale: 1.02, y: -5 }}
                 >
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-green-600 transition-colors">
+                  <h3 className="text-lg font-bold text-gray-800 mb-4 group-hover:text-green-600 transition-colors">
                     {faq.question}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed text-base lg:text-lg">
                     {faq.answer}
                   </p>
                 </motion.div>
@@ -264,7 +261,7 @@ export default function HowItWorks() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative py-32 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
+        <section className="relative py-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(20)].map((_, i) => (
@@ -291,23 +288,23 @@ export default function HowItWorks() {
             ))}
           </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="relative z-10 max-w-2xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-5xl lg:text-7xl font-black mb-8">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-4">
                 {t('howItWorks.readyTitle')}
               </h2>
-              <p className="text-xl lg:text-2xl text-green-100 mb-12 leading-relaxed">
+              <p className="text-base lg:text-lg text-green-100 mb-8 leading-relaxed">
                 {t('howItWorks.readySubtitle')}
               </p>
               
               <motion.button
                 onClick={() => setIsBookingModalOpen(true)}
-                className="relative bg-gradient-to-r from-orange-500 to-orange-600 text-white px-12 py-6 rounded-2xl font-bold text-xl hover:from-orange-600 hover:to-orange-700 transition-all shadow-2xl overflow-hidden group"
+                className="relative bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all shadow-2xl overflow-hidden group"
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -319,7 +316,7 @@ export default function HowItWorks() {
                 />
                 <span className="relative z-10 flex items-center space-x-3">
                   <span>{t('howItWorks.bookTrip')}</span>
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </motion.button>
             </motion.div>

@@ -97,8 +97,7 @@ export default function Stories() {
   return (
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
-      
-      <main className="pt-16">
+      <main>
         {/* Hero Section */}
         <section className="relative py-32 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
           {/* Animated Background */}
@@ -138,18 +137,17 @@ export default function Stories() {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.4 }}
-                className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-xl rounded-full px-8 py-4 border border-white/20 mb-12"
+                className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-xl rounded-full px-8 py-4 border border-white/20 mb-8"
               >
-                <Quote className="w-8 h-8 text-orange-400" />
-                <span className="text-white font-bold text-lg">Fan Stories</span>
-                <Trophy className="w-8 h-8 text-green-400" />
+                <Quote className="w-6 h-6 text-orange-400" />
+                <span className="text-white font-bold text-base">Fan Stories</span>
+                <Trophy className="w-6 h-6 text-green-400" />
               </motion.div>
 
-              <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-black mb-6 leading-tight">
                 <span className="block">{t('stories.title')}</span>
               </h1>
-              
-              <p className="text-xl lg:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-base lg:text-lg text-green-100 max-w-2xl mx-auto leading-relaxed">
                 {t('stories.subtitle')}
               </p>
             </motion.div>
@@ -157,28 +155,27 @@ export default function Stories() {
         </section>
 
         {/* Featured Story */}
-        <section className="py-32 bg-gradient-to-br from-white via-gray-50 to-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 bg-gradient-to-br from-white via-gray-50 to-white">
+          <div className="max-w-3xl mx-auto px-2 sm:px-4 lg:px-6">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-10"
             >
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2, type: "spring", bounce: 0.4 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center space-x-3 bg-gradient-to-r from-green-500/10 to-orange-500/10 rounded-full px-8 py-4 border border-green-200/50 mb-12"
+                className="inline-flex items-center space-x-3 bg-gradient-to-r from-green-500/10 to-orange-500/10 rounded-full px-8 py-4 border border-green-200/50 mb-6"
               >
-                <Star className="w-6 h-6 text-green-500" />
-                <span className="text-green-600 font-bold">Featured Story</span>
-                <Sparkles className="w-6 h-6 text-orange-500" />
+                <Star className="w-5 h-5 text-green-500" />
+                <span className="text-green-600 font-bold text-base">Featured Story</span>
+                <Sparkles className="w-5 h-5 text-orange-500" />
               </motion.div>
-
-              <h2 className="text-4xl lg:text-5xl font-black text-gray-800">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 mb-2">
                 Real Adventures, Real Stories
               </h2>
             </motion.div>
@@ -208,12 +205,12 @@ export default function Stories() {
                     <div className="text-sm opacity-90">{stories[selectedStory].location}</div>
                   </div>
                 </div>
-                <div className="md:w-1/2 p-8 lg:p-12">
+                <div className="md:w-1/2 p-6 lg:p-8">
                   <div className="mb-6">
-                    <div className="bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-sm font-medium inline-block mb-4">
+                    <div className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs font-medium inline-block mb-3">
                       {stories[selectedStory].destination}
                     </div>
-                    <blockquote className="text-xl lg:text-2xl text-green-800 font-medium mb-6 italic leading-relaxed">
+                    <blockquote className="text-base lg:text-lg text-green-800 font-medium mb-4 italic leading-relaxed">
                       "{stories[selectedStory].quote}"
                     </blockquote>
                   </div>
@@ -231,13 +228,13 @@ export default function Stories() {
                     </div>
                   </div>
 
-                  <p className="text-gray-700 leading-relaxed mb-8">
+                  <p className="text-gray-700 leading-relaxed mb-6 text-base lg:text-lg">
                     {stories[selectedStory].story}
                   </p>
 
                   <motion.button
                     onClick={() => setIsBookingModalOpen(true)}
-                    className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg"
+                    className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-2xl font-bold text-base hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -247,9 +244,9 @@ export default function Stories() {
               </div>
 
               {/* Story Photos */}
-              <div className="p-8 bg-gray-50 border-t">
-                <h4 className="text-lg font-bold text-green-800 mb-4 flex items-center">
-                  <Camera className="w-5 h-5 mr-2" />
+              <div className="p-6 bg-gray-50 border-t">
+                <h4 className="text-base font-bold text-green-800 mb-3 flex items-center">
+                  <Camera className="w-4 h-4 mr-2" />
                   Foto's van de Reis
                 </h4>
                 <div className="grid grid-cols-2 gap-4">
@@ -258,7 +255,7 @@ export default function Stories() {
                       key={index}
                       src={photo}
                       alt={`Reis foto ${index + 1}`}
-                      className="w-full h-32 object-cover rounded-lg shadow-md"
+                      className="w-full h-24 object-cover rounded-lg shadow-md"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3 }}
                     />
@@ -268,7 +265,7 @@ export default function Stories() {
             </motion.div>
 
             {/* Story Navigation */}
-            <div className="flex justify-center mt-8 space-x-2">
+            <div className="flex justify-center mt-6 space-x-2">
               {stories.map((_, index) => (
                 <motion.button
                   key={index}
@@ -285,21 +282,21 @@ export default function Stories() {
         </section>
 
         {/* All Stories Grid */}
-        <section className="py-32 bg-gradient-to-br from-green-50 via-white to-green-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 bg-gradient-to-br from-green-50 via-white to-green-50">
+          <div className="max-w-3xl mx-auto px-2 sm:px-4 lg:px-6">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-10"
             >
-              <h2 className="text-4xl lg:text-5xl font-black text-green-800 mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-green-800 mb-4">
                 {t('stories.moreStories')}
               </h2>
             </motion.div>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6">
               {stories.map((story, index) => (
                 <motion.div
                   key={story.id}
@@ -324,10 +321,10 @@ export default function Stories() {
                         <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                       ))}
                     </div>
-                    <h3 className="text-lg font-bold text-green-800 mb-2 group-hover:text-orange-600 transition-colors">{story.name}</h3>
-                    <p className="text-green-600 text-sm mb-3">{story.location} • {story.date}</p>
-                    <p className="text-green-700 text-sm mb-4 line-clamp-3">"{story.quote}"</p>
-                    <div className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs font-medium inline-block">
+                    <h3 className="text-base font-bold text-green-800 mb-1 group-hover:text-orange-600 transition-colors">{story.name}</h3>
+                    <p className="text-green-600 text-xs mb-2">{story.location} • {story.date}</p>
+                    <p className="text-green-700 text-xs mb-3 line-clamp-3">"{story.quote}"</p>
+                    <div className="bg-orange-100 text-orange-800 px-2 py-0.5 rounded-full text-xs font-medium inline-block">
                       {story.destination}
                     </div>
                   </div>
@@ -338,36 +335,36 @@ export default function Stories() {
         </section>
 
         {/* Instagram Section */}
-        <section className="py-32 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 bg-white">
+          <div className="max-w-3xl mx-auto px-2 sm:px-4 lg:px-6">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-10"
             >
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2, type: "spring", bounce: 0.4 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center space-x-3 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full px-8 py-4 border border-pink-200/50 mb-12"
+                className="inline-flex items-center space-x-3 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full px-8 py-4 border border-pink-200/50 mb-6"
               >
                 <Instagram className="w-6 h-6 text-pink-500" />
                 <span className="text-pink-600 font-bold">Share Your Story</span>
                 <Camera className="w-6 h-6 text-purple-500" />
               </motion.div>
 
-              <h2 className="text-4xl lg:text-5xl font-black text-gray-800 mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 mb-4">
                 {t('stories.shareStory')}
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-base lg:text-lg text-gray-600 leading-relaxed">
                 {t('stories.tagUs')}
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {instagramPosts.map((post, index) => (
                 <motion.div
                   key={index}
@@ -405,10 +402,10 @@ export default function Stories() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               viewport={{ once: true }}
-              className="text-center mt-12"
+              className="text-center mt-8"
             >
               <motion.button
-                className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-pink-600 hover:to-purple-700 transition-all shadow-lg"
+                className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-2xl font-bold text-base hover:from-pink-600 hover:to-purple-700 transition-all shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -420,7 +417,7 @@ export default function Stories() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative py-32 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
+        <section className="relative py-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(20)].map((_, i) => (
@@ -447,23 +444,23 @@ export default function Stories() {
             ))}
           </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="relative z-10 max-w-2xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-5xl lg:text-7xl font-black mb-8">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-4">
                 {t('stories.writeYourStory')}
               </h2>
-              <p className="text-xl lg:text-2xl text-green-100 mb-12 leading-relaxed">
+              <p className="text-base lg:text-lg text-green-100 mb-8 leading-relaxed">
                 {t('stories.joinCommunity')}
               </p>
               
               <motion.button
                 onClick={() => setIsBookingModalOpen(true)}
-                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-12 py-6 rounded-2xl font-bold text-xl hover:from-orange-600 hover:to-orange-700 transition-all shadow-2xl"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-2xl font-bold text-base hover:from-orange-600 hover:to-orange-700 transition-all shadow-2xl"
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
               >

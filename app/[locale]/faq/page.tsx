@@ -2,7 +2,7 @@
 
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { ChevronDown, ChevronUp, Search, HelpCircle, Shield, Clock, CreditCard, MapPin, Sparkles, Star } from 'lucide-react';
+import { ChevronDown, ChevronUp, Search, HelpCircle, Shield, Clock, CreditCard, MapPin, Star } from 'lucide-react';
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
 import { useTranslations } from 'next-intl';
@@ -41,10 +41,9 @@ export default function FAQ() {
   return (
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
-      
       <main>
         {/* Hero Section */}
-        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden mt-20">
+        <section className="relative py-32 pt-25 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(25)].map((_, i) => (
@@ -92,22 +91,12 @@ export default function FAQ() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.4 }}
-                className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-xl rounded-full px-8 py-4 border border-white/20 mb-12"
-              >
-                <HelpCircle className="w-8 h-8 text-orange-400" />
-                <span className="text-white font-bold text-lg">{tFaqPage('sectionLabel')}</span>
-                <Sparkles className="w-8 h-8 text-green-400" />
-              </motion.div>
 
-              <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-black mb-6 leading-tight">
                 <span className="block">{t('faq.title')}</span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed mb-12">
+              <p className="text-base lg:text-lg text-green-100 max-w-2xl mx-auto leading-relaxed mb-8">
                 {t('faq.subtitle')}
               </p>
               
@@ -135,7 +124,7 @@ export default function FAQ() {
 
         {/* Enhanced Categories */}
         <section className="py-20 bg-gradient-to-br from-white via-gray-50 to-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto px-2 sm:px-4 lg:px-6">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -155,7 +144,7 @@ export default function FAQ() {
                 <HelpCircle className="w-6 h-6 text-orange-500" />
               </motion.div>
 
-              <h2 className="text-4xl lg:text-5xl font-black text-gray-800">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 mb-4">
                 {tFaqPage('findYourAnswer')}
               </h2>
             </motion.div>
@@ -193,7 +182,7 @@ export default function FAQ() {
 
         {/* Enhanced FAQ Section */}
         <section className="py-20 bg-gradient-to-br from-green-50 via-white to-green-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto px-2 sm:px-4 lg:px-6">
             {filteredFAQs.length === 0 ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -258,7 +247,7 @@ export default function FAQ() {
                                 transition={{ duration: 0.4, delay: 0.1 }}
                                 className="pt-6"
                               >
-                                <p className="text-green-700 leading-relaxed text-lg">
+                                <p className="text-green-700 leading-relaxed text-base lg:text-lg">
                                   {faq.answer}
                                 </p>
                               </motion.div>
@@ -281,7 +270,7 @@ export default function FAQ() {
         </section>
 
         {/* Enhanced Contact CTA */}
-        <section className="relative py-32 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
+        <section className="relative py-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(20)].map((_, i) => (
@@ -308,24 +297,24 @@ export default function FAQ() {
             ))}
           </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="relative z-10 max-w-2xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-5xl lg:text-7xl font-black mb-8">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-4">
                 {t('faq.stillQuestions')}
               </h2>
-              <p className="text-xl lg:text-2xl text-green-100 mb-12 leading-relaxed">
+              <p className="text-base lg:text-lg text-green-100 mb-8 leading-relaxed">
                 {t('faq.stillQuestionsDesc')}
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.a
                   href="/contact"
-                  className="relative bg-white text-green-800 px-12 py-6 rounded-3xl font-bold text-xl hover:bg-green-50 transition-all shadow-2xl overflow-hidden group"
+                  className="relative bg-white text-green-800 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-green-50 transition-all shadow-2xl overflow-hidden group"
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -340,7 +329,7 @@ export default function FAQ() {
                 
                 <motion.a
                   href="tel:+31201234567"
-                  className="relative bg-gradient-to-r from-orange-500 to-orange-600 text-white px-12 py-6 rounded-3xl font-bold text-xl hover:from-orange-600 hover:to-orange-700 transition-all shadow-2xl overflow-hidden group"
+                  className="relative bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all shadow-2xl overflow-hidden group"
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -359,7 +348,7 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="mt-12 text-green-200"
+                className="mt-8 text-green-200"
               >
                 <p className="text-lg">{t('faq.emergencyLine')}</p>
               </motion.div>

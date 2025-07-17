@@ -17,10 +17,9 @@ export default function Packages() {
   return (
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
-      
       <main>
         {/* Hero Section */}
-        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden mt-20">
+        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
             {[...Array(20)].map((_, i) => (
@@ -69,15 +68,15 @@ export default function Packages() {
               transition={{ duration: 1 }}
             >
 
-              <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-tight mt-20">
+              <h1 className="text-4xl lg:text-6xl font-black mb-6 leading-tight mt-16">
                 <span className="block">{t('packages.heroLine1')}</span>
                 <span className="block bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                   {t('packages.heroLine2')}
                 </span>
-                <span className="block text-5xl lg:text-7xl">{t('packages.heroLine3')}</span>
+                <span className="block text-3xl lg:text-5xl">{t('packages.heroLine3')}</span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-base lg:text-lg text-green-100 max-w-2xl mx-auto leading-relaxed">
                 {t('packages.heroSubtitle')}
               </p>
             </motion.div>
@@ -85,8 +84,8 @@ export default function Packages() {
         </section>
 
         {/* Packages Section */}
-        <section className="py-32 bg-gradient-to-br from-white via-gray-50 to-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 bg-gradient-to-br from-white via-gray-50 to-white">
+          <div className="max-w-3xl mx-auto px-2 sm:px-4 lg:px-6">
             <PackageSection onBookingClick={() => setIsBookingModalOpen(true)} />
 
             {/* Comparison Table */}
@@ -95,7 +94,7 @@ export default function Packages() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              className="mt-32"
+              className="mt-20"
             >
               <div className="text-center mb-16">
                 <motion.div
@@ -110,14 +109,14 @@ export default function Packages() {
                   <Zap className="w-6 h-6 text-orange-500" />
                 </motion.div>
 
-                <h3 className="text-4xl lg:text-5xl font-black text-gray-800 mb-6">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 mb-4">
                   {t('packages.comparisonTitle')}
                 </h3>
               </div>
 
               <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-2xl">
-                <div className="bg-gradient-to-r from-green-800 to-green-900 p-8">
-                  <h3 className="text-3xl font-black text-white text-center">
+                <div className="bg-gradient-to-r from-green-800 to-green-900 p-6">
+                  <h3 className="text-xl sm:text-2xl font-black text-white text-center">
                     {t('packages.comparisonHeader')}
                   </h3>
                 </div>
@@ -125,80 +124,80 @@ export default function Packages() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-200 bg-gray-50">
-                        <th className="text-left p-6 font-bold text-gray-900 text-lg">{t('packages.feature')}</th>
-                        <th className="text-center p-6 font-bold text-green-600 text-lg">{t('packages.basic.name')}</th>
-                        <th className="text-center p-6 font-bold text-orange-600 text-lg">{t('packages.comfort.name')}</th>
-                        <th className="text-center p-6 font-bold text-purple-600 text-lg">{t('packages.premium.name')}</th>
+                        <th className="text-left p-4 font-bold text-gray-900 text-base lg:text-lg">{t('packages.feature')}</th>
+                        <th className="text-center p-4 font-bold text-green-600 text-base lg:text-lg">{t('packages.basic.name')}</th>
+                        <th className="text-center p-4 font-bold text-orange-600 text-base lg:text-lg">{t('packages.comfort.name')}</th>
+                        <th className="text-center p-4 font-bold text-purple-600 text-base lg:text-lg">{t('packages.premium.name')}</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                        <td className="p-6 text-gray-700 font-medium">{t('packages.matchTicket')}</td>
-                        <td className="p-6 text-center font-semibold text-green-600">{t('packages.basic.category')}</td>
-                        <td className="p-6 text-center font-semibold text-orange-600">{t('packages.comfort.category')}</td>
-                        <td className="p-6 text-center font-semibold text-purple-600">VIP</td>
+                        <td className="p-4 text-gray-700 font-medium text-base lg:text-lg">{t('packages.matchTicket')}</td>
+                        <td className="p-4 text-center font-semibold text-green-600 text-base lg:text-lg">{t('packages.basic.category')}</td>
+                        <td className="p-4 text-center font-semibold text-orange-600 text-base lg:text-lg">{t('packages.comfort.category')}</td>
+                        <td className="p-4 text-center font-semibold text-purple-600 text-base lg:text-lg">VIP</td>
                       </tr>
                       <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                        <td className="p-6 text-gray-700 font-medium">{t('packages.transport')}</td>
-                        <td className="p-6 text-center text-gray-400">-</td>
-                        <td className="p-6 text-center">
+                        <td className="p-4 text-gray-700 font-medium text-base lg:text-lg">{t('packages.transport')}</td>
+                        <td className="p-4 text-center text-gray-400 text-base lg:text-lg">-</td>
+                        <td className="p-4 text-center">
                           <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mx-auto">
                             <Check className="w-4 h-4 text-white" />
                           </div>
                         </td>
-                        <td className="p-6 text-center">
+                        <td className="p-4 text-center">
                           <div className="flex items-center justify-center space-x-2">
                             <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
                               <Check className="w-4 h-4 text-white" />
                             </div>
-                            <span className="text-purple-600 font-semibold">{t('packages.premium.name')}</span>
+                            <span className="text-purple-600 font-semibold text-base lg:text-lg">{t('packages.premium.name')}</span>
                           </div>
                         </td>
                       </tr>
                       <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                        <td className="p-6 text-gray-700 font-medium">{t('packages.accommodation')}</td>
-                        <td className="p-6 text-center text-gray-400">-</td>
-                        <td className="p-6 text-center text-gray-400">-</td>
-                        <td className="p-6 text-center">
+                        <td className="p-4 text-gray-700 font-medium text-base lg:text-lg">{t('packages.accommodation')}</td>
+                        <td className="p-4 text-center text-gray-400 text-base lg:text-lg">-</td>
+                        <td className="p-4 text-center text-gray-400 text-base lg:text-lg">-</td>
+                        <td className="p-4 text-center">
                           <div className="flex items-center justify-center space-x-2">
                             <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
                               <Check className="w-4 h-4 text-white" />
                             </div>
-                            <span className="text-purple-600 font-semibold">{t('packages.nights')}</span>
+                            <span className="text-purple-600 font-semibold text-base lg:text-lg">{t('packages.nights')}</span>
                           </div>
                         </td>
                       </tr>
                       <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                        <td className="p-6 text-gray-700 font-medium">{t('packages.meals')}</td>
-                        <td className="p-6 text-center text-gray-400">-</td>
-                        <td className="p-6 text-center text-gray-400">-</td>
-                        <td className="p-6 text-center">
+                        <td className="p-4 text-gray-700 font-medium text-base lg:text-lg">{t('packages.meals')}</td>
+                        <td className="p-4 text-center text-gray-400 text-base lg:text-lg">-</td>
+                        <td className="p-4 text-center text-gray-400 text-base lg:text-lg">-</td>
+                        <td className="p-4 text-center">
                           <div className="flex items-center justify-center space-x-2">
                             <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
                               <Check className="w-4 h-4 text-white" />
                             </div>
-                            <span className="text-purple-600 font-semibold">{t('packages.breakfastDinner')}</span>
+                            <span className="text-purple-600 font-semibold text-base lg:text-lg">{t('packages.breakfastDinner')}</span>
                           </div>
                         </td>
                       </tr>
                       <tr className="hover:bg-gray-50 transition-colors">
-                        <td className="p-6 text-gray-700 font-medium">{t('packages.support')}</td>
-                        <td className="p-6 text-center">
+                        <td className="p-4 text-gray-700 font-medium text-base lg:text-lg">{t('packages.support')}</td>
+                        <td className="p-4 text-center">
                           <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mx-auto">
                             <Check className="w-4 h-4 text-white" />
                           </div>
                         </td>
-                        <td className="p-6 text-center">
+                        <td className="p-4 text-center">
                           <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mx-auto">
                             <Check className="w-4 h-4 text-white" />
                           </div>
                         </td>
-                        <td className="p-6 text-center">
+                        <td className="p-4 text-center">
                           <div className="flex items-center justify-center space-x-2">
                             <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
                               <Check className="w-4 h-4 text-white" />
                             </div>
-                            <span className="text-purple-600 font-semibold">{t('packages.premium.name')}</span>
+                            <span className="text-purple-600 font-semibold text-base lg:text-lg">{t('packages.premium.name')}</span>
                           </div>
                         </td>
                       </tr> 
@@ -214,7 +213,7 @@ export default function Packages() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mt-32"
+              className="mt-20"
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
@@ -231,12 +230,12 @@ export default function Packages() {
                     className="relative group"
                     whileHover={{ scale: 1.05, y: -10 }}
                   >
-                    <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 text-center">
-                      <div className={`w-16 h-16 bg-gradient-to-br ${trust.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
-                        <trust.icon className="w-8 h-8 text-white" />
+                    <div className="bg-white rounded-3xl p-6 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 text-center">
+                      <div className={`w-10 h-10 bg-gradient-to-br ${trust.color} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
+                        <trust.icon className="w-5 h-5 text-white" />
                       </div>
-                      <h4 className="text-xl font-bold text-gray-800 mb-3">{trust.title}</h4>
-                      <p className="text-gray-600 leading-relaxed">{trust.desc}</p>
+                      <h4 className="text-lg font-bold text-gray-800 mb-2">{trust.title}</h4>
+                      <p className="text-gray-600 leading-relaxed text-base lg:text-lg">{trust.desc}</p>
                     </div>
                     <motion.div
                       className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-400/10 to-green-400/10 opacity-0 group-hover:opacity-100 transition-opacity"
