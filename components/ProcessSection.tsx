@@ -196,7 +196,7 @@ export function ProcessSection() {
               {tTimeline('title')}
             </h3>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              From booking to adventure - here&apos;s your complete journey timeline
+              {tTimeline('subtitle')}
             </p>
           </div>
 
@@ -244,7 +244,7 @@ export function ProcessSection() {
                   {step.label}
                 </h4>
                 <p className="text-gray-400 text-sm lg:text-base leading-relaxed">
-                  {step.description}
+                  {tTimeline(`step${index + 1}.description`)}
                 </p>
               </motion.div>
             ))}

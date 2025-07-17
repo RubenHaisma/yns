@@ -78,11 +78,16 @@
     }
   },
   "timeline": {
-    "title": "Your journey timeline",
+    "title": "Your Journey Timeline",
+    "subtitle": "From booking to adventure - here's your complete journey timeline",
     "booking": "Booking",
-    "daysLater": "Days later",
+    "daysLater": "7 Days Later",
     "reveal": "Reveal",
-    "departure": "Departure"
+    "departure": "Departure",
+    "step1": { "description": "Choose your package and book your mystery adventure" },
+    "step2": { "description": "Receive hints and clues about your destination" },
+    "step3": { "description": "The big reveal - discover where you're going!" },
+    "step4": { "description": "Pack your bags and start your adventure" }
   },
   "booking": {
     "title": "Book your mystery stadium trip",

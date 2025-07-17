@@ -78,11 +78,16 @@
     }
   },
   "timeline": {
-    "title": "Je reis tijdlijn",
+    "title": "Jouw Reis Tijdlijn",
+    "subtitle": "Van boeken tot avontuur - hier is jouw complete reis tijdlijn",
     "booking": "Boeking",
-    "daysLater": "Dagen later",
+    "daysLater": "7 Dagen Later",
     "reveal": "Onthulling",
-    "departure": "Vertrek"
+    "departure": "Vertrek",
+    "step1": { "description": "Kies je pakket en boek je mysterieuze avontuur" },
+    "step2": { "description": "Ontvang hints en aanwijzingen over je bestemming" },
+    "step3": { "description": "De grote onthulling - ontdek waar je naartoe gaat!" },
+    "step4": { "description": "Pak je koffers en begin aan je avontuur" }
   },
   "booking": {
     "title": "Boek je mystery stadium trip",
