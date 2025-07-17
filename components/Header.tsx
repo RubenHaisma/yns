@@ -228,10 +228,7 @@ export function Header({ onBookingClick }: HeaderProps) {
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
               <div className="px-2 py-6 space-y-2 flex flex-col">
-                {/* Logo in mobile menu */}
-                <a href={`/${locale}`} className="flex items-center space-x-2 mb-2">
-                  <span className="font-bold text-base text-green-800">YourNextStadium</span>
-                </a>
+                {/* Logo in mobile menu removed as per request */}
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.key}
