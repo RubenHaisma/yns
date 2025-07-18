@@ -2,205 +2,251 @@
 
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Check, Star, Plane, Hotel, Ticket, Crown, Shield, Clock } from 'lucide-react';
+import { Check, Star, Plane, Hotel, Ticket, Crown, Shield, Clock, Sparkles, Trophy, Zap } from 'lucide-react';
 import { useState } from 'react';
 import { BookingModal } from '@/components/BookingModal';
 import { useTranslations } from 'next-intl';
 import { PackageSection } from '@/components/PackageSection';
+import { motion } from 'framer-motion';
 
 export default function Packages() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const t = useTranslations();
 
-  // Get features arrays directly from the translation files
-  const basicFeatures = t.raw('packages.basic.features');
-  const comfortFeatures = t.raw('packages.comfort.features');
-  const premiumFeatures = t.raw('packages.premium.features');
-
-  const packages = [
-    {
-      id: 'basic',
-      name: t('packages.basic.name'),
-      subtitle: t('packages.basic.subtitle'),
-      price: t('packages.basic.price'),
-      originalPrice: t('packages.basic.originalPrice'),
-      category: t('packages.basic.category'),
-      icon: Ticket,
-      color: "border-green-200 bg-green-50",
-      features: basicFeatures,
-      popular: false,
-      savings: t('packages.basic.savings')
-    },
-    {
-      id: 'comfort',
-      name: t('packages.comfort.name'),
-      subtitle: t('packages.comfort.subtitle'),
-      price: t('packages.comfort.price'),
-      originalPrice: t('packages.comfort.originalPrice'),
-      category: t('packages.comfort.category'),
-      icon: Plane,
-      color: "border-orange-200 bg-orange-50",
-      features: comfortFeatures,
-      popular: true,
-      savings: t('packages.comfort.savings')
-    },
-    {
-      id: 'premium',
-      name: t('packages.premium.name'),
-      subtitle: t('packages.premium.subtitle'),
-      price: t('packages.premium.price'),
-      originalPrice: t('packages.premium.originalPrice'),
-      category: t('packages.premium.category'),
-      icon: Crown,
-      color: "border-green-200 bg-green-50",
-      features: premiumFeatures,
-      popular: false,
-      savings: t('packages.premium.savings')
-    }
-  ];
-
-  const addOns = [
-    {
-      name: "Extra Nacht",
-      price: "€89",
-      description: "Verleng je verblijf met een extra nacht"
-    },
-    {
-      name: "Upgrade naar Business Class",
-      price: "€199",
-      description: "Vlieg in stijl naar je bestemming"
-    },
-    {
-      name: "Fotoshoot Package",
-      price: "€149",
-      description: "Professionele foto's van je stadium ervaring"
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       <Header onBookingClick={() => setIsBookingModalOpen(true)} />
-      
-      <main className="pt-16">
+      <main>
         {/* Hero Section */}
-        <section className="py-20 lg:py-24 bg-green-800 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold mb-8">
-              Jouw Mystery Voetbalreis, Jouw Stijl
-            </h1>
-            <p className="text-xl lg:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
-              Van verrassingswedstrijd tot luxe voetbalweekend – kies het avontuur dat bij jou past en laat je verrassen door Europa’s mooiste stadions.
-            </p>
+        <section className="relative py-32 pt-20 bg-gradient-to-br from-green-800 via-green-900 to-green-800 text-white overflow-hidden">
+          {/* Animated Background */}
+          <div className="absolute inset-0">
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute rounded-full bg-white/5"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${Math.random() * 80 + 40}px`,
+                  height: `${Math.random() * 80 + 40}px`,
+                }}
+                animate={{
+                  y: [0, -50, 0],
+                  opacity: [0.1, 0.4, 0.1],
+                  scale: [1, 1.3, 1],
+                  rotate: [0, 180, 360],
+                }}
+                transition={{
+                  duration: 8 + Math.random() * 4,
+                  repeat: Infinity,
+                  delay: Math.random() * 3,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Geometric Patterns */}
+          <div className="absolute inset-0 overflow-hidden">
+            <motion.div
+              className="absolute top-20 left-20 w-96 h-96 border border-white/10 rounded-full"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+            />
+            <motion.div
+              className="absolute bottom-20 right-20 w-64 h-64 border border-orange-400/20 rotate-45"
+              animate={{ rotate: 405 }}
+              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+
+              <h1 className="text-4xl lg:text-6xl font-black mb-6 leading-tight mt-16">
+                <span className="block">{t('packages.heroLine1')}</span>
+                <span className="block bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
+                  {t('packages.heroLine2')}
+                </span>
+                <span className="block text-3xl lg:text-5xl">{t('packages.heroLine3')}</span>
+              </h1>
+              
+              <p className="text-base lg:text-lg text-green-100 max-w-2xl mx-auto leading-relaxed">
+                {t('packages.heroSubtitle')}
+              </p>
+            </motion.div>
           </div>
         </section>
 
         {/* Packages Section */}
-        <section className="py-20 lg:py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 bg-gradient-to-br from-white via-gray-50 to-white">
+          <div className="max-w-3xl mx-auto px-2 sm:px-4 lg:px-6">
             <PackageSection onBookingClick={() => setIsBookingModalOpen(true)} />
 
-            {/* Add-ons Section */}
-            {/* <div className="bg-gray-50 rounded-lg border border-gray-200 p-8 lg:p-12 mb-20">
-              <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-8 text-center">
-                {t('packages.extrasTitle')}
-              </h3>
-              <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-                {addOns.map((addon, index) => (
-                  <div key={index} className="bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
-                    <div className="flex justify-between items-start mb-3">
-                      <h4 className="font-semibold text-gray-900">{addon.name}</h4>
-                      <span className="text-orange-600 font-semibold">{addon.price}</span>
-                    </div>
-                    <p className="text-gray-600 text-base leading-relaxed">{addon.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div> */}
-
             {/* Comparison Table */}
-            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
-              <div className="bg-green-800 p-6 lg:p-8">
-                <h3 className="text-2xl lg:text-3xl font-semibold text-white text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className="mt-20"
+            >
+              <div className="text-center mb-16">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2, type: "spring", bounce: 0.4 }}
+                  viewport={{ once: true }}
+                  className="inline-flex items-center space-x-3 bg-gradient-to-r from-green-500/10 to-orange-500/10 rounded-full px-8 py-4 border border-green-200/50 mb-12"
+                >
+                  <Shield className="w-6 h-6 text-green-500" />
+                  <span className="text-green-600 font-bold">{t('packages.comparisonLabel')}</span>
+                  <Zap className="w-6 h-6 text-orange-500" />
+                </motion.div>
+
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 mb-4">
                   {t('packages.comparisonTitle')}
                 </h3>
               </div>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-gray-200">
-                      <th className="text-left p-6 font-semibold text-gray-900">{t('packages.feature')}</th>
-                      <th className="text-center p-6 font-semibold text-green-600">{t('packages.basic.name')}</th>
-                      <th className="text-center p-6 font-semibold text-orange-600">{t('packages.comfort.name')}</th>
-                      <th className="text-center p-6 font-semibold text-purple-600">{t('packages.premium.name')}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-gray-100">
-                      <td className="p-6 text-gray-700">{t('packages.matchTicket')}</td>
-                      <td className="p-6 text-center">{t('packages.basic.category')}</td>
-                      <td className="p-6 text-center">{t('packages.comfort.category')}</td>
-                      <td className="p-6 text-center">VIP</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="p-6 text-gray-700">{t('packages.transport')}</td>
-                      <td className="p-6 text-center">-</td>
-                      <td className="p-6 text-center">✓</td>
-                      <td className="p-6 text-center">✓ {t('packages.premium.name')}</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="p-6 text-gray-700">{t('packages.accommodation')}</td>
-                      <td className="p-6 text-center">-</td>
-                      <td className="p-6 text-center">-</td>
-                      <td className="p-6 text-center">✓ {t('packages.nights')}</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="p-6 text-gray-700">{t('packages.meals')}</td>
-                      <td className="p-6 text-center">-</td>
-                      <td className="p-6 text-center">-</td>
-                      <td className="p-6 text-center">✓ {t('packages.breakfastDinner')}</td>
-                    </tr>
-                    <tr>
-                      <td className="p-6 text-gray-700">{t('packages.support')}</td>
-                      <td className="p-6 text-center">✓</td>
-                      <td className="p-6 text-center">✓</td>
-                      <td className="p-6 text-center">✓ {t('packages.premium.name')}</td>
-                    </tr> 
-                  </tbody>
-                </table>
+
+              <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-2xl">
+                <div className="bg-gradient-to-r from-green-800 to-green-900 p-6">
+                  <h3 className="text-xl sm:text-2xl font-black text-white text-center">
+                    {t('packages.comparisonHeader')}
+                  </h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-gray-200 bg-gray-50">
+                        <th className="text-left p-4 font-bold text-gray-900 text-base lg:text-lg">{t('packages.feature')}</th>
+                        <th className="text-center p-4 font-bold text-green-600 text-base lg:text-lg">{t('packages.basic.name')}</th>
+                        <th className="text-center p-4 font-bold text-orange-600 text-base lg:text-lg">{t('packages.comfort.name')}</th>
+                        <th className="text-center p-4 font-bold text-purple-600 text-base lg:text-lg">{t('packages.premium.name')}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        <td className="p-4 text-gray-700 font-medium text-base lg:text-lg">{t('packages.matchTicket')}</td>
+                        <td className="p-4 text-center font-semibold text-green-600 text-base lg:text-lg">{t('packages.basic.category')}</td>
+                        <td className="p-4 text-center font-semibold text-orange-600 text-base lg:text-lg">{t('packages.comfort.category')}</td>
+                        <td className="p-4 text-center font-semibold text-purple-600 text-base lg:text-lg">VIP</td>
+                      </tr>
+                      <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        <td className="p-4 text-gray-700 font-medium text-base lg:text-lg">{t('packages.transport')}</td>
+                        <td className="p-4 text-center text-gray-400 text-base lg:text-lg">-</td>
+                        <td className="p-4 text-center">
+                          <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mx-auto">
+                            <Check className="w-4 h-4 text-white" />
+                          </div>
+                        </td>
+                        <td className="p-4 text-center">
+                          <div className="flex items-center justify-center space-x-2">
+                            <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                              <Check className="w-4 h-4 text-white" />
+                            </div>
+                            <span className="text-purple-600 font-semibold text-base lg:text-lg">{t('packages.premium.name')}</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        <td className="p-4 text-gray-700 font-medium text-base lg:text-lg">{t('packages.accommodation')}</td>
+                        <td className="p-4 text-center text-gray-400 text-base lg:text-lg">-</td>
+                        <td className="p-4 text-center text-gray-400 text-base lg:text-lg">-</td>
+                        <td className="p-4 text-center">
+                          <div className="flex items-center justify-center space-x-2">
+                            <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                              <Check className="w-4 h-4 text-white" />
+                            </div>
+                            <span className="text-purple-600 font-semibold text-base lg:text-lg">{t('packages.nights')}</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        <td className="p-4 text-gray-700 font-medium text-base lg:text-lg">{t('packages.meals')}</td>
+                        <td className="p-4 text-center text-gray-400 text-base lg:text-lg">-</td>
+                        <td className="p-4 text-center text-gray-400 text-base lg:text-lg">-</td>
+                        <td className="p-4 text-center">
+                          <div className="flex items-center justify-center space-x-2">
+                            <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                              <Check className="w-4 h-4 text-white" />
+                            </div>
+                            <span className="text-purple-600 font-semibold text-base lg:text-lg">{t('packages.breakfastDinner')}</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr className="hover:bg-gray-50 transition-colors">
+                        <td className="p-4 text-gray-700 font-medium text-base lg:text-lg">{t('packages.support')}</td>
+                        <td className="p-4 text-center">
+                          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mx-auto">
+                            <Check className="w-4 h-4 text-white" />
+                          </div>
+                        </td>
+                        <td className="p-4 text-center">
+                          <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mx-auto">
+                            <Check className="w-4 h-4 text-white" />
+                          </div>
+                        </td>
+                        <td className="p-4 text-center">
+                          <div className="flex items-center justify-center space-x-2">
+                            <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                              <Check className="w-4 h-4 text-white" />
+                            </div>
+                            <span className="text-purple-600 font-semibold text-base lg:text-lg">{t('packages.premium.name')}</span>
+                          </div>
+                        </td>
+                      </tr> 
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
+            </motion.div>
+
+            {/* Trust Indicators */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="mt-20"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  { icon: Shield, title: t('packages.moneyBackGuarantee'), desc: t('packages.moneyBackDesc'), color: 'from-green-500 to-green-600' },
+                  { icon: Clock, title: t('packages.freeRebooking'), desc: t('packages.freeRebookingDesc'), color: 'from-orange-500 to-orange-600' },
+                  { icon: Star, title: t('packages.rating'), desc: t('packages.ratingDesc'), color: 'from-purple-500 to-purple-600' }
+                ].map((trust, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="relative group"
+                    whileHover={{ scale: 1.05, y: -10 }}
+                  >
+                    <div className="bg-white rounded-3xl p-6 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 text-center">
+                      <div className={`w-10 h-10 bg-gradient-to-br ${trust.color} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
+                        <trust.icon className="w-5 h-5 text-white" />
+                      </div>
+                      <h4 className="text-lg font-bold text-gray-800 mb-2">{trust.title}</h4>
+                      <p className="text-gray-600 leading-relaxed text-base lg:text-lg">{trust.desc}</p>
+                    </div>
+                    <motion.div
+                      className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-400/10 to-green-400/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                      initial={false}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </section>
-
-        {/* Trust Section
-        <section className="py-20 lg:py-24 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-3 gap-8 lg:gap-12 text-center">
-              <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mb-6">
-                  <Shield className="w-8 h-8 text-gray-700" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{t('packages.moneyBackGuarantee')}</h3>
-                <p className="text-gray-600 leading-relaxed">{t('packages.moneyBackDesc')}</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mb-6">
-                  <Clock className="w-8 h-8 text-gray-700" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{t('packages.freeRebooking')}</h3>
-                <p className="text-gray-600 leading-relaxed">{t('packages.freeRebookingDesc')}</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-white rounded-lg border border-gray-200 flex items-center justify-center mb-6">
-                  <Star className="w-8 h-8 text-gray-700" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{t('packages.rating')}</h3>
-                <p className="text-gray-600 leading-relaxed">{t('packages.ratingDesc')}</p>
-              </div>
-            </div>
-          </div>
-        </section> */}
       </main>
 
       <Footer onBookingClick={() => setIsBookingModalOpen(true)} />

@@ -12,38 +12,82 @@
     "emergency": "24/7: info@yournextstadium.nl"
   },
   "hero": {
-    "title": "Waar ga jij naartoe?",
-    "subtitle": "Misschien wel naar",
-    "mystery": "Het blijft een verrassing.",
-    "description": "Ervaar de spanning van Europese topvoetbal. Van Premier League tot Champions League - ontdek je volgende stadium.",
-    "findStadium": "Ontdek je stadium",
-    "moreInfo": "Meer informatie",
-    "guarantee1": "Mystery garantie",
-    "guarantee2": "Veilig boeken & betalen",
-    "guarantee3": "Premium stadions"
+    "headline1": "Mysterie",
+    "headline2": "Voetbal",
+    "headline3": "Avonturen",
+    "subtitle": "Ontdek Europa's meest iconische stadions met onze exclusieve mystery travel ervaringen.",
+    "subtitleHighlight": "Waar brengt jouw volgende avontuur je naartoe?",
+    "ctaStart": "Begin je reis",
+    "ctaWatch": "Bekijk verhaal",
+    "stats": [
+      { "value": "50+", "label": "Stadions" },
+      { "value": "500+", "label": "Reizigers" },
+      { "value": "24/7", "label": "Support" }
+    ],
+    "destinations": [
+      {
+        "city": "Barcelona",
+        "stadium": "Camp Nou",
+        "league": "La Liga",
+        "description": "Ervaar de magie van Catalonië",
+        "image": "https://images.unsplash.com/photo-1629217855633-79a6925d6c47"
+      },
+      {
+        "city": "Londen",
+        "stadium": "Wembley",
+        "league": "Premier League",
+        "description": "Het thuis van het voetbal wacht",
+        "image": "https://images.unsplash.com/photo-1665413813191-3143ec934960?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "city": "München",
+        "stadium": "Allianz Arena",
+        "league": "Bundesliga",
+        "description": "Beierse voetbalexcellentie",
+        "image": "https://images.unsplash.com/photo-1675474463858-54ea69949dfe?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+        "city": "Milaan",
+        "stadium": "San Siro",
+        "league": "Serie A",
+        "description": "Italiaanse passie en stijl",
+        "image": "https://images.unsplash.com/photo-1693517343607-e7dced201648?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      }
+    ],
+    "mysteryDestination": "Mystery Bestemming",
+    "scrollIndicator": "Ontdek meer",
+    "videoComingSoon": "Video binnenkort beschikbaar..."
   },
   "process": {
     "title": "Het mysterie onthuld",
     "subtitle": "Van boeking tot beleving - zo werkt jouw volgende stadium avontuur",
     "step1": {
       "title": "Boek je avontuur",
-      "description": "Kies je datum en pakket. Betaal veilig online en begin met dromen over je volgende stadium."
+      "description": "Kies je datum en pakket. Betaal veilig online en begin met dromen over je volgende stadium.",
+      "details": "Vul je gegevens in en kies je voorkeursdata."
     },
     "step2": {
       "title": "Wacht vol spanning",
-      "description": "Ontvang hints en updates. De spanning stijgt terwijl je bestemming geheim blijft."
+      "description": "Ontvang hints en updates. De spanning stijgt terwijl je bestemming geheim blijft.",
+      "details": "Wij regelen je mysterieuze voetbalreis en sturen je alle details."
     },
     "step3": {
       "title": "Ontdek je bestemming",
-      "description": "Minimaal 3-4 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!"
+      "description": "Minimaal 3-4 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!",
+      "details": "Geniet van je avontuur en deel je ervaring met ons!"
     }
   },
   "timeline": {
-    "title": "Je reis tijdlijn",
+    "title": "Jouw Reis Tijdlijn",
+    "subtitle": "Van boeken tot avontuur - hier is jouw complete reis tijdlijn",
     "booking": "Boeking",
-    "daysLater": "Dagen later",
+    "daysLater": "7 Dagen Later",
     "reveal": "Onthulling",
-    "departure": "Vertrek"
+    "departure": "Vertrek",
+    "step1": { "description": "Kies je pakket en boek je mysterieuze avontuur" },
+    "step2": { "description": "Ontvang hints en aanwijzingen over je bestemming" },
+    "step3": { "description": "De grote onthulling - ontdek waar je naartoe gaat!" },
+    "step4": { "description": "Pak je koffers en begin aan je avontuur" }
   },
   "booking": {
     "title": "Boek je mystery stadium trip",
@@ -131,8 +175,16 @@
         "Ontbijt inclusief",
         "Mystery bestemming onthulling",
         "24/7 premium support"
-      ]
-    }
+      ],
+      "badge": "Premium"
+    },
+    "heroLine1": "Jouw Mystery",
+    "heroLine2": "Voetbalreis",
+    "heroLine3": "Jouw Stijl",
+    "heroSubtitle": "Van verrassingswedstrijd tot luxe voetbalweekend – kies het avontuur dat bij jou past en laat je verrassen door Europa's mooiste stadions.",
+    "comparisonLabel": "Pakket Vergelijking",
+    "comparisonHeader": "Pakket Features Vergelijking",
+    "perPerson": "per persoon"
   },
   "waitlistSection": {
     "title": "Sluit je aan bij de waitlist",
@@ -142,16 +194,40 @@
     "email": "Email adres",
     "emailPlaceholder": "your@email.com",
     "termsText": "Door je aan te melden ga je akkoord met onze voorwaarden en privacybeleid. Je kunt je altijd uitschrijven.",
-    "stats": {
-      "waiting": "Mensen wachten",
-      "stadiums": "Stadions klaar", 
-      "countries": "Landen beschikbaar"
-    },
     "discount": {
       "title": "10% KORTING",
       "subtitle": "Exclusieve Waitlist Korting",
       "description": "Sluit je aan bij de waitlist en krijg 10% korting op je eerste boeking wanneer we live gaan."
-    }
+    },
+    "beFirst": "Sta als eerste in de rij!",
+    "unlockMystery": "Ontgrendel het mysterie",
+    "waitlistDesc": "Meld je aan voor de wachtlijst voor exclusieve vroege toegang, voordelen en verrassingen!",
+    "stats": [
+      { "label": "Mensen wachten" },
+      { "label": "VIP plekken" },
+      { "label": "Cadeaus" }
+    ],
+    "formTitle": "Doe mee met de wachtlijst",
+    "formDesc": "Vul je e-mailadres in om je plek te reserveren en als eerste toegang te krijgen.",
+    "joinButton": "Doe mee",
+    "joining": "Bezig met aanmelden...",
+    "noSpam": "Geen spam, ooit. Uitschrijven kan altijd.",
+    "alreadyWaiting": "Al {total} mensen wachten!",
+    "errorAlready": "Je staat al op de wachtlijst!",
+    "errorGeneric": "Er is iets misgegaan. Probeer het opnieuw.",
+    "successTitle": "Je staat op de wachtlijst!",
+    "successElite": "Welkom bij de elite!",
+    "successDesc": "Je plek is gereserveerd. We houden je op de hoogte met updates en verrassingen.",
+    "vipPosition": "Jouw VIP positie",
+    "outOf": "Van de {total} totaal",
+    "benefits": [
+      { "icon": "Zap", "title": "Vroege toegang", "desc": "Krijg toegang voordat de rest dat kan en ontgrendel exclusieve functies." },
+      { "icon": "Gift", "title": "Speciale cadeaus", "desc": "Ontvang unieke beloningen en verrassingen als dank." },
+      { "icon": "Star", "title": "VIP-status", "desc": "Geniet van premium status en erkenning in onze community." }
+    ],
+    "vipCodeTitle": "Jouw VIP-kortingscode",
+    "vipCodeDesc": "Gebruik deze code voor een exclusieve korting bij de lancering!",
+    "shareWithFriends": "Deel met vrienden"
   },
   "trust": {
     "moneyBack": "100% geld terug",
@@ -192,7 +268,16 @@
     "serieA": "Serie A",
     "championsLeague": "Champions League",
     "europaLeague": "Europa League",
-    "certified": "Vertrouwd boeken"
+    "certified": "Vertrouwd boeken",
+    "brandShort": "YNS",
+    "brandFull": "YourNextStadium",
+    "brandTagline": "Mystery Football Adventures",
+    "statStadiums": "50+ Stadions",
+    "statCountries": "5+ Landen",
+    "statFans": "500+ Fans",
+    "email": "Email",
+    "certifiedDesc": "Gecertificeerde reispartner met 24/7 support",
+    "madeIn": "Gemaakt in Nederland"
   },
   "modal": {
     "bookTrip": "Boek je mystery trip",
@@ -268,7 +353,7 @@
     "benefits": {
       "earlyAccess": "Vroege toegang",
       "earlyAccessDesc": "Als eerste boeken wanneer we live gaan",
-      "discounts": "Exclusieve kortingen", 
+      "discounts": "Exclusieve kortingen",
       "discountsDesc": "Speciale prijzen voor waitlist leden",
       "updates": "Insider updates",
       "updatesDesc": "Eerste updates over nieuwe bestemmingen"
@@ -279,7 +364,32 @@
       "description": "Als waitlist lid krijg je een speciale 10% korting op je eerste boeking wanneer we live gaan.",
       "codeLabel": "Gebruik code:",
       "code": "WAITLIST10"
-    }
+    },
+    "successTitle": "Welkom bij de",
+    "successElite": "Elite Circle! 🎉",
+    "successDesc": "Je bent nu onderdeel van een exclusieve community van voetbalavonturiers die klaar zijn om Europa's meest iconische stadions te ontdekken!",
+    "vipPosition": "JOUW VIP POSITIE",
+    "outOf": "Uit {total} voetbalfans die wachten op hun volgende avontuur",
+    "vipCodeTitle": "Jouw Exclusieve VIP Code",
+    "vipCodeDesc": "Bewaar dit gouden ticket! Gebruik het zodra de boekingen openen voor een exclusieve 10% korting op jouw mystery voetbalavontuur.",
+    "shareWithFriends": "Deel met vrienden",
+    "beFirst": "Wees de eerste die",
+    "unlockMystery": "Mysterie Ontgrendelt",
+    "waitlistDesc": "Sluit je aan bij onze exclusieve wachtlijst en krijg VIP-toegang tot Europa's spannendste voetbalavonturen. Beperkte plekken beschikbaar!",
+    "stats": [
+      { "label": "VIP Leden" },
+      { "label": "Elite Stadions" },
+      { "label": "Exclusieve Korting" }
+    ],
+    "formTitle": "Krijg Exclusieve VIP Toegang",
+    "formDesc": "Wees een van de eersten die jouw mystery voetbalavontuur kan boeken en geniet van exclusieve voordelen",
+    "emailPlaceholder": "Vul je e-mailadres in",
+    "joinButton": "Word VIP op de wachtlijst",
+    "joining": "Toevoegen aan de Elite Circle...",
+    "noSpam": "Geen spam, alleen exclusieve updates over jouw volgende voetbalavontuur.",
+    "alreadyWaiting": "Sluit je aan bij {total}+ voetbalfans die al wachten!",
+    "errorAlready": "Je staat al op de wachtlijst!",
+    "errorGeneric": "Er is iets misgegaan. Probeer het opnieuw."
   },
   "contact": {
     "title": "Contact",
@@ -350,6 +460,60 @@
     "joinCommunity": "Word onderdeel van onze community en ontdek jouw volgende stadium",
     "startAdventure": "Start je avontuur"
   },
+  "testimonials": [
+    {
+      "name": "Marco van der Berg",
+      "location": "Amsterdam",
+      "trip": "Barcelona Mystery Trip",
+      "rating": 5,
+      "quote": "Ongelofelijk! Ik dacht dat ik naar Duitsland zou gaan, maar eindigde in het Camp Nou. De beste voetbalervaring van mijn leven!",
+      "image": "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    },
+    {
+      "name": "Lisa Janssen",
+      "location": "Utrecht",
+      "trip": "Premier League Mystery",
+      "rating": 5,
+      "quote": "Samen met mijn vriendin een mystery trip geboekt. We zijn in Liverpool terechtgekomen - wat een sfeer! Anfield was magisch.",
+      "image": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    },
+    {
+      "name": "Tom Verschuren",
+      "location": "Rotterdam",
+      "trip": "Bundesliga Adventure",
+      "rating": 5,
+      "quote": "München was onze mysterie bestemming. Bayern tegen Dortmund in de Allianz Arena - beter wordt het niet! Top georganiseerd.",
+      "image": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    }
+  ],
+  "instagramPosts": [
+    {
+      "image": "https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Eindelijk onthuld! Madrid was onze bestemming 🇪🇸⚽ #YourNextStadium #MysteryTrip",
+      "likes": 127
+    },
+    {
+      "image": "https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Van Amsterdam naar Barcelona in één dag ✈️ #VoetbalReizen #Mystery",
+      "likes": 89
+    },
+    {
+      "image": "https://images.pexels.com/photos/2916450/pexels-photo-2916450.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Deze sfeer... kippenvel! 🔥 #StadiumLife #FootballFan",
+      "likes": 156
+    },
+    {
+      "image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Bundesliga hier we come! 🇩🇪 #MysteryRevealed #Football",
+      "likes": 94
+    }
+  ],
+  "notifications": [
+    { "name": "Jan", "city": "Amsterdam", "package": "Premium trip", "time": "2 minuten geleden" },
+    { "name": "Lisa", "city": "Utrecht", "package": "Comfort trip", "time": "5 minuten geleden" },
+    { "name": "Marco", "city": "Rotterdam", "package": "Premium trip", "time": "8 minuten geleden" },
+    { "name": "Sarah", "city": "Den Haag", "package": "Comfort trip", "time": "12 minuten geleden" }
+  ],
   "howItWorks": {
     "title": "Hoe het werkt",
     "subtitle": "Van boeking tot beleving - ontdek hoe jouw mystery stadium avontuur tot leven komt",
@@ -391,19 +555,19 @@
     "faqQuestions": [
       {
         "question": "Wat als ik niet kan op de geboekte datum?",
-        "answer": "Je kunt tot 14 dagen voor vertrek gratis omboeken naar een andere datum, afhankelijk van beschikbaarheid."
+        "answer": "Boekingen zijn definitief en kunnen niet worden gewijzigd of geannuleerd."
       },
       {
         "question": "Kan ik mijn bestemming weigeren?",
-        "answer": "Ja! Als je echt niet naar de onthulde bestemming wilt, krijg je 100% van je geld terug of kun je omboeken naar een andere datum."
+        "answer": "Het is niet mogelijk om een onthulde bestemming te weigeren. Boekingen zijn definitief."
       },
       {
         "question": "Hoe weet ik zeker dat ik niet naar een team ga dat ik haat?",
-        "answer": "In je boekingsformulier kun je teams opgeven die je absoluut niet wilt zien. Wij houden hier rekening mee bij het selecteren van je bestemming."
+        "answer": "We proberen rekening te houden met je voorkeuren, maar boekingen zijn definitief en er is geen garantie."
       },
       {
         "question": "Wat als de wedstrijd wordt afgelast?",
-        "answer": "We hebben altijd een backup plan. Je krijgt tickets voor een andere wedstrijd of een volledige terugbetaling."
+        "answer": "Indien een wedstrijd wordt afgelast, nemen wij contact met je op over de vervolgstappen."
       }
     ]
   },
@@ -428,96 +592,101 @@
         "id": 1,
         "category": "booking",
         "question": "Hoe werkt het boeken van een mystery trip?",
-        "answer": "Het boeken is heel eenvoudig! Kies je pakket, selecteer je datum, vul je voorkeuren in en betaal veilig online. Je ontvangt direct een bevestiging en minimaal 3-4 weken voor vertrek onthullen we je bestemming."
+        "answer": "Het boeken is eenvoudig: kies je pakket, selecteer je datum, vul je gegevens in en betaal online. Je ontvangt een bevestiging per e-mail."
       },
       {
         "id": 2,
         "category": "booking",
         "question": "Kan ik mijn boeking annuleren?",
-        "answer": "Ja, je kunt tot 14 dagen voor vertrek gratis annuleren en krijg je 100% van je geld terug. Binnen 14 dagen gelden onze annuleringsvoorwaarden."
+        "answer": "Boekingen zijn definitief en kunnen niet worden geannuleerd of gewijzigd."
       },
       {
         "id": 3,
         "category": "travel",
         "question": "Wat als ik niet naar de onthulde bestemming wil?",
-        "answer": "Geen probleem! Als je echt niet naar de onthulde bestemming wilt, krijg je 100% van je geld terug of kun je omboeken naar een andere datum."
+        "answer": "Het is niet mogelijk om een onthulde bestemming te weigeren. Boekingen zijn definitief."
       },
       {
         "id": 4,
         "category": "travel",
         "question": "Welke bestemmingen zijn mogelijk?",
-        "answer": "We organiseren trips naar meer dan 50 stadions in 5+ Europese landen. Denk aan Premier League, La Liga, Bundesliga, Serie A, Ligue 1 en meer!"
+        "answer": "We organiseren trips naar verschillende stadions in Europa."
       },
       {
         "id": 5,
         "category": "booking",
         "question": "Hoe weet ik zeker dat ik niet naar een team ga dat ik haat?",
-        "answer": "In je boekingsformulier kun je teams opgeven die je absoluut niet wilt zien. Wij houden hier 100% rekening mee bij het selecteren van je bestemming."
+        "answer": "We proberen rekening te houden met je voorkeuren, maar er is geen garantie."
       },
       {
         "id": 6,
         "category": "travel",
         "question": "Wat gebeurt er als de wedstrijd wordt afgelast?",
-        "answer": "We hebben altijd een backup plan. Je krijgt tickets voor een andere wedstrijd in dezelfde stad of een volledige terugbetaling als dat niet mogelijk is."
+        "answer": "Indien een wedstrijd wordt afgelast, nemen wij contact met je op over de vervolgstappen."
       },
       {
         "id": 7,
         "category": "safety",
         "question": "Is mijn geld veilig bij jullie?",
-        "answer": "Absoluut! YourNextStadium behandelt je boeking en betalingen met de grootste zorg en veiligheid. Niet tevreden? Je krijgt je geld terug."
+        "answer": "Je betaling wordt veilig verwerkt."
       },
       {
         "id": 8,
         "category": "support",
         "question": "Kan ik jullie bereiken tijdens mijn reis?",
-        "answer": "Ja! We hebben een 24/7 noodlijn (+31 20 987 6543) speciaal voor reizigers onderweg. Je bent nooit alleen!"
+        "answer": "Je kunt contact opnemen via het bekende e-mailadres."
       },
       {
         "id": 9,
         "category": "booking",
         "question": "Kan ik voor meerdere personen boeken?",
-        "answer": "Natuurlijk! Je kunt voor meerdere personen tegelijk boeken. Alle reizigers krijgen dezelfde bestemming."
+        "answer": "Je kunt voor meerdere personen tegelijk boeken."
       },
       {
         "id": 10,
         "category": "travel",
         "question": "Wat is inbegrepen in de pakketten?",
-        "answer": "Dit verschilt per pakket. 'Alleen de Match' bevat alleen tickets, 'Match + Reis' bevat ook transport, en 'Alles Inclusief' bevat ook hotel en maaltijden."
+        "answer": "Dit verschilt per pakket. Zie de pakketpagina voor details."
       },
       {
         "id": 11,
         "category": "booking",
         "question": "Welke betaalmethoden accepteren jullie?",
-        "answer": "We accepteren iDEAL, creditcards (Visa, Mastercard), bankoverschrijving en PayPal. Alle betalingen zijn 100% veilig."
+        "answer": "We accepteren iDEAL, creditcards en bankoverschrijving."
       },
       {
         "id": 12,
         "category": "travel",
         "question": "Kan ik mijn reis verlengen?",
-        "answer": "Ja! Je kunt extra nachten bijboeken of je verblijf verlengen. Neem contact met ons op voor de mogelijkheden."
+        "answer": "Neem contact op voor de mogelijkheden."
       },
       {
         "id": 13,
         "category": "support",
         "question": "Hoe krijg ik updates over mijn reis?",
-        "answer": "Je ontvangt regelmatig updates via email en hebt toegang tot je persoonlijke dashboard waar je alle informatie kunt vinden."
+        "answer": "Je ontvangt updates per e-mail indien van toepassing."
       },
       {
         "id": 14,
         "category": "safety",
         "question": "Wat als ik ziek word voor mijn reis?",
-        "answer": "We raden een reisverzekering aan. Bij ziekte kun je vaak gratis omboeken of krijg je je geld terug via je verzekering."
+        "answer": "We raden een reisverzekering aan."
       },
       {
         "id": 15,
         "category": "travel",
         "question": "Zijn de hotels van goede kwaliteit?",
-        "answer": "We selecteren onze hotelpartners zorgvuldig zodat je een comfortabel en prettig verblijf hebt tijdens je reis."
+        "answer": "De kwaliteit van hotels kan verschillen per bestemming en pakket."
       }
     ]
   },
+  "faqPage": {
+    "sectionLabel": "FAQ",
+    "browseCategories": "Blader door categorieën",
+    "findYourAnswer": "Vind je antwoord"
+  },
   "privacy": {
-    "title": "Privacy Policy",  
+    "title": "Privacy Policy",
     "subtitle": "YourNextStadium B.V. - Uitgebreide Gegevensbescherming & Privacy",
     "lastUpdated": "Laatst bijgewerkt: Juli 2025",
     "version": "Versie 2.1",
@@ -528,7 +697,7 @@
       "applies": "Dit beleid is van toepassing op alle gebruikers van onze Dienst, inclusief bezoekers, klanten en zakelijke partners. Door gebruik te maken van onze Dienst erkent u dat u dit Privacy Policy heeft gelezen, begrepen en ermee instemt.",
       "important": "Belangrijk: Dit beleid is effectief vanaf Juli 2025. Wij kunnen dit beleid periodiek bijwerken om wijzigingen in onze praktijken of toepasselijke wetten te weerspiegelen. Wij zullen u op de hoogte stellen van materiële wijzigingen via onze Dienst of per e-mail."
     },
-    "definitions": {    
+    "definitions": {
       "title": "2. Definities & Juridisch Kader",
       "keyDefinitions": "Belangrijke Definities",
       "personalData": "Persoonsgegevens:",
@@ -871,5 +1040,20 @@
     "previous": "Vorige",
     "submit": "Versturen",
     "confirm": "Bevestigen"
-  }
+  },
+  "contactPage": {
+    "sectionLabel": "Contactinformatie",
+    "headline": "Meerdere manieren om",
+    "headlineConnect": "Contact te maken",
+    "formSubtitle": "Klaar om je mystery voetbalavontuur te starten? Laten we praten!",
+    "formSuccessTitle": "Bericht verzonden!",
+    "formSuccessDesc": "We nemen binnen 24 uur contact met je op.",
+    "info": [
+      { "description": "Neem contact op voor vragen" },
+      { "description": "24/7 noodondersteuning" },
+      { "title": "Locatie", "details": "Amsterdam, Nederland", "description": "Ons hoofdkantoor" },
+      { "title": "Reactietijd", "details": "Binnen 24 uur", "description": "We reageren snel" }
+    ]
+  },
+  "map": "Kaart"
 }

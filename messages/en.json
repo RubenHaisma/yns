@@ -12,38 +12,82 @@
     "emergency": "24/7: -"
   },
   "hero": {
-    "title": "Where are you going?",
-    "subtitle": "Maybe to",
-    "mystery": "It remains a surprise.",
-    "description": "Experience the excitement of European top football. From Premier League to Champions League - discover your next stadium.",
-    "findStadium": "Find your stadium",
-    "moreInfo": "More information",
-    "guarantee1": "Mystery guarantee",
-    "guarantee2": "Book & pay securely",
-    "guarantee3": "Premium stadiums"
+    "headline1": "Mystery",
+    "headline2": "Football",
+    "headline3": "Adventures",
+    "subtitle": "Discover Europe's most iconic stadiums through our exclusive mystery travel experiences.",
+    "subtitleHighlight": "Where will your next adventure take you?",
+    "ctaStart": "Start Your Journey",
+    "ctaWatch": "Watch Story",
+    "stats": [
+      { "value": "50+", "label": "Stadiums" },
+      { "value": "500+", "label": "Travelers" },
+      { "value": "24/7", "label": "Support" }
+    ],
+    "destinations": [
+      {
+        "city": "Barcelona",
+        "stadium": "Camp Nou",
+        "league": "La Liga",
+        "description": "Experience the magic of Catalonia",
+        "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "city": "London",
+        "stadium": "Wembley",
+        "league": "Premier League",
+        "description": "The home of football awaits",
+        "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "city": "München",
+        "stadium": "Allianz Arena",
+        "league": "Bundesliga",
+        "description": "Bavarian football excellence",
+        "image": "https://images.unsplash.com/photo-1505843279827-4b522b6c1d68?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "city": "Milano",
+        "stadium": "San Siro",
+        "league": "Serie A",
+        "description": "Italian passion and style",
+        "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80"
+      }
+    ],
+    "mysteryDestination": "Mystery Destination",
+    "scrollIndicator": "Explore More",
+    "videoComingSoon": "Video coming soon..."
   },
   "process": {
     "title": "The mystery revealed",
     "subtitle": "From booking to experience - how your next stadium adventure works",
     "step1": {
       "title": "Book your adventure",
-      "description": "Choose your date and package. Pay securely online and start dreaming about your next stadium."
+      "description": "Choose your date and package. Pay securely online and start dreaming about your next stadium.",
+      "details": "Fill in your details and choose your preferred dates."
     },
     "step2": {
       "title": "Wait in suspense",
-      "description": "Receive hints and updates. The excitement builds while your destination remains secret."
+      "description": "Receive hints and updates. The excitement builds while your destination remains secret.",
+      "details": "We arrange your mystery football trip and send you all the details."
     },
     "step3": {
       "title": "Discover your destination",
-      "description": "3-4 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!"
+      "description": "3-4 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!",
+      "details": "Enjoy your adventure and share your experience with us!"
     }
   },
   "timeline": {
-    "title": "Your journey timeline",
+    "title": "Your Journey Timeline",
+    "subtitle": "From booking to adventure - here's your complete journey timeline",
     "booking": "Booking",
-    "daysLater": "Days later",
+    "daysLater": "7 Days Later",
     "reveal": "Reveal",
-    "departure": "Departure"
+    "departure": "Departure",
+    "step1": { "description": "Choose your package and book your mystery adventure" },
+    "step2": { "description": "Receive hints and clues about your destination" },
+    "step3": { "description": "The big reveal - discover where you're going!" },
+    "step4": { "description": "Pack your bags and start your adventure" }
   },
   "booking": {
     "title": "Book your mystery stadium trip",
@@ -131,8 +175,16 @@
         "Breakfast included",
         "Mystery destination reveal",
         "24/7 premium support"
-      ]
-    }
+      ],
+      "badge": "Premium"
+    },
+    "heroLine1": "Your Mystery",
+    "heroLine2": "Football Trip",
+    "heroLine3": "Your Style",
+    "heroSubtitle": "From surprise matches to luxury football weekends – choose the adventure that suits you and be surprised by Europe’s most beautiful stadiums.",
+    "comparisonLabel": "Package Comparison",
+    "comparisonHeader": "Package Features Comparison",
+    "perPerson": "per person"
   },
   "waitlistSection": {
     "title": "Join the waitlist",
@@ -142,16 +194,65 @@
     "email": "Email address",
     "emailPlaceholder": "your@email.com",
     "termsText": "By signing up you agree to our terms and privacy policy. You can always unsubscribe.",
-    "stats": {
-      "waiting": "People waiting",
-      "stadiums": "Stadiums ready",
-      "countries": "Countries available"
-    },
     "discount": {
       "title": "10% OFF",
       "subtitle": "Exclusive Waitlist Discount",
       "description": "Join the waitlist and get 10% off your first booking when we launch."
-    }
+    },
+    "successTitle": "Welcome to the",
+    "successElite": "Elite Circle! 🎉",
+    "successDesc": "You're now part of an exclusive community of football adventurers ready to discover Europe's most iconic stadiums!",
+    "vipPosition": "YOUR VIP POSITION",
+    "outOf": "Out of {total} football fans waiting for their next adventure",
+    "benefits": [
+      {
+        "icon": "Zap",
+        "title": "Lightning Access",
+        "desc": "First to book when we launch"
+      },
+      {
+        "icon": "Gift",
+        "title": "10% VIP Discount",
+        "desc": "Exclusive waitlist member pricing"
+      },
+      {
+        "icon": "Star",
+        "title": "Royal Treatment",
+        "desc": "Priority support & insider updates"
+      }
+    ],
+    "vipCodeTitle": "Your Exclusive VIP Code",
+    "vipCodeDesc": "Save this golden ticket! Use it when booking opens for an exclusive 10% discount on your mystery football adventure.",
+    "shareWithFriends": "Share with Friends",
+    "beFirst": "Be the First to",
+    "unlockMystery": "Unlock Mystery",
+    "waitlistDesc": "Join our exclusive waitlist and get VIP access to Europe's most thrilling football adventures. Limited spots available!",
+    "stats": [
+      { "label": "VIP Members" },
+      { "label": "Elite Stadiums" },
+      { "label": "Exclusive Discount" }
+    ],
+    "formTitle": "Get Exclusive VIP Access",
+    "formDesc": "Be among the first to book your mystery football adventure and enjoy exclusive perks",
+    "joinButton": "Join the VIP Waitlist",
+    "joining": "Joining the Elite Circle...",
+    "noSpam": "No spam, just exclusive updates about your next football adventure.",
+    "alreadyWaiting": "Join {total}+ football fans already waiting!",
+    "errorAlready": "You are already on the waitlist!",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "successTitle": "You're on the waitlist!",
+    "successElite": "Welcome to the elite!",
+    "successDesc": "You’ve secured your spot. We’ll keep you posted with updates and surprises.",
+    "vipPosition": "Your VIP Position",
+    "outOf": "Out of {total} total",
+    "benefits": [
+      { "icon": "Zap", "title": "Early Access", "desc": "Get in before the crowd and unlock exclusive features." },
+      { "icon": "Gift", "title": "Special Gifts", "desc": "Receive unique rewards and surprises as a thank you." },
+      { "icon": "Star", "title": "VIP Status", "desc": "Enjoy premium status and recognition in our community." }
+    ],
+    "vipCodeTitle": "Your VIP Discount Code",
+    "vipCodeDesc": "Use this code for an exclusive discount when we launch!",
+    "shareWithFriends": "Share with friends"
   },
   "trust": {
     "moneyBack": "100% money back",
@@ -192,7 +293,16 @@
     "bundesliga": "Bundesliga",
     "serieA": "Serie A",
     "championsLeague": "Champions League",
-    "europaLeague": "Europa League"
+    "europaLeague": "Europa League",
+    "brandShort": "YNS",
+    "brandFull": "YourNextStadium",
+    "brandTagline": "Mystery Football Adventures",
+    "statStadiums": "50+ Stadiums",
+    "statCountries": "5+ Countries",
+    "statFans": "500+ Fans",
+    "email": "Email",
+    "certifiedDesc": "Certified travel partner with 24/7 support",
+    "madeIn": "Made in Netherlands"
   },
   "modal": {
     "bookTrip": "Book your mystery trip",
@@ -350,6 +460,60 @@
     "joinCommunity": "Become part of our community and discover your next stadium",
     "startAdventure": "Start your adventure"
   },
+  "testimonials": [
+    {
+      "name": "Marco van der Berg",
+      "location": "Amsterdam",
+      "trip": "Barcelona Mystery Trip",
+      "rating": 5,
+      "quote": "Unbelievable! I thought I was going to Germany, but ended up at Camp Nou. The best football experience of my life!",
+      "image": "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    },
+    {
+      "name": "Lisa Janssen",
+      "location": "Utrecht",
+      "trip": "Premier League Mystery",
+      "rating": 5,
+      "quote": "Booked a mystery trip with my friend. We ended up in Liverpool - what an atmosphere! Anfield was magical.",
+      "image": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    },
+    {
+      "name": "Tom Verschuren",
+      "location": "Rotterdam",
+      "trip": "Bundesliga Adventure",
+      "rating": 5,
+      "quote": "Munich was our mystery destination. Bayern vs Dortmund at Allianz Arena - it doesn't get better! Perfectly organized.",
+      "image": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+    }
+  ],
+  "instagramPosts": [
+    {
+      "image": "https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Finally revealed! Madrid was our destination 🇪🇸⚽ #YourNextStadium #MysteryTrip",
+      "likes": 127
+    },
+    {
+      "image": "https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "From Amsterdam to Barcelona in one day ✈️ #FootballTrips #Mystery",
+      "likes": 89
+    },
+    {
+      "image": "https://images.pexels.com/photos/2916450/pexels-photo-2916450.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "This atmosphere... goosebumps! 🔥 #StadiumLife #FootballFan",
+      "likes": 156
+    },
+    {
+      "image": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=300&h=300",
+      "caption": "Bundesliga here we come! 🇩🇪 #MysteryRevealed #Football",
+      "likes": 94
+    }
+  ],
+  "notifications": [
+    { "name": "Jan", "city": "Amsterdam", "package": "Premium trip", "time": "2 minutes ago" },
+    { "name": "Lisa", "city": "Utrecht", "package": "Comfort trip", "time": "5 minutes ago" },
+    { "name": "Marco", "city": "Rotterdam", "package": "Premium trip", "time": "8 minutes ago" },
+    { "name": "Sarah", "city": "The Hague", "package": "Comfort trip", "time": "12 minutes ago" }
+  ],
   "howItWorks": {
     "title": "How it works",
     "subtitle": "From booking to experience - discover how your mystery stadium adventure comes to life",
@@ -391,19 +555,19 @@
     "faqQuestions": [
       {
         "question": "What if I can't make it on the booked date?",
-        "answer": "You can rebook for free to another date up to 14 days before departure, subject to availability."
+        "answer": "Bookings are final and cannot be changed or cancelled."
       },
       {
         "question": "Can I refuse my destination?",
-        "answer": "Yes! If you really don't want to go to the revealed destination, you'll get 100% of your money back or you can rebook to another date."
+        "answer": "It is not possible to refuse a revealed destination. Bookings are final."
       },
       {
         "question": "How do I know for sure I won't go to a team I hate?",
-        "answer": "In your booking form you can specify teams you absolutely don't want to see. We take this into account 100% when selecting your destination."
+        "answer": "We try to take your preferences into account, but there is no guarantee."
       },
       {
         "question": "What if the match is cancelled?",
-        "answer": "We always have a backup plan. You'll get tickets for another match or a full refund."
+        "answer": "If a match is cancelled, we will contact you about next steps."
       }
     ]
   },
@@ -428,7 +592,7 @@
         "id": 1,
         "category": "booking",
         "question": "How does booking a mystery trip work?",
-        "answer": "Booking is very simple! Choose your package, select your date, fill in your preferences and pay securely online. You'll receive immediate confirmation and 3-4 weeks before departure we reveal your destination."
+        "answer": "Booking is simple: choose your package, select your date, fill in your details, and pay online. You will receive a confirmation by email."
       },
       {
         "id": 2,
@@ -446,75 +610,80 @@
         "id": 4,
         "category": "travel",
         "question": "Which destinations are possible?",
-        "answer": "We organize trips to more than 50 stadiums in 5+ European countries. Think Premier League, La Liga, Bundesliga, Serie A, Ligue 1 and more!"
+        "answer": "We organize trips to various stadiums in Europe."
       },
       {
         "id": 5,
         "category": "booking",
         "question": "How do I know for sure I won't go to a team I hate?",
-        "answer": "In your booking form you can specify teams you absolutely don't want to see. We take this 100% into account when selecting your destination."
+        "answer": "We try to take your preferences into account, but there is no guarantee."
       },
       {
         "id": 6,
         "category": "travel",
         "question": "What happens if the match is cancelled?",
-        "answer": "We always have a backup plan. You'll get tickets for another match in the same city or a full refund if that's not possible."
+        "answer": "If a match is cancelled, we will contact you about next steps."
       },
       {
         "id": 7,
         "category": "safety",
         "question": "Is my money safe with you?",
-        "answer": "Absolutely! YourNextStadium handles your booking and payments with the utmost care and security. We also offer a 100% money back guarantee if you are not satisfied."
+        "answer": "Your payment is processed securely."
       },
       {
         "id": 8,
         "category": "support",
         "question": "Can I reach you during my trip?",
-        "answer": "Yes! We have a 24/7 emergency line (+31 20 987 6543) specifically for travelers on the road. You're never alone!"
+        "answer": "You can contact us via the known email address."
       },
       {
         "id": 9,
         "category": "booking",
         "question": "Can I book for multiple people?",
-        "answer": "Of course! You can book for multiple people at once. All travelers get the same destination."
+        "answer": "You can book for multiple people at once."
       },
       {
         "id": 10,
         "category": "travel",
         "question": "What's included in the packages?",
-        "answer": "This varies by package. 'Match Only' contains only tickets, 'Match + Travel' also includes transport, and 'All Inclusive' also includes hotel and meals."
+        "answer": "This depends on the package. See the package page for details."
       },
       {
         "id": 11,
         "category": "booking",
         "question": "Which payment methods do you accept?",
-        "answer": "We accept iDEAL, credit cards (Visa, Mastercard), bank transfer and PayPal. All payments are 100% secure."
+        "answer": "We accept iDEAL, credit cards, and bank transfer."
       },
       {
         "id": 12,
         "category": "travel",
         "question": "Can I extend my trip?",
-        "answer": "Yes! You can book extra nights or extend your stay. Contact us for the possibilities."
+        "answer": "Contact us for the possibilities."
       },
       {
         "id": 13,
         "category": "support",
         "question": "How do I get updates about my trip?",
-        "answer": "You'll receive regular updates via email and have access to your personal dashboard where you can find all information."
+        "answer": "You will receive updates by email if applicable."
       },
       {
         "id": 14,
         "category": "safety",
         "question": "What if I get sick before my trip?",
-        "answer": "We recommend travel insurance. If you get sick you can often rebook for free or get your money back through your insurance."
+        "answer": "We recommend travel insurance."
       },
       {
         "id": 15,
         "category": "travel",
         "question": "Are the hotels of good quality?",
-        "answer": "We carefully select our hotel partners to ensure you have a comfortable and enjoyable stay during your trip."
+        "answer": "Hotel quality may vary by destination and package."
       }
     ]
+  },
+  "faqPage": {
+    "sectionLabel": "FAQ",
+    "browseCategories": "Browse Categories",
+    "findYourAnswer": "Find Your Answer"
   },
   "privacy": {
     "title": "Privacy Policy",
@@ -871,5 +1040,23 @@
     "previous": "Previous",
     "submit": "Submit",
     "confirm": "Confirm"
+  },
+  "contactPage": {
+    "sectionLabel": "Contact Information",
+    "headline": "Multiple Ways to",
+    "headlineConnect": "Connect",
+    "formSubtitle": "Ready to start your mystery football adventure? Let's talk!",
+    "formSuccessTitle": "Message Sent!",
+    "formSuccessDesc": "We'll get back to you within 24 hours.",
+    "info": [
+      { "description": "Get in touch for any inquiries" },
+      { "description": "24/7 emergency support" },
+      { "title": "Location", "details": "Amsterdam, Netherlands", "description": "Our headquarters" },
+      { "title": "Response Time", "details": "Within 24 hours", "description": "We respond quickly" }
+    ]
+  },
+  "dashboard": {
+    "heroBadge": "Dashboard",
+    "map": "Map"
   }
 }
