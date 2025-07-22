@@ -23,10 +23,10 @@ export async function POST(request: NextRequest) {
         travelers: bookingData.travelers.toString(),
         customerEmail: bookingData.email,
         customerName: bookingData.name,
+        customerPhone: bookingData.phone,
+        locale: bookingData.locale || 'nl',
       },
-      automatic_payment_methods: {
-        enabled: true,
-      },
+      payment_method_types: ['card', 'ideal'],
     });
 
     return NextResponse.json({

@@ -83,18 +83,32 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const bookingId = searchParams.get('bookingId');
     const email = searchParams.get('email');
+    const paymentIntentId = searchParams.get('paymentIntentId');
 
-    if (!bookingId && !email) {
+    if (!bookingId && !email && !paymentIntentId) {
       return NextResponse.json(
-        { error: 'BookingId or email required' },
+        { error: 'BookingId, email, or paymentIntentId required' },
         { status: 400 }
       );
     }
 
-    const booking = await prisma.booking.findFirst({
-      where: bookingId ? { bookingId } : { email: email || undefined },
-      orderBy: { createdAt: 'desc' }
-    });
+    let booking;
+    if (bookingId) {
+      booking = await prisma.booking.findFirst({
+        where: { bookingId },
+        orderBy: { createdAt: 'desc' }
+      });
+    } else if (email) {
+      booking = await prisma.booking.findFirst({
+        where: { email },
+        orderBy: { createdAt: 'desc' }
+      });
+    } else if (paymentIntentId) {
+      booking = await prisma.booking.findFirst({
+        where: { stripePaymentIntentId: paymentIntentId },
+        orderBy: { createdAt: 'desc' }
+      });
+    }
 
     if (!booking) {
       return NextResponse.json(

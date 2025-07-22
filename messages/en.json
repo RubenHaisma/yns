@@ -447,7 +447,9 @@
     "confirmed": "Confirmed",
     "cancelled": "Cancelled",
     "notFound": "Booking not found",
-    "fillBookingOrEmail": "Please enter a booking number or email address"
+    "fillBookingOrEmail": "Please enter a booking number or email address",
+    "heroBadge": "Dashboard",
+    "map": "Map"
   },
   "stories": {
     "title": "Adventurer stories",
@@ -1054,9 +1056,5 @@
       { "title": "Location", "details": "Amsterdam, Netherlands", "description": "Our headquarters" },
       { "title": "Response Time", "details": "Within 24 hours", "description": "We respond quickly" }
     ]
-  },
-  "dashboard": {
-    "heroBadge": "Dashboard",
-    "map": "Map"
   }
 }

@@ -398,6 +398,7 @@ function getDutchBookingConfirmation(bookingDetails: any): string {
         .timeline-item { display: flex; align-items: center; margin: 20px 0; }
         .timeline-icon { width: 40px; height: 40px; background: #1B5E20; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold; }
         .emergency { background: #fef2f2; border: 1px solid #fecaca; padding: 20px; border-radius: 8px; margin: 30px 0; }
+        .dashboard-link { display: inline-block; background: linear-gradient(135deg, #FF6D00, #F57C00); color: white; padding: 16px 32px; text-decoration: none; border-radius: 25px; font-weight: 700; margin: 20px 0; }
       </style>
     </head>
     <body>
@@ -408,7 +409,7 @@ function getDutchBookingConfirmation(bookingDetails: any): string {
         </div>
         
         <div class="content">
-          <h2 style="color: #1B5E20;">Hoi ${bookingDetails.name}!</h2>
+          <h2 style="color: #1B5E20;">Hoi ${bookingDetails.name || ''}</h2>
           <p>Geweldig nieuws! Je mystery trip is succesvol geboekt. Hieronder vind je alle details van je boeking.</p>
           
           <div class="booking-details">
@@ -433,7 +434,10 @@ function getDutchBookingConfirmation(bookingDetails: any): string {
               <span><strong>Totaalprijs:</strong></span>
               <span><strong>${bookingDetails.totalPrice}</strong></span>
             </div>
+            ${bookingDetails.phone ? `<div class="detail-row"><span><strong>Telefoonnummer:</strong></span><span>${bookingDetails.phone}</span></div>` : ''}
           </div>
+          
+          <a href="${bookingDetails.dashboardUrl}" class="dashboard-link">Bekijk je dashboard &rarr;</a>
           
           <div class="mystery-box">
             <h3 style="margin-top: 0;">Het Mysterie Begint Nu!</h3>
@@ -507,6 +511,7 @@ function getEnglishBookingConfirmation(bookingDetails: any): string {
         .timeline-item { display: flex; align-items: center; margin: 20px 0; }
         .timeline-icon { width: 40px; height: 40px; background: #1B5E20; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold; }
         .emergency { background: #fef2f2; border: 1px solid #fecaca; padding: 20px; border-radius: 8px; margin: 30px 0; }
+        .dashboard-link { display: inline-block; background: linear-gradient(135deg, #FF6D00, #F57C00); color: white; padding: 16px 32px; text-decoration: none; border-radius: 25px; font-weight: 700; margin: 20px 0; }
       </style>
     </head>
     <body>
@@ -517,7 +522,7 @@ function getEnglishBookingConfirmation(bookingDetails: any): string {
         </div>
         
         <div class="content">
-          <h2 style="color: #1B5E20;">Hi ${bookingDetails.name}!</h2>
+          <h2 style="color: #1B5E20;">Hi ${bookingDetails.name || ''}</h2>
           <p>Great news! Your mystery trip has been successfully booked. Below you'll find all the details of your booking.</p>
           
           <div class="booking-details">
@@ -542,7 +547,10 @@ function getEnglishBookingConfirmation(bookingDetails: any): string {
               <span><strong>Total Price:</strong></span>
               <span><strong>${bookingDetails.totalPrice}</strong></span>
             </div>
+            ${bookingDetails.phone ? `<div class="detail-row"><span><strong>Phone Number:</strong></span><span>${bookingDetails.phone}</span></div>` : ''}
           </div>
+          
+          <a href="${bookingDetails.dashboardUrl}" class="dashboard-link">View your dashboard &rarr;</a>
           
           <div class="mystery-box">
             <h3 style="margin-top: 0;">The Mystery Begins Now!</h3>

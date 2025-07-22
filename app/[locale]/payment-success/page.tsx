@@ -4,18 +4,65 @@ import { useEffect, useState } from 'react';
 import { Check, ArrowRight } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { useRouter } from 'next/navigation';
+import { useRef } from 'react';
 
 export default function PaymentSuccess() {
   const [bookingId, setBookingId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [dashboardUrl, setDashboardUrl] = useState<string | null>(null);
+  const router = useRouter();
+  const testTriggered = useRef(false);
 
   useEffect(() => {
     // Extract payment intent from URL if needed
     const urlParams = new URLSearchParams(window.location.search);
     const paymentIntent = urlParams.get('payment_intent');
-    
     if (paymentIntent) {
-      // You could fetch booking details using the payment intent ID
-      // For now, we'll show a generic success message
+      setLoading(true);
+      fetch(`/api/bookings?paymentIntentId=${paymentIntent}`)
+        .then(res => res.json())
+        .then(async data => {
+          if (data.booking && data.booking.bookingId) {
+            setBookingId(data.booking.bookingId);
+            // Try to infer locale from path
+            const locale = window.location.pathname.split('/')[1] || 'nl';
+            setDashboardUrl(`/${locale}/dashboard?bookingId=${data.booking.bookingId}`);
+          } else {
+            // If in dev, try to trigger the test webhook endpoint
+            if (process.env.NODE_ENV !== 'production' && !testTriggered.current) {
+              testTriggered.current = true;
+              fetch('/api/test-booking-webhook', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ payment_intent: paymentIntent })
+              })
+                .then(() => {
+                  // Refetch booking after test webhook
+                  return fetch(`/api/bookings?paymentIntentId=${paymentIntent}`);
+                })
+                .then(res => res.json())
+                .then(data2 => {
+                  if (data2.booking && data2.booking.bookingId) {
+                    setBookingId(data2.booking.bookingId);
+                    const locale = window.location.pathname.split('/')[1] || 'nl';
+                    setDashboardUrl(`/${locale}/dashboard?bookingId=${data2.booking.bookingId}`);
+                    setError(null);
+                  } else {
+                    setError('Booking not found.');
+                  }
+                })
+                .catch(() => setError('Could not fetch booking.'))
+                .finally(() => setLoading(false));
+            } else {
+              setError('Booking not found.');
+              setLoading(false);
+            }
+          }
+        })
+        .catch(() => setError('Could not fetch booking.'))
+        .finally(() => setLoading(false));
     }
   }, []);
 
@@ -35,6 +82,22 @@ export default function PaymentSuccess() {
             <p className="text-base lg:text-lg text-green-100 max-w-2xl mx-auto mb-6">
               Your mystery football trip has been booked successfully!
             </p>
+            {loading && <div className="text-white mb-4">Loading your booking...</div>}
+            {error && <div className="text-red-200 mb-4">{error}</div>}
+            {bookingId && (
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-6">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-4">Your Booking Number</h3>
+                <div className="text-2xl font-mono font-bold text-orange-200 mb-4">{bookingId}</div>
+                {dashboardUrl && (
+                  <a
+                    href={dashboardUrl}
+                    className="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-2xl font-bold text-base hover:from-orange-600 hover:to-orange-700 transition-all transform hover:scale-105 shadow-lg mb-2"
+                  >
+                    View your dashboard &rarr;
+                  </a>
+                )}
+              </div>
+            )}
             
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-6">
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-4">What happens next?</h3>
@@ -45,7 +108,7 @@ export default function PaymentSuccess() {
                   </div>
                   <div>
                     <p className="font-semibold text-base">Confirmation Email</p>
-                    <p className="text-green-200 text-xs">You'll receive a booking confirmation within minutes</p>
+                    <p className="text-green-200 text-xs">You&apos;ll receive a booking confirmation within minutes</p>
                   </div>
                 </div>
                 

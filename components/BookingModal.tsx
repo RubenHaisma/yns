@@ -3,6 +3,9 @@
 import React, { useState } from 'react';
 import { X, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
+import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { stripePromise } from '@/lib/stripe-client';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -23,8 +26,12 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     email: '',
     phone: ''
   });
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [paymentIntentId, setPaymentIntentId] = useState<string | null>(null);
+  const [paymentError, setPaymentError] = useState<string | null>(null);
 
   const t = useTranslations('modal');
+  const locale = useLocale();
 
   // Update package when selectedPackage prop changes
   React.useEffect(() => {
@@ -71,46 +78,90 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     return `€${total}`;
   };
 
-  const handleSubmit = async () => {
+  // Calculate numeric price for Stripe
+  const getNumericPrice = () => {
+    const pkg = packages.find(p => p.id === formData.package);
+    if (!pkg) return 0;
+    const basePrice = parseInt(pkg.price.replace('€', ''));
+    return basePrice * formData.travelers;
+  };
+
+  // Step 3: Confirm details and create payment intent
+  const handleConfirmBooking = async () => {
     setIsSubmitting(true);
-    
+    setPaymentError(null);
     try {
-      const response = await fetch('/api/waitlist', {
+      const amount = getNumericPrice();
+      const response = await fetch('/api/create-payment-intent', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          email: formData.email,
-          name: formData.name,
-          source: 'booking-modal'
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount,
+          currency: 'eur',
+          bookingData: {
+            ...formData,
+            locale,
+          },
         }),
       });
-
       const data = await response.json();
-
-      if (response.ok) {
-        // Generate a booking reference for display
-        const newBookingId = `YNS-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
-        setBookingId(newBookingId);
-        setIsSuccess(true);
+      if (response.ok && data.clientSecret) {
+        setClientSecret(data.clientSecret);
+        setPaymentIntentId(data.paymentIntentId);
+        setStep(4);
       } else {
-        if (response.status === 409) {
-          // User already on waitlist
-          const newBookingId = `YNS-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
-          setBookingId(newBookingId);
-          setIsSuccess(true);
-        } else {
-          throw new Error(data.error || 'Failed to join waitlist');
-        }
+        setPaymentError(data.error || 'Failed to initiate payment.');
       }
     } catch (error) {
-      console.error('Waitlist signup error:', error);
-      alert('Failed to join waitlist. Please try again.');
+      setPaymentError('Failed to initiate payment.');
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  // Payment form component
+  function PaymentForm() {
+    const stripe = useStripe();
+    const elements = useElements();
+    const [paying, setPaying] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    const handlePayment = async (e: React.FormEvent) => {
+      e.preventDefault();
+      setPaying(true);
+      setError(null);
+      if (!stripe || !elements) {
+        setError('Stripe is not loaded.');
+        setPaying(false);
+        return;
+      }
+      const result = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+          return_url: `${window.location.origin}/${locale}/payment-success`,
+        },
+        redirect: 'always',
+      });
+      if (result.error) {
+        setError(result.error.message || 'Payment failed.');
+      }
+      setPaying(false);
+    };
+
+    return (
+      <form onSubmit={handlePayment} className="space-y-6">
+        <PaymentElement options={{ layout: 'tabs' }} />
+        {error && <div className="text-red-600 text-sm mt-2">{error}</div>}
+        <button
+          type="submit"
+          disabled={paying || !stripe || !elements}
+          className="w-full px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-bold text-base"
+        >
+          {paying ? t('processing') : t('payBook')}
+        </button>
+      </form>
+    );
+  }
 
   if (!isOpen) return null;
 
@@ -167,7 +218,11 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     if (step === 2 && (!formData.date || formData.travelers < 1)) {
       return; // Don't proceed if date is not selected or travelers is invalid
     }
-    if (step < 3) setStep(step + 1);
+    if (step === 3) {
+      handleConfirmBooking();
+      return;
+    }
+    if (step < 4) setStep(step + 1);
   };
 
   const handlePrev = () => {
@@ -181,7 +236,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
         <div className="flex items-center justify-between p-4 lg:p-6 border-b border-green-100">
           <div>
             <h2 className="text-xl lg:text-2xl font-bold text-green-800">{t('bookTrip')}</h2>
-            <p className="text-green-600 text-sm lg:text-base">{t('step')} {step} {t('of')} 3</p>
+            <p className="text-green-600 text-sm lg:text-base">{t('step')} {step} {t('of')} 4</p>
           </div>
           <button
             onClick={onClose}
@@ -190,15 +245,13 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
             <X className="w-5 h-5 text-gray-600" />
           </button>
         </div>
-
         {/* Progress Bar */}
         <div className="w-full bg-gray-200 h-2">
           <div 
             className="bg-gradient-to-r from-green-500 to-green-600 h-2 transition-all duration-300"
-            style={{ width: `${(step / 3) * 100}%` }}
+            style={{ width: `${(step / 4) * 100}%` }}
           />
         </div>
-
         {/* Step Content */}
         <div className="p-4 lg:p-6">
           {step === 1 && (
@@ -285,10 +338,9 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           {step === 3 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('joinWaitlistTitle')}</h3>
-                <p className="text-green-600 text-sm lg:text-base">{t('joinWaitlistSubtitle')}</p>
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('confirmBooking')}</h3>
+                <p className="text-green-600 text-sm lg:text-base">{t('confirmSubtitle')}</p>
               </div>
-              
               <div className="bg-green-50 rounded-lg p-4 space-y-3">
                 <div className="flex justify-between text-sm lg:text-base">
                   <span className="text-green-700">{t('package')}:</span>
@@ -312,7 +364,6 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                   </span>
                 </div>
               </div>
-
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
@@ -327,7 +378,6 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                     required
                   />
                 </div>
-                
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
                     {t('email')}
@@ -341,7 +391,6 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                     required
                   />
                 </div>
-                
                 <div>
                   <label className="block text-sm font-medium text-green-700 mb-2">
                     {t('phone')}
@@ -352,23 +401,28 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                     onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                     placeholder="+31 6 1234 5678"
                     className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
+                    required
                   />
                 </div>
               </div>
-
               <div className="bg-gradient-to-r from-green-100 to-orange-100 rounded-lg p-4">
                 <div className="flex items-center space-x-2 mb-2">
                   <Check className="w-5 h-5 text-green-600" />
-                  <span className="font-semibold text-green-800 text-sm lg:text-base">{t('earlyAccess')}</span>
+                  <span className="font-semibold text-green-800 text-sm lg:text-base">{t('securePayment')}</span>
                 </div>
                 <p className="text-xs lg:text-sm text-green-700">
-                  {t('earlyAccessDesc')}
+                  {t('paymentDesc')}
                 </p>
               </div>
+              {paymentError && <div className="text-red-600 text-sm mt-2">{paymentError}</div>}
             </div>
           )}
+          {step === 4 && clientSecret && (
+            <Elements stripe={stripePromise} options={{ clientSecret }}>
+              <PaymentForm />
+            </Elements>
+          )}
         </div>
-
         {/* Footer */}
         <div className="flex justify-between items-center p-4 lg:p-6 border-t border-green-100">
           <button
@@ -378,9 +432,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           >
             {t('previous')}
           </button>
-          
           <div className="flex space-x-2">
-            {[1, 2, 3].map((num) => (
+            {[1, 2, 3, 4].map((num) => (
               <div
                 key={num}
                 className={`w-2 h-2 rounded-full transition-all ${
@@ -389,7 +442,6 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               />
             ))}
           </div>
-          
           {step < 3 ? (
             <button
               onClick={handleNext}
@@ -401,22 +453,22 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
             >
               {t('next')}
             </button>
-          ) : (
-            <button 
-              onClick={handleSubmit}
-              disabled={isSubmitting || !formData.name || !formData.email}
+          ) : step === 3 ? (
+            <button
+              onClick={handleNext}
+              disabled={isSubmitting || !formData.name || !formData.email || !formData.phone}
               className="px-4 lg:px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 text-sm lg:text-base"
             >
               {isSubmitting ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>{t('joining')}</span>
+                  <span>{t('processing')}</span>
                 </>
               ) : (
-                <span>{t('joinWaitlist')}</span>
+                <span>{t('payBook')}</span>
               )}
             </button>
-          )}
+          ) : null}
         </div>
       </div>
     </div>

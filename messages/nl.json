@@ -447,7 +447,8 @@
     "confirmed": "Bevestigd",
     "cancelled": "Geannuleerd",
     "notFound": "Boeking niet gevonden",
-    "fillBookingOrEmail": "Vul een boekingnummer of email adres in"
+    "fillBookingOrEmail": "Vul een boekingnummer of email adres in",
+    "heroBadge": "Dashboard"
   },
   "stories": {
     "title": "Verhalen van avonturiers",
