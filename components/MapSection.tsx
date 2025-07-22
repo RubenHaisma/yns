@@ -205,6 +205,7 @@ export function MapSection() {
               className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
               width={600}
               height={600}
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
               <div className="absolute bottom-4 left-4 text-white">

@@ -2,7 +2,7 @@
 
 import { Mail, Shield, MapPin, Trophy, Users, Phone } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SiTiktok } from 'react-icons/si';
 import { motion } from 'framer-motion'; 
 
@@ -134,18 +134,30 @@ export function Footer({ onBookingClick = () => {} }: FooterProps) {
     },
   ];
 
+  const [dotPositions, setDotPositions] = useState<Array<{left: number, top: number}>>(() =>
+    Array.from({ length: 20 }, () => ({ left: 50, top: 50 })) // default deterministic positions for SSR
+  );
+  useEffect(() => {
+    setDotPositions(
+      Array.from({ length: 20 }, () => ({
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+      }))
+    );
+  }, []);
+
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-full h-full">
-          {[...Array(20)].map((_, i) => (
+          {dotPositions.map((pos, i) => (
             <motion.div
               key={i}
               className="absolute w-2 h-2 bg-white rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${pos.left}%`,
+                top: `${pos.top}%`,
               }}
               animate={{
                 opacity: [0.1, 0.5, 0.1],
