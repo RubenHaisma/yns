@@ -11,10 +11,19 @@ export async function GET(request: NextRequest) {
     }
 
     const destinations = await prisma.destination.findMany({
-      orderBy: { createdAt: 'desc' },
+      orderBy: [
+        { avgFlightPrice: 'asc' },
+        { createdAt: 'desc' }
+      ],
     });
 
-    return NextResponse.json({ destinations });
+    return NextResponse.json({ 
+      destinations: destinations.map(dest => ({
+        ...dest,
+        hasRecentFlightData: dest.lastFlightCheck && 
+          dest.lastFlightCheck > new Date(Date.now() - 24 * 60 * 60 * 1000) // Within 24 hours
+      }))
+    });
   } catch (error) {
     console.error('Error fetching destinations:', error);
     return NextResponse.json(

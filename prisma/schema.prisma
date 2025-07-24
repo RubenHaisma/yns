@@ -67,8 +67,11 @@ model Booking {
   stripePaymentIntentId String?
   destination           String?
   revealedAt            DateTime?
+  selectedDestinationId String?   // Reference to the selected destination
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
+
+  destinationSuggestions DestinationSuggestion[]
 
   @@map("bookings")
 }
@@ -88,9 +91,31 @@ model Destination {
   season      String?
   website     String?
   airport     String?  // Nearest airport
+  lastFlightCheck DateTime? // Last time flight prices were checked
+  avgFlightPrice  Float?    // Average flight price from AMS
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
+  destinationSuggestions DestinationSuggestion[]
+
   @@unique([name, league, country])
   @@map("destinations")
+}
+
+model DestinationSuggestion {
+  id            String   @id @default(cuid())
+  bookingId     String
+  destinationId String
+  flightPrice   Float?
+  currency      String   @default("EUR")
+  reason        String
+  isSelected    Boolean  @default(false)
+  adminNotes    String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  booking     Booking     @relation(fields: [bookingId], references: [bookingId])
+  destination Destination @relation(fields: [destinationId], references: [id])
+
+  @@map("destination_suggestions")
 }

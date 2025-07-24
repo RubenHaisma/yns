@@ -263,14 +263,14 @@ export default function AdminDashboard() {
             <div className="p-6">
               <div className="mb-6 text-center">
                 <p className="text-gray-600 mb-4">
-                  For detailed booking management, visit the dedicated bookings page.
+                  For detailed booking management with smart destination selection, visit the dedicated bookings page.
                 </p>
                 <a
                   href="/nl/admin/dashboard/bookings"
                   className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
                 >
                   <Users className="w-4 h-4 mr-2" />
-                  Manage Bookings
+                  Manage Bookings & Destinations
                 </a>
               </div>
               

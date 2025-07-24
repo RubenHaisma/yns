@@ -73,7 +73,7 @@
     },
     "step3": {
       "title": "Discover your destination",
-      "description": "3-4 weeks before departure we reveal your mystery destination. Prepare for an unforgettable experience!",
+      "description": "1 week before departure we reveal your mystery destination. Prepare for an unforgettable experience!",
       "details": "Enjoy your adventure and share your experience with us!"
     }
   },
@@ -439,7 +439,7 @@
     "destinationRevealed": "Destination revealed!",
     "revealedOn": "Your mystery destination was revealed on",
     "mysteryOngoing": "The mystery continues...",
-    "revealTiming": "Your destination will be revealed 3-4 weeks before departure",
+    "revealTiming": "Your destination will be revealed 1 week before departure",
     "hint": "Prepare for an unforgettable experience at one of Europe's most beautiful football stadiums!",
     "needHelp": "Need help?",
     "emergencyLine": "24/7 emergency line",
@@ -541,8 +541,8 @@
     },
     "step3": {
       "title": "3. Discover your destination",
-      "description": "3-4 weeks before departure we reveal your mystery destination via a special reveal video.",
-      "details": [
+      "description": "1 week before departure we reveal your mystery destination via a special reveal video.",
+      "details": [  
         "Receive your personal reveal video",
         "Get all travel details and tickets",
         "Download your digital travel guide",
@@ -950,7 +950,7 @@
     },
     "mystery": {
       "title": "3. Mystery Concept",
-      "destination": "3.1 Destination: The exact destination of your trip remains secret until 3-4 weeks before departure. We take into account your stated preferences and dislikes.",
+      "destination": "3.1 Destination: The exact destination of your trip remains secret until 1 week before departure. We take into account your stated preferences and dislikes.",
       "reveal": "3.2 Reveal: The destination is revealed via email and your personal dashboard. You will then receive all travel details, tickets and practical information.",
       "guarantees": "3.3 Guarantees: We guarantee that your destination meets the booked package and that you will not go to teams/cities that you have explicitly excluded.",
       "mysteryGuarantee": "Mystery Guarantee",

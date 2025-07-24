@@ -73,7 +73,7 @@
     },
     "step3": {
       "title": "Ontdek je bestemming",
-      "description": "Minimaal 3-4 weken voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!",
+      "description": "Minimaal 1 week voor vertrek onthullen we je mysterie bestemming. Bereid je voor op een onvergetelijke ervaring!",
       "details": "Geniet van je avontuur en deel je ervaring met ons!"
     }
   },
@@ -308,7 +308,7 @@
     "email": "Email adres",
     "phone": "Telefoonnummer",
     "securePayment": "Veilige betaling via Stripe",
-    "paymentDesc": "Je betaling wordt veilig verwerkt door Stripe. Je bestemming wordt minimaal 3-4 weken voor vertrek onthuld.",
+    "paymentDesc": "Je betaling wordt veilig verwerkt door Stripe. Je bestemming wordt minimaal 1 week voor vertrek onthuld.",
     "previous": "Vorige",
     "next": "Volgende",
     "payBook": "Betaal & boek nu",
@@ -439,7 +439,7 @@
     "destinationRevealed": "Bestemming onthuld!",
     "revealedOn": "Je mystery bestemming is onthuld op",
     "mysteryOngoing": "Het mysterie duurt voort...",
-    "revealTiming": "Je bestemming wordt minimaal 3-4 weken voor vertrek onthuld",
+    "revealTiming": "Je bestemming wordt minimaal 1 week voor vertrek onthuld",
     "hint": "Bereid je voor op een onvergetelijke ervaring in een van Europa's mooiste voetbalstadions!",
     "needHelp": "Hulp nodig?",
     "emergencyLine": "24/7 noodlijn",
@@ -540,7 +540,7 @@
     },
     "step3": {
       "title": "3. Ontdek je bestemming",
-      "description": "Minimaal 3-4 weken voor vertrek onthullen we je mysterie bestemming via een speciale onthullingsvideo.",
+      "description": "Minimaal 1 week voor vertrek onthullen we je mysterie bestemming via een speciale onthullingsvideo.",
       "details": [
         "Ontvang je persoonlijke onthullingsvideo",
         "Krijg alle reisdetails en tickets",
@@ -949,7 +949,7 @@
     },
     "mystery": {
       "title": "3. Mystery Concept",
-      "destination": "3.1 Bestemming: De exacte bestemming van uw reis blijft geheim tot minimaal 3-4 weken voor vertrek. Wij houden rekening met uw opgegeven voorkeuren en afkeuringen.",
+      "destination": "3.1 Bestemming: De exacte bestemming van uw reis blijft geheim tot minimaal  voor vertrek. Wij houden rekening met uw opgegeven voorkeuren en afkeuringen.",
       "reveal": "3.2 Onthulling: De bestemming wordt onthuld via email en uw persoonlijke dashboard. U ontvangt dan alle reisdetails, tickets en praktische informatie.",
       "guarantees": "3.3 Garanties: Wij garanderen dat uw bestemming voldoet aan het geboekte pakket en dat u niet naar teams/steden gaat die u expliciet heeft uitgesloten.",
       "mysteryGuarantee": "Geld Terug Garantie",

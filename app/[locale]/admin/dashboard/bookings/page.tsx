@@ -16,8 +16,13 @@ import {
   Bell,
   Settings,
   LogOut,
-  ArrowLeft
+  ArrowLeft,
+  Sparkles,
+  Plane
 } from 'lucide-react';
+import { DestinationSelector } from '@/components/admin/DestinationSelector';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FlightPriceChecker } from '@/components/admin/FlightPriceChecker';
 
 interface Booking {
   id: string;
@@ -43,6 +48,8 @@ export default function AdminBookings() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
   const [revealDestination, setRevealDestination] = useState('');
+  const [showDestinationSelector, setShowDestinationSelector] = useState(false);
+  const [bookingForDestination, setBookingForDestination] = useState<Booking | null>(null);
 
   useEffect(() => {
     fetchBookings();
@@ -104,6 +111,17 @@ export default function AdminBookings() {
     }
   };
 
+  const handleOpenDestinationSelector = (booking: Booking) => {
+    setBookingForDestination(booking);
+    setShowDestinationSelector(true);
+  };
+
+  const handleDestinationSelected = () => {
+    setShowDestinationSelector(false);
+    setBookingForDestination(null);
+    fetchBookings(); // Refresh the bookings list
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'confirmed': return 'bg-green-100 text-green-800';
@@ -158,6 +176,11 @@ export default function AdminBookings() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Flight Price Checker */}
+        <div className="mb-6">
+          <FlightPriceChecker onPricesUpdated={fetchBookings} />
+        </div>
+
         {/* Filters */}
         <div className="bg-white rounded-lg shadow p-6 mb-6">
           <div className="flex flex-col sm:flex-row gap-4">
@@ -292,13 +315,12 @@ export default function AdminBookings() {
                           {!booking.destination && (
                             <button
                               onClick={() => {
-                                setSelectedBooking(booking);
-                                setRevealDestination('');
+                                handleOpenDestinationSelector(booking);
                               }}
-                              className="text-purple-600 hover:text-purple-900"
-                              title="Reveal Destination"
+                              className="text-purple-600 hover:text-purple-900 flex items-center space-x-1"
+                              title="Smart Destination Selection"
                             >
-                              <Send className="w-4 h-4" />
+                              <Sparkles className="w-4 h-4" />
                             </button>
                           )}
                           <button
@@ -318,6 +340,17 @@ export default function AdminBookings() {
           </div>
         </div>
       </div>
+
+      {/* Destination Selector Modal */}
+      <AnimatePresence>
+        {showDestinationSelector && bookingForDestination && (
+          <DestinationSelector
+            booking={bookingForDestination}
+            onDestinationSelected={handleDestinationSelected}
+            onClose={() => setShowDestinationSelector(false)}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Booking Detail Modal */}
       {selectedBooking && (
@@ -422,8 +455,17 @@ export default function AdminBookings() {
               {/* Reveal Destination */}
               {!selectedBooking.destination && (
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-3">Reveal Destination</h4>
-                  <div className="flex space-x-3">
+                  <h4 className="font-medium text-gray-900 mb-3">Manual Destination Reveal</h4>
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <Sparkles className="w-4 h-4 text-yellow-600" />
+                      <span className="text-sm font-medium text-yellow-800">Recommendation</span>
+                    </div>
+                    <p className="text-sm text-yellow-700">
+                      Use the Smart Destination Selection (✨) button for AI-powered suggestions with flight price comparison.
+                    </p>
+                  </div>
+                  <div className="flex space-x-3 mb-4">
                     <input
                       type="text"
                       value={revealDestination}
@@ -438,6 +480,16 @@ export default function AdminBookings() {
                       Reveal
                     </button>
                   </div>
+                  <button
+                    onClick={() => {
+                      setSelectedBooking(null);
+                      handleOpenDestinationSelector(selectedBooking);
+                    }}
+                    className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    <span>Use Smart Selection</span>
+                  </button>
                 </div>
               )}
             </div>
