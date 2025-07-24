@@ -117,5 +117,28 @@ model DestinationSuggestion {
   booking     Booking     @relation(fields: [bookingId], references: [bookingId])
   destination Destination @relation(fields: [destinationId], references: [id])
 
+  flightOptions FlightOption[]
+
   @@map("destination_suggestions")
+}
+
+model FlightOption {
+  id                   String   @id @default(cuid())
+  destinationSuggestionId String
+  price                Float
+  currency             String   @default("EUR")
+  airline              String
+  flightNumber         String?
+  duration             Int?
+  stops                Int?
+  departureTime        DateTime?
+  arrivalTime          DateTime?
+  bookingToken         String?
+  originAirport        String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  destinationSuggestion DestinationSuggestion @relation(fields: [destinationSuggestionId], references: [id])
+
+  @@map("flight_options")
 }

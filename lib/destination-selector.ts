@@ -1,5 +1,18 @@
 import { prisma } from '@/lib/prisma';
-import { getFlightPrices, getSpecificFlightPrice } from '@/lib/aviasales';
+import { searchRealTimeFlights } from '@/lib/aviasales';
+
+interface FlightOption {
+  price: number;
+  currency: string;
+  airline: string;
+  flightNumber?: string;
+  duration?: number;
+  stops?: number;
+  departureTime?: string;
+  arrivalTime?: string;
+  bookingToken?: string;
+  originAirport: string;
+}
 
 interface DestinationSuggestion {
   id: string;
@@ -9,8 +22,7 @@ interface DestinationSuggestion {
   league: string;
   stadium: string;
   airport: string;
-  flightPrice?: number;
-  currency?: string;
+  flightOptions: FlightOption[];
   reason: string;
   score: number;
   isRandomPick?: boolean;
@@ -50,65 +62,77 @@ export async function suggestDestinations(
 
     if (includesFlight) {
       console.log('[suggestDestinations] Package includes flight, checking prices...');
-      
-      // Get airport codes from database (filter out invalid ones)
       const validDestinations = destinations.filter((dest: any) =>   
         dest.airport && 
         dest.airport.length >= 3 && 
         dest.airport.length <= 4 && 
         /^[A-Z]+$/.test(dest.airport)
       );
+      console.log('[suggestDestinations] Using real-time flight search for', validDestinations.length, 'destinations');
 
-      const airportCodes = validDestinations.map((dest: any) => dest.airport!);
-
-      console.log('[suggestDestinations] Checking flight prices for airports:', airportCodes);
-
-      // Get flight prices for all destinations
-      const flightPrices = await getFlightPrices(airportCodes, departDate, returnDate, travelers);
-
-      console.log('[suggestDestinations] Got', flightPrices.length, 'flight prices');
-
-      // Match flight prices with destinations
       for (const destination of validDestinations) {
-        const flightPrice = flightPrices.find(fp => fp.destination === destination.airport);
-        
-        let score = 50; // Base score
-        let reason = 'Available destination';
-
-        // Scoring logic
-        if (flightPrice) {
-          // Lower price = higher score (max 50 points for price)
-          const priceScore = Math.max(0, 50 - (flightPrice.price / 10));
-          score += priceScore;
-          reason = `Flight available for €${flightPrice.price} per person from ${flightPrice.origin}`;
-        } else {
-          score -= 20; // Penalty for no flight data
-          reason = 'No flight data available';
+        let allFlightOptions: FlightOption[] = [];
+        for (const origin of ['AMS', 'EIN']) {
+          const flights = await searchRealTimeFlights(
+            origin,
+            destination.airport,
+            departDate,
+            returnDate,
+            travelers
+          );
+          allFlightOptions.push(...flights.map(flight => ({
+            price: flight.price,
+            currency: flight.currency,
+            airline: flight.airline,
+            flightNumber: flight.flightNumber,
+            duration: flight.duration,
+            stops: flight.stops,
+            departureTime: flight.departureTime,
+            arrivalTime: flight.arrivalTime,
+            bookingToken: flight.bookingToken,
+            originAirport: origin
+          })));
         }
+        // Remove duplicates and sort by price
+        allFlightOptions = allFlightOptions.filter((f, i, arr) =>
+          arr.findIndex(x => x.price === f.price && x.airline === f.airline && x.departureTime === f.departureTime) === i
+        ).sort((a, b) => a.price - b.price).slice(0, 5); // Top 5 cheapest
 
-        // Preference-based scoring
+        let score = 50;
+        let reason = 'Available destination';
+        if (allFlightOptions.length > 0) {
+          const cheapest = allFlightOptions[0];
+          const priceScore = Math.max(0, 50 - (cheapest.price / 10));
+          score += priceScore;
+          reason = `Real-time flights available from €${cheapest.price} per person`;
+          if (cheapest.stops === 0) {
+            score += 10;
+            reason += ' (direct flight)';
+          }
+          if (cheapest.duration && cheapest.duration < 240) {
+            score += 5;
+            reason += ' (short flight)';
+          }
+        } else {
+          score -= 20;
+          reason = 'No real-time flight data available';
+        }
         if (preferences.hatedTeams?.includes(destination.name)) {
           score -= 50;
           reason += ' (customer dislikes this team)';
         }
-
         if (preferences.visitedCities?.includes(destination.city)) {
           score -= 30;
           reason += ' (customer has visited this city)';
         }
-
-        // League preference scoring
         const popularLeagues = ['Premier League', 'La Liga', 'Bundesliga', 'Serie A', 'Champions League'];
         if (popularLeagues.includes(destination.league)) {
           score += 20;
         }
-
-        // Country diversity bonus
         const europeanCountries = ['England', 'Spain', 'Germany', 'Italy', 'France'];
         if (europeanCountries.includes(destination.country)) {
           score += 10;
         }
-
         suggestions.push({
           id: destination.id,
           name: destination.name,
@@ -117,24 +141,19 @@ export async function suggestDestinations(
           league: destination.league,
           stadium: destination.stadium || `${destination.name} Stadium`,
           airport: destination.airport || '',
-          flightPrice: flightPrice?.price,
-          currency: flightPrice?.currency || 'EUR',
+          flightOptions: allFlightOptions,
           reason,
           score
         });
       }
-
-      // Sort by score (highest first) and price (lowest first for same score)
       suggestions.sort((a, b) => {
         if (Math.abs(a.score - b.score) < 5) {
-          // If scores are close, prefer cheaper flights
-          const priceA = a.flightPrice || 999999;
-          const priceB = b.flightPrice || 999999;
+          const priceA = a.flightOptions[0]?.price || 999999;
+          const priceB = b.flightOptions[0]?.price || 999999;
           return priceA - priceB;
         }
         return b.score - a.score;
       });
-
     } else {
       console.log('[suggestDestinations] Basic package, no flight required');
       
@@ -168,6 +187,7 @@ export async function suggestDestinations(
           league: destination.league,
           stadium: destination.stadium || `${destination.name} Stadium`,
           airport: destination.airport || '',
+          flightOptions: [],
           reason,
           score
         });
@@ -175,11 +195,7 @@ export async function suggestDestinations(
 
       suggestions.sort((a, b) => b.score - a.score);
     }
-
-    // Store suggestions in database
-    await storeDestinationSuggestions(bookingId, suggestions.slice(0, 10));
-
-    console.log('[suggestDestinations] Generated', suggestions.length, 'suggestions');
+    await storeDestinationSuggestionsWithFlights(bookingId, suggestions.slice(0, 10));
     return suggestions.slice(0, 10); // Return top 10 suggestions
 
   } catch (error) {
@@ -188,30 +204,41 @@ export async function suggestDestinations(
   }
 }
 
-async function storeDestinationSuggestions(bookingId: string, suggestions: DestinationSuggestion[]) {
+async function storeDestinationSuggestionsWithFlights(bookingId: string, suggestions: DestinationSuggestion[]) {
   try {
-    // Clear existing suggestions
-    await prisma.destinationSuggestion.deleteMany({
-      where: { bookingId }
+    await prisma.destinationSuggestion.deleteMany({ where: { bookingId } });
+    suggestions.forEach(async (suggestion, index) => {
+      const createdSuggestion = await prisma.destinationSuggestion.create({
+        data: {
+          bookingId,
+          destinationId: suggestion.id,
+          flightPrice: suggestion.flightOptions[0]?.price || null,
+          currency: suggestion.flightOptions[0]?.currency || 'EUR',
+          reason: suggestion.reason,
+          adminNotes: `Score: ${suggestion.score}, Rank: ${index + 1}`
+        }
+      });
+      if (suggestion.flightOptions.length > 0) {
+        await prisma.flightOption.createMany({
+          data: suggestion.flightOptions.map((flight: FlightOption) => ({
+            destinationSuggestionId: createdSuggestion.id,
+            price: flight.price,
+            currency: flight.currency,
+            airline: flight.airline,
+            flightNumber: flight.flightNumber,
+            duration: flight.duration,
+            stops: flight.stops,
+            departureTime: flight.departureTime ? new Date(flight.departureTime) : null,
+            arrivalTime: flight.arrivalTime ? new Date(flight.arrivalTime) : null,
+            bookingToken: flight.bookingToken,
+            originAirport: flight.originAirport
+          }))
+        });
+      }
     });
-
-    // Store new suggestions
-    const suggestionData = suggestions.map((suggestion, index) => ({
-      bookingId,
-      destinationId: suggestion.id,
-      flightPrice: suggestion.flightPrice || null,
-      currency: suggestion.currency || 'EUR',
-      reason: suggestion.reason,
-      adminNotes: `Score: ${suggestion.score}, Rank: ${index + 1}`
-    }));
-
-    await prisma.destinationSuggestion.createMany({
-      data: suggestionData
-    });
-
-    console.log('[storeDestinationSuggestions] Stored', suggestionData.length, 'suggestions');
+    console.log('[storeDestinationSuggestionsWithFlights] Stored suggestions and flight options');
   } catch (error) {
-    console.error('[storeDestinationSuggestions] Error:', error);
+    console.error('[storeDestinationSuggestionsWithFlights] Error:', error);
   }
 }
 

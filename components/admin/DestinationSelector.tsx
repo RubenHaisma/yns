@@ -16,6 +16,19 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+interface FlightOption {
+  price: number;
+  currency: string;
+  airline: string;
+  flightNumber?: string;
+  duration?: number;
+  stops?: number;
+  departureTime?: string;
+  arrivalTime?: string;
+  bookingToken?: string;
+  originAirport: string;
+}
+
 interface DestinationOption {
   id: string;
   name: string;
@@ -24,10 +37,11 @@ interface DestinationOption {
   league: string;
   stadium: string;
   airport: string;
-  flightPrice?: number;
-  currency?: string;
+  flightOptions: FlightOption[];
   isRandomPick?: boolean;
   reason: string;
+  avgFlightPrice?: number; // Added for new logic
+  lastFlightCheck?: string; // Added for new logic
 }
 
 interface Booking {
@@ -48,60 +62,31 @@ interface DestinationSelectorProps {
 }
 
 export function DestinationSelector({ booking, onDestinationSelected, onClose }: DestinationSelectorProps) {
-  const [suggestions, setSuggestions] = useState<DestinationOption[]>([]);
+  const [destinations, setDestinations] = useState<DestinationOption[]>([]);
   const [loading, setLoading] = useState(false);
   const [selecting, setSelecting] = useState(false);
   const [selectedDestination, setSelectedDestination] = useState<string | null>(null);
   const [adminNotes, setAdminNotes] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [refreshingFlights, setRefreshingFlights] = useState(false);
 
   useEffect(() => {
-    fetchSuggestions();
+    fetchDestinations();
   }, []);
 
-  const fetchSuggestions = async () => {
+  const fetchDestinations = async () => {
     setLoading(true);
     setError(null);
-    
     try {
-      // First check if suggestions already exist
-      const existingResponse = await fetch(`/api/admin/bookings?search=${booking.bookingId}`);
-      const existingData = await existingResponse.json();
-      
-      if (existingData.bookings?.[0]?.destinationSuggestions?.length > 0) {
-        // Use existing suggestions
-        const existingBooking = existingData.bookings[0];
-        const suggestions = existingBooking.destinationSuggestions.map((suggestion: any) => ({
-          id: suggestion.destination.id,
-          name: suggestion.destination.name,
-          city: suggestion.destination.city,
-          country: suggestion.destination.country,
-          league: suggestion.destination.league,
-          stadium: suggestion.destination.stadium,
-          airport: suggestion.destination.airport,
-          flightPrice: suggestion.flightPrice,
-          currency: suggestion.currency,
-          reason: suggestion.reason
-        }));
-        setSuggestions(suggestions);
+      const response = await fetch('/api/admin/destinations');
+      const data = await response.json();
+      if (response.ok) {
+        setDestinations(data.destinations);
       } else {
-        // Generate new suggestions
-        const response = await fetch('/api/admin/suggest-destinations', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ bookingId: booking.bookingId }),
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          setSuggestions(data.suggestions);
-        } else {
-          setError(data.error || 'Failed to fetch suggestions');
-        }
+        setError(data.error || 'Failed to fetch destinations');
       }
     } catch (error) {
-      setError('Network error while fetching suggestions');
+      setError('Network error while fetching destinations');
     } finally {
       setLoading(false);
     }
@@ -133,6 +118,37 @@ export function DestinationSelector({ booking, onDestinationSelected, onClose }:
       setError('Network error while selecting destination');
     } finally {
       setSelecting(false);
+    }
+  };
+
+  const handleRefreshFlights = async () => {
+    setRefreshingFlights(true);
+    setError(null);
+    try {
+      // Calculate depart and return date
+      const departDate = new Date(booking.date);
+      const returnDate = new Date(departDate);
+      returnDate.setDate(departDate.getDate() + 2);
+      const departDateStr = departDate.toISOString().split('T')[0];
+      const returnDateStr = returnDate.toISOString().split('T')[0];
+      // Trigger backend bulk update
+      const response = await fetch('/api/admin/destinations/bulk-update-flights', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ departDate: departDateStr, returnDate: returnDateStr })
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.error || 'Failed to refresh flight data');
+        setRefreshingFlights(false);
+        return;
+      }
+      // After backend update, reload destinations
+      await fetchDestinations();
+    } catch (error) {
+      setError('Network error while refreshing flight data');
+    } finally {
+      setRefreshingFlights(false);
     }
   };
 
@@ -205,18 +221,15 @@ export function DestinationSelector({ booking, onDestinationSelected, onClose }:
           {/* Controls */}
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-lg font-semibold text-gray-900">
-              Suggested Destinations
-              {includesFlight && (
-                <span className="text-sm text-gray-500 ml-2">(Sorted by flight price)</span>
-              )}
+              All Destinations
             </h3>
             <button
-              onClick={fetchSuggestions}
-              disabled={loading}
+              onClick={handleRefreshFlights}
+              disabled={loading || refreshingFlights}
               className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
             >
-              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-              <span>Refresh</span>
+              <RefreshCw className={`w-4 h-4 ${(loading || refreshingFlights) ? 'animate-spin' : ''}`} />
+              <span>{refreshingFlights ? 'Refreshing...' : 'Refresh'}</span>
             </button>
           </div>
 
@@ -245,9 +258,9 @@ export function DestinationSelector({ booking, onDestinationSelected, onClose }:
           )}
 
           {/* Destination Options */}
-          {!loading && suggestions.length > 0 && (
+          {!loading && destinations.length > 0 && (
             <div className="space-y-4">
-              {suggestions.map((destination, index) => (
+              {destinations.map((destination, index) => (
                 <motion.div
                   key={destination.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -260,13 +273,7 @@ export function DestinationSelector({ booking, onDestinationSelected, onClose }:
                   }`}
                   onClick={() => setSelectedDestination(destination.id)}
                 >
-                  {/* Recommendation Badge */}
-                  {index === 0 && !destination.isRandomPick && (
-                    <div className="absolute -top-3 left-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                      RECOMMENDED
-                    </div>
-                  )}
-
+                  {/* No recommendation or real-time badges */}
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-3">
@@ -300,30 +307,16 @@ export function DestinationSelector({ booking, onDestinationSelected, onClose }:
                         )}
                       </div>
 
-                      <div className="flex items-center justify-between">
-                        <div className="text-sm text-gray-600">
-                          {destination.reason}
+                      {/* Optionally, show avgFlightPrice or lastFlightCheck if available */}
+                      {destination.avgFlightPrice && (
+                        <div className="text-sm text-green-700 font-bold mb-2">
+                          Avg. Flight Price: €{destination.avgFlightPrice}
                         </div>
-                        {destination.flightPrice && (
-                          <div className="flex items-center space-x-1 bg-green-100 px-3 py-1 rounded-full">
-                            <Euro className="w-4 h-4 text-green-600" />
-                            <span className="font-bold text-green-700">
-                              €{destination.flightPrice}
-                            </span>
-                            <span className="text-xs text-green-600">per person</span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Selection Indicator */}
-                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                      selectedDestination === destination.id
-                        ? 'border-green-500 bg-green-500'
-                        : 'border-gray-300'
-                    }`}>
-                      {selectedDestination === destination.id && (
-                        <Check className="w-4 h-4 text-white" />
+                      )}
+                      {destination.lastFlightCheck && (
+                        <div className="text-xs text-gray-500 mb-2">
+                          Last checked: {new Date(destination.lastFlightCheck).toLocaleString()}
+                        </div>
                       )}
                     </div>
                   </div>
@@ -365,7 +358,7 @@ export function DestinationSelector({ booking, onDestinationSelected, onClose }:
           <div className="flex items-center space-x-3">
             {selectedDestination && (
               <div className="text-sm text-gray-600">
-                {suggestions.find(s => s.id === selectedDestination)?.city} selected
+                {destinations.find(s => s.id === selectedDestination)?.city} selected
               </div>
             )}
             <button

@@ -26,10 +26,10 @@ export function generateAdminToken(email: string): string {
 // For API routes (Node.js environment)
 export function verifyAdminToken(token: string): { email: string; role: string } | null {
   try {
-    console.log('Verifying token with secret:', JWT_SECRET);
-    console.log('Token to verify:', token.substring(0, 20) + '...');
+    // console.log('Verifying token with secret:', JWT_SECRET);
+    // console.log('Token to verify:', token.substring(0, 20) + '...');
     const decoded = jwt.verify(token, JWT_SECRET) as any;
-    console.log('Token verified successfully:', decoded);
+    // console.log('Token verified successfully:', decoded);
     return { email: decoded.email, role: decoded.role };
   } catch (error) {
     console.error('Token verification failed:', error);

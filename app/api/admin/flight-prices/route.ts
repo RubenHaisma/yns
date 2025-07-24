@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyAdminToken } from '@/lib/auth';
-import { getSpecificFlightPrice, getAirportCode } from '@/lib/aviasales';
+import { searchRealTimeFlights, getAirportCode, getFlightPrices } from '@/lib/aviasales';
 import { prisma } from '@/lib/prisma';
 
 export async function POST(request: NextRequest) {
@@ -31,16 +31,19 @@ export async function POST(request: NextRequest) {
     // Get airport code
     const airportCode = destination.airport || getAirportCode(destination.city, destination.country);
 
-    // Fetch flight price
-    const flightPrice = await getSpecificFlightPrice(
+    // Fetch real-time flight price
+    const flightResults = await searchRealTimeFlights(
       'AMS', // Amsterdam as origin
       airportCode,
       departDate,
       returnDate,
-      travelers || 1
+      travelers || 1,
+      'EUR'
     );
 
-    // Update destination with latest flight price
+    const flightPrice = flightResults.length > 0 ? flightResults[0] : null;
+
+    // Update destination with latest real-time flight price
     if (flightPrice) {
       await prisma.destination.update({
         where: { id: destinationId },
@@ -54,6 +57,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       flightPrice,
+      allOptions: flightResults, // Return all available options
       destination: {
         id: destination.id,
         name: destination.name,
@@ -102,21 +106,22 @@ export async function GET(request: NextRequest) {
 
     // Update flight prices for destinations that haven't been checked recently
     const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
-    const destinationsToUpdate = destinations.filter(dest => 
+    const destinationsToUpdate = destinations.filter((dest: any) => 
       !dest.lastFlightCheck || dest.lastFlightCheck < oneHourAgo
     );
 
     const flightPrices = [];
     for (const dest of destinationsToUpdate.slice(0, 10)) { // Limit to 10 to avoid rate limits
       try {
-        const airportCode = dest.airport || getAirportCode(dest.city, dest.country);
-        const flightPrice = await getSpecificFlightPrice(
-          'AMS',
-          airportCode,
-          departDate,
-          returnDate || undefined,
-          travelers
-        );
+        const airportCode = (dest.airport ?? getAirportCode(dest.city, dest.country)) || '';
+        let prices;
+        if (returnDate) {
+          prices = await getFlightPrices([airportCode], departDate, returnDate, travelers);
+        } else {
+          prices = await getFlightPrices([airportCode], departDate, '', travelers);
+        }
+
+        const flightPrice = prices[0];
 
         if (flightPrice) {
           // Update destination

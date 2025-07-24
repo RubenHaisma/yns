@@ -133,6 +133,10 @@ export function FlightPriceChecker({ onPricesUpdated }: FlightPriceCheckerProps)
                 <span className="text-gray-600">Flight Prices Found:</span>
                 <div className="font-semibold text-gray-900">{result.flightPrices}</div>
               </div>
+              <div>
+                <span className="text-gray-600">Data Source:</span>
+                <div className="font-semibold text-green-700">Real-time API</div>
+              </div>
             </div>
           </motion.div>
         )}
@@ -156,7 +160,7 @@ export function FlightPriceChecker({ onPricesUpdated }: FlightPriceCheckerProps)
         </button>
 
         <div className="text-xs text-gray-500 text-center">
-          This will check flight prices from Amsterdam (AMS) to all destination airports using the Aviasales API.
+          This will check real-time flight prices from Amsterdam (AMS) and Eindhoven (EIN) to all destination airports using the Aviasales Search API.
         </div>
       </div>
     </div>

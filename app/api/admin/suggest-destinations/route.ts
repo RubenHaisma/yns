@@ -35,6 +35,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Get destination suggestions
+    console.log(`[suggest-destinations] Generating real-time suggestions for booking ${bookingId}`);
+    
     const suggestions = await suggestDestinations(
       bookingId,
       booking.package,
@@ -43,44 +45,7 @@ export async function POST(request: NextRequest) {
       preferences
     );
 
-    // Also get existing suggestions from database
-    const existingSuggestions = await prisma.destinationSuggestion.findMany({
-      where: { bookingId },
-      include: { destination: true },
-      orderBy: { flightPrice: 'asc' }
-    });
-
-    // If we have existing suggestions, return those instead
-    if (existingSuggestions.length > 0) {
-      const formattedSuggestions = existingSuggestions.map((suggestion: any) => ({
-        id: suggestion.destination.id,
-        name: suggestion.destination.name,
-        city: suggestion.destination.city,
-        country: suggestion.destination.country,
-        league: suggestion.destination.league,
-        stadium: suggestion.destination.stadium,
-        airport: suggestion.destination.airport,
-        flightPrice: suggestion.flightPrice,
-        currency: suggestion.currency,
-        reason: suggestion.reason,
-        score: 0 // Not used for existing suggestions
-      }));
-
-      return NextResponse.json({
-        success: true,
-        suggestions: formattedSuggestions,
-        booking: {
-          id: booking.id,
-          bookingId: booking.bookingId,
-          name: booking.name,
-          email: booking.email,
-          package: booking.package,
-          date: booking.date,
-          travelers: booking.travelers,
-          preferences
-        }
-      });
-    }
+    console.log(`[suggest-destinations] Generated ${suggestions.length} suggestions with real-time flight data`);
 
     return NextResponse.json({
       success: true,

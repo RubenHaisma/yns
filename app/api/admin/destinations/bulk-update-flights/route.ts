@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyAdminToken } from '@/lib/auth';
-import { getFlightPrices, getAirportCode } from '@/lib/aviasales';
+import { batchSearchFlights, getAirportCode } from '@/lib/aviasales';
 import { prisma } from '@/lib/prisma';
 
 export async function POST(request: NextRequest) {
@@ -36,48 +36,60 @@ export async function POST(request: NextRequest) {
       }, { status: 404 });
     }
 
-    // Prepare airport codes
-    const airportCodes = destinations.map(dest => 
-      dest.airport || getAirportCode(dest.city, dest.country)
-    ).filter(Boolean);
+    // Prepare destinations for batch search
+    const destinationsForSearch = destinations.map((dest: any) => ({
+      id: dest.id,
+      airport: dest.airport || getAirportCode(dest.city, dest.country),
+      city: dest.city,
+      country: dest.country
+    }));
 
-    // Get flight prices
-    const flightPrices = await getFlightPrices(
-      airportCodes,
+    console.log(`[bulk-update-flights] Starting batch search for ${destinationsForSearch.length} destinations`);
+
+    // Use batch search for real-time flight prices
+    const batchResults = await batchSearchFlights(
+      destinationsForSearch,
       departDate,
-      returnDate || '',
+      returnDate,
       1 // Base price for 1 person
     );
 
-    // Update destinations with flight prices
-    const updatePromises = destinations.map(async (dest) => {
+    console.log(`[bulk-update-flights] Got batch results for ${batchResults.length} destinations`);
+
+    // Update destinations with real-time flight prices
+    const updatePromises = batchResults.map(async (result) => {
+      const dest = destinations.find((d: any) => d.id === result.destinationId);
+      if (!dest) return null;
+
       const airportCode = dest.airport || getAirportCode(dest.city, dest.country);
-      const flightPrice = flightPrices.find(fp => fp.destination === airportCode);
 
       return prisma.destination.update({
         where: { id: dest.id },
         data: {
           lastFlightCheck: new Date(),
-          avgFlightPrice: flightPrice?.price || null,
+          avgFlightPrice: result.flightPrice?.price || null,
           // Update airport code if it was generated
           airport: dest.airport || airportCode
         }
       });
     });
 
-    await Promise.all(updatePromises);
+    const updateResults = await Promise.all(updatePromises.filter(Boolean));
+    const successfulUpdates = updateResults.filter(Boolean).length;
+    const flightPricesFound = batchResults.filter(r => r.flightPrice).length;
 
     return NextResponse.json({
       success: true,
-      message: `Updated flight prices for ${destinations.length} destinations`,
-      flightPrices: flightPrices.length,
-      destinationsUpdated: destinations.length
+      message: `Updated flight prices for ${successfulUpdates} destinations using real-time data`,
+      flightPrices: flightPricesFound,
+      destinationsUpdated: successfulUpdates,
+      totalDestinations: destinations.length
     });
 
   } catch (error) {
-    console.error('Error bulk updating flight prices:', error);
+    console.error('Error bulk updating real-time flight prices:', error);
     return NextResponse.json(
-      { error: 'Failed to update flight prices' },
+      { error: 'Failed to update real-time flight prices' },
       { status: 500 }
     );
   }
