@@ -406,15 +406,15 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               <div className="space-y-4">
                 <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer ${footballTier === 'A' ? 'border-orange-500 bg-orange-50' : 'border-green-100'}`}> 
                   <input type="radio" name="footballTier" value="A" checked={footballTier === 'A'} onChange={() => setFootballTier('A')} className="mr-2" />
-                  <span className="font-bold">Tier A</span> – Dortmund, Liverpool, Paris (PSG)
+                  <span className="font-bold">Tier A</span> – Bijv. Dortmund, Liverpool, Paris (PSG), etc.
                 </label>
                 <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer ${footballTier === 'B' ? 'border-orange-500 bg-orange-50' : 'border-green-100'}`}> 
                   <input type="radio" name="footballTier" value="B" checked={footballTier === 'B'} onChange={() => setFootballTier('B')} className="mr-2" />
-                  <span className="font-bold">Tier B</span> – Eintracht, Schalke 04, Sunderland, AS Roma
+                  <span className="font-bold">Tier B</span> – Bijv. Eintracht, Schalke 04, Sunderland, AS Roma, etc.
                 </label>
                 <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer ${footballTier === 'C' ? 'border-orange-500 bg-orange-50' : 'border-green-100'}`}> 
                   <input type="radio" name="footballTier" value="C" checked={footballTier === 'C'} onChange={() => setFootballTier('C')} className="mr-2" />
-                  <span className="font-bold">Tier C</span> – Dusseldorf, Southampton, Lens
+                  <span className="font-bold">Tier C</span> – Bijv. Dusseldorf, Southampton, Lens, etc.
                 </label>
               </div>
             </div>
