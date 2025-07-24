@@ -54,10 +54,10 @@ export async function suggestDestinations(
     const suggestions: DestinationSuggestion[] = [];
     const includesFlight = packageType === 'comfort' || packageType === 'premium';
 
-    // Calculate return date (2 days later for weekend trips)
+    // Calculate return date (1 day later for weekend trips)
     const departDateObj = new Date(departDate);
     const returnDateObj = new Date(departDateObj);
-    returnDateObj.setDate(returnDateObj.getDate() + 2);
+    returnDateObj.setDate(returnDateObj.getDate() + 1);
     const returnDate = returnDateObj.toISOString().split('T')[0];
 
     if (includesFlight) {
@@ -75,7 +75,7 @@ export async function suggestDestinations(
         for (const origin of ['AMS', 'EIN']) {
           const flights = await searchRealTimeFlights(
             origin,
-            destination.airport,
+            destination.airport || '',
             departDate,
             returnDate,
             travelers

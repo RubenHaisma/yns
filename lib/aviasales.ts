@@ -456,129 +456,41 @@ export async function getFlightBookingUrl(bookingToken: string): Promise<string 
   }
 }
 
-// Enhanced airport code mapping with more European airports
-export function getAirportCode(city: string, country: string): string {
-  const airportMap: { [key: string]: string } = {
-    // Major European cities
-    'Amsterdam': 'AMS',
-    'London': 'LHR',
-    'Paris': 'CDG',
-    'Berlin': 'BER',
-    'Madrid': 'MAD',
-    'Barcelona': 'BCN',
-    'Rome': 'FCO',
-    'Milan': 'MXP',
-    'Munich': 'MUC',
-    'München': 'MUC',
-    'Frankfurt': 'FRA',
-    'Zurich': 'ZUR',
-    'Vienna': 'VIE',
-    'Brussels': 'BRU',
-    'Copenhagen': 'CPH',
-    'Stockholm': 'ARN',
-    'Oslo': 'OSL',
-    'Helsinki': 'HEL',
-    'Dublin': 'DUB',
-    'Lisbon': 'LIS',
-    'Prague': 'PRG',
-    'Warsaw': 'WAW',
-    'Budapest': 'BUD',
-    'Athens': 'ATH',
-    'Istanbul': 'IST',
-    
-    // UK cities
-    'Manchester': 'MAN',
-    'Liverpool': 'LPL',
-    'Birmingham': 'BHX',
-    'Glasgow': 'GLA',
-    'Edinburgh': 'EDI',
-    'Newcastle upon Tyne': 'NCL',
-    'Newcastle': 'NCL',
-    'Leeds': 'LBA',
-    
-    // German cities
-    'Hamburg': 'HAM',
-    'Cologne': 'CGN',
-    'Düsseldorf': 'DUS',
-    'Stuttgart': 'STR',
-    'Hannover': 'HAJ',
-    'Dresden': 'DRS',
-    'Leipzig': 'LEJ',
-    'Dortmund': 'DTM',
-    'Kaiserslautern': 'FRA', // Use Frankfurt for Kaiserslautern
-    
-    // Spanish cities
-    'Valencia': 'VLC',
-    'Seville': 'SVQ',
-    'Sevilla': 'SVQ',
-    'Bilbao': 'BIO',
-    'Málaga': 'AGP',
-    'Malaga': 'AGP',
-    'Palma': 'PMI',
-    'Las Palmas': 'LPA',
-    'Alicante': 'ALC',
-    'Pamplona': 'PNA',
-    'Oviedo': 'OVD',
-    'Gijón': 'OVD', // Use Asturias for Gijón
-    'Gijon': 'OVD',
-    
-    // Italian cities
-    'Naples': 'NAP',
-    'Turin': 'TRN',
-    'Bologna': 'BLQ',
-    'Florence': 'FLR',
-    'Venice': 'VCE',
-    'Genoa': 'GOA',
-    'Palermo': 'PMO',
-    'Catania': 'CTA',
-    
-    // French cities
-    'Lyon': 'LYS',
-    'Marseille': 'MRS',
-    'Nice': 'NCE',
-    'Toulouse': 'TLS',
-    'Bordeaux': 'BOD',
-    'Nantes': 'NTE',
-    'Strasbourg': 'SXB',
-    'Lille': 'LIL',
-    'Saint-Étienne': 'EBU',
-    'Le Havre': 'DOL',
-    'Bastia': 'BIA',
-    
-    // Dutch cities
-    'Rotterdam': 'RTM',
-    'Eindhoven': 'EIN',
-    'Groningen': 'GRQ',
-    'Maastricht': 'MST',
-    'Utrecht': 'AMS', // Use Amsterdam for Utrecht
-    'Den Haag': 'RTM', // Use Rotterdam for Den Haag
-    'Doetinchem': 'EIN', // Use Eindhoven for Doetinchem
-    'Breda': 'EIN', // Use Eindhoven for Breda
-    
-    // Belgian cities
-    'Antwerp': 'ANR',
-    'Antwerpen': 'ANR',
-    'Charleroi': 'CRL',
-    'Luxembourg': 'LUX',
-    'Luik': 'LGG',
-    'Liège': 'LGG',
-    'Brugge': 'OST',
-    'Bruges': 'OST',
-    'Beveren': 'ANR', // Use Antwerp for Beveren
-    'Brussel': 'BRU',
-  };
+import { prisma } from './prisma';
 
+// Enhanced airport code mapping: Fetch major airports from the database (active destinations with airport code)
+const airportCache = new Map<string, string>();
+
+export async function getAirportCode(city: string, country: string): Promise<string> {
   const cityKey = city.trim();
-  const airportCode = airportMap[cityKey];
-  
-  if (airportCode) {
-    console.log(`[getAirportCode] Mapped ${cityKey} to ${airportCode}`);
-    return airportCode;
+  const cacheKey = `${cityKey}|${country}`;
+  if (airportCache.has(cacheKey)) {
+    return airportCache.get(cacheKey)!;
+  }
+
+  // Query the database for an active destination with a valid airport code
+  const destination = await prisma.destination.findFirst({
+    where: {
+      isActive: true,
+      city: cityKey,
+      country: country,
+      airport: {
+        not: null,
+      },
+    },
+    select: { airport: true },
+  });
+
+  if (destination && destination.airport && destination.airport.length >= 3 && destination.airport.length <= 4 && /^[A-Z]+$/.test(destination.airport)) {
+    airportCache.set(cacheKey, destination.airport);
+    console.log(`[getAirportCode] DB mapped ${cityKey}, ${country} to ${destination.airport}`);
+    return destination.airport;
   }
 
   // Fallback: use first 3 letters of city name
   const fallback = cityKey.toUpperCase().substring(0, 3);
-  console.log(`[getAirportCode] No mapping found for ${cityKey}, using fallback: ${fallback}`);
+  airportCache.set(cacheKey, fallback);
+  console.log(`[getAirportCode] No DB mapping for ${cityKey}, ${country}, using fallback: ${fallback}`);
   return fallback;
 }
 
@@ -661,6 +573,12 @@ export async function batchSearchFlights(
             adults
           );
 
+          // Add logging for each search
+          console.log(`[DEBUG] Search: origin=${origin}, dest=${dest.airport}, city=${dest.city}, results=${flightResults.length}`);
+          if (flightResults.length > 0) {
+            console.log(`[DEBUG] Prices for ${origin}->${dest.airport} (${dest.city}):`, flightResults.map(f => f.price));
+          }
+
           if (flightResults.length > 0 && (!bestPrice || flightResults[0].price < bestPrice.price)) {
             bestPrice = flightResults[0];
           }
@@ -684,7 +602,7 @@ export async function batchSearchFlights(
     }
   }
 
-  console.log(`[batchSearchFlights] Completed batch search, found prices for ${results.filter(r => r.flightPrice).length} destinations`);
+  console.log(`[batchSearchFlights] Completed batch search, found prices for ${results.filter(r => r.flightPrice).length}/${results.length} destinations`);
   return results;
 }
 

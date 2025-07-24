@@ -38,10 +38,10 @@ export default async function middleware(request: NextRequest) {
     // Protected admin routes
     if (pathname.startsWith('/admin/dashboard') || pathname.startsWith('/nl/admin/dashboard') || pathname.startsWith('/en/admin/dashboard')) {
       const token = request.cookies.get('admin-token')?.value;
-      console.log('Admin dashboard access attempt:', { pathname, hasToken: !!token });
+      // console.log('Admin dashboard access attempt:', { pathname, hasToken: !!token });
       
       if (!token) {
-        console.log('No token found, redirecting to login');
+        // console.log('No token found, redirecting to login');
         const locale = pathname.startsWith('/nl/') ? 'nl' : pathname.startsWith('/en/') ? 'en' : 'nl';
         return NextResponse.redirect(new URL(`/${locale}/admin`, request.url));
       }
@@ -49,12 +49,12 @@ export default async function middleware(request: NextRequest) {
       // Use the Edge-compatible verification
       const verificationResult = await verifyAdminTokenEdge(token);
       if (!verificationResult) {
-        console.log('Token verification failed, redirecting to login');
+        // console.log('Token verification failed, redirecting to login');
         const locale = pathname.startsWith('/nl/') ? 'nl' : pathname.startsWith('/en/') ? 'en' : 'nl';
         return NextResponse.redirect(new URL(`/${locale}/admin`, request.url));
       }
       
-      console.log('Token verified, allowing access');
+      // console.log('Token verified, allowing access');
       return NextResponse.next();
     }
     

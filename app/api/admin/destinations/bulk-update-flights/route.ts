@@ -56,18 +56,31 @@ export async function POST(request: NextRequest) {
 
     console.log(`[bulk-update-flights] Got batch results for ${batchResults.length} destinations`);
 
-    // Update destinations with real-time flight prices
-    const updatePromises = batchResults.map(async (result) => {
-      const dest = destinations.find((d: any) => d.id === result.destinationId);
-      if (!dest) return null;
+    // Debug: Log all batch results
+    batchResults.forEach((result, idx) => {
+      console.log(`[DEBUG] BatchResult #${idx}:`, JSON.stringify(result));
+    });
 
+    // Update destinations with real-time flight prices
+    const updatePromises = destinations.map(async (dest: any) => {
+      const result = batchResults.find(r => r.destinationId === dest.id);
       const airportCode = dest.airport || getAirportCode(dest.city, dest.country);
+
+      // Debug: Log mapping for each destination
+      console.log(`[DEBUG] Updating destination`, {
+        id: dest.id,
+        city: dest.city,
+        airport: dest.airport,
+        foundResult: !!result,
+        resultFlightPrice: result?.flightPrice?.price,
+        airportCode
+      });
 
       return prisma.destination.update({
         where: { id: dest.id },
         data: {
           lastFlightCheck: new Date(),
-          avgFlightPrice: result.flightPrice?.price || null,
+          avgFlightPrice: result?.flightPrice?.price || null,
           // Update airport code if it was generated
           airport: dest.airport || airportCode
         }

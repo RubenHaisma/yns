@@ -1,5 +1,5 @@
 Land,Competitie,Club,Website,Stad,Dichtstbijzijnde luchthaven
-Duitsland,Bundesliga,Borussia Dortmund,https://www.bvb.de,Dortmund,DTM
+Duitsland,Bundesliga,Borussia Dortmund,https://www.bvb.de,Dortmund,DUS
 Duitsland,Bundesliga,Eintracht Frankfurt,https://en.eintracht.de,Frankfurt,FRA
 Duitsland,Bundesliga,Union Berlin,https://www.fc-union-berlin.de,Berlin,BER
 Duitsland,2. Bundesliga,St. Pauli,https://www.fcstpauli.com,Hamburg,HAM
@@ -11,16 +11,16 @@ Nederland,Eredivisie,ADO Den Haag,https://adodenhaag.nl,Den Haag,EIN
 Nederland,Eerste Divisie,De Graafschap,https://www.degraafschap.nl,Doetinchem,EIN
 Nederland,Eerste Divisie,MVV Maastricht,https://www.mvv.nl,Maastricht,EIN
 Nederland,Eerste Divisie,NAC Breda,https://www.nac.nl,Breda,EIN
-België,Jupiler Pro League,Standard Luik,https://standard.be,Luik,LGG
-België,Jupiler Pro League,Royal Antwerp FC,https://www.royalantwerpfc.be,Antwerpen,ANR
-België,Jupiler Pro League,Club Brugge,https://www.clubbrugge.be,Brugge,OST
+België,Jupiler Pro League,Standard Luik,https://standard.be,Luik,BRU
+België,Jupiler Pro League,Royal Antwerp FC,https://www.royalantwerpfc.be,Antwerpen,BRU
+België,Jupiler Pro League,Club Brugge,https://www.clubbrugge.be,Brugge,BRU
 België,Challenger Pro League,RWDM,https://www.rwdm.be,Brussel,BRU
-België,Challenger Pro League,SK Beveren,https://www.skbeveren.be,Beveren,ANR
+België,Challenger Pro League,SK Beveren,https://www.skbeveren.be,Beveren,BRU
 Spanje,La Liga,Real Betis,https://www.realbetisbalompie.es,Sevilla,SVQ
 Spanje,La Liga,Athletic Bilbao,https://www.athletic-club.eus,Bilbao,BIO
-Spanje,La Liga,Osasuna,https://www.osasuna.es,Pamplona,PNA
-Spanje,Segunda División,Real Oviedo,https://www.realoviedo.es,Oviedo,OVD
-Spanje,Segunda División,Sporting Gijón,https://www.realsporting.com,Gijón,OVD
+Spanje,La Liga,Osasuna,https://www.osasuna.es,Pamplona,AGP
+Spanje,Segunda División,Real Oviedo,https://www.realoviedo.es,Oviedo,AGP
+Spanje,Segunda División,Sporting Gijón,https://www.realsporting.com,Gijón,AGP
 Spanje,Segunda División,Málaga CF,https://www.malagacf.com,Málaga,AGP
 Engeland,Premier League,Newcastle United,https://www.nufc.co.uk,Newcastle upon Tyne,NCL
 Engeland,Premier League,Crystal Palace,https://www.cpfc.co.uk,Londen,LHR
@@ -29,7 +29,7 @@ Engeland,Championship,Millwall,https://www.millwallfc.co.uk,Londen,LHR
 Engeland,Championship,Sunderland,https://www.safc.com,Sunderland,NCL
 Engeland,Championship,Leeds United,https://www.leedsunited.com,Leeds,LBA
 Frankrijk,Ligue 1,Marseille,https://www.om.fr,Marseille,MRS
-Frankrijk,Ligue 1,RC Lens,https://www.rclens.fr,Lens,LIL
-Frankrijk,Ligue 1,Saint-Étienne,https://www.asse.fr,Saint-Étienne,EBU
-Frankrijk,Ligue 2,SC Bastia,https://www.sc-bastia.corsica,Bastia,BIA
-Frankrijk,Ligue 2,Le Havre,https://www.hac-foot.com,Le Havre,DOL
+Frankrijk,Ligue 1,RC Lens,https://www.rclens.fr,Lens,BRU
+Frankrijk,Ligue 1,Saint-Étienne,https://www.asse.fr,Saint-Étienne,LYS
+Frankrijk,Ligue 2,SC Bastia,https://www.sc-bastia.corsica,Bastia,MRS
+Frankrijk,Ligue 2,Le Havre,https://www.hac-foot.com,Le Havre,CDG

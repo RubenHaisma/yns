@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     });
 
     return NextResponse.json({ 
-      destinations: destinations.map(dest => ({
+      destinations: destinations.map((dest: any) => ({ 
         ...dest,
         hasRecentFlightData: dest.lastFlightCheck && 
           dest.lastFlightCheck > new Date(Date.now() - 24 * 60 * 60 * 1000) // Within 24 hours

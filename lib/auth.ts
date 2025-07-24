@@ -40,8 +40,8 @@ export function verifyAdminToken(token: string): { email: string; role: string }
 // For middleware (Edge Runtime) - using Web Crypto API
 export async function verifyAdminTokenEdge(token: string): Promise<{ email: string; role: string } | null> {
   try {
-    console.log('Verifying token in Edge Runtime with secret:', JWT_SECRET);
-    console.log('Token to verify:', token.substring(0, 20) + '...');
+    // console.log('Verifying token in Edge Runtime with secret:', JWT_SECRET);
+    // console.log('Token to verify:', token.substring(0, 20) + '...');
     
     // Simple token validation for Edge Runtime
     // In a real app, you'd use a proper JWT library that supports Edge Runtime
@@ -61,7 +61,7 @@ export async function verifyAdminTokenEdge(token: string): Promise<{ email: stri
       return null;
     }
     
-    console.log('Token verified successfully in Edge Runtime:', payload);
+    // console.log('Token verified successfully in Edge Runtime:', payload);
     return { email: payload.email, role: payload.role };
   } catch (error) {
     console.error('Token verification failed in Edge Runtime:', error);

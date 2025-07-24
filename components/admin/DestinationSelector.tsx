@@ -310,7 +310,12 @@ export function DestinationSelector({ booking, onDestinationSelected, onClose }:
                       {/* Optionally, show avgFlightPrice or lastFlightCheck if available */}
                       {destination.avgFlightPrice && (
                         <div className="text-sm text-green-700 font-bold mb-2">
-                          Avg. Flight Price: €{destination.avgFlightPrice}
+                          Flight Price: €{destination.avgFlightPrice}
+                        </div>
+                      )}
+                      {!destination.avgFlightPrice && includesFlight && (
+                        <div className="text-sm text-gray-500 mb-2">
+                          No flight data available
                         </div>
                       )}
                       {destination.lastFlightCheck && (

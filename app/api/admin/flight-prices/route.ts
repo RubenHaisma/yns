@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get airport code
-    const airportCode = destination.airport || getAirportCode(destination.city, destination.country);
+    const airportCode = destination.airport || await getAirportCode(destination.city, destination.country);
 
     // Fetch real-time flight price
     const flightResults = await searchRealTimeFlights(
@@ -113,7 +113,7 @@ export async function GET(request: NextRequest) {
     const flightPrices = [];
     for (const dest of destinationsToUpdate.slice(0, 10)) { // Limit to 10 to avoid rate limits
       try {
-        const airportCode = (dest.airport ?? getAirportCode(dest.city, dest.country)) || '';
+        const airportCode = (dest.airport ?? await getAirportCode(dest.city, dest.country)) || '';
         let prices;
         if (returnDate) {
           prices = await getFlightPrices([airportCode], departDate, returnDate, travelers);
