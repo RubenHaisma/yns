@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { sendBookingConfirmation } from '@/lib/resend';
+import { suggestDestinations } from '@/lib/destination-selector';
 
 export async function POST(request: NextRequest) {
   try {
@@ -48,6 +49,39 @@ export async function POST(request: NextRequest) {
         paymentStatus: 'paid'
       }
     });
+
+    // Automatically suggest cheapest destination for packages that include flights
+    if (packageType === 'comfort' || packageType === 'premium') {
+      try {
+        console.log('[bookings] Auto-suggesting destinations for:', bookingId);
+        
+        // Parse preferences if they exist
+        let parsedPreferences;
+        try {
+          parsedPreferences = preferences ? JSON.parse(preferences) : {};
+        } catch (error) {
+          parsedPreferences = {};
+        }
+
+        // Run destination suggestion in background (don't await to avoid blocking response)
+        setTimeout(async () => {
+          try {
+            await suggestDestinations(
+              bookingId,
+              packageType,
+              new Date(date).toISOString().split('T')[0],
+              parseInt(travelers),
+              parsedPreferences
+            );
+            console.log('[bookings] Auto-suggestion completed for:', bookingId);
+          } catch (error) {
+            console.error('[bookings] Auto-suggestion failed for:', bookingId, error);
+          }
+        }, 1000); // 1 second delay to ensure booking is saved
+      } catch (error) {
+        console.error('[bookings] Error triggering destination suggestion:', error);
+      }
+    }
 
     // Send confirmation email with locale
     try {

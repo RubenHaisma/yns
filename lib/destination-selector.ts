@@ -1,7 +1,7 @@
-import { prisma } from './prisma';
-import { getFlightPrices, getAirportCode } from './aviasales';
+import { prisma } from '@/lib/prisma';
+import { getFlightPrices, getSpecificFlightPrice } from '@/lib/aviasales';
 
-interface DestinationOption {
+interface DestinationSuggestion {
   id: string;
   name: string;
   city: string;
@@ -11,15 +11,9 @@ interface DestinationOption {
   airport: string;
   flightPrice?: number;
   currency?: string;
-  isRandomPick?: boolean;
   reason: string;
-}
-
-interface BookingPreferences {
-  hatedTeams?: string[];
-  visitedCities?: string[];
-  preferredLeagues?: string[];
-  travelStyle?: string;
+  score: number;
+  isRandomPick?: boolean;
 }
 
 export async function suggestDestinations(
@@ -27,175 +21,207 @@ export async function suggestDestinations(
   packageType: string,
   departDate: string,
   travelers: number,
-  preferences?: BookingPreferences
-): Promise<DestinationOption[]> {
+  preferences: any = {}
+): Promise<DestinationSuggestion[]> {
   try {
-    // Get all active destinations
-    const allDestinations = await prisma.destination.findMany({
-      where: { isActive: true },
-      orderBy: { name: 'asc' }
+    console.log('[suggestDestinations] Starting suggestion process for booking:', bookingId);
+
+    // Get all active destinations with airport codes from database
+    const destinations = await prisma.destination.findMany({
+      where: { 
+        isActive: true,
+        airport: {
+          not: null,
+        }
+      },
+      orderBy: { createdAt: 'desc' }
     });
 
-    if (allDestinations.length === 0) {
-      throw new Error('No destinations available');
-    }
+    console.log('[suggestDestinations] Found', destinations.length, 'active destinations with airports');
 
-    // Filter destinations based on preferences
-    let filteredDestinations = allDestinations.filter(dest => {
-      // Exclude hated teams
-      if (preferences?.hatedTeams?.some(team => 
-        dest.name.toLowerCase().includes(team.toLowerCase())
-      )) {
-        return false;
-      }
-
-      // Exclude visited cities
-      if (preferences?.visitedCities?.some(city => 
-        dest.city.toLowerCase() === city.toLowerCase()
-      )) {
-        return false;
-      }
-
-      return true;
-    });
-
-    // If no destinations left after filtering, use all destinations
-    if (filteredDestinations.length === 0) {
-      filteredDestinations = allDestinations;
-    }
-
-    const suggestions: DestinationOption[] = [];
-
-    // Check if package includes flights
+    const suggestions: DestinationSuggestion[] = [];
     const includesFlight = packageType === 'comfort' || packageType === 'premium';
 
+    // Calculate return date (2 days later for weekend trips)
+    const departDateObj = new Date(departDate);
+    const returnDateObj = new Date(departDateObj);
+    returnDateObj.setDate(returnDateObj.getDate() + 2);
+    const returnDate = returnDateObj.toISOString().split('T')[0];
+
     if (includesFlight) {
-      // Get flight prices for destinations with airports
-      const destinationsWithAirports = filteredDestinations.filter(dest => dest.airport);
+      console.log('[suggestDestinations] Package includes flight, checking prices...');
       
-      if (destinationsWithAirports.length > 0) {
-        // Prepare airport codes for flight search
-        const airportCodes = destinationsWithAirports.map(dest => 
-          dest.airport || getAirportCode(dest.city, dest.country)
-        );
-
-        // Calculate return date (assuming 2-3 day trip)
-        const returnDate = new Date(departDate);
-        returnDate.setDate(returnDate.getDate() + 2);
-
-        try {
-          // Get flight prices from Amsterdam to all destinations
-          const flightPrices = await getFlightPrices(
-            airportCodes,
-            departDate,
-            returnDate.toISOString().split('T')[0],
-            travelers
-          );
-
-          // Match flight prices with destinations
-          for (const dest of destinationsWithAirports) {
-            const airportCode = dest.airport || getAirportCode(dest.city, dest.country);
-            const flightPrice = flightPrices.find(fp => fp.destination === airportCode);
-
-            suggestions.push({
-              id: dest.id,
-              name: dest.name,
-              city: dest.city,
-              country: dest.country,
-              league: dest.league,
-              stadium: dest.stadium,
-              airport: airportCode,
-              flightPrice: flightPrice?.price,
-              currency: flightPrice?.currency || 'EUR',
-              isRandomPick: false,
-              reason: flightPrice 
-                ? `Flight available for €${flightPrice.price} per person`
-                : 'Flight price not available'
-            });
-          }
-
-          // Sort by flight price (cheapest first)
-          suggestions.sort((a, b) => {
-            if (!a.flightPrice && !b.flightPrice) return 0;
-            if (!a.flightPrice) return 1;
-            if (!b.flightPrice) return -1;
-            return a.flightPrice - b.flightPrice;
-          });
-
-        } catch (error) {
-          console.error('Error fetching flight prices:', error);
-          
-          // Fallback to random selection if API fails
-          const randomDestinations = getRandomDestinations(filteredDestinations, 3);
-          suggestions.push(...randomDestinations.map(dest => ({
-            id: dest.id,
-            name: dest.name,
-            city: dest.city,
-            country: dest.country,
-            league: dest.league,
-            stadium: dest.stadium,
-            airport: dest.airport || getAirportCode(dest.city, dest.country),
-            isRandomPick: true,
-            reason: 'Random selection (flight API unavailable)'
-          })));
-        }
-      }
-    } else {
-      // For basic package (no flights), select randomly
-      const randomDestinations = getRandomDestinations(filteredDestinations, 5);
-      suggestions.push(...randomDestinations.map(dest => ({
-        id: dest.id,
-        name: dest.name,
-        city: dest.city,
-        country: dest.country,
-        league: dest.league,
-        stadium: dest.stadium,
-        airport: dest.airport || getAirportCode(dest.city, dest.country),
-        isRandomPick: true,
-        reason: 'Random selection (basic package)'
-      })));
-    }
-
-    // Ensure we have at least 3 suggestions
-    if (suggestions.length < 3) {
-      const additionalDestinations = getRandomDestinations(
-        filteredDestinations.filter(dest => 
-          !suggestions.some(s => s.id === dest.id)
-        ), 
-        3 - suggestions.length
+      // Get airport codes from database (filter out invalid ones)
+      const validDestinations = destinations.filter((dest: any) =>   
+        dest.airport && 
+        dest.airport.length >= 3 && 
+        dest.airport.length <= 4 && 
+        /^[A-Z]+$/.test(dest.airport)
       );
 
-      suggestions.push(...additionalDestinations.map(dest => ({
-        id: dest.id,
-        name: dest.name,
-        city: dest.city,
-        country: dest.country,
-        league: dest.league,
-        stadium: dest.stadium,
-        airport: dest.airport || getAirportCode(dest.city, dest.country),
-        isRandomPick: true,
-        reason: 'Additional random selection'
-      })));
+      const airportCodes = validDestinations.map((dest: any) => dest.airport!);
+
+      console.log('[suggestDestinations] Checking flight prices for airports:', airportCodes);
+
+      // Get flight prices for all destinations
+      const flightPrices = await getFlightPrices(airportCodes, departDate, returnDate, travelers);
+
+      console.log('[suggestDestinations] Got', flightPrices.length, 'flight prices');
+
+      // Match flight prices with destinations
+      for (const destination of validDestinations) {
+        const flightPrice = flightPrices.find(fp => fp.destination === destination.airport);
+        
+        let score = 50; // Base score
+        let reason = 'Available destination';
+
+        // Scoring logic
+        if (flightPrice) {
+          // Lower price = higher score (max 50 points for price)
+          const priceScore = Math.max(0, 50 - (flightPrice.price / 10));
+          score += priceScore;
+          reason = `Flight available for €${flightPrice.price} per person from ${flightPrice.origin}`;
+        } else {
+          score -= 20; // Penalty for no flight data
+          reason = 'No flight data available';
+        }
+
+        // Preference-based scoring
+        if (preferences.hatedTeams?.includes(destination.name)) {
+          score -= 50;
+          reason += ' (customer dislikes this team)';
+        }
+
+        if (preferences.visitedCities?.includes(destination.city)) {
+          score -= 30;
+          reason += ' (customer has visited this city)';
+        }
+
+        // League preference scoring
+        const popularLeagues = ['Premier League', 'La Liga', 'Bundesliga', 'Serie A', 'Champions League'];
+        if (popularLeagues.includes(destination.league)) {
+          score += 20;
+        }
+
+        // Country diversity bonus
+        const europeanCountries = ['England', 'Spain', 'Germany', 'Italy', 'France'];
+        if (europeanCountries.includes(destination.country)) {
+          score += 10;
+        }
+
+        suggestions.push({
+          id: destination.id,
+          name: destination.name,
+          city: destination.city,
+          country: destination.country,
+          league: destination.league,
+          stadium: destination.stadium || `${destination.name} Stadium`,
+          airport: destination.airport || '',
+          flightPrice: flightPrice?.price,
+          currency: flightPrice?.currency || 'EUR',
+          reason,
+          score
+        });
+      }
+
+      // Sort by score (highest first) and price (lowest first for same score)
+      suggestions.sort((a, b) => {
+        if (Math.abs(a.score - b.score) < 5) {
+          // If scores are close, prefer cheaper flights
+          const priceA = a.flightPrice || 999999;
+          const priceB = b.flightPrice || 999999;
+          return priceA - priceB;
+        }
+        return b.score - a.score;
+      });
+
+    } else {
+      console.log('[suggestDestinations] Basic package, no flight required');
+      
+      // For basic package, suggest based on preferences only
+      for (const destination of destinations) {
+        let score = 50;
+        let reason = 'Match ticket only';
+
+        // Preference-based scoring
+        if (preferences.hatedTeams?.includes(destination.name)) {
+          score -= 50;
+          reason += ' (customer dislikes this team)';
+        }
+
+        if (preferences.visitedCities?.includes(destination.city)) {
+          score -= 30;
+          reason += ' (customer has visited this city)';
+        }
+
+        // League preference scoring
+        const popularLeagues = ['Premier League', 'La Liga', 'Bundesliga', 'Serie A'];
+        if (popularLeagues.includes(destination.league)) {
+          score += 20;
+        }
+
+        suggestions.push({
+          id: destination.id,
+          name: destination.name,
+          city: destination.city,
+          country: destination.country,
+          league: destination.league,
+          stadium: destination.stadium || `${destination.name} Stadium`,
+          airport: destination.airport || '',
+          reason,
+          score
+        });
+      }
+
+      suggestions.sort((a, b) => b.score - a.score);
     }
 
-    return suggestions.slice(0, 5); // Return top 5 suggestions
+    // Store suggestions in database
+    await storeDestinationSuggestions(bookingId, suggestions.slice(0, 10));
+
+    console.log('[suggestDestinations] Generated', suggestions.length, 'suggestions');
+    return suggestions.slice(0, 10); // Return top 10 suggestions
+
   } catch (error) {
-    console.error('Error in suggestDestinations:', error);
+    console.error('[suggestDestinations] Error:', error);
     throw error;
   }
 }
 
-function getRandomDestinations(destinations: any[], count: number): any[] {
-  const shuffled = [...destinations].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
+async function storeDestinationSuggestions(bookingId: string, suggestions: DestinationSuggestion[]) {
+  try {
+    // Clear existing suggestions
+    await prisma.destinationSuggestion.deleteMany({
+      where: { bookingId }
+    });
+
+    // Store new suggestions
+    const suggestionData = suggestions.map((suggestion, index) => ({
+      bookingId,
+      destinationId: suggestion.id,
+      flightPrice: suggestion.flightPrice || null,
+      currency: suggestion.currency || 'EUR',
+      reason: suggestion.reason,
+      adminNotes: `Score: ${suggestion.score}, Rank: ${index + 1}`
+    }));
+
+    await prisma.destinationSuggestion.createMany({
+      data: suggestionData
+    });
+
+    console.log('[storeDestinationSuggestions] Stored', suggestionData.length, 'suggestions');
+  } catch (error) {
+    console.error('[storeDestinationSuggestions] Error:', error);
+  }
 }
 
 export async function selectDestinationForBooking(
-  bookingId: string,
-  destinationId: string,
+  bookingId: string, 
+  destinationId: string, 
   adminNotes?: string
 ): Promise<boolean> {
   try {
+    // Get destination details
     const destination = await prisma.destination.findUnique({
       where: { id: destinationId }
     });
@@ -209,19 +235,100 @@ export async function selectDestinationForBooking(
       where: { bookingId },
       data: {
         destination: `${destination.stadium}, ${destination.city}`,
-        revealedAt: new Date(),
-        // Store admin notes in preferences if provided
-        preferences: adminNotes ? JSON.stringify({ 
-          adminNotes,
-          selectedDestinationId: destinationId,
-          selectionDate: new Date().toISOString()
-        }) : undefined
+        selectedDestinationId: destinationId,
+        revealedAt: new Date()
       }
     });
 
+    // Mark the suggestion as selected
+    await prisma.destinationSuggestion.updateMany({
+      where: { 
+        bookingId,
+        destinationId 
+      },
+      data: { 
+        isSelected: true,
+        adminNotes: adminNotes || undefined
+      }
+    });
+
+    console.log('[selectDestinationForBooking] Selected destination for booking:', bookingId);
     return true;
+
   } catch (error) {
-    console.error('Error selecting destination:', error);
+    console.error('[selectDestinationForBooking] Error:', error);
     return false;
+  }
+}
+
+export async function getBookingSuggestions(bookingId: string) {
+  try {
+    const suggestions = await prisma.destinationSuggestion.findMany({
+      where: { bookingId },
+      include: { destination: true },
+      orderBy: { createdAt: 'asc' }
+    });
+
+    return suggestions.map((suggestion: any) => ({
+      id: suggestion.destination.id,
+      name: suggestion.destination.name,
+      city: suggestion.destination.city,
+      country: suggestion.destination.country,
+      league: suggestion.destination.league,
+      stadium: suggestion.destination.stadium,
+      airport: suggestion.destination.airport,
+      flightPrice: suggestion.flightPrice,
+      currency: suggestion.currency,
+      reason: suggestion.reason,
+      isSelected: suggestion.isSelected,
+      adminNotes: suggestion.adminNotes
+    }));
+
+  } catch (error) {
+    console.error('[getBookingSuggestions] Error:', error);
+    return [];
+  }
+}
+
+// Automatically suggest cheapest destination for a booking
+export async function autoSuggestCheapestDestination(bookingId: string): Promise<DestinationSuggestion | null> {
+  try {
+    const booking = await prisma.booking.findUnique({
+      where: { bookingId }
+    });
+
+    if (!booking) {
+      throw new Error('Booking not found');
+    }
+
+    // Only suggest for packages that include flights
+    if (booking.package !== 'comfort' && booking.package !== 'premium') {
+      console.log('[autoSuggestCheapestDestination] Package does not include flights, skipping');
+      return null;
+    }
+
+    // Parse preferences if they exist
+    let preferences;
+    try {
+      preferences = booking.preferences ? JSON.parse(booking.preferences) : {};
+    } catch (error) {
+      preferences = {};
+    }
+
+    // Get destination suggestions
+    const suggestions = await suggestDestinations(
+      bookingId,
+      booking.package,
+      booking.date.toISOString().split('T')[0],
+      booking.travelers,
+      preferences
+    );
+
+    // Return the top suggestion (cheapest with highest score)
+    return suggestions.length > 0 ? suggestions[0] : null;
+
+  } catch (error) {
+    console.error('[autoSuggestCheapestDestination] Error:', error);
+    return null;
   }
 }

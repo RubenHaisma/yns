@@ -23,6 +23,7 @@ import {
 import { DestinationSelector } from '@/components/admin/DestinationSelector';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FlightPriceChecker } from '@/components/admin/FlightPriceChecker';
+import { useSearchParams } from 'next/navigation';
 
 interface Booking {
   id: string;
@@ -51,9 +52,22 @@ export default function AdminBookings() {
   const [showDestinationSelector, setShowDestinationSelector] = useState(false);
   const [bookingForDestination, setBookingForDestination] = useState<Booking | null>(null);
 
+  const searchParams = useSearchParams();
+  const highlightBooking = searchParams.get('booking');
+
   useEffect(() => {
     fetchBookings();
   }, [statusFilter, searchTerm]);
+
+  useEffect(() => {
+    // Auto-open destination selector if booking parameter is provided
+    if (highlightBooking && bookings.length > 0) {
+      const booking = bookings.find(b => b.bookingId === highlightBooking);
+      if (booking && !booking.destination) {
+        handleOpenDestinationSelector(booking);
+      }
+    }
+  }, [highlightBooking, bookings]);
 
   const fetchBookings = async () => {
     try {
@@ -259,7 +273,12 @@ export default function AdminBookings() {
                   </tr>
                 ) : (
                   bookings.map((booking) => (
-                    <tr key={booking.id} className="hover:bg-gray-50">
+                    <tr 
+                      key={booking.id} 
+                      className={`hover:bg-gray-50 ${
+                        highlightBooking === booking.bookingId ? 'bg-yellow-50 border-l-4 border-yellow-400' : ''
+                      }`}
+                    >
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div>
                           <div className="text-sm font-medium text-gray-900">{booking.bookingId}</div>
@@ -317,7 +336,7 @@ export default function AdminBookings() {
                               onClick={() => {
                                 handleOpenDestinationSelector(booking);
                               }}
-                              className="text-purple-600 hover:text-purple-900 flex items-center space-x-1"
+                              className="text-purple-600 hover:text-purple-900"
                               title="Smart Destination Selection"
                             >
                               <Sparkles className="w-4 h-4" />

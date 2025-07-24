@@ -1,35 +1,35 @@
 Land,Competitie,Club,Website,Stad,Dichtstbijzijnde luchthaven
-Duitsland,Bundesliga,Borussia Dortmund,https://www.bvb.de,Dortmund,Dortmund Airport (DTM)
-Duitsland,Bundesliga,Eintracht Frankfurt,https://en.eintracht.de,Frankfurt,Frankfurt Airport (FRA)
-Duitsland,Bundesliga,Union Berlin,https://www.fc-union-berlin.de,Berlin,Berlin Brandenburg Airport (BER)
-Duitsland,2. Bundesliga,St. Pauli,https://www.fcstpauli.com,Hamburg,Hamburg Airport (HAM)
-Duitsland,2. Bundesliga,Fortuna Düsseldorf,https://www.f95.de,Düsseldorf,Düsseldorf Airport (DUS)
-Duitsland,2. Bundesliga,1. FC Kaiserslautern,https://fck.de,Kaiserslautern,Frankfurt Airport (FRA)
-Nederland,Eredivisie,Feyenoord,https://www.feyenoord.nl,Rotterdam,Rotterdam The Hague Airport (RTM)
-Nederland,Eredivisie,FC Utrecht,https://www.fcutrecht.nl,Utrecht,Amsterdam Airport Schiphol (AMS)
-Nederland,Eredivisie,ADO Den Haag,https://adodenhaag.nl,Den Haag,Rotterdam The Hague Airport (RTM)
-Nederland,Eerste Divisie,De Graafschap,https://www.degraafschap.nl,Doetinchem,Eindhoven Airport (EIN)
-Nederland,Eerste Divisie,MVV Maastricht,https://www.mvv.nl,Maastricht,Maastricht Aachen Airport (MST)
-Nederland,Eerste Divisie,NAC Breda,https://www.nac.nl,Breda,Eindhoven Airport (EIN)
-België,Jupiler Pro League,Standard Luik,https://standard.be,Luik,Liège Airport (LGG)
-België,Jupiler Pro League,Royal Antwerp FC,https://www.royalantwerpfc.be,Antwerpen,Antwerp International Airport (ANR)
-België,Jupiler Pro League,Club Brugge,https://www.clubbrugge.be,Brugge,Ostend-Bruges Airport (OST)
-België,Challenger Pro League,RWDM,https://www.rwdm.be,Brussel,Brussels Airport (BRU)
-België,Challenger Pro League,SK Beveren,https://www.skbeveren.be,Beveren,Antwerp International Airport (ANR)
-Spanje,La Liga,Real Betis,https://www.realbetisbalompie.es,Sevilla,Seville Airport (SVQ)
-Spanje,La Liga,Athletic Bilbao,https://www.athletic-club.eus,Bilbao,Bilbao Airport (BIO)
-Spanje,La Liga,Osasuna,https://www.osasuna.es,Pamplona,Pamplona Airport (PNA)
-Spanje,Segunda División,Real Oviedo,https://www.realoviedo.es,Oviedo,Asturias Airport (OVD)
-Spanje,Segunda División,Sporting Gijón,https://www.realsporting.com,Gijón,Asturias Airport (OVD)
-Spanje,Segunda División,Málaga CF,https://www.malagacf.com,Málaga,Málaga Airport (AGP)
-Engeland,Premier League,Newcastle United,https://www.nufc.co.uk,Newcastle upon Tyne,Newcastle Airport (NCL)
-Engeland,Premier League,Crystal Palace,https://www.cpfc.co.uk,Londen,London Heathrow Airport (LHR)
-Engeland,Premier League,Liverpool,https://www.liverpoolfc.com,Liverpool,Liverpool John Lennon Airport (LPL)
-Engeland,Championship,Millwall,https://www.millwallfc.co.uk,Londen,London Heathrow Airport (LHR)
-Engeland,Championship,Sunderland,https://www.safc.com,Sunderland,Newcastle Airport (NCL)
-Engeland,Championship,Leeds United,https://www.leedsunited.com,Leeds,Leeds Bradford Airport (LBA)
-Frankrijk,Ligue 1,Marseille,https://www.om.fr,Marseille,Marseille Provence Airport (MRS)
-Frankrijk,Ligue 1,RC Lens,https://www.rclens.fr,Lens,Lille Airport (LIL)
-Frankrijk,Ligue 1,Saint-Étienne,https://www.asse.fr,Saint-Étienne,Saint-Étienne–Bouthéon Airport (EBU)
-Frankrijk,Ligue 2,SC Bastia,https://www.sc-bastia.corsica,Bastia,Bastia – Poretta Airport (BIA)
-Frankrijk,Ligue 2,Le Havre,https://www.hac-foot.com,Le Havre,Deauville – Normandie Airport (DOL)
+Duitsland,Bundesliga,Borussia Dortmund,https://www.bvb.de,Dortmund,DTM
+Duitsland,Bundesliga,Eintracht Frankfurt,https://en.eintracht.de,Frankfurt,FRA
+Duitsland,Bundesliga,Union Berlin,https://www.fc-union-berlin.de,Berlin,BER
+Duitsland,2. Bundesliga,St. Pauli,https://www.fcstpauli.com,Hamburg,HAM
+Duitsland,2. Bundesliga,Fortuna Düsseldorf,https://www.f95.de,Düsseldorf,DUS
+Duitsland,2. Bundesliga,1. FC Kaiserslautern,https://fck.de,Kaiserslautern,FRA
+Nederland,Eredivisie,Feyenoord,https://www.feyenoord.nl,Rotterdam,EIN
+Nederland,Eredivisie,FC Utrecht,https://www.fcutrecht.nl,Utrecht,EIN
+Nederland,Eredivisie,ADO Den Haag,https://adodenhaag.nl,Den Haag,EIN
+Nederland,Eerste Divisie,De Graafschap,https://www.degraafschap.nl,Doetinchem,EIN
+Nederland,Eerste Divisie,MVV Maastricht,https://www.mvv.nl,Maastricht,EIN
+Nederland,Eerste Divisie,NAC Breda,https://www.nac.nl,Breda,EIN
+België,Jupiler Pro League,Standard Luik,https://standard.be,Luik,LGG
+België,Jupiler Pro League,Royal Antwerp FC,https://www.royalantwerpfc.be,Antwerpen,ANR
+België,Jupiler Pro League,Club Brugge,https://www.clubbrugge.be,Brugge,OST
+België,Challenger Pro League,RWDM,https://www.rwdm.be,Brussel,BRU
+België,Challenger Pro League,SK Beveren,https://www.skbeveren.be,Beveren,ANR
+Spanje,La Liga,Real Betis,https://www.realbetisbalompie.es,Sevilla,SVQ
+Spanje,La Liga,Athletic Bilbao,https://www.athletic-club.eus,Bilbao,BIO
+Spanje,La Liga,Osasuna,https://www.osasuna.es,Pamplona,PNA
+Spanje,Segunda División,Real Oviedo,https://www.realoviedo.es,Oviedo,OVD
+Spanje,Segunda División,Sporting Gijón,https://www.realsporting.com,Gijón,OVD
+Spanje,Segunda División,Málaga CF,https://www.malagacf.com,Málaga,AGP
+Engeland,Premier League,Newcastle United,https://www.nufc.co.uk,Newcastle upon Tyne,NCL
+Engeland,Premier League,Crystal Palace,https://www.cpfc.co.uk,Londen,LHR
+Engeland,Premier League,Liverpool,https://www.liverpoolfc.com,Liverpool,LPL
+Engeland,Championship,Millwall,https://www.millwallfc.co.uk,Londen,LHR
+Engeland,Championship,Sunderland,https://www.safc.com,Sunderland,NCL
+Engeland,Championship,Leeds United,https://www.leedsunited.com,Leeds,LBA
+Frankrijk,Ligue 1,Marseille,https://www.om.fr,Marseille,MRS
+Frankrijk,Ligue 1,RC Lens,https://www.rclens.fr,Lens,LIL
+Frankrijk,Ligue 1,Saint-Étienne,https://www.asse.fr,Saint-Étienne,EBU
+Frankrijk,Ligue 2,SC Bastia,https://www.sc-bastia.corsica,Bastia,BIA
+Frankrijk,Ligue 2,Le Havre,https://www.hac-foot.com,Le Havre,DOL

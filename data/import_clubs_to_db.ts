@@ -19,14 +19,14 @@ async function main() {
     skip_empty_lines: true,
   });
 
-  // Expecting columns: Land, Competitie, Club, Website, Stad, Luchthaven
+  // Expecting columns: Land, Competitie, Club, Website, Stad, Dichtstbijzijnde luchthaven
   for (const row of records) {
     const country = row['Land'];
     const league = row['Competitie'];
     const name = row['Club'];
     const website = row['Website'];
     const city = row['Stad'];
-    const airport = row['Luchthaven'];
+    const airport = row['Dichtstbijzijnde luchthaven'];
     if (!country || !league || !name) continue;
     await prisma.destination.upsert({
       where: {

@@ -60,12 +60,15 @@ export default function AdminDashboard() {
   const [waitlistSearchTerm, setWaitlistSearchTerm] = useState('');
   const [waitlistPage, setWaitlistPage] = useState(1);
   const [waitlistTotal, setWaitlistTotal] = useState(0);
+  const [pendingSuggestions, setPendingSuggestions] = useState<any[]>([]);
 
   useEffect(() => {
     if (activeTab === 'bookings') {
       fetchBookings();
     } else if (activeTab === 'waitlist') {
       fetchWaitlistUsers();
+    } else if (activeTab === 'pending') {
+      fetchPendingSuggestions();
     }
   }, [activeTab, statusFilter, searchTerm, waitlistSearchTerm, waitlistPage]);
 
@@ -106,6 +109,43 @@ export default function AdminDashboard() {
       console.error('Error fetching waitlist users:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchPendingSuggestions = async () => {
+    try {
+      const response = await fetch('/api/admin/pending-suggestions');
+      const data = await response.json();
+
+      if (response.ok) {
+        setPendingSuggestions(data.pendingSuggestions);
+      }
+    } catch (error) {
+      console.error('Error fetching pending suggestions:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleApproveSuggestion = async (bookingId: string, destinationId: string) => {
+    try {
+      const response = await fetch('/api/admin/select-destination', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          bookingId, 
+          destinationId,
+          adminNotes: 'Auto-approved cheapest destination'
+        }),
+      });
+
+      if (response.ok) {
+        alert('Destination approved and revealed!');
+        fetchPendingSuggestions();
+        fetchBookings();
+      }
+    } catch (error) {
+      console.error('Error approving suggestion:', error);
     }
   };
 
@@ -178,7 +218,7 @@ export default function AdminDashboard() {
   const stats = [
     { label: 'Total Bookings', value: bookings.length, icon: Users, color: 'from-blue-500 to-blue-600' },
     { label: 'Confirmed', value: bookings.filter(b => b.status === 'confirmed').length, icon: CreditCard, color: 'from-green-500 to-green-600' },
-    { label: 'Pending', value: bookings.filter(b => b.status === 'pending').length, icon: Calendar, color: 'from-yellow-500 to-yellow-600' },
+    { label: 'Pending Approval', value: pendingSuggestions.length, icon: Calendar, color: 'from-yellow-500 to-yellow-600' },
     { label: 'Waitlist', value: waitlistTotal, icon: UserPlus, color: 'from-purple-500 to-purple-600' },
   ];
 
@@ -237,6 +277,7 @@ export default function AdminDashboard() {
             <nav className="flex space-x-8 px-6">
               {[
                 { id: 'bookings', label: 'Bookings', icon: Users, href: '/nl/admin/dashboard/bookings' },
+                { id: 'pending', label: 'Pending Approval', icon: Calendar },
                 { id: 'waitlist', label: 'Waitlist', icon: UserPlus },
                 { id: 'destinations', label: 'Destinations', icon: MapPin },
                 { id: 'analytics', label: 'Analytics', icon: CreditCard },
@@ -401,6 +442,110 @@ export default function AdminDashboard() {
                   Showing preview only. <a href="/nl/admin/dashboard/bookings" className="text-green-600 hover:text-green-800">View all bookings →</a>
                 </div>
               </div>
+            </div>
+          )}
+
+          {/* Pending Suggestions Tab */}
+          {activeTab === 'pending' && (
+            <div className="p-6">
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  Bookings Awaiting Destination Approval
+                </h3>
+                <p className="text-gray-600">
+                  These bookings have automatic destination suggestions ready for your approval.
+                </p>
+              </div>
+
+              {pendingSuggestions.length === 0 ? (
+                <div className="text-center py-12 text-gray-500">
+                  <Calendar className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                  <p>No pending destination approvals</p>
+                </div>
+              ) : (
+                <div className="space-y-6">
+                  {pendingSuggestions.map((suggestion) => (
+                    <div key={suggestion.bookingId} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <h4 className="text-lg font-semibold text-gray-900">
+                            {suggestion.customerName}
+                          </h4>
+                          <p className="text-gray-600">{suggestion.customerEmail}</p>
+                          <p className="text-sm text-gray-500">
+                            Booking: {suggestion.bookingId} • {suggestion.package} • {suggestion.travelers} travelers
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-lg font-semibold text-gray-900">{suggestion.totalPrice}</div>
+                          <div className="text-sm text-gray-500">
+                            {new Date(suggestion.date).toLocaleDateString()}
+                          </div>
+                        </div>
+                      </div>
+
+                      {suggestion.topSuggestion && (
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                          <div className="flex justify-between items-center mb-2">
+                            <h5 className="font-semibold text-green-800">
+                              Recommended: {suggestion.topSuggestion.city}, {suggestion.topSuggestion.country}
+                            </h5>
+                            {suggestion.topSuggestion.flightPrice && (
+                              <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
+                                €{suggestion.topSuggestion.flightPrice}
+                              </span>
+                            )}
+                          </div>
+                          <div className="grid grid-cols-2 gap-4 text-sm text-green-700 mb-3">
+                            <div>
+                              <span className="font-medium">Stadium:</span> {suggestion.topSuggestion.stadium}
+                            </div>
+                            <div>
+                              <span className="font-medium">League:</span> {suggestion.topSuggestion.league}
+                            </div>
+                            <div>
+                              <span className="font-medium">Airport:</span> {suggestion.topSuggestion.airport}
+                            </div>
+                            <div>
+                              <span className="font-medium">Team:</span> {suggestion.topSuggestion.name}
+                            </div>
+                          </div>
+                          <p className="text-sm text-green-600 mb-4">
+                            {suggestion.topSuggestion.reason}
+                          </p>
+                          <div className="flex space-x-3">
+                            <button
+                              onClick={() => handleApproveSuggestion(suggestion.bookingId, suggestion.topSuggestion.destinationId)}
+                              className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                            >
+                              <Send className="w-4 h-4" />
+                              <span>Approve & Reveal</span>
+                            </button>
+                            <a
+                              href={`/nl/admin/dashboard/bookings?booking=${suggestion.bookingId}`}
+                              className="flex items-center space-x-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
+                            >
+                              <Eye className="w-4 h-4" />
+                              <span>View All Options</span>
+                            </a>
+                          </div>
+                        </div>
+                      )}
+
+                      {!suggestion.topSuggestion && (
+                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                          <p className="text-yellow-800">
+                            No destination suggestions available. 
+                            <a href={`/nl/admin/dashboard/bookings?booking=${suggestion.bookingId}`} className="underline ml-1">
+                              Manually select destination
+                            </a>
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 

@@ -64,18 +64,41 @@ export function DestinationSelector({ booking, onDestinationSelected, onClose }:
     setError(null);
     
     try {
-      const response = await fetch('/api/admin/suggest-destinations', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ bookingId: booking.bookingId }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSuggestions(data.suggestions);
+      // First check if suggestions already exist
+      const existingResponse = await fetch(`/api/admin/bookings?search=${booking.bookingId}`);
+      const existingData = await existingResponse.json();
+      
+      if (existingData.bookings?.[0]?.destinationSuggestions?.length > 0) {
+        // Use existing suggestions
+        const existingBooking = existingData.bookings[0];
+        const suggestions = existingBooking.destinationSuggestions.map((suggestion: any) => ({
+          id: suggestion.destination.id,
+          name: suggestion.destination.name,
+          city: suggestion.destination.city,
+          country: suggestion.destination.country,
+          league: suggestion.destination.league,
+          stadium: suggestion.destination.stadium,
+          airport: suggestion.destination.airport,
+          flightPrice: suggestion.flightPrice,
+          currency: suggestion.currency,
+          reason: suggestion.reason
+        }));
+        setSuggestions(suggestions);
       } else {
-        setError(data.error || 'Failed to fetch suggestions');
+        // Generate new suggestions
+        const response = await fetch('/api/admin/suggest-destinations', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ bookingId: booking.bookingId }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          setSuggestions(data.suggestions);
+        } else {
+          setError(data.error || 'Failed to fetch suggestions');
+        }
       }
     } catch (error) {
       setError('Network error while fetching suggestions');

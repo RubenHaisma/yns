@@ -38,6 +38,12 @@ export async function GET(request: NextRequest) {
         skip,
         take: limit,
         orderBy: { createdAt: 'desc' },
+        include: {
+          destinationSuggestions: {
+            include: { destination: true },
+            orderBy: { flightPrice: 'asc' }
+          }
+        }
       }),
       prisma.booking.count({ where }),
     ]);
@@ -46,6 +52,12 @@ export async function GET(request: NextRequest) {
       bookings: bookings.map((booking: any) => ({
         ...booking,
         preferences: booking.preferences ? JSON.parse(booking.preferences) : null,
+        hasSuggestions: booking.destinationSuggestions.length > 0,
+        topSuggestion: booking.destinationSuggestions.length > 0 ? {
+          destination: booking.destinationSuggestions[0].destination,
+          flightPrice: booking.destinationSuggestions[0].flightPrice,
+          reason: booking.destinationSuggestions[0].reason
+        } : null
       })),
       pagination: {
         page,
