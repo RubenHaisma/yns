@@ -7,7 +7,7 @@ const csv = require('csv-parse/sync');
 const prisma = new PrismaClient();
 
 async function main() {
-  const filePath = path.join(__dirname, 'Clubs_met_Alle_Steden.csv');
+  const filePath = path.join(__dirname, 'Clubs_met_Steden_en_Luchthavens.csv');
   if (!fs.existsSync(filePath)) {
     console.error('CSV file not found:', filePath);
     process.exit(1);
@@ -19,13 +19,14 @@ async function main() {
     skip_empty_lines: true,
   });
 
-  // Expecting columns: Land, Competitie, Club, Website, Stad
+  // Expecting columns: Land, Competitie, Club, Website, Stad, Luchthaven
   for (const row of records) {
     const country = row['Land'];
     const league = row['Competitie'];
     const name = row['Club'];
     const website = row['Website'];
     const city = row['Stad'];
+    const airport = row['Luchthaven'];
     if (!country || !league || !name) continue;
     await prisma.destination.upsert({
       where: {
@@ -38,6 +39,7 @@ async function main() {
       update: {
         website: String(website || ''),
         city: String(city || ''),
+        airport: String(airport || ''),
       },
       create: {
         name: String(name),
@@ -45,10 +47,11 @@ async function main() {
         country: String(country),
         website: String(website || ''),
         city: String(city || ''),
+        airport: String(airport || ''),
         stadium: '',
       },
     });
-    console.log(`Upserted: ${country} | ${league} | ${name} | ${city}`);
+    console.log(`Upserted: ${country} | ${league} | ${name} | ${city} | ${airport}`);
   }
 
   await prisma.$disconnect();

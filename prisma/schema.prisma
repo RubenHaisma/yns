@@ -87,6 +87,7 @@ model Destination {
   difficulty  String   @default("medium")
   season      String?
   website     String?
+  airport     String?  // Nearest airport
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
