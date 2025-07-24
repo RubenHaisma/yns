@@ -86,8 +86,10 @@ model Destination {
   isActive    Boolean  @default(true)
   difficulty  String   @default("medium")
   season      String?
+  website     String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
+  @@unique([name, league, country])
   @@map("destinations")
 }
