@@ -174,6 +174,66 @@ export function PackageSection({ onBookingClick }: PackageSectionProps) {
             </motion.div>
           ))}
         </div>
+        {/* Extras & Upgrades Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="mt-10 sm:mt-16 max-w-3xl mx-auto"
+        >
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 text-center">
+            {t('packages.extrasTitle') || 'Extras & upgrades'}
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Football Tier */}
+            <div className="bg-white rounded-2xl shadow p-5 border border-gray-100">
+              <div className="flex items-center mb-2">
+                <Ticket className="w-5 h-5 text-green-500 mr-2" />
+                <span className="font-bold text-gray-800">Voetbal Tier</span>
+              </div>
+              <ul className="text-gray-700 text-sm space-y-1">
+                <li><span className="font-semibold">Tier A</span>: Dortmund, Liverpool, PSG, etc. <span className="text-gray-500">(+€100 p.p.)</span></li>
+                <li><span className="font-semibold">Tier B</span>: Eintracht, Schalke 04, Sunderland, AS Roma, etc. <span className="text-gray-500">(+€50 p.p.)</span></li>
+                <li><span className="font-semibold">Tier C</span>: Düsseldorf, Southampton, Lens, etc. <span className="text-gray-500">(inbegrepen)</span></li>
+              </ul>
+            </div>
+            {/* Seat Upgrade */}
+            <div className="bg-white rounded-2xl shadow p-5 border border-gray-100">
+              <div className="flex items-center mb-2">
+                <Star className="w-5 h-5 text-orange-500 mr-2" />
+                <span className="font-bold text-gray-800">Stoel Upgrade</span>
+              </div>
+              <ul className="text-gray-700 text-sm space-y-1">
+                <li><span className="font-semibold">Basis</span>: inbegrepen</li>
+                <li><span className="font-semibold">Categorie 1</span>: <span className="text-gray-500">+€50 p.p.</span></li>
+                <li><span className="font-semibold">Categorie 2</span>: <span className="text-gray-500">+€100 p.p.</span></li>
+              </ul>
+            </div>
+            {/* Hotel Nights (Premium only) */}
+            <div className="bg-white rounded-2xl shadow p-5 border border-gray-100">
+              <div className="flex items-center mb-2">
+                <Hotel className="w-5 h-5 text-purple-500 mr-2" />
+                <span className="font-bold text-gray-800">Hotelnachten (Premium)</span>
+              </div>
+              <ul className="text-gray-700 text-sm space-y-1">
+                <li><span className="font-semibold">1 nacht</span>: inbegrepen</li>
+                <li><span className="font-semibold">Extra nachten</span>: <span className="text-gray-500">+€150 p.p. per nacht</span></li>
+              </ul>
+            </div>
+            {/* Insurance */}
+            <div className="bg-white rounded-2xl shadow p-5 border border-gray-100">
+              <div className="flex items-center mb-2">
+                <Shield className="w-5 h-5 text-green-600 mr-2" />
+                <span className="font-bold text-gray-800">Verzekering</span>
+              </div>
+              <ul className="text-gray-700 text-sm space-y-1">
+                <li><span className="font-semibold">Standaard</span>: inbegrepen</li>
+                <li><span className="font-semibold">Goud</span>: <span className="text-gray-500">+€15 p.p.</span></li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
         {/* Trust Indicators */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
