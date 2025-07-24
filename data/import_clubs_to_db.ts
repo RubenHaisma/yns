@@ -1,32 +1,31 @@
-import { PrismaClient } from '@prisma/client';
-import * as path from 'path';
-import * as fs from 'fs';
-import * as xlsx from 'xlsx';
+// Convert all imports to require syntax for CommonJS compatibility
+const { PrismaClient } = require('@prisma/client');
+const path = require('path');
+const fs = require('fs');
+const csv = require('csv-parse/sync');
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const filePath = path.join(__dirname, 'Clubs_met_sfeer_en_websites.xlsx');
+  const filePath = path.join(__dirname, 'Clubs_met_Alle_Steden.csv');
   if (!fs.existsSync(filePath)) {
-    console.error('Excel file not found:', filePath);
+    console.error('CSV file not found:', filePath);
     process.exit(1);
   }
 
-  const workbook = xlsx.readFile(filePath);
-  const sheetName = workbook.SheetNames[0];
-  const sheet = workbook.Sheets[sheetName];
-  const rows = xlsx.utils.sheet_to_json(sheet, { header: 1 }) as any[][];
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const records = csv.parse(fileContent, {
+    columns: true,
+    skip_empty_lines: true,
+  });
 
-  // Expecting header: ['Land', 'Competitie', 'Club', 'Website']
-  const [header, ...dataRows] = rows;
-  if (!header || header.length < 4) {
-    console.error('Unexpected header in Excel file:', header);
-    process.exit(1);
-  }
-
-  for (const row of dataRows as any[][]) {
-    if (!row || row.length < 4) continue;
-    const [country, league, name, website] = row;
+  // Expecting columns: Land, Competitie, Club, Website, Stad
+  for (const row of records) {
+    const country = row['Land'];
+    const league = row['Competitie'];
+    const name = row['Club'];
+    const website = row['Website'];
+    const city = row['Stad'];
     if (!country || !league || !name) continue;
     await prisma.destination.upsert({
       where: {
@@ -34,21 +33,22 @@ async function main() {
           name: String(name),
           league: String(league),
           country: String(country),
-        } as any, // type cast to avoid linter error
+        },
       },
       update: {
         website: String(website || ''),
+        city: String(city || ''),
       },
       create: {
         name: String(name),
         league: String(league),
         country: String(country),
         website: String(website || ''),
-        city: '',
+        city: String(city || ''),
         stadium: '',
       },
     });
-    console.log(`Upserted: ${country} | ${league} | ${name}`);
+    console.log(`Upserted: ${country} | ${league} | ${name} | ${city}`);
   }
 
   await prisma.$disconnect();
