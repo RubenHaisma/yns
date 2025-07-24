@@ -25,6 +25,8 @@ export async function POST(request: NextRequest) {
         customerName: bookingData.name,
         customerPhone: bookingData.phone,
         locale: bookingData.locale || 'nl',
+        preferences: bookingData.preferences || '',
+        footballTier: bookingData.footballTier || '',
       },
       payment_method_types: ['card', 'ideal'],
     });

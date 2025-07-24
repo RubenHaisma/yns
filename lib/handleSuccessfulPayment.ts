@@ -25,6 +25,9 @@ export async function handleSuccessfulPayment(paymentIntent: any) {
         status: 'confirmed',
         paymentStatus: 'paid',
         stripePaymentIntentId: paymentIntent.id,
+        preferences: metadata.preferences || null,
+        // Optionally, if you want footballTier as a top-level field in Booking, add:
+        // footballTier: metadata.footballTier || null,
       }
     });
 

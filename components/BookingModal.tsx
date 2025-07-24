@@ -40,6 +40,9 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     { title: '', firstName: '', lastName: '', email: '', birthDay: '', birthMonth: '', birthYear: '' },
   ]);
 
+  // Add state for football tier selection
+  const [footballTier, setFootballTier] = useState<string>('');
+
   // Add state for traveler errors and attempted submit
   const [travelerErrors, setTravelerErrors] = useState([] as string[][]);
   const [triedSubmitTravelers, setTriedSubmitTravelers] = useState(false);
@@ -116,18 +119,24 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     return 0;
   };
   const getInsurancePrice = () => (upsells.insurance === 'goud' ? 15 * formData.travelers : 0);
+  // Add price calculation for football tier
+  const getFootballTierPrice = () => {
+    if (footballTier === 'A') return 100 * formData.travelers;
+    if (footballTier === 'B') return 50 * formData.travelers;
+    return 0;
+  };
   const calculateTotalPrice = () => {
     const pkg = packages.find(p => p.id === formData.package);
     if (!pkg) return '€0';
     const basePrice = parseInt(pkg.price.replace('€', '')) * formData.travelers;
-    const total = basePrice + getSeatPrice() + getHotelPrice() + getInsurancePrice();
+    const total = basePrice + getSeatPrice() + getHotelPrice() + getInsurancePrice() + getFootballTierPrice();
     return `€${total}`;
   };
   const getNumericPrice = () => {
     const pkg = packages.find(p => p.id === formData.package);
     if (!pkg) return 0;
     const basePrice = parseInt(pkg.price.replace('€', '')) * formData.travelers;
-    return basePrice + getSeatPrice() + getHotelPrice() + getInsurancePrice();
+    return basePrice + getSeatPrice() + getHotelPrice() + getInsurancePrice() + getFootballTierPrice();
   };
 
   // Step 3: Confirm details and create payment intent
@@ -145,6 +154,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           bookingData: {
             ...formData,
             locale,
+            footballTier, // include selected tier
             preferences: JSON.stringify({ upsells, travelersInfo }),
           },
         }),
@@ -260,24 +270,25 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     if (step === 1 && !formData.package) {
       return; // Don't proceed if no package is selected
     }
+    // New: require football tier selection
+    if (step === 2 && !footballTier) {
+      return; // Don't proceed if no football tier is selected
+    }
     // Guard: if on step 2 and no package, send back to step 1
-    if (step === 2 && !formData.package) {
+    if (step === 3 && !formData.package) {
       setStep(1);
       return;
     }
-    if (step === 5 && (!formData.date || formData.travelers < 1)) {
-      return; // Don't proceed if date is not selected or travelers is invalid
-    }
-    // On step 2, skip hotel step for non-premium packages
-    if (step === 2) {
+    // On step 3, skip hotel step for non-premium packages
+    if (step === 3) {
       if (formData.package === 'premium') {
-        setStep(3);
-      } else {
         setStep(4);
+      } else {
+        setStep(5);
       }
       return;
     }
-    if (step === 6) {
+    if (step === 7) {
       setTriedSubmitTravelers(true);
       // Validate all travelers info and collect errors
       const errors: string[][] = travelersInfo.map((t, i) => {
@@ -297,15 +308,15 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
         console.log('Traveler validation failed:', { travelersInfo, errors });
         return;
       }
-      // If validation passes, go to step 7 (overview/payment)
-      setStep(7);
+      // If validation passes, go to step 8 (overview/payment)
+      setStep(8);
       return;
     }
-    if (step === 7) {
+    if (step === 8) {
       handleConfirmBooking();
       return;
     }
-    if (step < 7) setStep(step + 1);
+    if (step < 8) setStep(step + 1);
   };
 
   const handlePrev = () => {
@@ -313,7 +324,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
   };
 
   // 1. Update step count and logic
-  const TOTAL_STEPS = 7;
+  const TOTAL_STEPS = 8;
 
   // 2. Render each step separately
   return (
@@ -385,8 +396,31 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               </div>
             </div>
           )}
-          {/* Step 2: Seat upgrade */}
+          {/* Step 2: Football Tier */}
           {step === 2 && (
+            <div className="space-y-6">
+              <div className="text-center mb-6">
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Kies je voetbal tier</h3>
+                <p className="text-green-600 text-sm lg:text-base">Welke clubs wil je kunnen bezoeken?</p>
+              </div>
+              <div className="space-y-4">
+                <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer ${footballTier === 'A' ? 'border-orange-500 bg-orange-50' : 'border-green-100'}`}> 
+                  <input type="radio" name="footballTier" value="A" checked={footballTier === 'A'} onChange={() => setFootballTier('A')} className="mr-2" />
+                  <span className="font-bold">Tier A</span> – Dortmund, Liverpool, Paris (PSG)
+                </label>
+                <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer ${footballTier === 'B' ? 'border-orange-500 bg-orange-50' : 'border-green-100'}`}> 
+                  <input type="radio" name="footballTier" value="B" checked={footballTier === 'B'} onChange={() => setFootballTier('B')} className="mr-2" />
+                  <span className="font-bold">Tier B</span> – Eintracht, Schalke 04, Sunderland, AS Roma
+                </label>
+                <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer ${footballTier === 'C' ? 'border-orange-500 bg-orange-50' : 'border-green-100'}`}> 
+                  <input type="radio" name="footballTier" value="C" checked={footballTier === 'C'} onChange={() => setFootballTier('C')} className="mr-2" />
+                  <span className="font-bold">Tier C</span> – Dusseldorf, Southampton, Lens
+                </label>
+              </div>
+            </div>
+          )}
+          {/* Step 3: Seat upgrade */}
+          {step === 3 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
                 <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Kies je stoel</h3>
@@ -413,7 +447,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
             </div>
           )}
           {/* Only show hotel nights step if package is premium */}
-          {step === 3 && formData.package === 'premium' && (
+          {step === 4 && formData.package === 'premium' && (
             <div className="space-y-6">
               <div className="text-center mb-6">
                 <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Hotelovernachtingen</h3>
@@ -440,8 +474,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               </div>
             </div>
           )}
-          {/* Step 4: Insurance (full copy) */}
-          {step === 4 && (
+          {/* Step 5: Insurance (full copy) */}
+          {step === 5 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
                 <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Selecteer een verzekering</h3>
@@ -480,8 +514,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               </div>
             </div>
           )}
-          {/* Step 5: Date & travelers */}
-          {step === 5 && (
+          {/* Step 6: Date & travelers */}
+          {step === 6 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
                 <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Wanneer wil je gaan?</h3>
@@ -521,8 +555,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               </div>
             </div>
           )}
-          {/* Step 6: Per-person info */}
-          {step === 6 && (
+          {/* Step 7: Per-person info */}
+          {step === 7 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
                 <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Gegevens per persoon</h3>
@@ -619,13 +653,15 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
               </div>
             </div>
           )}
-          {/* Step 7: Overzicht & betaling */}
-          {step === 7 && clientSecret && (
+          {/* Step 8: Overzicht & betaling */}
+          {step === 8 && clientSecret && (
             <Elements stripe={stripePromise} options={{ clientSecret }}>
               <div className="mb-4">
                 <div className="bg-green-50 rounded-lg p-4 mb-2">
                   <div className="font-bold mb-2">Overzicht</div>
                   <div className="flex justify-between text-sm"><span>Pakket:</span><span>{packages.find(p => p.id === formData.package)?.name}</span></div>
+                  <div className="flex justify-between text-sm"><span>Voetbal tier:</span><span>{footballTier === 'A' ? 'A (Dortmund, Liverpool, PSG)' : footballTier === 'B' ? 'B (Eintracht, Schalke 04, Sunderland, AS Roma)' : footballTier === 'C' ? 'C (Dusseldorf, Southampton, Lens)' : ''}</span></div>
+                  <div className="flex justify-between text-sm"><span>Voetbal tier toeslag:</span><span>€{getFootballTierPrice()}</span></div>
                   <div className="flex justify-between text-sm"><span>Datum:</span><span>{formData.date}</span></div>
                   <div className="flex justify-between text-sm"><span>Reizigers:</span><span>{formData.travelers}</span></div>
                   <div className="flex justify-between text-sm"><span>Stoel:</span><span>{upsells.seat === 'basic' ? 'Basis' : upsells.seat === 'cat1' ? 'Categorie 1' : 'Categorie 2'}</span></div>
@@ -663,7 +699,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
             disabled={
               isSubmitting ||
               (step === 1 && !formData.package) ||
-              (step === 5 && (!formData.date || formData.travelers < 1))
+              (step === 2 && !footballTier) ||
+              (step === 6 && (!formData.date || formData.travelers < 1))
             }
             className="px-4 lg:px-6 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base"
           >
