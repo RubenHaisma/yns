@@ -30,6 +30,20 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
   const [paymentIntentId, setPaymentIntentId] = useState<string | null>(null);
   const [paymentError, setPaymentError] = useState<string | null>(null);
 
+  // 1. Add new state for upsells and per-person info
+  const [upsells, setUpsells] = useState({
+    seat: 'basic', // 'basic', 'cat1', 'cat2'
+    hotelNights: 1,
+    insurance: 'standaard', // 'standaard', 'goud'
+  });
+  const [travelersInfo, setTravelersInfo] = useState([
+    { title: '', firstName: '', lastName: '', email: '', birthDay: '', birthMonth: '', birthYear: '' },
+  ]);
+
+  // Add state for traveler errors and attempted submit
+  const [travelerErrors, setTravelerErrors] = useState([] as string[][]);
+  const [triedSubmitTravelers, setTriedSubmitTravelers] = useState(false);
+
   const t = useTranslations('modal');
   const locale = useLocale();
 
@@ -39,6 +53,17 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
       setFormData(prev => ({ ...prev, package: selectedPackage }));
     }
   }, [selectedPackage]);
+
+  // 2. Update travelersInfo when number of travelers changes
+  React.useEffect(() => {
+    setTravelersInfo((prev) => {
+      const arr = [...prev];
+      while (arr.length < formData.travelers) {
+        arr.push({ title: '', firstName: '', lastName: '', email: '', birthDay: '', birthMonth: '', birthYear: '' });
+      }
+      return arr.slice(0, formData.travelers);
+    });
+  }, [formData.travelers]);
 
   // Calculate minimum date (1 month from today)
   const getMinDate = () => {
@@ -68,22 +93,26 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     }
   ];
 
+  // 3. Add price calculation for upsells
+  const getSeatPrice = () => {
+    if (upsells.seat === 'cat1') return 50 * formData.travelers;
+    if (upsells.seat === 'cat2') return 100 * formData.travelers;
+    return 0;
+  };
+  const getHotelPrice = () => upsells.hotelNights * 150 * formData.travelers;
+  const getInsurancePrice = () => (upsells.insurance === 'goud' ? 15 * formData.travelers : 0);
   const calculateTotalPrice = () => {
     const pkg = packages.find(p => p.id === formData.package);
     if (!pkg) return '€0';
-    
-    // Extract base price
-    const basePrice = parseInt(pkg.price.replace('€', ''));
-    const total = basePrice * formData.travelers;
+    const basePrice = parseInt(pkg.price.replace('€', '')) * formData.travelers;
+    const total = basePrice + getSeatPrice() + getHotelPrice() + getInsurancePrice();
     return `€${total}`;
   };
-
-  // Calculate numeric price for Stripe
   const getNumericPrice = () => {
     const pkg = packages.find(p => p.id === formData.package);
     if (!pkg) return 0;
-    const basePrice = parseInt(pkg.price.replace('€', ''));
-    return basePrice * formData.travelers;
+    const basePrice = parseInt(pkg.price.replace('€', '')) * formData.travelers;
+    return basePrice + getSeatPrice() + getHotelPrice() + getInsurancePrice();
   };
 
   // Step 3: Confirm details and create payment intent
@@ -101,6 +130,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
           bookingData: {
             ...formData,
             locale,
+            preferences: JSON.stringify({ upsells, travelersInfo }),
           },
         }),
       });
@@ -215,20 +245,53 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
     if (step === 1 && !formData.package) {
       return; // Don't proceed if no package is selected
     }
-    if (step === 2 && (!formData.date || formData.travelers < 1)) {
+    // Guard: if on step 2 and no package, send back to step 1
+    if (step === 2 && !formData.package) {
+      setStep(1);
+      return;
+    }
+    if (step === 5 && (!formData.date || formData.travelers < 1)) {
       return; // Don't proceed if date is not selected or travelers is invalid
     }
-    if (step === 3) {
+    if (step === 6) {
+      setTriedSubmitTravelers(true);
+      // Validate all travelers info and collect errors
+      const errors: string[][] = travelersInfo.map((t, i) => {
+        const errs: string[] = [];
+        if (!t.title || t.title.trim() === '') errs.push('Kies een aanhef');
+        if (!t.firstName || t.firstName.trim() === '') errs.push('Voornaam is verplicht');
+        if (!t.lastName || t.lastName.trim() === '') errs.push('Achternaam is verplicht');
+        if (i === 0 && (!t.email || t.email.trim() === '')) errs.push('E-mailadres is verplicht');
+        if (!t.birthDay || t.birthDay.toString().trim() === '') errs.push('Dag is verplicht');
+        if (!t.birthMonth || t.birthMonth.toString().trim() === '') errs.push('Maand is verplicht');
+        if (!t.birthYear || t.birthYear.toString().trim() === '') errs.push('Jaar is verplicht');
+        return errs;
+      });
+      setTravelerErrors(errors);
+      if (errors.some(errs => errs.length > 0)) {
+        // Debug output
+        console.log('Traveler validation failed:', { travelersInfo, errors });
+        return;
+      }
+      // If validation passes, go to step 7 (overview/payment)
+      setStep(7);
+      return;
+    }
+    if (step === 7) {
       handleConfirmBooking();
       return;
     }
-    if (step < 4) setStep(step + 1);
+    if (step < 7) setStep(step + 1);
   };
 
   const handlePrev = () => {
     if (step > 1) setStep(step - 1);
   };
 
+  // 1. Update step count and logic
+  const TOTAL_STEPS = 7;
+
+  // 2. Render each step separately
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
@@ -236,7 +299,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
         <div className="flex items-center justify-between p-4 lg:p-6 border-b border-green-100">
           <div>
             <h2 className="text-xl lg:text-2xl font-bold text-green-800">{t('bookTrip')}</h2>
-            <p className="text-green-600 text-sm lg:text-base">{t('step')} {step} {t('of')} 4</p>
+            <p className="text-green-600 text-sm lg:text-base">Stap {step} van {TOTAL_STEPS}</p>
           </div>
           <button
             onClick={onClose}
@@ -249,18 +312,18 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
         <div className="w-full bg-gray-200 h-2">
           <div 
             className="bg-gradient-to-r from-green-500 to-green-600 h-2 transition-all duration-300"
-            style={{ width: `${(step / 4) * 100}%` }}
+            style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
           />
         </div>
         {/* Step Content */}
         <div className="p-4 lg:p-6">
+          {/* Step 1: Package */}
           {step === 1 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('choosePackage')}</h3>
-                <p className="text-green-600 text-sm lg:text-base">{t('packageQuestion')}</p>
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Kies je pakket</h3>
+                <p className="text-green-600 text-sm lg:text-base">Welk avontuur past bij jou?</p>
               </div>
-              
               <div className="space-y-4">
                 {packages.map((pkg) => (
                   <div key={pkg.id} className="relative">
@@ -275,8 +338,7 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                     />
                     <label
                       htmlFor={pkg.id}
-                      className="flex items-center justify-bet
-                      ween p-4 border-2 border-green-100 rounded-lg cursor-pointer peer-checked:border-orange-500 peer-checked:bg-orange-50 hover:bg-green-50 transition-colors"
+                      className="flex items-center justify-between p-4 border-2 border-green-100 rounded-lg cursor-pointer peer-checked:border-orange-500 peer-checked:bg-orange-50 hover:bg-green-50 transition-colors"
                     >
                       <div>
                         <div className="font-semibold text-green-800 text-sm lg:text-base">{pkg.name}</div>
@@ -291,21 +353,119 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                   </div>
                 ))}
               </div>
+              <div className="bg-green-50 rounded-lg p-4 mt-4">
+                <div className="flex justify-between text-base lg:text-lg">
+                  <span className="text-green-700">Totaal:</span>
+                  <span className="font-bold text-green-800">{calculateTotalPrice()}</span>
+                </div>
+              </div>
             </div>
           )}
-
+          {/* Step 2: Seat upgrade */}
           {step === 2 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('whenTravel')}</h3>
-                <p className="text-green-600 text-sm lg:text-base">{t('chooseDateSubtitle')}</p>
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Kies je stoel</h3>
+                <p className="text-green-600 text-sm lg:text-base">Wil je een upgrade?</p>
               </div>
-              
+              <div>
+                <label className="block text-sm font-medium text-green-700 mb-2">Stoel upgrade</label>
+                <select
+                  value={upsells.seat}
+                  onChange={e => setUpsells(prev => ({ ...prev, seat: e.target.value }))}
+                  className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
+                >
+                  <option value="basic">Basis (inbegrepen)</option>
+                  <option value="cat1">Categorie 1 (+€50 p.p.)</option>
+                  <option value="cat2">Categorie 2 (+€100 p.p.)</option>
+                </select>
+              </div>
+              <div className="bg-green-50 rounded-lg p-4 mt-4">
+                <div className="flex justify-between text-base lg:text-lg">
+                  <span className="text-green-700">Totaal:</span>
+                  <span className="font-bold text-green-800">{calculateTotalPrice()}</span>
+                </div>
+              </div>
+            </div>
+          )}
+          {/* Step 3: Hotel nights */}
+          {step === 3 && (
+            <div className="space-y-6">
+              <div className="text-center mb-6">
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Hotelovernachtingen</h3>
+                <p className="text-green-600 text-sm lg:text-base">Wil je hotelnachten bijboeken?</p>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-green-700 mb-2">Aantal hotelnachten</label>
+                <select
+                  value={upsells.hotelNights}
+                  onChange={e => setUpsells(prev => ({ ...prev, hotelNights: parseInt(e.target.value) }))}
+                  className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
+                >
+                  {[1, 2, 3].map(n => (
+                    <option key={n} value={n}>{n}</option>
+                  ))}
+                </select>
+                <span className="text-xs text-green-600">+ €150 per nacht per persoon</span>
+              </div>
+              <div className="bg-green-50 rounded-lg p-4 mt-4">
+                <div className="flex justify-between text-base lg:text-lg">
+                  <span className="text-green-700">Totaal:</span>
+                  <span className="font-bold text-green-800">{calculateTotalPrice()}</span>
+                </div>
+              </div>
+            </div>
+          )}
+          {/* Step 4: Insurance (full copy) */}
+          {step === 4 && (
+            <div className="space-y-6">
+              <div className="text-center mb-6">
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Selecteer een verzekering</h3>
+              </div>
+              <div className="flex flex-col gap-4">
+                <label className={`p-4 border rounded-lg cursor-pointer ${upsells.insurance === 'standaard' ? 'border-orange-500 bg-orange-50' : 'border-green-200'}`}> 
+                  <input
+                    type="radio"
+                    name="insurance"
+                    value="standaard"
+                    checked={upsells.insurance === 'standaard'}
+                    onChange={() => setUpsells(prev => ({ ...prev, insurance: 'standaard' }))}
+                    className="mr-2"
+                  />
+                  <span className="font-bold">Standaard</span> – Standaard inbegrepen, geen extra kosten<br/>
+                  <span className="text-xs block mt-1">Wedstrijdkaarten blijven geldig voor de nieuwe speeldatum</span>
+                </label>
+                <label className={`p-4 border rounded-lg cursor-pointer ${upsells.insurance === 'goud' ? 'border-orange-500 bg-orange-50' : 'border-green-200'}`}> 
+                  <input
+                    type="radio"
+                    name="insurance"
+                    value="goud"
+                    checked={upsells.insurance === 'goud'}
+                    onChange={() => setUpsells(prev => ({ ...prev, insurance: 'goud' }))}
+                    className="mr-2"
+                  />
+                  <span className="font-bold">Goud</span> – Volledig verzekerd, €15 per persoon<br/>
+                  <span className="text-xs block mt-1">Wedstrijdkaarten blijven geldig voor de nieuwe speeldatum<br/>ÓF Ticketprijs wordt omgezet in een 100% tegoedbon (2 jaar geldig)</span>
+                </label>
+              </div>
+              <div className="bg-green-50 rounded-lg p-4 mt-4">
+                <div className="flex justify-between text-base lg:text-lg">
+                  <span className="text-green-700">Totaal:</span>
+                  <span className="font-bold text-green-800">{calculateTotalPrice()}</span>
+                </div>
+              </div>
+            </div>
+          )}
+          {/* Step 5: Date & travelers */}
+          {step === 5 && (
+            <div className="space-y-6">
+              <div className="text-center mb-6">
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Wanneer wil je gaan?</h3>
+                <p className="text-green-600 text-sm lg:text-base">Kies je vertrekdatum en aantal reizigers</p>
+              </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('departureDate')}
-                  </label>
+                  <label className="block text-sm font-medium text-green-700 mb-2">Vertrekdatum</label>
                   <input
                     type="date"
                     value={formData.date}
@@ -314,11 +474,8 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                     className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
                   />
                 </div>
-                
                 <div>
-                  <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('travelers')}
-                  </label>
+                  <label className="block text-sm font-medium text-green-700 mb-2">Aantal reizigers</label>
                   <select
                     value={formData.travelers}
                     onChange={(e) => setFormData(prev => ({ ...prev, travelers: parseInt(e.target.value) }))}
@@ -326,104 +483,141 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
                   >
                     {[1, 2, 3, 4, 5, 6].map(num => (
                       <option key={num} value={num}>
-                        {num} {num === 1 ? t('person') : t('people')}
+                        {num} {num === 1 ? 'persoon' : 'personen'}
                       </option>
                     ))}
                   </select>
                 </div>
               </div>
+              <div className="bg-green-50 rounded-lg p-4 mt-4">
+                <div className="flex justify-between text-base lg:text-lg">
+                  <span className="text-green-700">Totaal:</span>
+                  <span className="font-bold text-green-800">{calculateTotalPrice()}</span>
+                </div>
+              </div>
             </div>
           )}
-
-          {step === 3 && (
+          {/* Step 6: Per-person info */}
+          {step === 6 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">{t('confirmBooking')}</h3>
-                <p className="text-green-600 text-sm lg:text-base">{t('confirmSubtitle')}</p>
-              </div>
-              <div className="bg-green-50 rounded-lg p-4 space-y-3">
-                <div className="flex justify-between text-sm lg:text-base">
-                  <span className="text-green-700">{t('package')}:</span>
-                  <span className="font-semibold text-green-800">
-                    {packages.find(p => p.id === formData.package)?.name}
-                  </span>
-                </div>
-                <div className="flex justify-between text-sm lg:text-base">
-                  <span className="text-green-700">{t('date')}:</span>
-                  <span className="font-semibold text-green-800">{formData.date}</span>
-                </div>
-                <div className="flex justify-between text-sm lg:text-base">
-                  <span className="text-green-700">{t('travelers')}:</span>
-                  <span className="font-semibold text-green-800">{formData.travelers}</span>
-                </div>
-                <hr className="border-green-200" />
-                <div className="flex justify-between text-base lg:text-lg">
-                  <span className="text-green-700">{t('total')}:</span>
-                  <span className="font-bold text-green-800">
-                    {calculateTotalPrice()}
-                  </span>
-                </div>
+                <h3 className="text-lg lg:text-xl font-bold text-green-800 mb-2">Gegevens per persoon</h3>
+                <p className="text-green-600 text-sm lg:text-base">Vul de gegevens in voor iedere reiziger</p>
               </div>
               <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('fullName')}
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                    placeholder="Je volledige naam"
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('email')}
-                  </label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                    placeholder="je@email.com"
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-green-700 mb-2">
-                    {t('phone')}
-                  </label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                    placeholder="+31 6 1234 5678"
-                    className="w-full p-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm lg:text-base"
-                    required
-                  />
+                {travelersInfo.map((traveler, idx) => (
+                  <div key={idx} className="bg-green-50 rounded-lg p-4 mb-2">
+                    <div className="mb-2 font-bold text-green-700">Ticket {idx + 1} {idx === 0 ? 'Hoofdboeker' : ''}</div>
+                    {/* Error messages */}
+                    {triedSubmitTravelers && travelerErrors[idx] && travelerErrors[idx].length > 0 && (
+                      <ul className="mb-2 text-red-600 text-xs list-disc list-inside">
+                        {travelerErrors[idx].map((err, i) => <li key={i}>{err}</li>)}
+                      </ul>
+                    )}
+                    <div className="flex gap-2 mb-2">
+                      <select
+                        value={traveler.title}
+                        onChange={e => setTravelersInfo(info => info.map((t, i) => i === idx ? { ...t, title: e.target.value } : t))}
+                        className={`p-2 border rounded-lg text-sm ${triedSubmitTravelers && travelerErrors[idx]?.includes('Kies een aanhef') ? 'border-red-500' : 'border-green-200'}`}
+                        required
+                      >
+                        <option value="">Aanhef</option>
+                        <option value="de heer">de heer</option>
+                        <option value="mevrouw">mevrouw</option>
+                      </select>
+                      <input
+                        type="text"
+                        placeholder="Voornaam *"
+                        value={traveler.firstName}
+                        onChange={e => setTravelersInfo(info => info.map((t, i) => i === idx ? { ...t, firstName: e.target.value } : t))}
+                        className={`p-2 border rounded-lg text-sm flex-1 ${triedSubmitTravelers && travelerErrors[idx]?.includes('Voornaam is verplicht') ? 'border-red-500' : 'border-green-200'}`}
+                        required
+                      />
+                      <input
+                        type="text"
+                        placeholder="Achternaam *"
+                        value={traveler.lastName}
+                        onChange={e => setTravelersInfo(info => info.map((t, i) => i === idx ? { ...t, lastName: e.target.value } : t))}
+                        className={`p-2 border rounded-lg text-sm flex-1 ${triedSubmitTravelers && travelerErrors[idx]?.includes('Achternaam is verplicht') ? 'border-red-500' : 'border-green-200'}`}
+                        required
+                      />
+                    </div>
+                    {idx === 0 && (
+                      <input
+                        type="email"
+                        placeholder="E-mailadres *"
+                        value={traveler.email}
+                        onChange={e => setTravelersInfo(info => info.map((t, i) => i === idx ? { ...t, email: e.target.value } : t))}
+                        className={`p-2 border rounded-lg text-sm w-full mb-2 ${triedSubmitTravelers && travelerErrors[idx]?.includes('E-mailadres is verplicht') ? 'border-red-500' : 'border-green-200'}`}
+                        required
+                      />
+                    )}
+                    <div className="flex gap-2">
+                      <input
+                        type="number"
+                        placeholder="Dag"
+                        min={1}
+                        max={31}
+                        value={traveler.birthDay}
+                        onChange={e => setTravelersInfo(info => info.map((t, i) => i === idx ? { ...t, birthDay: e.target.value } : t))}
+                        className={`p-2 border rounded-lg text-sm w-1/4 ${triedSubmitTravelers && travelerErrors[idx]?.includes('Dag is verplicht') ? 'border-red-500' : 'border-green-200'}`}
+                        required
+                      />
+                      <input
+                        type="number"
+                        placeholder="Maand"
+                        min={1}
+                        max={12}
+                        value={traveler.birthMonth}
+                        onChange={e => setTravelersInfo(info => info.map((t, i) => i === idx ? { ...t, birthMonth: e.target.value } : t))}
+                        className={`p-2 border rounded-lg text-sm w-1/4 ${triedSubmitTravelers && travelerErrors[idx]?.includes('Maand is verplicht') ? 'border-red-500' : 'border-green-200'}`}
+                        required
+                      />
+                      <input
+                        type="number"
+                        placeholder="Jaar"
+                        min={1900}
+                        max={new Date().getFullYear()}
+                        value={traveler.birthYear}
+                        onChange={e => setTravelersInfo(info => info.map((t, i) => i === idx ? { ...t, birthYear: e.target.value } : t))}
+                        className={`p-2 border rounded-lg text-sm w-1/2 ${triedSubmitTravelers && travelerErrors[idx]?.includes('Jaar is verplicht') ? 'border-red-500' : 'border-green-200'}`}
+                        required
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-green-50 rounded-lg p-4 mt-4">
+                <div className="flex justify-between text-base lg:text-lg">
+                  <span className="text-green-700">Totaal:</span>
+                  <span className="font-bold text-green-800">{calculateTotalPrice()}</span>
                 </div>
               </div>
-              <div className="bg-gradient-to-r from-green-100 to-orange-100 rounded-lg p-4">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Check className="w-5 h-5 text-green-600" />
-                  <span className="font-semibold text-green-800 text-sm lg:text-base">{t('securePayment')}</span>
-                </div>
-                <p className="text-xs lg:text-sm text-green-700">
-                  {t('paymentDesc')}
-                </p>
-              </div>
-              {paymentError && <div className="text-red-600 text-sm mt-2">{paymentError}</div>}
             </div>
           )}
-          {step === 4 && clientSecret && (
+          {/* Step 7: Overzicht & betaling */}
+          {step === 7 && clientSecret && (
             <Elements stripe={stripePromise} options={{ clientSecret }}>
+              <div className="mb-4">
+                <div className="bg-green-50 rounded-lg p-4 mb-2">
+                  <div className="font-bold mb-2">Overzicht</div>
+                  <div className="flex justify-between text-sm"><span>Pakket:</span><span>{packages.find(p => p.id === formData.package)?.name}</span></div>
+                  <div className="flex justify-between text-sm"><span>Datum:</span><span>{formData.date}</span></div>
+                  <div className="flex justify-between text-sm"><span>Reizigers:</span><span>{formData.travelers}</span></div>
+                  <div className="flex justify-between text-sm"><span>Stoel:</span><span>{upsells.seat === 'basic' ? 'Basis' : upsells.seat === 'cat1' ? 'Categorie 1' : 'Categorie 2'}</span></div>
+                  <div className="flex justify-between text-sm"><span>Hotelnachten:</span><span>{upsells.hotelNights}</span></div>
+                  <div className="flex justify-between text-sm"><span>Verzekering:</span><span>{upsells.insurance === 'standaard' ? 'Standaard' : 'Goud'}</span></div>
+                  <div className="flex justify-between text-sm"><span>Hotel totaal:</span><span>€{getHotelPrice()}</span></div>
+                  <div className="flex justify-between text-sm"><span>Stoel upgrade:</span><span>€{getSeatPrice()}</span></div>
+                  <div className="flex justify-between text-sm"><span>Verzekering:</span><span>€{getInsurancePrice()}</span></div>
+                  <div className="flex justify-between text-base font-bold mt-2"><span>Totaal:</span><span>{calculateTotalPrice()}</span></div>
+                </div>
+              </div>
               <PaymentForm />
             </Elements>
           )}
         </div>
-        {/* Footer */}
+        {/* Footer with navigation buttons */}
         <div className="flex justify-between items-center p-4 lg:p-6 border-t border-green-100">
           <button
             onClick={handlePrev}
@@ -433,42 +627,24 @@ export function BookingModal({ isOpen, onClose, selectedPackage }: BookingModalP
             {t('previous')}
           </button>
           <div className="flex space-x-2">
-            {[1, 2, 3, 4].map((num) => (
+            {Array.from({ length: TOTAL_STEPS }, (_, i) => i + 1).map((num) => (
               <div
                 key={num}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  num === step ? 'bg-green-500' : 'bg-gray-300'
-                }`}
+                className={`w-2 h-2 rounded-full transition-all ${num === step ? 'bg-green-500' : 'bg-gray-300'}`}
               />
             ))}
           </div>
-          {step < 3 ? (
-            <button
-              onClick={handleNext}
-              disabled={
-                (step === 1 && !formData.package) ||
-                (step === 2 && (!formData.date || formData.travelers < 1))
-              }
-              className="px-4 lg:px-6 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base"
-            >
-              {t('next')}
-            </button>
-          ) : step === 3 ? (
-            <button
-              onClick={handleNext}
-              disabled={isSubmitting || !formData.name || !formData.email || !formData.phone}
-              className="px-4 lg:px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 text-sm lg:text-base"
-            >
-              {isSubmitting ? (
-                <>
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>{t('processing')}</span>
-                </>
-              ) : (
-                <span>{t('payBook')}</span>
-              )}
-            </button>
-          ) : null}
+          <button
+            onClick={handleNext}
+            disabled={
+              isSubmitting ||
+              (step === 1 && !formData.package) ||
+              (step === 5 && (!formData.date || formData.travelers < 1))
+            }
+            className="px-4 lg:px-6 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base"
+          >
+            {step === TOTAL_STEPS ? t('payBook') : t('next')}
+          </button>
         </div>
       </div>
     </div>
